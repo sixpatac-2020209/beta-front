@@ -1,1 +1,61 @@
-<p>login works!</p>
+
+
+<body>
+  <div class="container">
+      <div class="signin-signup">
+          <form action="" class="sign-in-form" id="login">
+              <h2 class="title">Inicia tu sesión</h2>
+              <div class="input-field">
+                  <i class="fas fa-user"></i>
+                  <input name="username" type="text" placeholder="Usuario">
+              </div>
+              <div class="input-field">
+                  <i class="fas fa-lock"></i>
+                  <input  name="password" type="password" placeholder="Contraseña">
+              </div>
+              <input routerLink="/admin/home" type="submit" value="Iniciar Sesión" class="btn">
+              <p class="account-text">¿No tienes una cuenta? <a src="registrate/#Register" id="sign-up-btn2" class="semiLink">Registrate</a></p>
+          </form>
+
+          <form class="sign-up-form" id="register" >
+              <h2 class="title">Registro</h2>
+              <div class="input-field">
+                  <i class="fas fa-user"></i>
+                  <input name="name" type="text" placeholder="Nombre" >
+              </div>
+              <div class="input-field">
+                  <i class="fas fa-user"></i>
+                  <input name="surname" type="text" placeholder="Apellido">
+              </div>
+              <div class="input-field">
+                  <i class="fas fa-envelope"></i>
+                  <input name="email" type="email" placeholder="Email">
+              </div>
+              <div class="input-field">
+                  <i class="fas fa-lock"></i>
+                  <input  type="password" name="password" placeholder="Contraseña">
+              </div>
+              <input type="submit" value="Registrate" class="btn">
+              <p class="account-text">¿De nuevo aquí? <a src="registrate/#login" id="sign-in-btn2" class="semiLink">Inicia Sesión</a></p>
+          </form>
+      </div>
+      <div class="panels-container">
+          <div class="panel left-panel">
+              <div class="content">
+                  <h3>¿Eres uno de nosotros?</h3>
+                  <p>Inicia Sesión para poder acceder a todas nuestras funciones.</p>
+                  <button class="btn" id="sign-in-btn">Inicia Sesión</button>
+              </div>
+              <img src="signin.svg" alt="" class="image">
+          </div>
+          <div class="panel right-panel">
+              <div class="content">
+                  <h3>¿Nuevo aquí?</h3>
+                  <p>Registrate para obtener acceso a todas nuestras a funciones</p>
+                  <button class="btn" id="sign-up-btn">Registrate</button>
+              </div>
+              <img src="signup.svg" alt="" class="image">
+          </div>
+      </div>
+  </div>
+</body>

@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { GanttModule } from '@syncfusion/ej2-angular-gantt';
 
+//Angular materials
+import { MatInputModule } from "@angular/material/input";
+
+//
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layouts/header/header.component';
@@ -17,6 +22,10 @@ import { PagesError404Component } from './pages/pages-error404/pages-error404.co
 import { PagesBlankComponent } from './pages/pages-blank/pages-blank.component';
 import { LayoutAdminComponent } from './components/admin/layout-admin/layout-admin.component';
 import { LoginComponent } from './components/landingPage/login/login.component';
+import { SidebarAdminComponent } from './components/admin/sidebar-admin/sidebar-admin.component';
+import { HomeAdminComponent } from './components/admin/home-admin/home-admin.component';
+import { UserAdminComponent } from './components/admin/user-admin/user-admin.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -33,11 +42,17 @@ import { LoginComponent } from './components/landingPage/login/login.component';
     PagesError404Component,
     PagesBlankComponent,
     LayoutAdminComponent,
-    LoginComponent
+    LoginComponent,
+    SidebarAdminComponent,
+    HomeAdminComponent,
+    UserAdminComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    GanttModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

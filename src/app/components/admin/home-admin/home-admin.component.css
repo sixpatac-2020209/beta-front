@@ -1,0 +1,68 @@
+
+.pagetitle h1 {
+    font-size: 24px;
+    margin-bottom: 0;
+    font-weight: 600;
+    color: #459b09;
+}
+
+.dashboard .info-card {
+    background-color: #fff;
+    margin: 0;
+    color: #4eb108;
+}
+
+.card-title{
+    color: #4eb108;
+}
+
+.card-icon i{
+    color:#4eb108;
+}
+
+.dashboard .sales-card .card-icon {
+    background: #f0f0f0;
+}
+
+.dashboard .revenue-card .card-icon {
+    background: #f0f0f0;
+}
+
+.dashboard .info-card h6 {
+    font-size: 28px;
+    color: #222;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+}
+.dashboard{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.widthCard{
+    min-width: 200px;
+    max-height: 220px; 
+}
+
+.containerList{
+    display: flex;
+    gap: 25px;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 1139px) {
+    .containerList{
+        display: flex;
+        gap: 25px;
+        align-content: center;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

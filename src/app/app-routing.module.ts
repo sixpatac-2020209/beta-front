@@ -1,3 +1,4 @@
+import { UserAdminComponent } from './components/admin/user-admin/user-admin.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -11,12 +12,14 @@ import { PagesRegisterComponent } from './pages/pages-register/pages-register.co
 import { UsersProfileComponent } from './pages/users-profile/users-profile.component';
 import { LayoutAdminComponent } from './components/admin/layout-admin/layout-admin.component';
 import { LoginComponent } from './components/landingPage/login/login.component';
+import { HomeAdminComponent } from './components/admin/home-admin/home-admin.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   {
     path: 'admin', component: LayoutAdminComponent, children: [
-      { path: 'home', component: DashboardComponent },
+      { path: 'home', component: HomeAdminComponent },
+      {path: 'user', component: UserAdminComponent},
     ]
   },
   { path: 'dashboard', component: DashboardComponent },

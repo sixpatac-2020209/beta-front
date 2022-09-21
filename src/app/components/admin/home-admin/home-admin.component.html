@@ -1,0 +1,203 @@
+<body>
+   <main id="main" class="main">
+      <div class="pagetitle">
+         <h1>Dashboard</h1>
+         <nav>
+            <ol class="breadcrumb">
+               <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+               <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+         </nav>
+      </div>
+      <section class="section dashboard">
+         <div class="card info-card sales-card widthCard">
+            <div class="card-body">
+               <h5 class="card-title">No. <span>| Ordenes</span></h5>
+               <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                     <i class="fa-solid fa-boxes-stacked"></i>
+                  </div>
+                  <div class="ps-3">
+                     <h6>45</h6>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <div class="card info-card revenue-card widthCard">
+            <div class="card-body">
+               <h5 class="card-title">Ordenes <span>| Nuevas</span></h5>
+               <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                     <i class="fa-solid fa-parachute-box"></i>
+                  </div>
+                  <div class="ps-3">
+                     <h6>5</h6>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <div class="card info-card revenue-card widthCard">
+            <div class="card-body">
+               <h5 class="card-title">Ordenes <span>| Producción</span></h5>
+               <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                     <i class="fa-solid fa-people-carry-box"></i>
+                  </div>
+                  <div class="ps-3">
+                     <h6>20</h6>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+
+         <div class="card info-card revenue-card widthCard">
+            <div class="card-body">
+               <h5 class="card-title">Ordenes <span>| Terminadas</span></h5>
+               <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                     <i class="fa-solid fa-truck-ramp-box"></i>
+                  </div>
+                  <div class="ps-3">
+                     <h6>20</h6>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <div class="card info-card sales-card widthCard">
+            <div class="card-body">
+               <h5 class="card-title">Monto <span>| Facturado</span></h5>
+               <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                     <i class="bi bi-currency-dollar"></i>
+                  </div>
+                  <div class="ps-3">
+                     <h6>$200K</h6>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <section class="mt-4">
+         <ejs-gantt height="490px" [dataSource]="data" [taskFields]="taskSettings" [timelineSettings]="timelineView"
+         [columns]="columnSettings">
+      </ejs-gantt>
+      </section>
+      
+
+      <section class="mt-3">
+         <div class="col-12">
+            <div class="card recent-sales overflow-auto">
+               <div class="card-body">
+                  <h5 class="card-title">Recent Sales <span>| Today</span></h5>
+                  <table class="table table-borderless datatable">
+                     <thead>
+                        <tr>
+                           <th scope="col">#</th>
+                           <th scope="col">Customer</th>
+                           <th scope="col">Product</th>
+                           <th scope="col">Price</th>
+                           <th scope="col">Status</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <th scope="row"><a href="#">#2457</a></th>
+                           <td>Brandon Jacob</td>
+                           <td><a href="#" class="text-primary">At praesentium minu</a></td>
+                           <td>$64</td>
+                           <td><span class="badge bg-success">Approved</span></td>
+                        </tr>
+                        <tr>
+                           <th scope="row"><a href="#">#2147</a></th>
+                           <td>Bridie Kessler</td>
+                           <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
+                           <td>$47</td>
+                           <td><span class="badge bg-warning">Pending</span></td>
+                        </tr>
+                        <tr>
+                           <th scope="row"><a href="#">#2049</a></th>
+                           <td>Ashleigh Langosh</td>
+                           <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
+                           <td>$147</td>
+                           <td><span class="badge bg-success">Approved</span></td>
+                        </tr>
+                        <tr>
+                           <th scope="row"><a href="#">#2644</a></th>
+                           <td>Angus Grady</td>
+                           <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
+                           <td>$67</td>
+                           <td><span class="badge bg-danger">Rejected</span></td>
+                        </tr>
+                        <tr>
+                           <th scope="row"><a href="#">#2644</a></th>
+                           <td>Raheem Lehner</td>
+                           <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
+                           <td>$165</td>
+                           <td><span class="badge bg-success">Approved</span></td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+         <div class="containerList">
+            <div class="card">
+               <div class="card-body">
+                  <h5 class="card-title">Recent Activity <span>| Today</span></h5>
+                  <div class="activity">
+                     <div class="activity-item d-flex">
+                        <div class="activite-label">32 min</div>
+                        <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                        <div class="activity-content"> Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo
+                              officiis</a> beatae</div>
+                     </div>
+                     <div class="activity-item d-flex">
+                        <div class="activite-label">56 min</div>
+                        <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
+                        <div class="activity-content"> Voluptatem blanditiis blanditiis eveniet</div>
+                     </div>
+                     <div class="activity-item d-flex">
+                        <div class="activite-label">2 hrs</div>
+                        <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                        <div class="activity-content"> Voluptates corrupti molestias voluptatem</div>
+                     </div>
+                     <div class="activity-item d-flex">
+                        <div class="activite-label">1 day</div>
+                        <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
+                        <div class="activity-content"> Tempore autem saepe <a href="#"
+                              class="fw-bold text-dark">occaecati voluptatem</a> tempore</div>
+                     </div>
+                     <div class="activity-item d-flex">
+                        <div class="activite-label">2 days</div>
+                        <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
+                        <div class="activity-content"> Est sit eum reiciendis exercitationem</div>
+                     </div>
+                     <div class="activity-item d-flex">
+                        <div class="activite-label">4 weeks</div>
+                        <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
+                        <div class="activity-content"> Dicta dolorem harum nulla eius. Ut quidem quidem sit quas</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="card">
+               <div class="card-body pb-0">
+                  <h5 class="card-title">Budget Report <span>| This Month</span></h5>
+                  <div id="budgetChart" style="min-height: 400px;" class="echart"></div>
+               </div>
+            </div>
+            <div class="card">
+               <div class="card-body pb-0">
+                  <h5 class="card-title">Website Traffic <span>| Today</span></h5>
+                  <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+   </main>
+</body>
