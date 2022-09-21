@@ -10,7 +10,253 @@
             </nav>
         </div>
         <section class="content">
-           
+            <div class="text-center mt-4">
+                <button *ngIf="!showTableUsers" data-bs-toggle="modal" data-bs-target="#addUser"
+                    class="btn icon-btn btn-success ms-2 me-2">
+                    <span style="border-radius: 50% 50%;" class="btn-glyphicon fas fa-user text-success"></span>
+                    Agregar Usuario
+                </button>
+                <button *ngIf="!showTableUsers" (click)="showTable();" class="btn icon-btn btn-secondary ms-2 me-2">
+                    <span style="border-radius: 50% 50%;" class="btn-glyphicon fas fa-table text-secondary"></span>
+                    Tabla de Usuarios
+                </button>
+                <button *ngIf="showTableUsers" (click)="showTable();" class="btn icon-btn btn-secondary ms-2 me-2">
+                    <span style="border-radius: 50% 50%;"
+                        class="btn-glyphicon fas fa-address-card text-secondary"></span>
+                    Cartas de Usuarios
+                </button>
+            </div>
+            <br>
+            <hr>
+              
+            <div *ngIf="!showTableUsers" class="row mt-3 clearfix">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="card profile-header">
+                        <div class="body">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-12">
+                                    <div class="profile-image ">
+                                        <img src="assets/img/users/avatar.png" alt="avatar" style="max-height: 130px; margin:25px;">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-12">
+                                    <h4 class="m-t-0 m-b-1 " style="margin-top: 33px;"><strong>Gerson </strong>de León</h4>
+                                    <span class="job_post">
+                                        <i class="fa fa-address-book"></i>
+                                        Admin
+                                    </span>
+                                    <p>
+                                        <i class="fa fa-circle-user"></i>
+                                        GDL<br>
+                                        <i class="fa fa-at"></i>&nbsp;
+                                        <a>gersondeleon@vento.com.gt</a><br>
+
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="spacing-buttons">
+                                <button data-bs-toggle="modal" data-bs-target="#updateUser" type="button"
+                                    class="btn btn-labeled btn-warning me-1">
+                                    <span class="btn-label">
+                                        <i class="fa fa-pencil"></i>
+                                    </span>
+                                    Editar
+                                </button>
+                                <button type="button" class="btn btn-labeled btn-danger ms-1 me-1">
+                                    <span class="btn-label">
+                                        <i class="fa fa-trash"></i>
+                                    </span>
+                                    Eliminar
+                                </button>
+                                <button data-bs-toggle="modal" data-bs-target="#viewUser" type="button"
+                                    class="btn btn-labeled btn-secondary ms-1">
+                                    <span class="btn-label">
+                                        <i class="fa fa-eye"></i>
+                                    </span>
+                                    Ver Detalles
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h1 *ngIf="notFound === true && showTableUsers === false" class="text-center">
+                    Sin Resultados
+                </h1>
+            </div>
+            <div>
+                <div *ngIf="showTableUsers">
+                    <table class="table" style="background-color: #fff;">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">id</th>
+                                <th scope="col"></th>
+                                <th scope="col">Foto</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellido</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">rol</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td></td>
+                                <td><img src="assets/img/users/avatar.png" alt="avatar" style="max-height: 30px;"></td>
+                                <td>Gerson</td>
+                                <td>de León</td>
+                                <td>GDL</td>
+                                <td>Admin</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td></td>
+                                <td><img src="assets/img/users/avatar.png" alt="avatar" style="max-height: 30px;"></td>
+                                <td>Gerson</td>
+                                <td>de León</td>
+                                <td>GDL</td>
+                                <td>Admin</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal fade" id="addUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="addContainer">
+                      <div class="contact-details">
+                        <div class="modalHeader">
+                          <div class="editRowModal">
+                            <div class="modalHeader clearfix">
+                              <div class="modal-about contact-header">
+                                <div class="contact-details-img">
+                                  <i class="fas fa-user-plus fa-2x mt-1"></i>
+                                </div>
+                                <div class="contact-details-heading">
+                                  <div class="contact-details-name mb-2">
+                                    Nuevo Usuario
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <button mat-icon-button data-bs-dismiss="modal" aria-label="Close dialog">
+                            <mat-icon>close</mat-icon>
+                          </button>
+                        </div>
+                      </div>
+                      <hr />
+                      <div class="body">
+                        <form #addUserForm="ngForm" class="register-form m-4">
+                          <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                              <mat-form-field class="example-full-width" appearance="outline">
+                                <mat-label>Nombre</mat-label>
+                                <input name="name" autocomplete="off" matInput>
+                                <mat-icon matSuffix>face</mat-icon>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                              <mat-form-field class="example-full-width" appearance="outline">
+                                <mat-label>Apellido</mat-label>
+                                <input name="surname" autocomplete="off" matInput>
+                                <mat-icon matSuffix>face</mat-icon>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                              <mat-form-field class="example-full-width" appearance="outline">
+                                <mat-label>Usuario</mat-label>
+                                <input name="username" autocomplete="off" matInput>
+                                <mat-icon matSuffix>switch_account</mat-icon>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                              <mat-form-field class="example-full-width" appearance="outline">
+                                <mat-label>Contraseña</mat-label>
+                                <input name="password" autocomplete="off" matInput type="password">
+                                <mat-icon matSuffix>key</mat-icon>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                              <mat-form-field class="example-full-width" appearance="outline">
+                                <mat-label>Email</mat-label>
+                                <input name="email" autocomplete="off" matInput>
+                                <mat-icon matSuffix>email</mat-icon>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                              <mat-form-field class="example-full-width" appearance="outline">
+                                <mat-label>Género</mat-label>
+                                <mat-select name="gender">
+                                  <mat-option value="Masculino">
+                                    Masculino
+                                  </mat-option>
+                                  <mat-option value="Femenino">
+                                    Femenino
+                                  </mat-option>
+                                </mat-select>
+                                <mat-icon matSuffix>wc</mat-icon>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                              <mat-form-field class="example-full-width" appearance="outline">
+                                <mat-label>Edad</mat-label>
+                                <input name="age" autocomplete="off" matInput min="1" type="number">
+                                <mat-icon matSuffix>today</mat-icon>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                              <mat-form-field class="example-full-width" appearance="outline">
+                                <mat-label>Teléfono</mat-label>
+                                <input name="phone" autocomplete="off" matInput>
+                                <mat-icon matSuffix>phone</mat-icon>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                              <mat-form-field class="example-full-width" appearance="outline">
+                                <mat-label>Role</mat-label>
+                                <mat-select name="role">
+                                  <mat-option value="ORGANIZADOR">
+                                    Organizador
+                                  </mat-option>
+                                  <mat-option value="CLIENTE">
+                                    Cliente
+                                  </mat-option>
+                                </mat-select>
+                                <mat-icon matSuffix>switch_account</mat-icon>
+                              </mat-form-field>
+                            </div>
+                          </div>
+                          <hr style="margin-top: -0.5rem;">
+                          <div class="spacing-buttons">
+                            <button type="submit" data-bs-dismiss="modal" class="btn btn-labeled btn-success me-1">
+                              <span class="btn-label">
+                                <i class="fa fa-floppy-o"></i>
+                              </span>
+                              Agregar
+                            </button>
+                            <button type="button" data-bs-dismiss="modal" class="btn btn-labeled btn-danger ms-1 me-1">
+                              <span class="btn-label">
+                                <i class="fa fa-times-circle"></i>
+                              </span>
+                              Cancelar
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
         </section>
     </main>
 </body>

@@ -4,8 +4,20 @@ import { GanttModule } from '@syncfusion/ej2-angular-gantt';
 
 //Angular materials
 import { MatInputModule } from "@angular/material/input";
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layouts/header/header.component';
@@ -26,6 +38,11 @@ import { SidebarAdminComponent } from './components/admin/sidebar-admin/sidebar-
 import { HomeAdminComponent } from './components/admin/home-admin/home-admin.component';
 import { UserAdminComponent } from './components/admin/user-admin/user-admin.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatOptionModule } from '@angular/material/core';
+import { DetailsOrderComponent } from './components/admin/details-order/details-order.component';
+import { AutorizationsComponent } from './components/admin/autorizations/autorizations.component';
+import { QualityControlComponent } from './components/admin/quality-control/quality-control.component';
+import { OrderProductionsComponent } from './components/admin/order-productions/order-productions.component';
 
 @NgModule({
   declarations: [
@@ -45,14 +62,29 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     SidebarAdminComponent,
     HomeAdminComponent,
-    UserAdminComponent
+    UserAdminComponent,
+    DetailsOrderComponent,
+    AutorizationsComponent,
+    QualityControlComponent,
+    OrderProductionsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     GanttModule,
-    MatInputModule
+    MatInputModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatMenuModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatOptionModule,
+    FormsModule, 
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,10 @@
+
+td i {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+i.check{
+    color: rgb(184, 184, 184);
+}
+
