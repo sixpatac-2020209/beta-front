@@ -272,3 +272,13 @@ table {
     background-color: #ffffff;
   }
   
+
+  .infoOrder{
+    text-decoration: none;
+    color: #459b09;
+  }
+
+  .infoOrder:hover{
+    text-decoration: none;
+    color: #3c830a;
+  }

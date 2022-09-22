@@ -17,6 +17,7 @@ import { AutorizationsComponent } from './components/admin/autorizations/autoriz
 import { OrderProductionsComponent } from './components/admin/order-productions/order-productions.component';
 import { QualityControlComponent } from './components/admin/quality-control/quality-control.component';
 import { DetailsOrderComponent } from './components/admin/details-order/details-order.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -30,6 +31,7 @@ const routes: Routes = [
       {path: 'controlCalidad', component: QualityControlComponent}
     ]
   },
+  {path:'**', component: NotFoundComponent},
   { path: 'dashboard', component: DashboardComponent },
   { path: 'pages-blank', component: PagesBlankComponent },
   { path: 'pages-contact', component: PagesContactComponent },
