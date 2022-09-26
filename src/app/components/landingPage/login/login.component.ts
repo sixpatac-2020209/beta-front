@@ -11,9 +11,9 @@ import { ScriptLoginService } from 'src/app/services/cargarScripts/script-login.
 export class LoginComponent implements OnInit {
 
   constructor(
-    private _ScriptsLogin : ScriptLoginService,
+    //private _ScriptsLogin : ScriptLoginService,
   ){
-    _ScriptsLogin.Carga(["app"]);
+    //_ScriptsLogin.Carga(["app"]);
   }
 
   ngOnInit( ): void { }

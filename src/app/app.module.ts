@@ -44,6 +44,7 @@ import { AutorizationsComponent } from './components/admin/autorizations/autoriz
 import { QualityControlComponent } from './components/admin/quality-control/quality-control.component';
 import { OrderProductionsComponent } from './components/admin/order-productions/order-productions.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { OrdersComponent } from './components/admin/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     AutorizationsComponent,
     QualityControlComponent,
     OrderProductionsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
