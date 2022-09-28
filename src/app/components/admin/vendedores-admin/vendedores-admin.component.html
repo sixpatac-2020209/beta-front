@@ -1,0 +1,322 @@
+<body class="content">
+    <main id="main" class="main">
+        <div class="pagetitle">
+            <h1>Ordenes de Producción</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/admin/home">Inicio</a></li>
+                    <li class="breadcrumb-item active">Ordenes de Producción</li>
+                </ol>
+            </nav>
+        </div>
+        <section class="content">
+            <div>
+                <div class="text-center mt-4">
+                    <button data-bs-toggle="modal" data-bs-target="#addOrden"
+                        class="btn icon-btn btn-success ms-2 me-2">
+                        <span style="border-radius: 50% 50%;" class="btn-glyphicon fa fa-file text-success"></span>
+                        Agregar Orden
+                    </button>
+                </div>
+                <hr>
+                <br>
+
+                <div class="row clearfix mt-5 tableText">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tableText">
+                        <div class="card tableText">
+                            <div class="materialTableHeader mb-3 tableText">
+                                <div class="row tableText">
+                                    <div class="col-8 tableText">
+                                        <ul class="header-buttons-left ml-0 tableTitle">
+                                            <li class="dropdown">
+                                                <div class="headerTable" style="background-color: transparent;">
+                                                    <h2>Tabla de Clientes</h2>
+                                                </div>
+                                            </li>
+                                            <li class="dropdown m-l-20 ms-3">
+                                                <label for="search-input">
+                                                    <i class="material-icons search-icon">search</i>
+                                                </label>
+                                                <input placeholder="Buscar Usuario..." type="text" #filter
+                                                    class="browser-default search-field" aria-label="Search box" />
+                                            </li>
+                                            <li *ngIf="buttonActions">
+                                                <div class="icon-button-demo m-l-10">
+                                                    <button mat-mini-fab color="warn">
+                                                        <mat-icon class="col-white">delete
+                                                        </mat-icon>
+                                                    </button>
+                                                </div>
+                                            </li>
+                                            <li *ngIf="buttonActions">
+                                                <div class="icon-button-demo m-l-10">
+                                                    <button data-bs-toggle="modal" data-bs-target="#updateUser"
+                                                        mat-mini-fab class="colorUpdate">
+                                                        <mat-icon class="col-white">edit
+                                                        </mat-icon>
+                                                    </button>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-4">
+                                        <ul class="header-buttons">
+                                            <li>
+                                                <div class="icon-button-demo add">
+                                                    <button data-bs-toggle="modal" data-bs-target="#addUser"
+                                                        mat-mini-fab color="primary">
+                                                        <mat-icon class="col-white">add</mat-icon>
+                                                    </button>
+                                                    <button mat-button [matMenuTriggerFor]="menu"
+                                                        class="header-dropdown">
+                                                        <mat-icon>file_download</mat-icon>
+                                                    </button>
+                                                    <mat-menu #menu="matMenu">
+                                                        <button mat-menu-item>
+                                                            <i style="color:green" class="fa-solid fa-file-excel"></i>
+                                                            &nbsp;
+                                                            Excel
+                                                        </button>
+                                                        <button mat-menu-item>
+                                                            <i style="color:red" class="fa-solid fa-file-pdf"></i>
+                                                            &nbsp;
+                                                            PDF
+                                                        </button>
+                                                    </mat-menu>
+                                                </div>
+
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tableBody">
+                                <div class="table-responsive">
+                                    <table class="table table-border table-hover">
+                                        <thead>
+                                            <tr style="text-align: center;">
+                                                <th class="text-center">#</th>
+                                                <th style="text-align: center;"> </th>
+                                                <th> CVE_VEND </th>
+                                                <th> Status </th>
+                                                <th> Nombre </th>
+                                                <th> Clasificación</th>
+                                                <th> Correo </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let vendedor of vendedores" >
+                                                <td style="text-align: center;"> {{vendedores.indexOf(vendedor) + 1}} </td>
+                                                <td style="text-align: center;">
+                                                    <mat-checkbox *ngIf="vendedor.checked==true || controloClick==0"
+                                                        #check="matCheckbox"
+                                                        (click)="showButtonActions(vendedor.CVE_VEND, check); getVendedor(vendedor.CVE_VEND)"
+                                                        class="example-margin" color="primary">
+                                                    </mat-checkbox>
+                                                    <mat-checkbox disabled="" *ngIf="vendedor.checked==false"
+                                                        class="example-margin" color="primary">
+                                                    </mat-checkbox>
+                                                    {{vendedor.position}}
+                                                </td>
+                                                <td (click)="getVendedor(vendedor.CVE_VEND)" data-bs-toggle="modal"  data-bs-target="#viewUser" style="text-align: center;">{{ vendedor.CVE_VEND }} </td>
+                                                <td (click)="getVendedor(vendedor.CVE_VEND)" data-bs-toggle="modal"  data-bs-target="#viewUser" style="text-align: center;">{{ vendedor.STATUS }} </td>
+                                                <td (click)="getVendedor(vendedor.CVE_VEND)" data-bs-toggle="modal" data-bs-target="#viewUser" >{{ vendedor.NOMBRE }} </td>
+                                                <td (click)="getVendedor(vendedor.CVE_VEND)" data-bs-toggle="modal" data-bs-target="#viewUser" style="text-align: center;">{{ vendedor.CLASIFIC }} </td>
+                                                <td (click)="getVendedor(vendedor.CVE_VEND)" data-bs-toggle="modal"  data-bs-target="#viewUser">{{ vendedor.CORREOE }} </td>
+                                            </tr>
+                                            <tr rowspan="9" *ngIf="notFound === true">
+                                                <td colspan="9" class="text-center">Sin Resultados</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <!-- <div *ngIf="!nameUp && !nameDown && !surnameUp && !surnameDown && !usernameUp && !usernameDown && !ageUp && !ageDown" class="d-flex justify-content-between p-2">
+                              <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+                                (pageChange)="getClientess()">
+                              </ngb-pagination>
+                
+                              <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
+                                (ngModelChange)="getClientess()">
+                                <option [ngValue]="1">1 items por página</option>
+                                <option [ngValue]="2">2 items por página</option>
+                                <option [ngValue]="5">5 items por página</option>
+                                <option [ngValue]="collectionSize">Todos los items</option>
+                              </select>
+                            </div> -->
+
+                                    <!-- <div *ngIf="nameUp" class="d-flex justify-content-between p-2">
+                              <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+                                (pageChange)="getClientessNameUp()">
+                              </ngb-pagination>
+                
+                              <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
+                                (ngModelChange)="getClientessNameUp()">
+                                <option [ngValue]="1">1 items por página</option>
+                                <option [ngValue]="2">2 items por página</option>
+                                <option [ngValue]="5">5 items por página</option>
+                                <option [ngValue]="collectionSize">Todos los items</option>
+                              </select>
+                            </div>
+                            <div *ngIf="nameDown" class="d-flex justify-content-between p-2">
+                              <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+                                (pageChange)="getClientessNameDown()">
+                              </ngb-pagination>
+                
+                              <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
+                                (ngModelChange)="getClientessNameDown()">
+                                <option [ngValue]="1">1 items por página</option>
+                                <option [ngValue]="2">2 items por página</option>
+                                <option [ngValue]="5">5 items por página</option>
+                                <option [ngValue]="collectionSize">Todos los items</option>
+                              </select>
+                            </div>
+                
+                            <div *ngIf="surnameUp" class="d-flex justify-content-between p-2">
+                              <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+                                (pageChange)="getClientessSurnameUp()">
+                              </ngb-pagination>
+                
+                              <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
+                                (ngModelChange)="getClientessSurnameUp()">
+                                <option [ngValue]="1">1 items por página</option>
+                                <option [ngValue]="2">2 items por página</option>
+                                <option [ngValue]="5">5 items por página</option>
+                                <option [ngValue]="collectionSize">Todos los items</option>
+                              </select>
+                            </div>
+                            <div *ngIf="surnameDown" class="d-flex justify-content-between p-2">
+                              <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+                                (pageChange)="getClientessSurnameDown()">
+                              </ngb-pagination>
+                
+                              <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
+                                (ngModelChange)="getClientessSurnameDown()">
+                                <option [ngValue]="1">1 items por página</option>
+                                <option [ngValue]="2">2 items por página</option>
+                                <option [ngValue]="5">5 items por página</option>
+                                <option [ngValue]="collectionSize">Todos los items</option>
+                              </select>
+                            </div>
+                
+                            <div *ngIf="usernameUp" class="d-flex justify-content-between p-2">
+                              <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+                                (pageChange)="getClientessUsernameUp()">
+                              </ngb-pagination>
+                
+                              <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
+                                (ngModelChange)="getClientessUsernameUp()">
+                                <option [ngValue]="1">1 items por página</option>
+                                <option [ngValue]="2">2 items por página</option>
+                                <option [ngValue]="5">5 items por página</option>
+                                <option [ngValue]="collectionSize">Todos los items</option>
+                              </select>
+                            </div>
+                            <div *ngIf="usernameDown" class="d-flex justify-content-between p-2">
+                              <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+                                (pageChange)="getClientessUsernameDown()">
+                              </ngb-pagination>
+                
+                              <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
+                                (ngModelChange)="getClientessUsernameDown()">
+                                <option [ngValue]="1">1 items por página</option>
+                                <option [ngValue]="2">2 items por página</option>
+                                <option [ngValue]="5">5 items por página</option>
+                                <option [ngValue]="collectionSize">Todos los items</option>
+                              </select>
+                            </div>
+                
+                            <div *ngIf="ageUp" class="d-flex justify-content-between p-2">
+                              <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+                                (pageChange)="getClientessAgeUp()">
+                              </ngb-pagination>
+                
+                              <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
+                                (ngModelChange)="getClientessAgeUp()">
+                                <option [ngValue]="1">1 items por página</option>
+                                <option [ngValue]="2">2 items por página</option>
+                                <option [ngValue]="5">5 items por página</option>
+                                <option [ngValue]="collectionSize">Todos los items</option>
+                              </select>
+                            </div>
+                            <div *ngIf="ageDown" class="d-flex justify-content-between p-2">
+                              <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+                                (pageChange)="getClientessAgeDown()">
+                              </ngb-pagination>
+                
+                              <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
+                                (ngModelChange)="getClientessAgeDown()">
+                                <option [ngValue]="1">1 items por página</option>
+                                <option [ngValue]="2">2 items por página</option>
+                                <option [ngValue]="5">5 items por página</option>
+                                <option [ngValue]="collectionSize">Todos los items</option>
+                              </select>
+                            </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div>
+                <div class="modal fade" id="addOrden" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Multi Columns Form</h5>
+                                    <form class="row g-3">
+
+                                        <div class="col-md-4">
+                                            <label for="inputState" class="form-label">Orden</label>
+                                            <select id="inputState" class="form-select">
+                                                <option selected>selecciona</option>
+                                                <option>...</option>
+                                            </select>
+                                        </div>
+
+
+                                        <div class="col-md-12"> <label for="inputName5" class="form-label">Your
+                                                Name</label> <input type="text" class="form-control" id="inputName5">
+                                        </div>
+                                        <div class="col-md-6"> <label for="inputEmail5" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="inputEmail5">
+                                        </div>
+                                        <div class="col-md-6"> <label for="inputPassword5"
+                                                class="form-label">Password</label> <input type="password"
+                                                class="form-control" id="inputPassword5"></div>
+                                        <div class="col-12"> <label for="inputAddress5"
+                                                class="form-label">Address</label> <input type="text"
+                                                class="form-control" id="inputAddres5s" placeholder="1234 Main St">
+                                        </div>
+                                        <div class="col-12"> <label for="inputAddress2" class="form-label">Address
+                                                2</label> <input type="text" class="form-control" id="inputAddress2"
+                                                placeholder="Apartment, studio, or floor">
+                                        </div>
+                                        <div class="col-md-6"> <label for="inputCity" class="form-label">City</label>
+                                            <input type="text" class="form-control" id="inputCity">
+                                        </div>
+
+                                        <div class="col-md-2"> <label for="inputZip" class="form-label">Zip</label>
+                                            <input type="text" class="form-control" id="inputZip">
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-check"> <input class="form-check-input" type="checkbox"
+                                                    id="gridCheck"> <label class="form-check-label" for="gridCheck">
+                                                    Check me out </label></div>
+                                        </div>
+                                        <div class="text-center"> <button type="submit"
+                                                class="btn btn-primary">Submit</button> <button type="reset"
+                                                class="btn btn-secondary">Reset</button></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>

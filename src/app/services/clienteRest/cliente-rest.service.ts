@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class OrderRestService {
+export class ClienteRestService {
 
   httpOptions = new HttpHeaders({
     'Content-Type': 'application/json',
@@ -18,11 +18,12 @@ export class OrderRestService {
     private http: HttpClient,
   ) { }
 
-  getPedidos() {
-    return this.http.get(environment.baseURI + 'pedidos/getPedidos', { headers: this.httpOptions });
+  getClientes() {
+    return this.http.get(environment.baseURI + 'clientes/getClientes', { headers: this.httpOptions });
   }
 
-  getPedido(id: string){
-    return this.http.get(environment.baseURI + 'pedidos/getPedido/' + id , { headers: this.httpOptions })
+  getCliente(id:string){
+    return this.http.get(environment.baseURI + 'clientes/getCliente/' + id, {headers:this.httpOptions});
   }
+
 }

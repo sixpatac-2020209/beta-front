@@ -1,20 +1,36 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { GanttModule } from '@syncfusion/ej2-angular-gantt';
+import { HttpClientModule } from '@angular/common/http';
 
-//Angular materials
-import { MatInputModule } from "@angular/material/input";
+/*IMPORTACIONES MANUALES*/
+import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSortModule } from '@angular/material/sort';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxEchartsModule } from 'ngx-echarts';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { } from "@angular/material/snack-bar";
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatTooltipModule } from "@angular/material/tooltip";
+
 
 //
 
@@ -44,7 +60,10 @@ import { AutorizationsComponent } from './components/admin/autorizations/autoriz
 import { QualityControlComponent } from './components/admin/quality-control/quality-control.component';
 import { OrderProductionsComponent } from './components/admin/order-productions/order-productions.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { OrdersComponent } from './components/admin/orders/orders.component';
+import { PedidosAdminComponent } from './components/admin/pedidos-admin/pedidos-admin.component';
+import { ClientesAdminComponent } from './components/admin/clientes-admin/clientes-admin.component';
+import { VendedoresAdminComponent } from './components/admin/vendedores-admin/vendedores-admin.component';
+
 
 @NgModule({
   declarations: [
@@ -70,7 +89,9 @@ import { OrdersComponent } from './components/admin/orders/orders.component';
     QualityControlComponent,
     OrderProductionsComponent,
     NotFoundComponent,
-    OrdersComponent
+    PedidosAdminComponent,
+    ClientesAdminComponent,
+    VendedoresAdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,8 +108,24 @@ import { OrdersComponent } from './components/admin/orders/orders.component';
     MatButtonModule,
     MatSelectModule,
     MatOptionModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
+    MatTableModule,
+    MatSnackBarModule,
+    HttpClientModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatSortModule,
+    MatToolbarModule,
+    MatProgressSpinnerModule,
+    CommonModule,
+    NgxDatatableModule,
+    NgxEchartsModule,
+    NgApexchartsModule,
+    MatExpansionModule,
+    MatTabsModule,
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
