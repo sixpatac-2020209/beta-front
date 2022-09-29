@@ -61,8 +61,6 @@ import { QualityControlComponent } from './components/admin/quality-control/qual
 import { OrderProductionsComponent } from './components/admin/order-productions/order-productions.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PedidosAdminComponent } from './components/admin/pedidos-admin/pedidos-admin.component';
-import { ClientesAdminComponent } from './components/admin/clientes-admin/clientes-admin.component';
-import { VendedoresAdminComponent } from './components/admin/vendedores-admin/vendedores-admin.component';
 
 
 @NgModule({
@@ -89,9 +87,7 @@ import { VendedoresAdminComponent } from './components/admin/vendedores-admin/ve
     QualityControlComponent,
     OrderProductionsComponent,
     NotFoundComponent,
-    PedidosAdminComponent,
-    ClientesAdminComponent,
-    VendedoresAdminComponent,
+    PedidosAdminComponent, 
   ],
   imports: [
     BrowserModule,

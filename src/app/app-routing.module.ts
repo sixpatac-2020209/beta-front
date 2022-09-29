@@ -19,8 +19,6 @@ import { QualityControlComponent } from './components/admin/quality-control/qual
 import { DetailsOrderComponent } from './components/admin/details-order/details-order.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PedidosAdminComponent } from './components/admin/pedidos-admin/pedidos-admin.component';
-import { ClientesAdminComponent } from './components/admin/clientes-admin/clientes-admin.component';
-import { VendedoresAdminComponent } from './components/admin/vendedores-admin/vendedores-admin.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -28,8 +26,6 @@ const routes: Routes = [
     path: 'admin', component: LayoutAdminComponent, children: [
       {path: 'home', component: HomeAdminComponent},
       {path: 'user', component: UserAdminComponent},
-      {path: 'clientes', component: ClientesAdminComponent},
-      {path: 'vendedores', component: VendedoresAdminComponent},
       {path: 'autorizacion',component: AutorizationsComponent},
       {path: 'ordenesProduccion', component: OrderProductionsComponent},
       {path: 'detallesOrden', component: DetailsOrderComponent},

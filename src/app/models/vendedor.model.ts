@@ -1,7 +1,6 @@
 export class VendedorModel {
-    constructor(
-
-        
-
+    constructor( 
+        public CVE_VEND: string,  
+        public NOMBRE: string,
     ){}
 }
