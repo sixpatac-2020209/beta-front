@@ -1,7 +1,11 @@
+import { HomeAdminComponent } from './components/admin/home-admin/home-admin.component';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { GanttModule } from '@syncfusion/ej2-angular-gantt';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+/*IMPORTACIONES MANUALES*/
+import { SwiperModule } from "swiper/angular";
 
 /*IMPORTACIONES MANUALES*/
 import { MatRadioModule } from '@angular/material/radio';
@@ -32,6 +36,19 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from "@angular/material/tooltip";
 
 
+import {
+  PerfectScrollbarModule,
+  PERFECT_SCROLLBAR_CONFIG,
+  PerfectScrollbarConfigInterface,
+} from 'ngx-perfect-scrollbar';
+import { ClickOutsideModule } from 'ng-click-outside';
+
+
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true,
+  wheelPropagation: false,
+};
 //
 
 import { AppRoutingModule } from './app-routing.module';
@@ -40,7 +57,6 @@ import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-
 import { UsersProfileComponent } from './pages/users-profile/users-profile.component';
 import { PagesFaqComponent } from './pages/pages-faq/pages-faq.component';
 import { PagesContactComponent } from './pages/pages-contact/pages-contact.component';
@@ -51,9 +67,7 @@ import { PagesBlankComponent } from './pages/pages-blank/pages-blank.component';
 import { LayoutAdminComponent } from './components/admin/layout-admin/layout-admin.component';
 import { LoginComponent } from './components/landingPage/login/login.component';
 import { SidebarAdminComponent } from './components/admin/sidebar-admin/sidebar-admin.component';
-import { HomeAdminComponent } from './components/admin/home-admin/home-admin.component';
 import { UserAdminComponent } from './components/admin/user-admin/user-admin.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatOptionModule } from '@angular/material/core';
 import { DetailsOrderComponent } from './components/admin/details-order/details-order.component';
 import { AutorizationsComponent } from './components/admin/autorizations/autorizations.component';
@@ -80,47 +94,57 @@ import { PedidosAdminComponent } from './components/admin/pedidos-admin/pedidos-
     LayoutAdminComponent,
     LoginComponent,
     SidebarAdminComponent,
-    HomeAdminComponent,
     UserAdminComponent,
     DetailsOrderComponent,
     AutorizationsComponent,
     QualityControlComponent,
     OrderProductionsComponent,
     NotFoundComponent,
-    PedidosAdminComponent, 
+    PedidosAdminComponent,
+    HomeAdminComponent
   ],
   imports: [
+    SwiperModule,
+    FormsModule,
+    CommonModule,
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    GanttModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatCardModule,
-    MatMenuModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ClickOutsideModule,
+    MatTableModule,
     MatPaginatorModule,
     MatFormFieldModule,
-    MatIconModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatOptionModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatTableModule,
+    MatInputModule,
     MatSnackBarModule,
-    HttpClientModule,
+    MatButtonModule,
+    MatIconModule,
     MatRadioModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatCardModule,
     MatDatepickerModule,
     MatDialogModule,
     MatSortModule,
     MatToolbarModule,
+    MatMenuModule,
     MatProgressSpinnerModule,
-    CommonModule,
+    ReactiveFormsModule,
     NgxDatatableModule,
-    NgxEchartsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSnackBarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSelectModule,
     NgApexchartsModule,
-    MatExpansionModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts'),
+    }),
     MatTabsModule,
+    MatExpansionModule,
     MatTooltipModule,
   ],
   providers: [],

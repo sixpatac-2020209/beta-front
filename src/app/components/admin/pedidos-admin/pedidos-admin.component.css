@@ -1,81 +1,3 @@
-.back {
-  background-color: #fff;
-  padding: 30px;
-}
-
-.pagetitle h1 {
-  font-size: 24px;
-  margin-bottom: 0;
-  font-weight: 600;
-  color: #459b09;
-}
-
-table {
-  width: 100%;
-}
-
-.tableText {
-  text-decoration: none !important;
-}
-
-.btn-label {
-  position: relative;
-  left: -12px;
-  display: inline-block;
-  padding: 6px 9px;
-  background: rgba(0, 0, 0, 0.15);
-  border-radius: 3px 0 0 3px;
-}
-
-.btn-labeled {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-.btn {
-  margin-bottom: 10px;
-}
-
-.spacing-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-}
-
-.btn-glyphicon {
-  padding: 8px;
-  background: #ffffff;
-  margin-right: 4px;
-}
-
-.icon-btn {
-  padding: 2px 15px 3px 2px;
-  border-radius: 50px;
-}
-
-.form {
-
-  position: relative;
-}
-
-
-.content-F {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-}
-
-.card-title {
-  font-size: 24px;
-  margin-bottom: 0;
-  font-weight: 600;
-  color: #459b09;
-}
-
-
 table {
   width: 100%;
 }
@@ -285,25 +207,16 @@ hr {
 
 }
 
-li::marker {
-  display: none;
+.icon-Edit i {
+  color: rgb(202, 155, 0);
+  font-size: 20px;
 }
 
-ul {
-  list-style: none;
+.icon-Trash i{
+  color: rgb(170, 0, 0);
+  font-size: 20px;
 }
 
-.headerTable {
-  transition: all 0.5s;
-  z-index: 997;
-  background-color: #fff;
-  width: auto;
-}
-
-.tableTitle{
-  display: flex;
-  margin: auto;
-}
-.header-buttons{
-  margin: auto; 
+.inputSearch{
+  float: right!important;
 }

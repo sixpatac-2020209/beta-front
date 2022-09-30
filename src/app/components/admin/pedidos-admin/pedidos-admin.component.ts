@@ -5,7 +5,10 @@ import { PedidoModel } from 'src/app/models/pedido.model';
 @Component({
   selector: 'app-pedidos-admin',
   templateUrl: './pedidos-admin.component.html',
-  styleUrls: ['./pedidos-admin.component.css']
+  styleUrls: [
+    './pedidos-admin.component.css',
+    '../../../../assets/others/assets/scss/style.scss'
+  ]
 })
 export class PedidosAdminComponent implements OnInit {
   pedido: PedidoModel;
@@ -41,6 +44,7 @@ export class PedidosAdminComponent implements OnInit {
     this.pedidoRest.getPedido(id).subscribe({
       next: (res: any) => {
         this.pedido = res.returnPedido;
+        console.log(this.pedido);
       },
       error: (err) => { alert(err.error.message) }
     })

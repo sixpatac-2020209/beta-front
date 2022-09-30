@@ -9,7 +9,7 @@
         </ol>
       </nav>
     </div>
-    <section class="content">
+    <section>
       <div class="text-center mt-4">
         <button *ngIf="!showTableUsers" data-bs-toggle="modal" data-bs-target="#addUser"
           class="btn icon-btn btn-success ms-2 me-2">
@@ -75,13 +75,13 @@
       <div *ngIf="showTableUsers" class="row clearfix mt-5 tableText">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tableText">
           <div class="card tableText">
-            <div class="materialTableHeader mb-3 tableText">
+            <div class="materialTableHeader mb-3 mt-3 tableText" style="    min-width: 100%;">
               <div class="row tableText">
                 <div class="col-8 tableText">
                   <ul class="header-buttons-left ml-0 tableTitle">
                     <li class="dropdown">
                       <div class="headerTable">
-                        <h2>Tabla de Users</h2>
+                        <h2 class="titleTableC">Tabla de Usuarios</h2>
                       </div>
                     </li>
                     <li class="dropdown m-l-20 ms-3">
@@ -147,14 +147,15 @@
                       <th> </th>
                       <th> Nombre </th>
                       <th> Apellido </th>
+                      <th> Username </th>
                       <th> Email </th>
                       <th> Rol </th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr *ngFor="let user of users">
-                      <td> {{users.indexOf(user) + 1}} </td>
-                      <td>
+                      <td class="text-center" > {{users.indexOf(user) + 1}} </td>
+                      <td class="text-center">
                         <mat-checkbox *ngIf="user.checked==true || controloClick==0" #check="matCheckbox"
                           (click)="showButtonActions(user.id, check); getUser(user.id)" class="example-margin"
                           color="primary">

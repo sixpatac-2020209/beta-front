@@ -5,7 +5,10 @@ import { UserRestService } from 'src/app/services/userRest/user-rest.service';
 @Component({
   selector: 'app-user-admin',
   templateUrl: './user-admin.component.html',
-  styleUrls: ['./user-admin.component.css']
+  styleUrls: [
+    './user-admin.component.css',
+    '../../../../assets/others/assets/scss/style.scss'
+  ]
 })
 export class UserAdminComponent implements OnInit {
   user: UsuarioModel;

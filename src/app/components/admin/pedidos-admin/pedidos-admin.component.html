@@ -1,15 +1,15 @@
-<body class="content">
+<body>
     <main id="main" class="main">
         <div class="pagetitle">
-            <h1>Ordenes de Producción</h1>
+            <h1>Pedidos</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a routerLink="/admin/home">Inicio</a></li>
-                    <li class="breadcrumb-item active">Ordenes de Producción</li>
+                    <li class="breadcrumb-item active">Pedidos</li>
                 </ol>
             </nav>
         </div>
-        <section class="content">
+        <section class="">
             <div>
                 <div class="text-center mt-4">
                     <button data-bs-toggle="modal" data-bs-target="#addOrden"
@@ -21,115 +21,69 @@
                 <hr>
                 <br>
                 
-                <div class="row clearfix mt-5 tableText" >
+                <div class="row clearfix tableText" >
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tableText">
-                      <div class="card tableText" >
-                        <div class="materialTableHeader mb-3 tableText">
-                          <div class="row tableText">
+                      <div class="card tableText">
+                        <div class="materialTableHeader mb-3 tableText" >
+                          <div class="row tableText" >
                             <div class="col-8 tableText">
-                              <ul class="header-buttons-left ml-0 tableTitle">
-                                <li class="dropdown">
-                                  <div class="headerTable">
-                                    <h2>Tabla de Pedidos</h2>
-                                  </div>
-                                </li>
-                                <li class="dropdown m-l-20 ms-3">
-                                  <label for="search-input">
-                                    <i class="material-icons search-icon">search</i>
-                                  </label>
-                                  <input placeholder="Buscar Usuario..." type="text" #filter class="browser-default search-field"
-                                    aria-label="Search box" />
-                                </li>
-                                <li *ngIf="buttonActions">
-                                  <div class="icon-button-demo m-l-10">
-                                    <button  mat-mini-fab color="warn">
-                                      <mat-icon class="col-white">delete
-                                      </mat-icon>
-                                    </button>
-                                  </div>
-                                </li>
-                                <li *ngIf="buttonActions">
-                                  <div class="icon-button-demo m-l-10">
-                                    <button data-bs-toggle="modal" data-bs-target="#updateUser" mat-mini-fab class="colorUpdate">
-                                      <mat-icon class="col-white">edit
-                                      </mat-icon>
-                                    </button>
-                                  </div>
-                                </li>
-                              </ul>
-                            </div>
-                            <div class="col-4">
-                              <ul class="header-buttons">
-                                <li>
-                                  <div class="icon-button-demo add">
-                                    <button data-bs-toggle="modal" data-bs-target="#addUser" mat-mini-fab color="primary">
-                                      <mat-icon class="col-white">add</mat-icon>
-                                    </button>
-                                    <button mat-button [matMenuTriggerFor]="menu" class="header-dropdown">
-                                      <mat-icon>file_download</mat-icon>
-                                    </button>
-                                    <mat-menu #menu="matMenu">
-                                      <button mat-menu-item>
-                                        <i style="color:green" class="fa-solid fa-file-excel"></i>
-                                        &nbsp;
-                                        Excel
-                                      </button>
-                                      <button mat-menu-item>
-                                        <i style="color:red" class="fa-solid fa-file-pdf"></i>
-                                        &nbsp;
-                                        PDF
-                                      </button>
-                                    </mat-menu>
-                                  </div>
-                
-                                </li>
-                              </ul>
+                              <div class="hola">
+                                <ul class="header-buttons-left ml-0 tableTitle ">
+                                  <li class="dropdown m-l-20">
+                                    <label for="search-input">
+                                      <i class="material-icons search-icon">search</i>
+                                    </label>
+                                    <input placeholder="Buscar Pedido..." type="text" #filter class="browser-default search-field"
+                                      aria-label="Search box" />
+                                  </li>
+                                </ul>
+                              </div>
                             </div>
                           </div>
                         </div>
                         <div class="tableBody">
                           <div class="table-responsive">
                             <table class="table table-bpedidoed table-hover">
-                              <thead>
-                                <tr>
+                              <thead style="margin: -100px;">
+                                <tr >
                                   <th class="text-center">#</th>
-                                  <th>  </th>
-                                  <th> CVE_DOC </th>
-                                  <th> CVE_ART </th>
-                                  <th> DESCR </th>
-                                  <th> CVE_CLPV </th>
-                                  <th> Cliente </th>
-                                  <th> CVE_VEND </th>
-                                  <th> Vendedor</th>
+                                  <th class="text-center"> CVE_DOC </th>
+                                  <th class="text-center" style="width: 160px;"> IMPORTE </th>
+                                  <th class="text-center"> CVE_CLPV </th>
+                                  <th class="text-center"> Cliente </th>
+                                  <th class="text-center"> CVE_VEND </th>
+                                  <th class="text-center"> Vendedor </th>
+                                  <th class="text-center"> Acciones </th>
                                 </tr>
                               </thead>
                               <tbody>
                                 <tr *ngFor="let pedido of pedidos">
-                                    <td> {{pedidos.indexOf(pedido) + 1}} </td>
-                                  <td>
-                                    <mat-checkbox
-                                    *ngIf="pedido.checked==true || controloClick==0" #check="matCheckbox"
-                                      (click)="showButtonActions(pedido.CVE_DOC, check); getPedido(pedido.CVE_DOC)"
-                                     class="example-margin" color="primary">
-                                    </mat-checkbox>
-                                    <mat-checkbox disabled="" *ngIf="pedido.checked==false" class="example-margin" color="primary">
-                                    </mat-checkbox>
-                                    {{pedido.position}}
-                                  </td>
-                                  <td (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser">{{ pedido.CVE_DOC }} </td>
-                                  <td (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser">{{ pedido.CVE_ART }} </td>
-                                  <td (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser">{{ pedido.DESCR }} </td>
-                                  <td (click)="getPedido (pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser"> {{ pedido.CVE_CLPV }} </td>
+                                  <td> {{pedidos.indexOf(pedido) + 1}} </td>
+                                  <td  class="text-center" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser">{{ pedido.CVE_DOC }}</td>
+                                  <td style="text-align: right;" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser"> <span style="text-align: right;">{{ pedido.IMPORTE }} </span> </td>
+                                  <td class="text-center" (click)="getPedido (pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser"> {{ pedido.CVE_CLPV }} </td>
                                   <td (click)="getPedido (pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser">{{ pedido.NOMBRE[0] }} </td>
-                                  <td (click)="getPedido (pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser">{{ pedido.CVE_VEND }} </td>
+                                  <td class="text-center" (click)="getPedido (pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser">{{ pedido.CVE_VEND }} </td>
                                   <td (click)="getPedido (pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser">{{ pedido.NOMBRE[1] }} </td>
+                                  <td class="text-center"> <span class="icon-Edit me-2"> <i class="fa-solid fa-pen-to-square"></i> </span>  <span class="icon-Trash ms-2"> <i class="fa-solid fa-trash"></i> </span> </td>
                                 </tr>
                                 <tr rowspan="9" *ngIf="notFound === true">
                                   <td colspan="9" class="text-center">Sin Resultados</td>
                                 </tr>
                               </tbody>
                             </table>
-
+                                <div class="icon-button-demo" style="float: right;">  
+                                    <button mat-menu-item style="border: none; margin-right: 10px;">
+                                      <i style="color:green" class="fa-solid fa-file-excel"></i>
+                                      &nbsp;
+                                      Excel
+                                    </button>
+                                    <button mat-menu-item style="border: none; margin-left: 10px;">
+                                      <i style="color:red" class="fa-solid fa-file-pdf"></i>
+                                      &nbsp;
+                                      PDF
+                                    </button>
+                                </div>
                             <!-- <div *ngIf="!nameUp && !nameDown && !surnameUp && !surnameDown && !usernameUp && !usernameDown && !ageUp && !ageDown" class="d-flex justify-content-between p-2">
                               <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
                                 (pageChange)="getPedidoss()">
@@ -259,54 +213,7 @@
 
             </div>
 
-            <div>
-                <div class="modal fade" id="addOrden" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="card">
-                        <div class="card-body">
-                          <h5 class="card-title">Multi Columns Form</h5>
-                          <form class="row g-3">
-          
-                            <div class="col-md-4">
-                              <label for="inputState" class="form-label">Orden</label>
-                              <select id="inputState" class="form-select">
-                                <option selected>selecciona</option>
-                                <option>...</option>
-                              </select>
-                            </div>
-                            
-          
-                            <div class="col-md-12"> <label for="inputName5" class="form-label">Your Name</label> <input
-                                type="text" class="form-control" id="inputName5"></div>
-                            <div class="col-md-6"> <label for="inputEmail5" class="form-label">Email</label> <input type="email"
-                                class="form-control" id="inputEmail5"></div>
-                            <div class="col-md-6"> <label for="inputPassword5" class="form-label">Password</label> <input
-                                type="password" class="form-control" id="inputPassword5"></div>
-                            <div class="col-12"> <label for="inputAddress5" class="form-label">Address</label> <input type="text"
-                                class="form-control" id="inputAddres5s" placeholder="1234 Main St"></div>
-                            <div class="col-12"> <label for="inputAddress2" class="form-label">Address 2</label> <input
-                                type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                            </div>
-                            <div class="col-md-6"> <label for="inputCity" class="form-label">City</label> <input type="text"
-                                class="form-control" id="inputCity"></div>
-          
-                            <div class="col-md-2"> <label for="inputZip" class="form-label">Zip</label> <input type="text"
-                                class="form-control" id="inputZip"></div>
-                            <div class="col-12">
-                              <div class="form-check"> <input class="form-check-input" type="checkbox" id="gridCheck"> <label
-                                  class="form-check-label" for="gridCheck"> Check me out </label></div>
-                            </div>
-                            <div class="text-center"> <button type="submit" class="btn btn-primary">Submit</button> <button
-                                type="reset" class="btn btn-secondary">Reset</button></div>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            
 
         </section>
     </main>
