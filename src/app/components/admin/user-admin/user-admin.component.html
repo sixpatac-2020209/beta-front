@@ -109,6 +109,7 @@
                     </li>
                   </ul>
                 </div>
+
                 <div class="col-4">
                   <ul class="header-buttons">
                     <li>
@@ -119,9 +120,11 @@
                         <button mat-button [matMenuTriggerFor]="menu" class="header-dropdown">
                           <mat-icon>file_download</mat-icon>
                         </button>
-                        <mat-menu #menu="matMenu">
-                          <button mat-menu-item>
-                            <i style="color:green" class="fa-solid fa-file-excel"></i>
+                        
+                        <mat-menu #menu="matMenu" style="background-color: black;">
+
+                          <button mat-menu-item (click)="exportExcel()">
+                            <i  style="color:green" class="fa-solid fa-file-excel"></i>
                             &nbsp;
                             Excel
                           </button>
@@ -130,12 +133,13 @@
                             &nbsp;
                             PDF
                           </button>
+
                         </mat-menu>
                       </div>
-
                     </li>
                   </ul>
                 </div>
+
               </div>
             </div>
             <div class="tableBody">
@@ -154,7 +158,7 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let user of users">
-                      <td class="text-center" > {{users.indexOf(user) + 1}} </td>
+                      <td class="text-center"> {{users.indexOf(user) + 1}} </td>
                       <td class="text-center">
                         <mat-checkbox *ngIf="user.checked==true || controloClick==0" #check="matCheckbox"
                           (click)="showButtonActions(user.id, check); getUser(user.id)" class="example-margin"
@@ -164,11 +168,16 @@
                         </mat-checkbox>
                         {{user.position}}
                       </td>
-                      <td (click)="getUser(user._id)" data-bs-toggle="modal" data-bs-target="#viewUser">{{ user.name }} </td>
-                      <td (click)="getUser(user._id)" data-bs-toggle="modal" data-bs-target="#viewUser">{{ user.surname }} </td>
-                      <td (click)="getUser (user._id)" data-bs-toggle="modal" data-bs-target="#viewUser"> {{ user.username }} </td>
-                      <td (click)="getUser (user._id)" data-bs-toggle="modal" data-bs-target="#viewUser">{{ user.email }} </td>
-                      <td (click)="getUser (user._id)" data-bs-toggle="modal" data-bs-target="#viewUser">{{ user.role }} </td>
+                      <td (click)="getUser(user._id)" data-bs-toggle="modal" data-bs-target="#viewUser">{{ user.name }}
+                      </td>
+                      <td (click)="getUser(user._id)" data-bs-toggle="modal" data-bs-target="#viewUser">{{ user.surname
+                        }} </td>
+                      <td (click)="getUser (user._id)" data-bs-toggle="modal" data-bs-target="#viewUser"> {{
+                        user.username }} </td>
+                      <td (click)="getUser (user._id)" data-bs-toggle="modal" data-bs-target="#viewUser">{{ user.email
+                        }} </td>
+                      <td (click)="getUser (user._id)" data-bs-toggle="modal" data-bs-target="#viewUser">{{ user.role }}
+                      </td>
                     </tr>
                     <tr rowspan="9" *ngIf="notFound === true">
                       <td colspan="9" class="text-center">Sin Resultados</td>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioModel } from 'src/app/models/usuario.model';
 import { UserRestService } from 'src/app/services/userRest/user-rest.service';
+import { ExportExcelService } from '../../../services/exportData/exportExcel/export-excel.service';
 
 @Component({
   selector: 'app-user-admin',
@@ -14,8 +15,17 @@ export class UserAdminComponent implements OnInit {
   user: UsuarioModel;
   users: any;
 
+  //Variables - Control de Páginas//
+  pageCard = 1;
+  pageSizeCard = 6;
+  page = 1;
+  pageSize = 5;
+  collectionSize: any
+
   constructor(
     private userRest: UserRestService,
+    private excelService: ExportExcelService,
+
   ) {
     this.user = new UsuarioModel('', '', '', '', '', '', '');
   }
@@ -29,6 +39,17 @@ export class UserAdminComponent implements OnInit {
       next: (res: any) => {
         this.users = res.users;
         console.log(this.users.length);
+        this.collectionSize = this.users.length;
+        for (let user of this.users) {
+          user.position = this.users.indexOf(user) + 1
+        }
+        if (this.showTableUsers === true) {
+          for (let user of this.users) {
+            user.checked = true
+          }
+          this.users = this.users.map((user: any, i: number) => ({ id: i + 1, ...user }))
+            .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+        }
       },
       error: (err) => console.log(err)
     })
@@ -76,5 +97,10 @@ export class UserAdminComponent implements OnInit {
       this.controloClick = 0;
     }
     this.buttonActions = !this.buttonActions;
+  }
+
+  //Exportar Datos a Excel//
+  exportExcel() {
+    this.excelService.downloadExcel(this.users)
   }
 }

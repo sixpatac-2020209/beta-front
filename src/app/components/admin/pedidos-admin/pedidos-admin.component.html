@@ -53,7 +53,6 @@
                                   <th class="text-center"> Cliente </th>
                                   <th class="text-center"> CVE_VEND </th>
                                   <th class="text-center"> Vendedor </th>
-                                  <th class="text-center"> Acciones </th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -65,7 +64,6 @@
                                   <td (click)="getPedido (pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser">{{ pedido.NOMBRE[0] }} </td>
                                   <td class="text-center" (click)="getPedido (pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser">{{ pedido.CVE_VEND }} </td>
                                   <td (click)="getPedido (pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser">{{ pedido.NOMBRE[1] }} </td>
-                                  <td class="text-center"> <span class="icon-Edit me-2"> <i class="fa-solid fa-pen-to-square"></i> </span>  <span class="icon-Trash ms-2"> <i class="fa-solid fa-trash"></i> </span> </td>
                                 </tr>
                                 <tr rowspan="9" *ngIf="notFound === true">
                                   <td colspan="9" class="text-center">Sin Resultados</td>
@@ -73,7 +71,7 @@
                               </tbody>
                             </table>
                                 <div class="icon-button-demo" style="float: right;">  
-                                    <button mat-menu-item style="border: none; margin-right: 10px;">
+                                    <button mat-menu-item style="border: none; margin-right: 10px;" (click)="exportExcel()">
                                       <i style="color:green" class="fa-solid fa-file-excel"></i>
                                       &nbsp;
                                       Excel

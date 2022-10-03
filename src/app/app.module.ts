@@ -146,6 +146,7 @@ import { PedidosAdminComponent } from './components/admin/pedidos-admin/pedidos-
     MatTabsModule,
     MatExpansionModule,
     MatTooltipModule,
+    MatOptionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

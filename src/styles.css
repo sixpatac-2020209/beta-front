@@ -1,7 +1,3 @@
-.cdk-overlay-container {
-  z-index: 99999 !important;
-}
-
 * {
   margin: 0;
   padding: 0;

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderRestService } from 'src/app/services/ordersRest/order-rest.service';
 import { PedidoModel } from 'src/app/models/pedido.model';
+import { ExportExcelPedidoService } from '../../../services/exportData/exportExcelPedido/export-excel-pedido.service';
 
 @Component({
   selector: 'app-pedidos-admin',
@@ -13,9 +14,20 @@ import { PedidoModel } from 'src/app/models/pedido.model';
 export class PedidosAdminComponent implements OnInit {
   pedido: PedidoModel;
   pedidos: any;
+  position: any;
+
+    //Variables - Control de Páginas//
+    pageCard = 1;
+    pageSizeCard = 6;
+    page = 1;
+    pageSize = 5;
+    collectionSize: any
+
+
   constructor(
-    private pedidoRest: OrderRestService
-  ) {
+    private pedidoRest: OrderRestService,
+    private excelService: ExportExcelPedidoService
+    ) {
     this.pedido = new PedidoModel('', '', '', '', '', '', '', '');
   }
 
@@ -34,7 +46,17 @@ export class PedidosAdminComponent implements OnInit {
     this.pedidoRest.getPedidos().subscribe({
       next: (res: any) => {
         this.pedidos = res.returnPedidos;
-        console.log(this.pedidos.length);
+      this.collectionSize = this.pedidos.length;
+        for (let pedido of this.pedidos) {
+          pedido.position = this.pedidos.indexOf(pedido) + 1
+        }
+        if (this.showTableUsers === true) {
+          for (let pedido of this.pedidos) {
+            pedido.checked = true
+          }
+          this.pedidos = this.pedidos.map((pedido: any, i: number) => ({ id: i + 1, ...pedido }))
+            .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+        }
       },
       error: (err) => console.log(err)
     })
@@ -50,27 +72,8 @@ export class PedidosAdminComponent implements OnInit {
     })
   }
 
-
-
-
-  showButtonActions(ID: any, check: any) {
-    this.controloClick += 1
-    let controlCheck = !check.checked
-    if (this.controloClick == 1) {
-      for (let pedido of this.pedidos) {
-        if (ID != pedido.CVE_DOC) {
-          pedido.checked = !controlCheck
-        } else if (ID == pedido.CVE_DOC) {
-          pedido.checked = controlCheck
-        }
-      }
-    }
-    else if (this.controloClick == 2) {
-      for (let pedido of this.pedidos) {
-        pedido.checked = true;
-      }
-      this.controloClick = 0;
-    }
-    this.buttonActions = !this.buttonActions;
+  //Exportar Datos a Excel//
+  exportExcel() {
+    this.excelService.downloadExcel(this.pedidos)
   }
 }
