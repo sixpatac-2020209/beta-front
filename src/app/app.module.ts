@@ -75,6 +75,7 @@ import { QualityControlComponent } from './components/admin/quality-control/qual
 import { OrderProductionsComponent } from './components/admin/order-productions/order-productions.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PedidosAdminComponent } from './components/admin/pedidos-admin/pedidos-admin.component';
+import { PruebaComponent } from './components/Pruebas/prueba/prueba.component';
 
 
 @NgModule({
@@ -101,7 +102,8 @@ import { PedidosAdminComponent } from './components/admin/pedidos-admin/pedidos-
     OrderProductionsComponent,
     NotFoundComponent,
     PedidosAdminComponent,
-    HomeAdminComponent
+    HomeAdminComponent,
+    PruebaComponent
   ],
   imports: [
     SwiperModule,

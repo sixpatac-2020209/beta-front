@@ -26,4 +26,7 @@ export class VendedorRestService {
     return this.http.get(environment.baseURI + 'vendedores/getVendedor/' + id , {headers: this.httpOptions});
   }
 
+  getVendedorPedido(id: string){
+    return this.http.get(environment.baseURI + 'vendedores/getVendedorPedido/' + id , {headers: this.httpOptions});
+  }
 }

@@ -1,88 +1,138 @@
 <body>
-    <main id="main" class="main">
-        <div class="pagetitle">
-            <h1>Pedidos</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a routerLink="/admin/home">Inicio</a></li>
-                    <li class="breadcrumb-item active">Pedidos</li>
-                </ol>
-            </nav>
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Pedidos</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/admin/home">Inicio</a></li>
+          <li class="breadcrumb-item active">Pedidos</li>
+        </ol>
+      </nav>
+    </div>
+    <section >
+      <div>
+        <div class="text-center">
+          <button data-bs-toggle="modal" data-bs-target="#addOrden" class="btn icon-btn btn-success ms-2 me-2">
+            <span style="border-radius: 50% 50%;" class="btn-glyphicon fa fa-file text-success"></span>
+            Agregar Orden
+          </button>
+
+          <button (click)="showFilters();" data-bs-toggle="modal"  data-bs-target="#addOrden" class="btn icon-btn btnC ms-2 me-2">
+            <span style="border-radius: 50% 50%;" class="btn-glyphicon fa-solid fa-filter iconBot "></span>
+            Filtrar Pedidos
+          </button>
+
+          <div *ngIf="filtros" class="text-center mt-4" >
+            <button (click)="showYearFilter();" data-bs-toggle="modal" data-bs-target="#addOrden" class="btn icon-btn btnCF ms-5 me-5">
+              <span style="border-radius: 50% 50%;" class="btn-glyphicon fa-solid fa-calendar iconBotF "></span>
+              AÑO
+            </button>
+            <button (click)="showMonthFilter();" data-bs-toggle="modal" data-bs-target="#addOrden" class="btn icon-btn btnCF ms-5 me-5">
+              <span style="border-radius: 50% 50%;" class="btn-glyphicon fa-solid fa-calendar-days iconBotF "></span>
+              MES
+            </button>
+          </div>
+
         </div>
-        <section class="">
-            <div>
-                <div class="text-center mt-4">
-                    <button data-bs-toggle="modal" data-bs-target="#addOrden"
-                        class="btn icon-btn btn-success ms-2 me-2">
-                        <span style="border-radius: 50% 50%;" class="btn-glyphicon fa fa-file text-success"></span>
-                        Agregar Orden
-                    </button>
+        <hr>
+        <br>
+        <div *ngIf="yearFiltro">
+          <form>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Año</mat-label>
+              <input name="year" autocomplete="off" matInput>
+              <mat-icon matSuffix>calendar_today</mat-icon>
+            </mat-form-field>
+          </form>
+        </div>
+
+        <div *ngIf="monthFiltro">
+          <form>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Año</mat-label>
+              <input name="year" autocomplete="off" matInput>
+              <mat-icon matSuffix>calendar_today</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Mes</mat-label>
+              <input name="month" autocomplete="off" matInput>
+              <mat-icon matSuffix>calendar_today</mat-icon>
+            </mat-form-field>
+          </form>
+        </div>
+
+        <div class="row clearfix tableText">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tableText">
+            <div class="card tableText">
+              <div class="materialTableHeader mb-3 tableText headTab">
+                <div class="row tableText">
+                  <div class="col-8 tableText">
+                    <div class="hola">
+                      <ul class="header-buttons-left ml-0 tableTitle ">
+                        <li class="dropdown m-l-20">
+                          <label for="search-input">
+                            <i class="material-icons search-icon">search</i>
+                          </label>
+                          <input placeholder="Buscar Pedido..." type="text" #filter class="browser-default search-field"
+                            aria-label="Search box" />
+                        </li>
+                      </ul>
+                      <div style="float: right;">
+                        <button class="botonAc" (click)="exportExcel()">
+                          <i style="color:green" class="fa-solid fa-file-excel"></i>
+                          &nbsp;
+                          Excel
+                        </button>
+                        <button class="botonAc">
+                          <i style="color:red" class="fa-solid fa-file-pdf"></i>
+                          &nbsp;
+                          PDF
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <hr>
-                <br>
-                
-                <div class="row clearfix tableText" >
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tableText">
-                      <div class="card tableText">
-                        <div class="materialTableHeader mb-3 tableText" >
-                          <div class="row tableText" >
-                            <div class="col-8 tableText">
-                              <div class="hola">
-                                <ul class="header-buttons-left ml-0 tableTitle ">
-                                  <li class="dropdown m-l-20">
-                                    <label for="search-input">
-                                      <i class="material-icons search-icon">search</i>
-                                    </label>
-                                    <input placeholder="Buscar Pedido..." type="text" #filter class="browser-default search-field"
-                                      aria-label="Search box" />
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="tableBody">
-                          <div class="table-responsive">
-                            <table class="table table-bpedidoed table-hover">
-                              <thead style="margin: -100px;">
-                                <tr >
-                                  <th class="text-center">#</th>
-                                  <th class="text-center"> CVE_DOC </th>
-                                  <th class="text-center" style="width: 160px;"> IMPORTE </th>
-                                  <th class="text-center"> CVE_CLPV </th>
-                                  <th class="text-center"> Cliente </th>
-                                  <th class="text-center"> CVE_VEND </th>
-                                  <th class="text-center"> Vendedor </th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr *ngFor="let pedido of pedidos">
-                                  <td> {{pedidos.indexOf(pedido) + 1}} </td>
-                                  <td  class="text-center" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser">{{ pedido.CVE_DOC }}</td>
-                                  <td style="text-align: right;" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser"> <span style="text-align: right;">{{ pedido.IMPORTE }} </span> </td>
-                                  <td class="text-center" (click)="getPedido (pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser"> {{ pedido.CVE_CLPV }} </td>
-                                  <td (click)="getPedido (pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser">{{ pedido.NOMBRE[0] }} </td>
-                                  <td class="text-center" (click)="getPedido (pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser">{{ pedido.CVE_VEND }} </td>
-                                  <td (click)="getPedido (pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser">{{ pedido.NOMBRE[1] }} </td>
-                                </tr>
-                                <tr rowspan="9" *ngIf="notFound === true">
-                                  <td colspan="9" class="text-center">Sin Resultados</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                                <div class="icon-button-demo" style="float: right;">  
-                                    <button mat-menu-item style="border: none; margin-right: 10px;" (click)="exportExcel()">
-                                      <i style="color:green" class="fa-solid fa-file-excel"></i>
-                                      &nbsp;
-                                      Excel
-                                    </button>
-                                    <button mat-menu-item style="border: none; margin-left: 10px;">
-                                      <i style="color:red" class="fa-solid fa-file-pdf"></i>
-                                      &nbsp;
-                                      PDF
-                                    </button>
-                                </div>
-                            <!-- <div *ngIf="!nameUp && !nameDown && !surnameUp && !surnameDown && !usernameUp && !usernameDown && !ageUp && !ageDown" class="d-flex justify-content-between p-2">
+              </div>
+              <div class="tableBody">
+                <div class="table-responsive">
+                  <table class="table table-bpedidoed table-hover">
+                    <thead style="margin: -100px;">
+                      <tr>
+                        <th class="text-center">#</th>
+                        <th class="text-center"> CVE_DOC </th>
+                        <th class="text-center" style="width: 160px;"> IMPORTE </th>
+                        <th class="text-center"> CVE_CLPV </th>
+                        <th class="text-center"> Cliente </th>
+                        <th class="text-center"> CVE_VEND </th>
+                        <th class="text-center"> Vendedor </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let pedido of pedidos">
+                        <td> {{pedidos.indexOf(pedido) + 1}} </td>
+                        <td class="text-center" (click)="getPedido(pedido.CVE_DOC);" data-bs-toggle="modal"
+                          data-bs-target="#viewUser">{{ pedido.CVE_DOC }}</td>
+                        <td style="text-align: right;" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
+                          data-bs-target="#viewUser"> <span style="text-align: right;">{{ pedido.IMPORTE }} </span>
+                        </td>
+                        <td class="text-center" (click)="getPedido (pedido.CVE_DOC)" data-bs-toggle="modal"
+                          data-bs-target="#viewUser"> {{ pedido.CVE_CLPV }} </td>
+                        <td (click)="getPedido (pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser">{{
+                          pedido.NOMBRE[0] }} </td>
+                        <td class="text-center" (click)="getPedido (pedido.CVE_DOC)" data-bs-toggle="modal"
+                          data-bs-target="#viewUser">{{ pedido.CVE_VEND }} </td>
+                        <td (click)="getPedido (pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser">{{
+                          pedido.NOMBRE[1] }} </td>
+                      </tr>
+                      <tr rowspan="9" *ngIf="notFound === true">
+                        <td colspan="9" class="text-center">Sin Resultados</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+
+                  <!-- <div *ngIf="!nameUp && !nameDown && !surnameUp && !surnameDown && !usernameUp && !usernameDown && !ageUp && !ageDown" class="d-flex justify-content-between p-2">
                               <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
                                 (pageChange)="getPedidoss()">
                               </ngb-pagination>
@@ -95,8 +145,8 @@
                                 <option [ngValue]="collectionSize">Todos los items</option>
                               </select>
                             </div> -->
-                
-                            <!-- <div *ngIf="nameUp" class="d-flex justify-content-between p-2">
+
+                  <!-- <div *ngIf="nameUp" class="d-flex justify-content-between p-2">
                               <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
                                 (pageChange)="getPedidossNameUp()">
                               </ngb-pagination>
@@ -203,16 +253,20 @@
                                 <option [ngValue]="collectionSize">Todos los items</option>
                               </select>
                             </div> -->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>  
+
+                </div>
+
+              </div>
 
             </div>
 
-            
+          </div>
+        </div>
 
-        </section>
-    </main>
+      </div>
+
+
+
+    </section>
+  </main>
 </body>

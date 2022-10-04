@@ -7,7 +7,7 @@ export class PedidoModel {
         public FECHAELAB: string, 
         public CVE_VEND: string,  
         public NOMBRE: string,
-        public CVE_CLPV: string, 
+        public CVE_CLPV: string,
 
     ){}
 }

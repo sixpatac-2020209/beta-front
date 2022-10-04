@@ -20,22 +20,24 @@ import { DetailsOrderComponent } from './components/admin/details-order/details-
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PedidosAdminComponent } from './components/admin/pedidos-admin/pedidos-admin.component';
 import { HomeAdminComponent } from './components/admin/home-admin/home-admin.component';
+import { PruebaComponent } from './components/Pruebas/prueba/prueba.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   {
     path: 'admin', component: LayoutAdminComponent, children: [
-      {path: 'home', component: HomeAdminComponent},
-      {path: 'user', component: UserAdminComponent},
-      {path: 'autorizacion',component: AutorizationsComponent},
-      {path: 'ordenesProduccion', component: OrderProductionsComponent},
-      {path: 'detallesOrden', component: DetailsOrderComponent},
-      {path: 'controlCalidad', component: QualityControlComponent},
-      {path: 'pedidos', component: PedidosAdminComponent},
+      { path: 'home', component: HomeAdminComponent },
+      { path: 'user', component: UserAdminComponent },
+      { path: 'autorizacion', component: AutorizationsComponent },
+      { path: 'ordenesProduccion', component: OrderProductionsComponent },
+      { path: 'detallesOrden', component: DetailsOrderComponent },
+      { path: 'controlCalidad', component: QualityControlComponent },
+      { path: 'pedidos', component: PedidosAdminComponent },
+      {path: 'Pruebas', component:PruebaComponent},
     ]
   },
-  
-  {path:'**', component: NotFoundComponent},
+
+  { path: '**', component: NotFoundComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'pages-blank', component: PagesBlankComponent },
   { path: 'pages-contact', component: PagesContactComponent },
