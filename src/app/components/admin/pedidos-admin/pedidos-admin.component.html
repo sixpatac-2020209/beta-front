@@ -9,7 +9,7 @@
         </ol>
       </nav>
     </div>
-    <section >
+    <section>
       <div>
         <div class="text-center">
           <button data-bs-toggle="modal" data-bs-target="#addOrden" class="btn icon-btn btn-success ms-2 me-2">
@@ -17,17 +17,18 @@
             Agregar Orden
           </button>
 
-          <button (click)="showFilters();" data-bs-toggle="modal"  data-bs-target="#addOrden" class="btn icon-btn btnC ms-2 me-2">
+          <button (click)="showFilters();" data-bs-toggle="modal" data-bs-target="#addOrden"
+            class="btn icon-btn btnC ms-2 me-2">
             <span style="border-radius: 50% 50%;" class="btn-glyphicon fa-solid fa-filter iconBot "></span>
             Filtrar Pedidos
           </button>
 
-          <div *ngIf="filtros" class="text-center mt-4" >
-            <button (click)="showYearFilter();" data-bs-toggle="modal" data-bs-target="#addOrden" class="btn icon-btn btnCF ms-5 me-5">
+          <div *ngIf="filtros" class="text-center mt-2">
+            <button (click)="showYearFilter(); " class="btn icon-btn btnCF ms-3 me-3">
               <span style="border-radius: 50% 50%;" class="btn-glyphicon fa-solid fa-calendar iconBotF "></span>
               AÑO
             </button>
-            <button (click)="showMonthFilter();" data-bs-toggle="modal" data-bs-target="#addOrden" class="btn icon-btn btnCF ms-5 me-5">
+            <button (click)="showMonthFilter(); " class="btn icon-btn btnCF ms-3 me-3">
               <span style="border-radius: 50% 50%;" class="btn-glyphicon fa-solid fa-calendar-days iconBotF "></span>
               MES
             </button>
@@ -36,29 +37,37 @@
         </div>
         <hr>
         <br>
-        <div *ngIf="yearFiltro">
-          <form>
-            <mat-form-field class="example-full-width" appearance="outline">
-              <mat-label>Año</mat-label>
-              <input name="year" autocomplete="off" matInput>
-              <mat-icon matSuffix>calendar_today</mat-icon>
-            </mat-form-field>
-          </form>
+        <div *ngIf="yearFiltro" class="formC">
+
+          
+          <div class="contBot">
+            <button type="submit" class="btn btn-labeled btn-success me-1">
+              <span class="btn-label">
+                <i class="fa fa-floppy-o"></i>
+              </span>
+              Agregar
+            </button>
+          </div>
         </div>
 
         <div *ngIf="monthFiltro">
-          <form>
-            <mat-form-field class="example-full-width" appearance="outline">
-              <mat-label>Año</mat-label>
-              <input name="year" autocomplete="off" matInput>
-              <mat-icon matSuffix>calendar_today</mat-icon>
-            </mat-form-field>
+          <form class="formC">
 
-            <mat-form-field class="example-full-width" appearance="outline">
-              <mat-label>Mes</mat-label>
-              <input name="month" autocomplete="off" matInput>
-              <mat-icon matSuffix>calendar_today</mat-icon>
-            </mat-form-field>
+            <div class="input-group flex-nowrap">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="addon-wrapping">Year</span>
+              </div>
+              <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+            </div>
+            
+              <div class="contBot">
+                <button type="submit"class="btn btn-labeled btn-success me-1">
+                  <span class="btn-label">
+                    <i class="fa fa-floppy-o"></i>
+                  </span>
+                  Agregar
+                </button>
+              </div>
           </form>
         </div>
 

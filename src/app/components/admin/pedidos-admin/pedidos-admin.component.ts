@@ -26,7 +26,7 @@ export class PedidosAdminComponent implements OnInit {
   pageSize = 5;
   collectionSize: any
 
-  
+
   constructor(
     private pedidoRest: OrderRestService,
     private vendedorRest: VendedorRestService,
@@ -100,7 +100,7 @@ export class PedidosAdminComponent implements OnInit {
   }
 
   //VARIABLES DE CONTROL DE FILTRO//
-  filtros : boolean = false
+  filtros: boolean = false
   yearFiltro: boolean = false
   monthFiltro: boolean = false
 
@@ -110,9 +110,11 @@ export class PedidosAdminComponent implements OnInit {
 
   showYearFilter() {
     this.yearFiltro = !this.yearFiltro;
+    this.monthFiltro = false
   }
 
   showMonthFilter() {
     this.monthFiltro = !this.monthFiltro;
+    this.yearFiltro = false
   }
 }
