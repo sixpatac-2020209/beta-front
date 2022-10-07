@@ -19,10 +19,19 @@
             Agregar Orden
           </button>
 
-          <button (click)="showFilters()" data-bs-toggle="modal" data-bs-target="#addOrden" class="btn icon-btn btn-primary ms-2 me-2">
+          <button (click)="showFilters(); cleanFilters();" data-bs-toggle="modal" data-bs-target="#addOrden"
+            class="btn icon-btn btn-primary ms-2 me-2">
             <span style="border-radius: 50% 50%" class="btn-glyphicon fa fa-file text-primary"></span>
             Filtrar Orden
           </button>
+
+          <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+          <mat-menu #menu="matMenu">
+            <div class="matAnMen" >
+              <button mat-menu-item value="1">Item 1</button>
+              <button mat-menu-item>Item 2</button>
+            </div>
+          </mat-menu>
 
           <div *ngIf="filtros" class="text-center mt-2">
             <button (click)="showYearFilter()" class="btn icon-btn btn-dark ms-3 me-3">
@@ -38,53 +47,249 @@
         <hr />
         <br />
         <div *ngIf="yearFiltro" class="formC">
-          <form class="formC">
+          <form class="formC" id="yearForm" #yearForm="ngForm">
             <div class="contIntoForm">
               <mat-form-field class="">
-                <input class="toolbar-search" type="text" autocomplete="off" matInput />
+                <input [(ngModel)]="pedido.YEAR" name="YEAR" class="toolbar-search" type="text" autocomplete="off"
+                  matInput />
                 <mat-placeholder>Año</mat-placeholder>
                 <mat-icon matSuffix style="font-size: 1.2em">search</mat-icon>
               </mat-form-field>
             </div>
             <div class="contBot">
-              <button type="submit" class="btn btn-labeled btn-success me-1">
+              <button (click)=" getPedidosPorA(yearForm); showTableYear(); " type="submit"
+                class="btn btn-labeled btn-success me-1">
                 <span class="btn-label">
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </span>
                 Buscar
+              </button>
+              <button (click)=" cleanFilters(); showPrincipalTable(); " type="submit"
+                class="btn btn-labeled btn-danger me-1">
+                <span class="btn-label">
+                  <i class="fa-solid fa-xmark"></i>
+                </span>
+                Cancelar
               </button>
             </div>
           </form>
         </div>
 
         <div *ngIf="monthFiltro">
-          <form class="formC">
+          <form class="formC" id="monthForm" #monthForm="ngForm">
             <div class="contIntoForm">
               <mat-form-field class="">
-                <input class="toolbar-search" type="text" autocomplete="off" matInput />
+                <input [(ngModel)]="pedido.YEAR" name="YEAR" class="toolbar-search" type="text" autocomplete="off"
+                  matInput />
                 <mat-placeholder>Año</mat-placeholder>
                 <mat-icon matSuffix style="font-size: 1.2em">calendar_today</mat-icon>
               </mat-form-field>
 
               <mat-form-field class="">
-                <input class="toolbar-search" type="text" autocomplete="off" matInput/>
+                <input [(ngModel)]="pedido.MONTH" name="MONTH" class="toolbar-search" type="text" autocomplete="off"
+                  matInput />
                 <mat-placeholder>Mes</mat-placeholder>
                 <mat-icon matSuffix style="font-size: 1.2em">calendar_today</mat-icon>
               </mat-form-field>
             </div>
 
             <div class="contBot">
-              <button type="submit" class="btn btn-labeled btn-success me-1">
+              <button (click)="getPedidosPorMes(monthForm); showTableMonth();" type="submit"
+                class="btn btn-labeled btn-success me-1">
                 <span class="btn-label">
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </span>
                 Buscar
               </button>
+              <button (click)=" cleanFilters(); showPrincipalTable() " type="submit"
+                class="btn btn-labeled btn-danger me-1">
+                <span class="btn-label">
+                  <i class="fa-solid fa-xmark"></i>
+                </span>
+                Cancelar
+              </button>
             </div>
           </form>
         </div>
 
-        <div class="row clearfix tableText">
+
+        <!--TABLA AÑO-->
+        <div class="row clearfix tableText" *ngIf="yearTable">
+          <h1>TABLA DE AÑO</h1>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tableText">
+            <div class="card tableText">
+              <div class="materialTableHeader mb-3 tableText headTab">
+                <div class="row tableText">
+                  <div class="col-8 tableText">
+                    <div class="hola">
+                      <ul class="header-buttons-left ml-0 tableTitle">
+                        <li class="dropdown m-l-20">
+                          <label for="search-input">
+                            <i class="material-icons search-icon">search</i>
+                          </label>
+                          <input placeholder="Buscar Pedido..." type="text" #filter class="browser-default search-field"
+                            aria-label="Search box" />
+                        </li>
+                      </ul>
+                      <div style="float: right">
+                        <button class="botonAc" (click)="exportExcel()">
+                          <i style="color: green" class="fa-solid fa-file-excel"></i>
+                          &nbsp; Excel
+                        </button>
+                        <button class="botonAc">
+                          <i style="color: red" class="fa-solid fa-file-pdf"></i>
+                          &nbsp; PDF
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tableBody">
+                <div class="table-responsive">
+                  <table class="table table-bpedidoed table-hover">
+                    <thead style="margin: -100px">
+                      <tr>
+                        <th class="text-center">#</th>
+                        <th class="text-center">CVE_DOC</th>
+                        <th class="text-center" style="width: 160px">
+                          IMPORTE
+                        </th>
+                        <th class="text-center">CVE_CLPV</th>
+                        <th class="text-center">Cliente</th>
+                        <th class="text-center">CVE_VEND</th>
+                        <th class="text-center">Vendedor</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let pedido of pedidosY">
+                        <td>{{ pedidosY.indexOf(pedido) + 1 }}</td>
+                        <td class="text-center" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
+                          data-bs-target="#viewUser">
+                          {{ pedido.CVE_DOC }}
+                        </td>
+                        <td style="text-align: right" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
+                          data-bs-target="#viewUser">
+                          <span style="text-align: right">{{ pedido.IMPORTE }}
+                          </span>
+                        </td>
+                        <td class="text-center" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
+                          data-bs-target="#viewUser">
+                          {{ pedido.CVE_CLPV }}
+                        </td>
+                        <td (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser">
+                          {{ pedido.NOMBRE[0] }}
+                        </td>
+                        <td class="text-center" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
+                          data-bs-target="#viewUser">
+                          {{ pedido.CVE_VEND }}
+                        </td>
+                        <td (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser">
+                          {{ pedido.NOMBRE[1] }}
+                        </td>
+                      </tr>
+                      <tr rowspan="9" *ngIf="notFound === true">
+                        <td colspan="9" class="text-center">Sin Resultados</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!--TABLA MES-->
+        <div class="row clearfix tableText" *ngIf="monthTable">
+          <H1>TABLA DE cancelar</H1>
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tableText">
+            <div class="card tableText">
+              <div class="materialTableHeader mb-3 tableText headTab">
+                <div class="row tableText">
+                  <div class="col-8 tableText">
+                    <div class="hola">
+                      <ul class="header-buttons-left ml-0 tableTitle">
+                        <li class="dropdown m-l-20">
+                          <label for="search-input">
+                            <i class="material-icons search-icon">search</i>
+                          </label>
+                          <input placeholder="Buscar Pedido..." type="text" #filter class="browser-default search-field"
+                            aria-label="Search box" />
+                        </li>
+                      </ul>
+                      <div style="float: right">
+                        <button class="botonAc" (click)="exportExcel()">
+                          <i style="color: green" class="fa-solid fa-file-excel"></i>
+                          &nbsp; Excel
+                        </button>
+                        <button class="botonAc">
+                          <i style="color: red" class="fa-solid fa-file-pdf"></i>
+                          &nbsp; PDF
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tableBody">
+                <div class="table-responsive">
+                  <table class="table table-bpedidoed table-hover">
+                    <thead style="margin: -100px">
+                      <tr>
+                        <th class="text-center">#</th>
+                        <th class="text-center">CVE_DOC</th>
+                        <th class="text-center" style="width: 160px">
+                          IMPORTE
+                        </th>
+                        <th class="text-center">CVE_CLPV</th>
+                        <th class="text-center">Cliente</th>
+                        <th class="text-center">CVE_VEND</th>
+                        <th class="text-center">Vendedor</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let pedido of pedidosPorMes">
+                        <td>{{ pedidosPorMes.indexOf(pedido) + 1 }}</td>
+                        <td class="text-center" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
+                          data-bs-target="#viewUser">
+                          {{ pedido.CVE_DOC }}
+                        </td>
+                        <td style="text-align: right" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
+                          data-bs-target="#viewUser">
+                          <span style="text-align: right">{{ pedido.IMPORTE }}
+                          </span>
+                        </td>
+                        <td class="text-center" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
+                          data-bs-target="#viewUser">
+                          {{ pedido.CVE_CLPV }}
+                        </td>
+                        <td (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser">
+                          {{ pedido.NOMBRE[0] }}
+                        </td>
+                        <td class="text-center" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
+                          data-bs-target="#viewUser">
+                          {{ pedido.CVE_VEND }}
+                        </td>
+                        <td (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#viewUser">
+                          {{ pedido.NOMBRE[1] }}
+                        </td>
+                      </tr>
+                      <tr rowspan="9" *ngIf="notFound === true">
+                        <td colspan="9" class="text-center">Sin Resultados</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!--TABLA PRINCIPAL-->
+        <div class="row clearfix tableText" *ngIf="!principalTable">
+          <H1>TABLA PRINCIPAL</H1>
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tableText">
             <div class="card tableText">
               <div class="materialTableHeader mb-3 tableText headTab">
@@ -162,128 +367,6 @@
                       </tr>
                     </tbody>
                   </table>
-
-                  <!-- <div *ngIf="!nameUp && !nameDown && !surnameUp && !surnameDown && !usernameUp && !usernameDown && !ageUp && !ageDown" class="d-flex justify-content-between p-2">
-                              <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-                                (pageChange)="getPedidoss()">
-                              </ngb-pagination>
-
-                              <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
-                                (ngModelChange)="getPedidoss()">
-                                <option [ngValue]="1">1 items por página</option>
-                                <option [ngValue]="2">2 items por página</option>
-                                <option [ngValue]="5">5 items por página</option>
-                                <option [ngValue]="collectionSize">Todos los items</option>
-                              </select>
-                            </div> -->
-
-                  <!-- <div *ngIf="nameUp" class="d-flex justify-content-between p-2">
-                              <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-                                (pageChange)="getPedidossNameUp()">
-                              </ngb-pagination>
-
-                              <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
-                                (ngModelChange)="getPedidossNameUp()">
-                                <option [ngValue]="1">1 items por página</option>
-                                <option [ngValue]="2">2 items por página</option>
-                                <option [ngValue]="5">5 items por página</option>
-                                <option [ngValue]="collectionSize">Todos los items</option>
-                              </select>
-                            </div>
-                            <div *ngIf="nameDown" class="d-flex justify-content-between p-2">
-                              <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-                                (pageChange)="getPedidossNameDown()">
-                              </ngb-pagination>
-
-                              <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
-                                (ngModelChange)="getPedidossNameDown()">
-                                <option [ngValue]="1">1 items por página</option>
-                                <option [ngValue]="2">2 items por página</option>
-                                <option [ngValue]="5">5 items por página</option>
-                                <option [ngValue]="collectionSize">Todos los items</option>
-                              </select>
-                            </div>
-
-                            <div *ngIf="surnameUp" class="d-flex justify-content-between p-2">
-                              <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-                                (pageChange)="getPedidossSurnameUp()">
-                              </ngb-pagination>
-
-                              <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
-                                (ngModelChange)="getPedidossSurnameUp()">
-                                <option [ngValue]="1">1 items por página</option>
-                                <option [ngValue]="2">2 items por página</option>
-                                <option [ngValue]="5">5 items por página</option>
-                                <option [ngValue]="collectionSize">Todos los items</option>
-                              </select>
-                            </div>
-                            <div *ngIf="surnameDown" class="d-flex justify-content-between p-2">
-                              <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-                                (pageChange)="getPedidossSurnameDown()">
-                              </ngb-pagination>
-
-                              <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
-                                (ngModelChange)="getPedidossSurnameDown()">
-                                <option [ngValue]="1">1 items por página</option>
-                                <option [ngValue]="2">2 items por página</option>
-                                <option [ngValue]="5">5 items por página</option>
-                                <option [ngValue]="collectionSize">Todos los items</option>
-                              </select>
-                            </div>
-
-                            <div *ngIf="usernameUp" class="d-flex justify-content-between p-2">
-                              <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-                                (pageChange)="getPedidossUsernameUp()">
-                              </ngb-pagination>
-
-                              <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
-                                (ngModelChange)="getPedidossUsernameUp()">
-                                <option [ngValue]="1">1 items por página</option>
-                                <option [ngValue]="2">2 items por página</option>
-                                <option [ngValue]="5">5 items por página</option>
-                                <option [ngValue]="collectionSize">Todos los items</option>
-                              </select>
-                            </div>
-                            <div *ngIf="usernameDown" class="d-flex justify-content-between p-2">
-                              <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-                                (pageChange)="getPedidossUsernameDown()">
-                              </ngb-pagination>
-
-                              <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
-                                (ngModelChange)="getPedidossUsernameDown()">
-                                <option [ngValue]="1">1 items por página</option>
-                                <option [ngValue]="2">2 items por página</option>
-                                <option [ngValue]="5">5 items por página</option>
-                                <option [ngValue]="collectionSize">Todos los items</option>
-                              </select>
-                            </div>
-
-                            <div *ngIf="ageUp" class="d-flex justify-content-between p-2">
-                              <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-                                (pageChange)="getPedidossAgeUp()">
-                              </ngb-pagination>
-
-                              <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
-                                (ngModelChange)="getPedidossAgeUp()">
-                                <option [ngValue]="1">1 items por página</option>
-                                <option [ngValue]="2">2 items por página</option>
-                                <option [ngValue]="5">5 items por página</option>
-                                <option [ngValue]="collectionSize">Todos los items</option>
-                              </select>
-                            </div>
-                            <div *ngIf="ageDown" class="d-flex justify-content-between p-2">
-                              <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-                                (pageChange)="getPedidossAgeDown()">
-                              </ngb-pagination>
-
-                              <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
-                                (ngModelChange)="getPedidossAgeDown()">
-                                <option [ngValue]="1">1 items por página</option>
-                                <option [ngValue]="2">2 items por página</option>
-                                <option [ngValue]="5">5 items por página</option>
-                                <option [ngValue]="collectionSize">Todos los items</option>
-                              </select>
-                            </div> -->
                 </div>
               </div>
             </div>
