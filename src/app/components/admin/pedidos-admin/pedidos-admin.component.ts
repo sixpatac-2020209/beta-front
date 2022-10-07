@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { OrderRestService } from 'src/app/services/ordersRest/order-rest.service';
 import { PedidoModel } from 'src/app/models/pedido.model';
 import { ExportExcelPedidoService } from '../../../services/exportData/exportExcelPedido/export-excel-pedido.service';
@@ -11,7 +11,8 @@ import { VendedorModel } from '../../../models/vendedor.model';
   styleUrls: [
     './pedidos-admin.component.css',
     '../../../../assets/others/assets/scss/style.scss'
-  ]
+  ],
+  encapsulation: ViewEncapsulation.None
 })
 export class PedidosAdminComponent implements OnInit {
   pedido: PedidoModel;

@@ -264,9 +264,7 @@ hr {
 }
 
 .btnCF:hover {
-  background: #c27c04;
-  color: #ffffff;
-  border: 1px #c27c04 solid;
+  color: red;
 }
 
 .iconBotF:hover {
@@ -294,6 +292,15 @@ hr {
   margin-top: 5px;
 }
 
-.sio{
+.sio {
   background-color: #fff;
+}
+
+.contIntoForm {
+  display: flex;
+  gap: 40px;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
