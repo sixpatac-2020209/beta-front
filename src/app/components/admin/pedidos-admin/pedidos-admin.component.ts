@@ -7,6 +7,37 @@ import { VendedorModel } from '../../../models/vendedor.model';
 
 import Swal from 'sweetalert2';
 
+import {FormControl} from '@angular/forms';
+import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import {MatDatepicker} from '@angular/material/datepicker';
+
+// Depending on whether rollup is used, moment needs to be imported differently.
+// Since Moment.js doesn't have a default export, we normally need to import using the `* as`
+// syntax. However, rollup creates a synthetic default module and we thus need to import it using
+// the `default as` syntax.
+import * as _moment from 'moment';
+// tslint:disable-next-line:no-duplicate-imports
+//import {default as _rollupMoment, } from 'moment';
+
+const moment = _moment;
+
+// See the Moment.js docs for the meaning of these formats:
+// https://momentjs.com/docs/#/displaying/format/
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'LL',
+  },
+  display: {
+    dateInput: 'YYYY/MM',
+    monthYearLabel: 'YYYY MMM',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'YYYY MMMM',
+  },
+};
+
+/** @title Datepicker emulating a Year and month picker */
+
 @Component({
   selector: 'app-pedidos-admin',
   templateUrl: './pedidos-admin.component.html',
@@ -15,7 +46,21 @@ import Swal from 'sweetalert2';
     '../../../../assets/others/assets/scss/style.scss',
   ],
   encapsulation: ViewEncapsulation.None,
+  providers: [
+    // `MomentDateAdapter` can be automatically provided by importing `MomentDateModule` in your
+    // application's root module. We provide it at the component level here, due to limitations of
+    // our example generation script.
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    },
+
+    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+  ],
 })
+
+
 export class PedidosAdminComponent implements OnInit {
   pedido: PedidoModel;
   pedidos: any;
@@ -30,11 +75,14 @@ export class PedidosAdminComponent implements OnInit {
   page = 1;
   pageSize = 5;
   collectionSize: any;
+  today: any
+  sixMonthsAgo: any
 
   constructor(
     private pedidoRest: OrderRestService,
     private vendedorRest: VendedorRestService,
-    private excelService: ExportExcelPedidoService
+    private excelService: ExportExcelPedidoService,
+
   ) {
     this.pedido = new PedidoModel('', '', '', '', '', '', '', '', '', '');
     this.vendedor = new VendedorModel('', '', '');
@@ -43,6 +91,17 @@ export class PedidosAdminComponent implements OnInit {
   ngOnInit(): void {
     this.getPedidos();
   }
+
+  date = new FormControl(moment());
+
+  setMonthAndYear(normalizedMonthAndYear: _moment.Moment, datepicker: MatDatepicker<_moment.Moment>) {
+    const ctrlValue = this.date.value!;
+    ctrlValue.month(normalizedMonthAndYear.month());
+    ctrlValue.year(normalizedMonthAndYear.year());
+    this.date.setValue(ctrlValue);
+    datepicker.close();
+  }
+
   //Variables - Mostrar | Ocultar DOM//
   showTableUsers: boolean = false;
   notFound: boolean = false;
