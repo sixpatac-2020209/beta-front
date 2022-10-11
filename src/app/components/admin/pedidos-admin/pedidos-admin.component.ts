@@ -4,37 +4,35 @@ import { PedidoModel } from 'src/app/models/pedido.model';
 import { ExportExcelPedidoService } from '../../../services/exportData/exportExcelPedido/export-excel-pedido.service';
 import { VendedorRestService } from '../../../services/vendedorRest/vendedor-rest.service';
 import { VendedorModel } from '../../../models/vendedor.model';
-
 import Swal from 'sweetalert2';
 
-import {FormControl} from '@angular/forms';
-import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
-import {MatDatepicker} from '@angular/material/datepicker';
+import { FormControl } from '@angular/forms';
+import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatDatepicker } from '@angular/material/datepicker';
 
 // Depending on whether rollup is used, moment needs to be imported differently.
 // Since Moment.js doesn't have a default export, we normally need to import using the `* as`
 // syntax. However, rollup creates a synthetic default module and we thus need to import it using
 // the `default as` syntax.
 import * as _moment from 'moment';
+import { Moment } from 'moment';
 // tslint:disable-next-line:no-duplicate-imports
-//import {default as _rollupMoment, } from 'moment';
 
 const moment = _moment;
 
-// See the Moment.js docs for the meaning of these formats:
-// https://momentjs.com/docs/#/displaying/format/
 export const MY_FORMATS = {
   parse: {
-    dateInput: 'LL',
+    dateInput: 'MM/YYYY',
   },
   display: {
-    dateInput: 'YYYY/MM',
-    monthYearLabel: 'YYYY MMM',
+    dateInput: 'MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
     dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'YYYY MMMM',
+    monthYearA11yLabel: 'MMMM YYYY',
   },
 };
+
 
 /** @title Datepicker emulating a Year and month picker */
 
@@ -53,10 +51,10 @@ export const MY_FORMATS = {
     {
       provide: DateAdapter,
       useClass: MomentDateAdapter,
-      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
     },
 
-    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
 })
 
@@ -76,15 +74,15 @@ export class PedidosAdminComponent implements OnInit {
   pageSize = 5;
   collectionSize: any;
   today: any
-  sixMonthsAgo: any
+  sixMonthsAgo: any;
+  monthForm: any;
 
   constructor(
     private pedidoRest: OrderRestService,
     private vendedorRest: VendedorRestService,
     private excelService: ExportExcelPedidoService,
-
   ) {
-    this.pedido = new PedidoModel('', '', '', '', '', '', '', '', '', '');
+    this.pedido = new PedidoModel('', '', '', '', '', '', '', '', '');
     this.vendedor = new VendedorModel('', '', '');
   }
 
@@ -94,12 +92,22 @@ export class PedidosAdminComponent implements OnInit {
 
   date = new FormControl(moment());
 
-  setMonthAndYear(normalizedMonthAndYear: _moment.Moment, datepicker: MatDatepicker<_moment.Moment>) {
-    const ctrlValue = this.date.value!;
-    ctrlValue.month(normalizedMonthAndYear.month());
-    ctrlValue.year(normalizedMonthAndYear.year());
-    this.date.setValue(ctrlValue);
-    datepicker.close();
+  chosenYearHandler(normalizedYear: Moment) {
+    const ctrlValue = this.date.value;
+    if (ctrlValue !== null) {
+      ctrlValue.year(normalizedYear.year());
+      this.date.setValue(ctrlValue);
+    }
+  }
+
+  chosenMonthHandler(normalizedMonth: Moment, datepicker: MatDatepicker<Moment>) {
+    const ctrlValue = this.date.value;
+    if (ctrlValue !== null) {
+      ctrlValue.month(normalizedMonth.month());
+      this.date.setValue(ctrlValue);
+      this.getPedidosPorMes(this.monthForm);
+      datepicker.close();
+    }
   }
 
   //Variables - Mostrar | Ocultar DOM//
@@ -221,7 +229,7 @@ export class PedidosAdminComponent implements OnInit {
     this.pedidoRest.getPedidoPorMes(this.pedido).subscribe({
       next: (res: any) => {
         this.pedidosPorMes = res.returnPedidosPorMes;
-        if (this.pedidosPorMes.length === 0 ) {
+        if (this.pedidosPorMes.length === 0) {
           this.notFound = !this.notFound;
         };
         monthForm.reset();
