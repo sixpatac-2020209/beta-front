@@ -76,6 +76,8 @@ import { OrderProductionsComponent } from './components/admin/order-productions/
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PedidosAdminComponent } from './components/admin/pedidos-admin/pedidos-admin.component';
 import { PruebaComponent } from './components/Pruebas/prueba/prueba.component';
+import { SearchPedidoPipe } from './pipes/search-pedido.pipe';
+import { CreateOrderComponent } from './components/admin/create-order/create-order.component';
 
 
 @NgModule({
@@ -103,7 +105,9 @@ import { PruebaComponent } from './components/Pruebas/prueba/prueba.component';
     NotFoundComponent,
     PedidosAdminComponent,
     HomeAdminComponent,
-    PruebaComponent
+    PruebaComponent,
+    SearchPedidoPipe,
+    CreateOrderComponent
   ],
   imports: [
     SwiperModule,

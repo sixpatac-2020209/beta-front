@@ -29,99 +29,8 @@
         </div>
 
 
-
-        <!--TABLA Filtro-->
-        <div class="row clearfix tableText" *ngIf="monthTable">
-          <H1>TABLA DE cancelar</H1>
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tableText">
-            <div class="card tableText">
-              <div class="materialTableHeader mb-3 tableText headTab">
-                <div class="row tableText">
-                  <div class="col-8 tableText">
-                    <div class="hola">
-                      <ul class="header-buttons-left ml-0 tableTitle">
-                        <li class="dropdown m-l-20">
-                          <label for="search-input">
-                            <i class="material-icons search-icon">search</i>
-                          </label>
-                          <input placeholder="Buscar Pedido..." type="text" #filter class="browser-default search-field"
-                            aria-label="Search box" />
-                        </li>
-                      </ul>
-                      <div style="float: right">
-                        <button class="botonAc" (click)="exportExcel()">
-                          <i style="color: green" class="fa-solid fa-file-excel"></i>
-                          &nbsp; Excel
-                        </button>
-                        <button class="botonAc">
-                          <i style="color: red" class="fa-solid fa-file-pdf"></i>
-                          &nbsp; PDF
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="tableBody">
-                <div class="table-responsive">
-                  <table class="table table-bpedidoed table-hover">
-                    <thead style="margin: -100px">
-                      <tr>
-                        <th class="text-center">#</th>
-                        <th class="text-center">CVE_DOC</th>
-                        <th class="text-center" style="width: 160px">
-                          IMPORTE
-                        </th>
-                        <th class="text-center">CVE_CLPV</th>
-                        <th class="text-center">Cliente</th>
-                        <th class="text-center">CVE_VEND</th>
-                        <th class="text-center">Vendedor</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let pedido of pedidosPorMes">
-                        <td>{{ pedidosPorMes.indexOf(pedido) + 1 }}</td>
-                        <td class="text-center" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
-                          data-bs-target="#addOrder">
-                          {{ pedido.CVE_DOC }}
-                        </td>
-                        <td style="text-align: right" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
-                          data-bs-target="#addOrder">
-                          <span style="text-align: right">{{ pedido.IMPORTE }}
-                          </span>
-                        </td>
-                        <td class="text-center" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
-                          data-bs-target="#addOrder">
-                          {{ pedido.CVE_CLPV }}
-                        </td>
-                        <td (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#addOrder">
-                          {{ pedido.NOMBRE[0] }}
-                        </td>
-                        <td class="text-center" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
-                          data-bs-target="#addOrder">
-                          {{ pedido.CVE_VEND }}
-                        </td>
-                        <td (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#addOrder">
-                          {{ pedido.NOMBRE[1] }}
-                        </td>
-                        <td (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#addOrder">
-                          <i class="fa-solid fa-file-circle-plus" style="color: rgb(16, 124, 16); font-size:20px;"></i>
-                        </td>
-                      </tr>
-                      <tr rowspan="9" *ngIf="notFound === true">
-                        <td colspan="9" class="text-center">Sin Resultados</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
         <!--TABLA PRINCIPAL-->
-        <div class="row clearfix tableText" *ngIf="!principalTable">
+        <div class="row clearfix tableText">
           <H1>TABLA PRINCIPAL</H1>
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tableText">
             <div class="card tableText">
@@ -212,143 +121,95 @@
       </div>
 
 
-      <div class="modal fade" id="addUser" tabindex="-1" aria-labelledby="addUser" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="addContainer">
-              <div class="contact-details">
-                <div class="modalHeader">
-                  <div class="editRowModal">
-                    <div class="modalHeader clearfix">
-                      <div class="modal-about contact-header">
-                        <div class="contact-details-img">
-                          <i class="fas fa-user-plus fa-2x mt-1"></i>
-                        </div>
-                        <div class="contact-details-heading">
-                          <div class="contact-details-name mb-2">
-                            Nuevo Usuario
-                          </div>
-                        </div>
+      <!--TABLA Filtro-->
+<!--
+        <div class="row clearfix tableText" >
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tableText">
+            <div class="card tableText">
+              <div class="materialTableHeader mb-3 tableText headTab">
+                <div class="row tableText">
+                  <div class="col-8 tableText">
+                    <div class="hola">
+                      <ul class="header-buttons-left ml-0 tableTitle">
+                        <li class="dropdown m-l-20">
+                          <label [(ngModel)]="searchPedido" for="search-input">
+                            <i class="material-icons search-icon">search</i>
+                          </label>
+                          <input placeholder="Buscar Pedido..." type="text" #filter class="browser-default search-field"
+                            aria-label="Search box" />
+                        </li>
+                      </ul>
+                      <div style="float: right">
+                        <button class="botonAc" (click)="exportExcel()">
+                          <i style="color: green" class="fa-solid fa-file-excel"></i>
+                          &nbsp; Excel
+                        </button>
+                        <button class="botonAc">
+                          <i style="color: red" class="fa-solid fa-file-pdf"></i>
+                          &nbsp; PDF
+                        </button>
                       </div>
                     </div>
                   </div>
-                  <button mat-icon-button data-bs-dismiss="modal" aria-label="Close dialog">
-                    <mat-icon>close</mat-icon>
-                  </button>
                 </div>
               </div>
-              <hr />
-              <div>
-                <form id="addOrder" class="register-form m-4" style="z-index:100000;">
-                  <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
-                      <mat-form-field class="example-full-width" appearance="outline">
-                        <mat-label>Nombre</mat-label>
-                        <input  name="name" autocomplete="off" matInput>
-                        <mat-icon matSuffix>face</mat-icon>
-                      </mat-form-field>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
-                      <mat-form-field class="example-full-width" appearance="outline">
-                        <mat-label>Apellido</mat-label>
-                        <input  name="surname" autocomplete="off" matInput>
-                        <mat-icon matSuffix>face</mat-icon>
-                      </mat-form-field>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
-                      <mat-form-field class="example-full-width" appearance="outline">
-                        <mat-label>Usuario</mat-label>
-                        <input  name="username" autocomplete="off" matInput>
-                        <mat-icon matSuffix>switch_account</mat-icon>
-                      </mat-form-field>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
-                      <mat-form-field class="example-full-width" appearance="outline">
-                        <mat-label>Contraseña</mat-label>
-                        <input  name="password" autocomplete="off" matInput type="password">
-                        <mat-icon matSuffix>key</mat-icon>
-                      </mat-form-field>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
-                      <mat-form-field class="example-full-width" appearance="outline">
-                        <mat-label>Email</mat-label>
-                        <input  name="email" autocomplete="off" matInput>
-                        <mat-icon matSuffix>email</mat-icon>
-                      </mat-form-field>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
-                      <mat-form-field class="example-full-width" appearance="outline">
-                        <mat-label>Género</mat-label>
-                        <mat-select  name="gender">
-                          <mat-option value="Masculino">
-                            Masculino
-                          </mat-option>
-                          <mat-option value="Femenino">
-                            Femenino
-                          </mat-option>
-                        </mat-select>
-                        <mat-icon matSuffix>wc</mat-icon>
-                      </mat-form-field>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
-                      <mat-form-field class="example-full-width" appearance="outline">
-                        <mat-label>Edad</mat-label>
-                        <input name="age" autocomplete="off" matInput min="1" type="number">
-                        <mat-icon matSuffix>today</mat-icon>
-                      </mat-form-field>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
-                      <mat-form-field class="example-full-width" appearance="outline">
-                        <mat-label>Teléfono</mat-label>
-                        <input  name="phone" autocomplete="off" matInput>
-                        <mat-icon matSuffix>phone</mat-icon>
-                      </mat-form-field>
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
-                      <mat-form-field class="example-full-width" appearance="outline">
-                        <mat-label>Role</mat-label>
-                        <mat-select name="role">
-                          <mat-option value="ORGANIZADOR">
-                            Organizador
-                          </mat-option>
-                          <mat-option value="CLIENTE">
-                            Cliente
-                          </mat-option>
-                        </mat-select>
-                        <mat-icon matSuffix>switch_account</mat-icon>
-                      </mat-form-field>
-                    </div>
-                  </div>
-
-                  <hr style="margin-top: -0.5rem;">
-                  <div class="spacing-buttons">
-                    <button type="submit" data-bs-dismiss="modal" class="btn btn-labeled btn-success me-1">
-                      <span class="btn-label">
-                        <i class="fa fa-floppy-o"></i>
-                      </span>
-                      Agregar
-                    </button>
-                    <button type="button" data-bs-dismiss="modal" class="btn btn-labeled btn-danger ms-1 me-1">
-                      <span class="btn-label">
-                        <i class="fa fa-times-circle"></i>
-                      </span>
-                      Cancelar
-                    </button>
-                  </div>
-                </form>
+              <div class="tableBody">
+                <div class="table-responsive">
+                  <table class="table table-bpedidoed table-hover">
+                    <thead style="margin: -100px">
+                      <tr>
+                        <th class="text-center">#</th>
+                        <th class="text-center">CVE_DOC</th>
+                        <th class="text-center" style="width: 160px">
+                          IMPORTE
+                        </th>
+                        <th class="text-center">CVE_CLPV</th>
+                        <th class="text-center">Cliente</th>
+                        <th class="text-center">CVE_VEND</th>
+                        <th class="text-center">Vendedor</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let pedido of pedidosPorMes | searchPedido:searchPedido">
+                        <td>{{ pedidosPorMes.indexOf(pedido) + 1 }}</td>
+                        <td class="text-center" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
+                          data-bs-target="#addOrder">
+                          {{ pedido.CVE_DOC }}
+                        </td>
+                        <td style="text-align: right" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
+                          data-bs-target="#addOrder">
+                          <span style="text-align: right">{{ pedido.IMPORTE }}
+                          </span>
+                        </td>
+                        <td class="text-center" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
+                          data-bs-target="#addOrder">
+                          {{ pedido.CVE_CLPV }}
+                        </td>
+                        <td (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#addOrder">
+                          {{ pedido.NOMBRE[0] }}
+                        </td>
+                        <td class="text-center" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
+                          data-bs-target="#addOrder">
+                          {{ pedido.CVE_VEND }}
+                        </td>
+                        <td (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#addOrder">
+                          {{ pedido.NOMBRE[1] }}
+                        </td>
+                        <td (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#addOrder">
+                          <i class="fa-solid fa-file-circle-plus" style="color: rgb(16, 124, 16); font-size:20px;"></i>
+                        </td>
+                      </tr>
+                      <tr rowspan="9" *ngIf="notFound === true">
+                        <td colspan="9" class="text-center">Sin Resultados</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+-->
 
 
     </section>

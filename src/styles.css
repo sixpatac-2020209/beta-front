@@ -3,6 +3,12 @@
   padding: 0;
 }
 
+@media (min-width: 1200px) {
+  .toggle-sidebar .sidebar {
+    left: -300px!important;
+  }
+}
+
 .cm-up {
   display: none;
   position: fixed;
@@ -15,6 +21,7 @@
   z-index: 1000;
   cursor: pointer;
 }
+
 .cm-up .cm-text-up {
   border: none;
   background: none;
@@ -28,6 +35,7 @@
   transition: 0.4s;
   width: 0px;
 }
+
 .cm-up .cm-icon {
   background: #4eb108;
   color: #fff;
@@ -41,11 +49,13 @@
   justify-content: center;
   transition: 0.4s;
 }
-.cm-up:hover > .cm-text-up {
+
+.cm-up:hover>.cm-text-up {
   width: 50px;
   padding: 0 6px;
 }
-.cm-up:hover > .cm-icon {
+
+.cm-up:hover>.cm-icon {
   background: #fff;
   color: #4eb108;
 }

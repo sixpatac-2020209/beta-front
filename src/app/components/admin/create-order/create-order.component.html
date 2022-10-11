@@ -1,0 +1,107 @@
+<div>
+  <form id="addOrder" class="register-form m-4" style="z-index:100000;">
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input  name="name" autocomplete="off" matInput>
+          <mat-icon matSuffix>face</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Apellido</mat-label>
+          <input  name="surname" autocomplete="off" matInput>
+          <mat-icon matSuffix>face</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Usuario</mat-label>
+          <input  name="username" autocomplete="off" matInput>
+          <mat-icon matSuffix>switch_account</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input  name="password" autocomplete="off" matInput type="password">
+          <mat-icon matSuffix>key</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input  name="email" autocomplete="off" matInput>
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Género</mat-label>
+          <mat-select  name="gender">
+            <mat-option value="Masculino">
+              Masculino
+            </mat-option>
+            <mat-option value="Femenino">
+              Femenino
+            </mat-option>
+          </mat-select>
+          <mat-icon matSuffix>wc</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Edad</mat-label>
+          <input name="age" autocomplete="off" matInput min="1" type="number">
+          <mat-icon matSuffix>today</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Teléfono</mat-label>
+          <input  name="phone" autocomplete="off" matInput>
+          <mat-icon matSuffix>phone</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Role</mat-label>
+          <mat-select name="role">
+            <mat-option value="ORGANIZADOR">
+              Organizador
+            </mat-option>
+            <mat-option value="CLIENTE">
+              Cliente
+            </mat-option>
+          </mat-select>
+          <mat-icon matSuffix>switch_account</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <hr style="margin-top: -0.5rem;">
+    <div class="spacing-buttons">
+      <button type="submit" data-bs-dismiss="modal" class="btn btn-labeled btn-success me-1">
+        <span class="btn-label">
+          <i class="fa fa-floppy-o"></i>
+        </span>
+        Agregar
+      </button>
+      <button type="button" data-bs-dismiss="modal" class="btn btn-labeled btn-danger ms-1 me-1">
+        <span class="btn-label">
+          <i class="fa fa-times-circle"></i>
+        </span>
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>

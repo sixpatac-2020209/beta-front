@@ -64,6 +64,7 @@ export class PedidosAdminComponent implements OnInit {
   pedidos: any;
   position: any;
   vendedor: VendedorModel;
+  searchPedido: any;
   pedidosY: any;
   pedidosPorMes: any;
 
@@ -180,59 +181,13 @@ export class PedidosAdminComponent implements OnInit {
     this.excelService.downloadExcel(this.pedidos);
   }
 
-  //VARIABLES DE CONTROL DE FILTRO//
-  filtros: boolean = false;
-  yearFiltro: boolean = false;
-  monthFiltro: boolean = false;
-
-  showFilters() {
-    this.filtros = !this.filtros;
-  }
-
-  showYearFilter() {
-    this.yearFiltro = !this.yearFiltro;
-    this.monthFiltro = false;
-  }
-
-  showMonthFilter() {
-    this.monthFiltro = !this.monthFiltro;
-    this.yearFiltro = false;
-  }
-
-  cleanFilters() {
-    this.monthFiltro = false;
-    this.yearFiltro = false;
-  }
-
-  getPedidosPorA(yearForm: any) {
-    this.pedidoRest.getPedidoPorA(this.pedido).subscribe({
-      next: (res: any) => {
-        this.pedidosY = res.returnPedidosPorYear;
-        if (this.pedidosY.length === 0 || this.pedidosPorMes === null || this.pedidosPorMes === undefined) {
-          this.notFound = !this.notFound
-        }
-        console.log(this.pedidosY);
-      },
-      error: (err: any) => {
-        Swal.fire({
-          icon: 'error',
-          title: err.error.message || err.error,
-          confirmButtonColor: '#E74C3C'
-        });
-        yearForm.reset();
-      },
-    });
-    yearForm.reset();
-  }
-
-  getPedidosPorMes(monthForm: any) {
+  getPedidosPorMes(_monthForm: any) {
     this.pedidoRest.getPedidoPorMes(this.pedido).subscribe({
       next: (res: any) => {
         this.pedidosPorMes = res.returnPedidosPorMes;
         if (this.pedidosPorMes.length === 0) {
           this.notFound = !this.notFound;
         };
-        monthForm.reset();
       },
       error: (err: any) => {
         Swal.fire({
@@ -240,33 +195,8 @@ export class PedidosAdminComponent implements OnInit {
           title: err.error.message || err.error,
           confirmButtonColor: '#E74C3C'
         });
-        monthForm.reset();
       },
     });
-    monthForm.reset();
-  }
-
-  //tablas de filtros
-  yearTable: boolean = false
-  monthTable: boolean = false
-  principalTable: boolean = false
-
-  showTableYear() {
-    this.yearTable = !this.yearTable;
-    this.monthTable = false;
-    this.principalTable = !this.principalTable;
-  }
-
-  showTableMonth() {
-    this.monthTable = !this.monthTable;
-    this.yearTable = false;
-    this.principalTable = !this.principalTable;
-  }
-
-  showPrincipalTable() {
-    this.principalTable = !this.principalTable;
-    this.yearTable = false;
-    this.monthTable = false;
   }
 
 }
