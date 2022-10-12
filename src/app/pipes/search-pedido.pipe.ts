@@ -11,8 +11,8 @@ export class SearchPedidoPipe implements PipeTransform {
 
     }else{
       return pedidos.filter( (pedido:any) => {
-
         return pedido.CVE_DOC.toLowerCase().includes(search.toLowerCase());
+
       })
     }
   }

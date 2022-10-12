@@ -305,7 +305,7 @@ hr {
   align-items: center;
 }
 
-.matAnMen{
+.matAnMen {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -318,4 +318,42 @@ hr {
 
 .example-month-picker .mat-calendar-arrow {
   display: none;
+}
+
+
+.textData {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
+  align-content: center;
+  flex-direction: row;
+  margin: 10px;
+}
+
+
+.FirstTextData label {
+  font-weight: 900;
+  color: #000000;
+  width: 85px;
+}
+
+
+.secondTextData label {
+  font-weight: 900;
+  color: #000000;
+  width: 120px;
+}
+
+input{
+  border: none;
+  color: #000000;
+  font-size: 13px !important;
+}
+
+.textData .inputF {
+  border: none;
+  color: #000000;
+  font-size: 13px !important;
+  min-width: 565px;
 }

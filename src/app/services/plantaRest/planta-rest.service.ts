@@ -6,28 +6,17 @@ import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ClienteRestService {
-
+export class PlantaRestService {
   httpOptions = new HttpHeaders({
     'Content-Type': 'application/json',
     //'Authorization': this.credentialReset.getToken(),
   });
-
   constructor(
     //private credentialReset: CredentialsRestService,
     private http: HttpClient,
   ) { }
 
-  getClientes() {
-    return this.http.get(environment.baseURI + 'clientes/getClientes', { headers: this.httpOptions });
+  getPlantas() {
+    return this.http.get(environment.baseURI + 'plantas/getPlantas', { headers: this.httpOptions });
   }
-
-  getCliente(id:string){
-    return this.http.get(environment.baseURI + 'clientes/getCliente/' + id, {headers:this.httpOptions});
-  }
-
-  getClientePedido(id:string){
-    return this.http.get(environment.baseURI + 'clientes/getClientePedido/' + id, {headers:this.httpOptions});
-  }
-
 }

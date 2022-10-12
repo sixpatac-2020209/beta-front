@@ -21,6 +21,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PedidosAdminComponent } from './components/admin/pedidos-admin/pedidos-admin.component';
 import { HomeAdminComponent } from './components/admin/home-admin/home-admin.component';
 import { PruebaComponent } from './components/Pruebas/prueba/prueba.component';
+import { PedidoComponent } from './components/admin/pedido/pedido.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -33,7 +34,8 @@ const routes: Routes = [
       { path: 'detallesOrden', component: DetailsOrderComponent },
       { path: 'controlCalidad', component: QualityControlComponent },
       { path: 'pedidos', component: PedidosAdminComponent },
-      {path: 'Pruebas', component:PruebaComponent},
+      { path: 'pedido/:id', component: PedidoComponent },
+      { path: 'pruebas', component: PruebaComponent },
     ]
   },
 

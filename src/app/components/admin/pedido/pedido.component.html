@@ -1,0 +1,71 @@
+<body>
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Pedido: {{pedido.CVE_DOC}}</h1>
+    </div>
+    <div class="d-flex" style="justify-content: center;">
+      <button routerLink="/admin/pedidos" class="btn icon-btn btn-secondary ms-2 me-2">
+        <span style="border-radius: 50% 50%;" class="btn-glyphicon fas fa-address-card text-secondary"></span>
+        Regresar
+      </button>
+    </div>
+    <hr>
+    <section>
+      <div>
+        <form style="background-color: #fff; padding:10px;">
+
+          <div class="textData">
+
+            <div class="FirstTextData ">
+              <div class="contentLabelInput">
+                <label>Nombre: </label>
+                <input class="inputF" value="{{cliente.NOMBRE}}" disabled>
+              </div>
+              <div class="contentLabelInput">
+                <label>Dirección: </label>
+                <input class="inputF" value="{{cliente.MUNICIPIO}}" disabled>
+              </div>
+              <div class="contentLabelInput">
+                <label>Fecha: </label>
+                <input class="inputF" value="{{pedido.CVE_DOC}}" disabled>
+              </div>
+              <div class="contentLabelInput">
+                <label>Vendedor: </label>
+                <input class="inputF" value="{{vendedor.NOMBRE}}" disabled>
+              </div>
+            </div>
+
+            <div class="secondTextData">
+              <div class="contentLabelInput">
+                <label>NIT: </label>
+                <input value="{{cliente.RFC}}" disabled>
+              </div>
+              <div class="contentLabelInput">
+                <label>Código Cliente: </label>
+                <input value="{{cliente.CLAVE}}" disabled>
+              </div>
+              <div class="contentLabelInput">
+                <label>Clasificación: </label>
+                <input value="{{pedido.CVE_DOC}}" disabled>
+              </div>
+              <div class="contentLabelInput">
+                <label>Forma de Pago: </label>
+                <input value="{{pedido.CVE_DOC}}" disabled>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex" style="justify-content: center;">
+            <button class="btn icon-btn btn-success ms-2 me-2">
+              <span style="border-radius: 50% 50%;" class="btn-glyphicon fas fa-address-card text-success"></span>
+              Crear Orden
+            </button><button routerLink="/admin/pedidos" class="btn icon-btn btn-danger ms-2 me-2">
+              <span style="border-radius: 50% 50%;" class="btn-glyphicon fas fa-address-card text-danger"></span>
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+</body>

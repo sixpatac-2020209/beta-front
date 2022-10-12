@@ -78,6 +78,7 @@ import { PedidosAdminComponent } from './components/admin/pedidos-admin/pedidos-
 import { PruebaComponent } from './components/Pruebas/prueba/prueba.component';
 import { SearchPedidoPipe } from './pipes/search-pedido.pipe';
 import { CreateOrderComponent } from './components/admin/create-order/create-order.component';
+import { PedidoComponent } from './components/admin/pedido/pedido.component';
 
 
 @NgModule({
@@ -107,7 +108,8 @@ import { CreateOrderComponent } from './components/admin/create-order/create-ord
     HomeAdminComponent,
     PruebaComponent,
     SearchPedidoPipe,
-    CreateOrderComponent
+    CreateOrderComponent,
+    PedidoComponent
   ],
   imports: [
     SwiperModule,

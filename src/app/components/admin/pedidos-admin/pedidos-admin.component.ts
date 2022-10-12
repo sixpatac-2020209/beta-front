@@ -4,6 +4,8 @@ import { PedidoModel } from 'src/app/models/pedido.model';
 import { ExportExcelPedidoService } from '../../../services/exportData/exportExcelPedido/export-excel-pedido.service';
 import { VendedorRestService } from '../../../services/vendedorRest/vendedor-rest.service';
 import { VendedorModel } from '../../../models/vendedor.model';
+import { ClienteRestService } from 'src/app/services/clienteRest/cliente-rest.service';
+import { ClienteModel } from 'src/app/models/cliente.model';
 import Swal from 'sweetalert2';
 
 import { FormControl } from '@angular/forms';
@@ -15,11 +17,9 @@ import { MatDatepicker } from '@angular/material/datepicker';
 // Since Moment.js doesn't have a default export, we normally need to import using the `* as`
 // syntax. However, rollup creates a synthetic default module and we thus need to import it using
 // the `default as` syntax.
-import * as _moment from 'moment';
 import { Moment } from 'moment';
+import * as moment from 'moment';
 // tslint:disable-next-line:no-duplicate-imports
-
-const moment = _moment;
 
 export const MY_FORMATS = {
   parse: {
@@ -61,34 +61,35 @@ export const MY_FORMATS = {
 
 export class PedidosAdminComponent implements OnInit {
   pedido: PedidoModel;
+  vendedor: VendedorModel;
+  cliente: ClienteModel
   pedidos: any;
   position: any;
-  vendedor: VendedorModel;
   searchPedido: any;
   pedidosY: any;
   pedidosPorMes: any;
 
-  //Variables - Control de Páginas//
-  pageCard = 1;
-  pageSizeCard = 6;
-  page = 1;
-  pageSize = 5;
-  collectionSize: any;
-  today: any
-  sixMonthsAgo: any;
+  normalizedYear: any
+  normalizedMonth: any
+  datepicker: any
   monthForm: any;
 
   constructor(
     private pedidoRest: OrderRestService,
-    private vendedorRest: VendedorRestService,
     private excelService: ExportExcelPedidoService,
+    private clienteRest: ClienteRestService,
+    private vendedorRest: VendedorRestService
+
   ) {
-    this.pedido = new PedidoModel('', '', '', '', '', '', '', '', '');
+    this.pedido = new PedidoModel('', '', '', '', '', '', '', '', '','');
     this.vendedor = new VendedorModel('', '', '');
+    this.cliente = new ClienteModel('', '','','')
   }
 
   ngOnInit(): void {
     this.getPedidos();
+    this.chosenYearHandler(this.normalizedYear);
+    this.chosenMonthHandler(this.normalizedMonth, this.datepicker, this.getPedidosPorMes)
   }
 
   date = new FormControl(moment());
@@ -98,16 +99,19 @@ export class PedidosAdminComponent implements OnInit {
     if (ctrlValue !== null) {
       ctrlValue.year(normalizedYear.year());
       this.date.setValue(ctrlValue);
+      this.getPedidosPorMes(this.monthForm);
     }
+    this.getPedidosPorMes(this.monthForm);
   }
 
-  chosenMonthHandler(normalizedMonth: Moment, datepicker: MatDatepicker<Moment>) {
+  async chosenMonthHandler(normalizedMonth: Moment, datepicker: MatDatepicker<Moment>, getPedidoPorMes: any) {
     const ctrlValue = this.date.value;
     if (ctrlValue !== null) {
       ctrlValue.month(normalizedMonth.month());
       this.date.setValue(ctrlValue);
       this.getPedidosPorMes(this.monthForm);
-      datepicker.close();
+      await datepicker.close();
+
     }
   }
 
@@ -123,7 +127,6 @@ export class PedidosAdminComponent implements OnInit {
     this.pedidoRest.getPedidos().subscribe({
       next: (res: any) => {
         this.pedidos = res.returnPedidos;
-        this.collectionSize = this.pedidos.length;
         for (let pedido of this.pedidos) {
           pedido.position = this.pedidos.indexOf(pedido) + 1;
         }
@@ -132,11 +135,6 @@ export class PedidosAdminComponent implements OnInit {
             pedido.checked = true;
           }
           this.pedidos = this.pedidos
-            .map((pedido: any, i: number) => ({ id: i + 1, ...pedido }))
-            .slice(
-              (this.page - 1) * this.pageSize,
-              (this.page - 1) * this.pageSize + this.pageSize
-            );
         }
       },
       error: (err) => console.log(err),
@@ -153,7 +151,8 @@ export class PedidosAdminComponent implements OnInit {
         alert(err.error.message);
       },
     });
-    this.vendedorRest.getVendedorPedido(id).subscribe({
+
+    this.vendedorRest.getVendedorPedidoCorreo(id).subscribe({
       next: (res: any) => {
         this.vendedor = res.returnVendedor;
         console.log(this.vendedor.CORREOE);
@@ -162,18 +161,26 @@ export class PedidosAdminComponent implements OnInit {
         alert(err.error.message);
       },
     });
-  }
 
-  getVendedorPedido(id: string) {
-    this.vendedorRest.getVendedorPedido(id).subscribe({
+    this.clienteRest.getClientePedido(id).subscribe({
       next: (res: any) => {
-        this.vendedor = res.returnPedido;
-        console.log(this.vendedor.CORREOE);
+        this.cliente = res.returnCliente;
+        console.log(this.cliente)
       },
       error: (err) => {
-        alert(err.error.message);
+        console.log(err);
       },
     });
+
+    this.vendedorRest.getVendedorPedido(id).subscribe({
+      next: (res: any) => {
+        this.vendedor = res.returnVendedor;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+
   }
 
   //Exportar Datos a Excel//
@@ -181,13 +188,14 @@ export class PedidosAdminComponent implements OnInit {
     this.excelService.downloadExcel(this.pedidos);
   }
 
-  getPedidosPorMes(_monthForm: any) {
+  getPedidosPorMes(monthForm: any) {
     this.pedidoRest.getPedidoPorMes(this.pedido).subscribe({
       next: (res: any) => {
         this.pedidosPorMes = res.returnPedidosPorMes;
         if (this.pedidosPorMes.length === 0) {
           this.notFound = !this.notFound;
         };
+        monthForm.reset()
       },
       error: (err: any) => {
         Swal.fire({
@@ -195,6 +203,7 @@ export class PedidosAdminComponent implements OnInit {
           title: err.error.message || err.error,
           confirmButtonColor: '#E74C3C'
         });
+        monthForm.reset()
       },
     });
   }

@@ -14,15 +14,14 @@
     <section>
       <div>
         <div class="text-center">
-          <form #monthForm="ngForm" >
-            <mat-form-field >
-              <input  name="date"  name="date" matInput [matDatepicker]="dp" placeholder="Month and Year" [formControl]="date">
-              <mat-datepicker-toggle matSuffix [for]="dp" ></mat-datepicker-toggle>
-              <mat-datepicker #dp
-                              startView="multi-year"
-                              (yearSelected)="chosenYearHandler($event)"
-                              (monthSelected)="chosenMonthHandler($event, dp)"
-                              panelClass="example-month-picker">
+          <form #monthForm="ngForm">
+            <mat-form-field>
+              <input [(ngModel)]="pedido.DATED" name="DATED" matInput [matDatepicker]="dp" placeholder="Año y Mes"
+                [formControl]="date">
+
+              <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+              <mat-datepicker #dp startView="multi-year" (yearSelected)="chosenYearHandler($event)"
+                (monthSelected)="chosenMonthHandler($event, dp , getPedidosPorMes(monthForm))">
               </mat-datepicker>
             </mat-form-field>
           </form>
@@ -105,7 +104,10 @@
                           {{ pedido.NOMBRE[1] }}
                         </td>
                         <td (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#addOrder">
-                          <i class="fa-solid fa-file-circle-plus" style="color: rgb(16, 124, 16); font-size:20px;"></i>
+                          <a [routerLink]="['/admin/pedido/' + pedido.CVE_DOC]">
+                            <i class="fa-solid fa-file-circle-plus"
+                              style="color: rgb(16, 124, 16); font-size:20px;"></i>
+                          </a>
                         </td>
                       </tr>
                       <tr rowspan="9" *ngIf="notFound === true">
@@ -122,7 +124,7 @@
 
 
       <!--TABLA Filtro-->
-<!--
+      <!--
         <div class="row clearfix tableText" >
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tableText">
             <div class="card tableText">
