@@ -33,7 +33,7 @@
           <div class="padding">
               <div class="row d-flex justify-content-center">
 
-                  
+
                   <div class="col-xl-6 col-md-12">
                       <div class="card user-card-full" *ngFor="let user of users">
                           <div class="row m-l-0 m-r-0">
@@ -61,7 +61,7 @@
                                               <p class="m-b-10 f-w-600">Email</p>
                                               <h6 class="text-muted f-w-400">{{user.email}}</h6>
                                           </div>
-                                      </div> 
+                                      </div>
                                   </div>
                               </div>
                           </div>
@@ -128,7 +128,7 @@
                         <button mat-button [matMenuTriggerFor]="menu" class="header-dropdown">
                           <mat-icon>file_download</mat-icon>
                         </button>
-                        
+
                         <mat-menu #menu="matMenu" style="background-color: black;">
 
                           <button mat-menu-item (click)="exportExcel()">
@@ -169,7 +169,7 @@
                       <td class="text-center"> {{users.indexOf(user) + 1}} </td>
                       <td class="text-center">
                         <mat-checkbox *ngIf="user.checked==true || controloClick==0" #check="matCheckbox"
-                          (click)="showButtonActions(user.id, check); getUser(user.id)" class="example-margin"
+                          (click)="showButtonActions(user.id, check);" class="example-margin"
                           color="primary">
                         </mat-checkbox>
                         <mat-checkbox disabled="" *ngIf="user.checked==false" class="example-margin" color="primary">
@@ -197,7 +197,7 @@
                     <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
                       (pageChange)="getUserss()">
                     </ngb-pagination>
-      
+
                     <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
                       (ngModelChange)="getUserss()">
                       <option [ngValue]="1">1 items por página</option>
@@ -211,7 +211,7 @@
                     <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
                       (pageChange)="getUserssNameUp()">
                     </ngb-pagination>
-      
+
                     <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
                       (ngModelChange)="getUserssNameUp()">
                       <option [ngValue]="1">1 items por página</option>
@@ -224,7 +224,7 @@
                     <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
                       (pageChange)="getUserssNameDown()">
                     </ngb-pagination>
-      
+
                     <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
                       (ngModelChange)="getUserssNameDown()">
                       <option [ngValue]="1">1 items por página</option>
@@ -233,12 +233,12 @@
                       <option [ngValue]="collectionSize">Todos los items</option>
                     </select>
                   </div>
-      
+
                   <div *ngIf="surnameUp" class="d-flex justify-content-between p-2">
                     <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
                       (pageChange)="getUserssSurnameUp()">
                     </ngb-pagination>
-      
+
                     <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
                       (ngModelChange)="getUserssSurnameUp()">
                       <option [ngValue]="1">1 items por página</option>
@@ -251,7 +251,7 @@
                     <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
                       (pageChange)="getUserssSurnameDown()">
                     </ngb-pagination>
-      
+
                     <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
                       (ngModelChange)="getUserssSurnameDown()">
                       <option [ngValue]="1">1 items por página</option>
@@ -260,12 +260,12 @@
                       <option [ngValue]="collectionSize">Todos los items</option>
                     </select>
                   </div>
-      
+
                   <div *ngIf="usernameUp" class="d-flex justify-content-between p-2">
                     <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
                       (pageChange)="getUserssUsernameUp()">
                     </ngb-pagination>
-      
+
                     <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
                       (ngModelChange)="getUserssUsernameUp()">
                       <option [ngValue]="1">1 items por página</option>
@@ -278,7 +278,7 @@
                     <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
                       (pageChange)="getUserssUsernameDown()">
                     </ngb-pagination>
-      
+
                     <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
                       (ngModelChange)="getUserssUsernameDown()">
                       <option [ngValue]="1">1 items por página</option>
@@ -287,12 +287,12 @@
                       <option [ngValue]="collectionSize">Todos los items</option>
                     </select>
                   </div>
-      
+
                   <div *ngIf="ageUp" class="d-flex justify-content-between p-2">
                     <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
                       (pageChange)="getUserssAgeUp()">
                     </ngb-pagination>
-      
+
                     <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
                       (ngModelChange)="getUserssAgeUp()">
                       <option [ngValue]="1">1 items por página</option>
@@ -305,7 +305,7 @@
                     <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
                       (pageChange)="getUserssAgeDown()">
                     </ngb-pagination>
-      
+
                     <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
                       (ngModelChange)="getUserssAgeDown()">
                       <option [ngValue]="1">1 items por página</option>

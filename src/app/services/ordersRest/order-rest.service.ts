@@ -26,8 +26,8 @@ export class OrderRestService {
     return this.http.get(environment.baseURI + 'pedidos/getPedido/' + id , { headers: this.httpOptions })
   }
 
-  getPedidoPorA(params : {}){
-    return this.http.post(environment.baseURI + 'pedidos/getPedidosPorAnio', params,{headers: this.httpOptions});
+  getDetallePedido(id: string){
+    return this.http.get(environment.baseURI + 'pedidos/getDetallePedido/' + id , { headers: this.httpOptions })
   }
 
   getPedidoPorMes(params : {}){

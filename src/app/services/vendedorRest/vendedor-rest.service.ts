@@ -18,9 +18,9 @@ export class VendedorRestService {
     private http: HttpClient,
   ) { }
 
-  getVendedores() {
-    return this.http.get(environment.baseURI + 'vendedores/getVendedores', { headers: this.httpOptions });
-  }
+    getVendedores() {
+      return this.http.get(environment.baseURI + 'vendedores/getVendedores', { headers: this.httpOptions });
+    }
 
   getVendedor(id: string){
     return this.http.get(environment.baseURI + 'vendedores/getVendedor/' + id , {headers: this.httpOptions});

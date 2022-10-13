@@ -355,5 +355,20 @@ input{
   border: none;
   color: #000000;
   font-size: 13px !important;
-  min-width: 565px;
+}
+
+input::placeholder{
+color: #000000;
+font-weight: 200;
+}
+
+
+.contentLabelInput{
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+
+.TextB{
+font-weight: 900;
 }

@@ -81,9 +81,9 @@ export class PedidosAdminComponent implements OnInit {
     private vendedorRest: VendedorRestService
 
   ) {
-    this.pedido = new PedidoModel('', '', '', '', '', '', '', '', '','');
+    this.pedido = new PedidoModel('', '', '', '', '', '', '', '', '','','','');
     this.vendedor = new VendedorModel('', '', '');
-    this.cliente = new ClienteModel('', '','','')
+    this.cliente = new ClienteModel('', '','','','','')
   }
 
   ngOnInit(): void {
@@ -143,6 +143,16 @@ export class PedidosAdminComponent implements OnInit {
 
   getPedido(id: string) {
     this.pedidoRest.getPedido(id).subscribe({
+      next: (res: any) => {
+        this.pedido = res.returnPedido;
+        console.log(this.pedido);
+      },
+      error: (err) => {
+        alert(err.error.message);
+      },
+    });
+
+    this.pedidoRest.getDetallePedido(id).subscribe({
       next: (res: any) => {
         this.pedido = res.returnPedido;
         console.log(this.pedido);

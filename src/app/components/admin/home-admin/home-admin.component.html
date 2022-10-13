@@ -1,104 +1,128 @@
 <body>
-   <main id="main" class="main">
-      <div class="pagetitle">
-         <h1>Dashboard</h1>
-         <nav>
-            <ol class="breadcrumb">
-               <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-               <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
-         </nav>
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Dashboard</h1>
+    </div>
+    <section class="section dashboard">
+      <div class="card info-card sales-card widthCard">
+        <div class="card-body">
+          <h5 class="card-title">No. <span>| Ordenes</span></h5>
+          <div class="d-flex align-items-center">
+            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+              <i class="fa-solid fa-boxes-stacked"></i>
+            </div>
+            <div class="ps-3">
+              <h6>45</h6>
+            </div>
+          </div>
+        </div>
       </div>
-      <section class="section dashboard">
-         <div class="card info-card sales-card widthCard">
-            <div class="card-body">
-               <h5 class="card-title">No. <span>| Ordenes</span></h5>
-               <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                     <i class="fa-solid fa-boxes-stacked"></i>
-                  </div>
-                  <div class="ps-3">
-                     <h6>45</h6>
-                  </div>
-               </div>
-            </div>
-         </div>
 
-         <div class="card info-card revenue-card widthCard">
-            <div class="card-body">
-               <h5 class="card-title">Ordenes <span>| Nuevas</span></h5>
-               <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                     <i class="fa-solid fa-parachute-box"></i>
-                  </div>
-                  <div class="ps-3">
-                     <h6>5</h6>
-                  </div>
-               </div>
+      <div class="card info-card revenue-card widthCard">
+        <div class="card-body">
+          <h5 class="card-title">Ordenes <span>| Nuevas</span></h5>
+          <div class="d-flex align-items-center">
+            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+              <i class="fa-solid fa-parachute-box"></i>
             </div>
-         </div>
+            <div class="ps-3">
+              <h6>5</h6>
+            </div>
+          </div>
+        </div>
+      </div>
 
-         <div class="card info-card revenue-card widthCard">
-            <div class="card-body">
-               <h5 class="card-title">Ordenes <span>| Producción</span></h5>
-               <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                     <i class="fa-solid fa-people-carry-box"></i>
-                  </div>
-                  <div class="ps-3">
-                     <h6>20</h6>
-                  </div>
-               </div>
+      <div class="card info-card revenue-card widthCard">
+        <div class="card-body">
+          <h5 class="card-title">Ordenes <span>| Producción</span></h5>
+          <div class="d-flex align-items-center">
+            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+              <i class="fa-solid fa-people-carry-box"></i>
             </div>
-         </div>
+            <div class="ps-3">
+              <h6>20</h6>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
-         <div class="card info-card revenue-card widthCard">
-            <div class="card-body">
-               <h5 class="card-title">Ordenes <span>| Terminadas</span></h5>
-               <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                     <i class="fa-solid fa-truck-ramp-box"></i>
-                  </div>
-                  <div class="ps-3">
-                     <h6>20</h6>
-                  </div>
-               </div>
+      <div class="card info-card revenue-card widthCard">
+        <div class="card-body">
+          <h5 class="card-title">Ordenes <span>| Terminadas</span></h5>
+          <div class="d-flex align-items-center">
+            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+              <i class="fa-solid fa-truck-ramp-box"></i>
             </div>
-         </div>
+            <div class="ps-3">
+              <h6>20</h6>
+            </div>
+          </div>
+        </div>
+      </div>
 
-         <div class="card info-card sales-card widthCard">
-            <div class="card-body">
-               <h5 class="card-title">Monto <span>| Facturado</span></h5>
-               <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                     <i class="bi bi-currency-dollar"></i>
-                  </div>
-                  <div class="ps-3">
-                     <h6>$200K</h6>
-                  </div>
-               </div>
+      <div class="card info-card sales-card widthCard">
+        <div class="card-body">
+          <h5 class="card-title">Monto <span>| Facturado</span></h5>
+          <div class="d-flex align-items-center">
+            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+              <i class="bi bi-currency-dollar"></i>
             </div>
-         </div>
-      </section>
-      
+            <div class="ps-3">
+              <h6>$200K</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <section class="mt-5">
-         <div class="containerList" >
-            <div class="card" style="max-height: 450px;">
-               <div class="card-body pb-0" style="width: 300px; max-height: 200px;">
-                  <h5 class="card-title">Budget Report <span>| This Month</span></h5>
-                  <div id="budgetChart" style="min-height: 400px;" class="echart"></div>
-               </div>
-            </div>
-            <div class="card" style="max-height: 450px;">
-               <div class="card-body pb-0" style="width: 300px;">
-                  <h5 class="card-title">Website Traffic <span>| Today</span></h5>
-                  <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
-               </div>
-            </div>
-         </div>
-      </section>
+    <div class="row clearfix tableText" style="margin-top: 25px;">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tableText">
+        <div class="card tableText">
 
-   </main>
+          <div class="tableBody">
+            <div class="table-responsive">
+              <table class="table table-bpedidoed table-hover">
+                <thead style="margin: -100px">
+                  <tr>
+                    <th class="text-center">#</th>
+                    <th class="text-center">Pedido</th>
+                    <th class="text-center" style="width: 160px">
+                      IMPORTE
+                    </th>
+                    <th class="text-center">CVE_CLPV</th>
+                    <th class="text-center">Cliente</th>
+                    <th class="text-center">CVE_VEND</th>
+                    <th class="text-center">Vendedor</th>
+                    <th class="text-center"> </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <!-- {{ pedidos.indexOf(pedido) + 1 }} -->
+                    </td>
+                    <td class="text-left"> Nombre Pedido </td>
+                    <td class="text-center"> 100% </td>
+                    <td class="text-center">100% </td>
+                    <td class="text-center">100% </td>
+                    <td class="text-center">100% </td>
+                    <td class="text-center">100% </td>
+                    <td>
+                      <a>
+                        <i class="fa-solid fa-file-circle-plus" style="color: rgb(16, 124, 16); font-size:20px;"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </main>
 </body>

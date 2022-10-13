@@ -10,6 +10,8 @@ import { VendedorRestService } from 'src/app/services/vendedorRest/vendedor-rest
 import { ClienteRestService } from 'src/app/services/clienteRest/cliente-rest.service';
 import { PlantaRestService } from 'src/app/services/plantaRest/planta-rest.service';
 import { SedeModel } from 'src/app/models/sede.model';
+import { DetallePedidoModel } from 'src/app/models/detallePedido.model';
+import { OrdenModel } from 'src/app/models/orden.model';
 
 @Component({
   selector: 'app-pedido',
@@ -20,10 +22,13 @@ export class PedidoComponent implements OnInit {
   thumbsSwiper: any
   CVE_DOC: any;
   pedido: any;
+  detalles: any;
   vendedor: any
   cliente: any;
   plantas: any;
+  detalle: DetallePedidoModel
   planta: SedeModel
+  orden: OrdenModel
 
   hideRequiredControl = new FormControl(true);
   floatLabelControl = new FormControl('always' as FloatLabelType);
@@ -40,7 +45,10 @@ export class PedidoComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private plantaRest: PlantaRestService
   ) {
+
     this.planta = new SedeModel('', '');
+    this.detalle = new DetallePedidoModel('', '', '', '', '', '', '');
+    this.orden = new OrdenModel('', '', '', '')
   }
 
   getFloatLabelValue(): FloatLabelType {
@@ -55,14 +63,19 @@ export class PedidoComponent implements OnInit {
     this.getPedido(this.CVE_DOC);
     this.getVendedor(this.CVE_DOC);
     this.getCliente(this.CVE_DOC);
+    this.getDetallePedido(this.CVE_DOC);
     this.getPlantas();
+
   }
 
   getPedido(id: string) {
     this.pedidoRest.getPedido(id).subscribe({
       next: (res: any) => {
         this.pedido = res.returnPedido;
-
+        let fecha = this.pedido.FECHAELAB.split('T');
+        let nuevaFecha = fecha[0]
+        this.pedido.FECHAELAB === nuevaFecha
+        console.log('NUEVA FECHA:  ', this.pedido.FECHAELAB);
       },
       error: (err) => {
         console.log(err);
@@ -86,12 +99,22 @@ export class PedidoComponent implements OnInit {
     this.clienteRest.getClientePedido(id).subscribe({
       next: (res: any) => {
         this.cliente = res.returnCliente;
-
       },
       error: (err) => {
         console.log(err);
       },
     });
+  }
+
+  getDetallePedido(id: string) {
+    this.pedidoRest.getDetallePedido(id).subscribe({
+      next: (res: any) => {
+        this.detalles = res.returnDetalle;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    })
   }
 
   getPlantas() {
