@@ -145,7 +145,6 @@ export class PedidosAdminComponent implements OnInit {
     this.pedidoRest.getPedido(id).subscribe({
       next: (res: any) => {
         this.pedido = res.returnPedido;
-        console.log(this.pedido);
       },
       error: (err) => {
         alert(err.error.message);

@@ -3,6 +3,6 @@ export class OrdenModel {
     public CVE_PEDIDO: string,
     public CLIENTE: string,
     public VENDEDOR: string,
-    public SEDE: string
+    public ID_SEDE: string
   ) { }
 }

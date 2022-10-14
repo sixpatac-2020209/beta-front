@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
-import { FloatLabelType } from '@angular/material/form-field';
 
-import SwiperCore, { FreeMode, Navigation, Thumbs } from "swiper";
 import { ActivatedRoute } from '@angular/router'
 import Swal from 'sweetalert2';
 import { OrderRestService } from 'src/app/services/ordersRest/order-rest.service';
 import { VendedorRestService } from 'src/app/services/vendedorRest/vendedor-rest.service';
 import { ClienteRestService } from 'src/app/services/clienteRest/cliente-rest.service';
 import { PlantaRestService } from 'src/app/services/plantaRest/planta-rest.service';
+import { OrdenProduccionRestService } from 'src/app/services/ordenProduccionRest/orden-produccion-rest.service';
 import { SedeModel } from 'src/app/models/sede.model';
 import { DetallePedidoModel } from 'src/app/models/detallePedido.model';
 import { OrdenModel } from 'src/app/models/orden.model';
@@ -21,38 +19,36 @@ import { OrdenModel } from 'src/app/models/orden.model';
 export class PedidoComponent implements OnInit {
   thumbsSwiper: any
   CVE_DOC: any;
+
   pedido: any;
   detalles: any;
   vendedor: any
   cliente: any;
   plantas: any;
+
+  createOrdenForm: any;
+  savePedido: any
+  saveCliente: any;
+  saveVendedor: any
+  ID_SEDE: any;
+
   detalle: DetallePedidoModel
   planta: SedeModel
   orden: OrdenModel
 
-  hideRequiredControl = new FormControl(true);
-  floatLabelControl = new FormControl('always' as FloatLabelType);
-  options = this._formBuilder.group({
-    hideRequired: this.hideRequiredControl,
-    floatLabel: this.floatLabelControl,
-  });
 
   constructor(
     public activatedRoute: ActivatedRoute,
     private pedidoRest: OrderRestService,
     private clienteRest: ClienteRestService,
     private vendedorRest: VendedorRestService,
-    private _formBuilder: FormBuilder,
+    private OrdenProduccionRest: OrdenProduccionRestService,
     private plantaRest: PlantaRestService
   ) {
 
     this.planta = new SedeModel('', '');
     this.detalle = new DetallePedidoModel('', '', '', '', '', '', '');
-    this.orden = new OrdenModel('', '', '', '')
-  }
-
-  getFloatLabelValue(): FloatLabelType {
-    return this.floatLabelControl.value || 'always';
+    this.orden = new OrdenModel('', '', '', '');
   }
 
   ngOnInit(): void {
@@ -61,41 +57,31 @@ export class PedidoComponent implements OnInit {
     });
 
     this.getPedido(this.CVE_DOC);
-    this.getVendedor(this.CVE_DOC);
-    this.getCliente(this.CVE_DOC);
-    this.getDetallePedido(this.CVE_DOC);
     this.getPlantas();
-
   }
 
   getPedido(id: string) {
+
     this.pedidoRest.getPedido(id).subscribe({
       next: (res: any) => {
         this.pedido = res.returnPedido;
-        let fecha = this.pedido.FECHAELAB.split('T');
-        let nuevaFecha = fecha[0]
-        this.pedido.FECHAELAB === nuevaFecha
-        console.log('NUEVA FECHA:  ', this.pedido.FECHAELAB);
+        this.savePedido = res.returnPedidoToOrden
+
       },
       error: (err) => {
         console.log(err);
       },
     });
-  }
 
-  getVendedor(id: string) {
     this.vendedorRest.getVendedorPedido(id).subscribe({
       next: (res: any) => {
         this.vendedor = res.returnVendedor;
-
       },
       error: (err) => {
         console.log(err);
       },
     });
-  }
 
-  getCliente(id: string) {
     this.clienteRest.getClientePedido(id).subscribe({
       next: (res: any) => {
         this.cliente = res.returnCliente;
@@ -104,9 +90,7 @@ export class PedidoComponent implements OnInit {
         console.log(err);
       },
     });
-  }
 
-  getDetallePedido(id: string) {
     this.pedidoRest.getDetallePedido(id).subscribe({
       next: (res: any) => {
         this.detalles = res.returnDetalle;
@@ -123,6 +107,40 @@ export class PedidoComponent implements OnInit {
         this.plantas = res.returnSedes;
       },
       error: (err) => console.log(err),
+    })
+  }
+
+  getPlanta(id: string) {
+    this.plantaRest.getPlanta(id).subscribe({
+      next: (res: any) => {
+        this.planta = res.returnSede;
+        this.ID_SEDE = this.planta.ID_SEDE
+        console.log(this.ID_SEDE);
+      },
+      error: (err) => console.log(err),
+    })
+  }
+
+
+
+
+
+  createOrden() {
+    this.OrdenProduccionRest.createOrden(this.savePedido).subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          confirmButtonColor: '#28B463'
+        });
+      },
+      error: (err: any) => {
+        Swal.fire({
+          icon: 'error',
+          title: err.error.message || err.error,
+          confirmButtonColor: '#E74C3C'
+        });
+      },
     })
   }
 

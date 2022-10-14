@@ -6,21 +6,18 @@
 
     <section>
       <div>
-        <form style="background-color: #fff; padding:10px;" #createOrden  ="ngForm">
-          <input style="display: none;" [(ngModel)]="orden.CVE_PEDIDO" value="{{pedido.CVE_DOC}}">
-
+        <div style="background-color: #fff; padding:10px;">
           <div class="textData mb-3">
-
             <div class="FirstTextData ">
               <div class="contentLabelInput">
                 <label>Nombre: </label>
-                <input  type="text" placeholder="{{cliente.NOMBRE}}" disabled>
+                <div>{{cliente.NOMBRE}}</div>
               </div>
               <div class="contentLabelInput">
                 <label>Dirección: </label>
-                <input class="inputF" *ngIf="cliente.MUNICIPIO !== null"  type="text"
-                  placeholder="{{cliente.MUNICIPIO}}" disabled>
-                <input class="inputF" *ngIf="cliente.MUNICIPIO === null"  type="text"
+                <input class="inputF" *ngIf="cliente.MUNICIPIO !== null" type="text" placeholder="{{cliente.MUNICIPIO}}"
+                  disabled>
+                <input class="inputF" *ngIf="cliente.MUNICIPIO === null" type="text"
                   placeholder="Municipio no ingresado." disabled>
               </div>
               <div class="contentLabelInput">
@@ -29,23 +26,24 @@
               </div>
               <div class="contentLabelInput">
                 <label>Vendedor: </label>
-                <input style="display: none;" [(ngModel)]="orden.VENDEDOR" matInput type="text" value="{{vendedor.CVE_VEND}}" disabled>
-                <input type="text" value="{{vendedor.NOMBRE}}">
+                <div>{{vendedor.NOMBRE}}</div>
               </div>
             </div>
 
             <div class="secondTextData">
               <div class="contentLabelInput">
                 <label>NIT: </label>
-                <input value="{{cliente.CURP}}" disabled>
+                <div>{{cliente.CURP}}</div>
               </div>
               <div class="contentLabelInput">
                 <label>Código Cliente: </label>
-                <input [(ngModel)]="orden.CLIENTE" value="{{cliente.CLAVE}}" disabled>
+                <div>
+                  {{cliente.CLAVE}}
+                </div>
               </div>
               <div class="contentLabelInput">
                 <label>Clasificación: </label>
-                <input value="{{cliente.CLASIFIC}}" disabled>
+                <div>{{cliente.CLASIFIC}}</div>
               </div>
               <div class="contentLabelInput">
                 <label>Forma de Pago: </label>
@@ -98,6 +96,7 @@
                     </td>
                   </tr>
                 </tbody>
+
                 <tfoot>
                   <tr>
                     <td></td>
@@ -110,24 +109,31 @@
                         {{ pedido.IMPORTE }}
                       </span>
                     </td>
-
                   </tr>
                 </tfoot>
               </table>
             </div>
           </div>
+        </div>
+
+
+        <form>
 
           <mat-form-field style="display:flex; justify-content:center;" appearance="outline">
             <mat-label>Planta</mat-label>
             <mat-select>
-              <mat-option *ngFor="let planta of plantas" value="{{planta.ID_SEDE}}" placeholder="Seleciona una planta Planta">
+              <mat-option [(ngModel)]="ID_SEDE" (click)="getPlanta(planta.ID_SEDE)" name="ID_SEDE"
+                *ngFor="let planta of plantas" value="{{ID_SEDE}}">
                 {{planta.DESCRIPCION}}
+                <input value="{{planta.ID_SEDE}}">
               </mat-option>
             </mat-select>
           </mat-form-field>
 
+
+
           <div class="d-flex" style="justify-content: center;">
-            <button class="btn icon-btn btn-success ms-2 me-2">
+            <button (click)="createOrden()" class="btn icon-btn btn-success ms-2 me-2">
               <span style="border-radius: 50% 50%;" class="btn-glyphicon fas fa-address-card text-success"></span>
               Crear Orden
             </button><button routerLink="/admin/pedidos" class="btn icon-btn btn-danger ms-2 me-2">
@@ -138,5 +144,6 @@
         </form>
       </div>
     </section>
+
   </main>
 </body>
