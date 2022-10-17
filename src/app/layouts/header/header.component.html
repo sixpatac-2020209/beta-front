@@ -1,25 +1,21 @@
-<header id="header" class="header fixed-top" style="display: flex; align-items: center; max-height: 90px">
-  <div style="
-      display: flex;
-      align-content: center;
-      align-items: center;
-      justify-content: space-between;
-      max-height: 90px;
-    ">
-    <a routerLink="/admin/home" class="logo textColor" style="display: flex; align-items: center; max-height: 30px">
-      <img src="assets/img/logo.png" alt="" />
-      <span class="d-none d-lg-block textColor"> VENTO app</span>
-    </a>
-    <i (click)="sidebarToggle()" class="bi bi-list toggle-sidebar-btn iconColor"></i>
-  </div>
-  <nav class="header-nav ms-auto">
+<mat-toolbar style="background: #fff; height:35px; position: fixed; margin-top: -60px; z-index: 10000000;">
+  <mat-toolbar-row
+    style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center; align-content: center; flex-wrap: wrap;">
+
+    <div style="display: flex;">
+      <a routerLink="/admin/home" class="logo textColor"
+        style="display: flex; align-items: center; max-height: 30px; z-index: 100000; margin-top: -10px;">
+        <img src="assets/img/logo.png" alt="" />
+        <span class="d-none d-lg-block textColor"> VENTO App</span>
+      </a>
+      <i style="z-index: 10000;" (click)="sidebarToggle()" class="bi bi-list toggle-sidebar-btn iconColor"></i>
+    </div>
+
     <ul style="display: flex; align-items: center; max-height: 30px">
 
       <li class="nav-item dropdown me-5">
-        <a class="nav-link nav-profile pe-0" href="#" data-bs-toggle="dropdown"
-          style="display: flex; align-items: center; max-height: 30px">
-          <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle" />
-          <span style="height: 0px; margin-top: -300px;" class="d-none d-md-block dropdown-toggle ps-2 iconColor">Jassa</span>
+        <a class="nav-link nav-profile pe-0" href="#" data-bs-toggle="dropdown">
+          <span class="d-none d-md-block dropdown-toggle ps-2 iconColor">Jassa</span>
         </a>
         <ul class="dropdown-menu profile">
           <li class="dropdown-header">
@@ -55,13 +51,16 @@
           <li>
             <hr class="dropdown-divider" />
           </li>
-          <li>
-            <a class="dropdown-item" style="display: flex; align-items: center; max-height: 30px" routerLink="/">
+          <li (click)="logout()">
+            <a class="dropdown-item" style="display: flex; align-items: center; max-height: 30px">
               <i class="bi bi-box-arrow-right"></i> <span>Sign Out</span>
             </a>
           </li>
         </ul>
       </li>
     </ul>
-  </nav>
-</header>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+
+

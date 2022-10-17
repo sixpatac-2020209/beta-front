@@ -22,15 +22,20 @@ import { PedidosAdminComponent } from './components/admin/pedidos-admin/pedidos-
 import { HomeAdminComponent } from './components/admin/home-admin/home-admin.component';
 import { PruebaComponent } from './components/Pruebas/prueba/prueba.component';
 import { PedidoComponent } from './components/admin/pedido/pedido.component';
+import { OneOrdenComponent } from './components/admin/one-orden/one-orden.component';
+import { OperariosComponent } from './components/landingPage/operarios/operarios.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: OperariosComponent },
+  { path: 'login', component: LoginComponent },
+
   {
     path: 'admin', component: LayoutAdminComponent, children: [
       { path: 'home', component: HomeAdminComponent },
       { path: 'user', component: UserAdminComponent },
       { path: 'autorizacion', component: AutorizationsComponent },
       { path: 'ordenesProduccion', component: OrderProductionsComponent },
+      { path: 'ordenProducción/:id', component: OneOrdenComponent },
       { path: 'detallesOrden', component: DetailsOrderComponent },
       { path: 'controlCalidad', component: QualityControlComponent },
       { path: 'pedidos', component: PedidosAdminComponent },

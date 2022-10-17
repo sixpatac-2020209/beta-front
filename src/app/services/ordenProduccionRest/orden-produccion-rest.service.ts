@@ -15,7 +15,22 @@ export class OrdenProduccionRestService {
     private http: HttpClient,
   ) { }
 
-  createOrden( params:{}) {
+  getOrdenes() {
+    return this.http.get(environment.baseURI + 'ordenes/getOrdenes', { headers: this.httpOptions });
+  }
+
+  getOrden(id: string) {
+    return this.http.get(environment.baseURI + 'ordenes/getOrden/' + id, { headers: this.httpOptions })
+  }
+
+getDetalleOrden(id: string) {
+    return this.http.get(environment.baseURI + 'ordenes/getDetalleOrden/' + id, { headers: this.httpOptions })
+  }
+getImporteOrden(id: string) {
+    return this.http.get(environment.baseURI + 'ordenes/getImporteOrden/' + id, { headers: this.httpOptions })
+  }
+
+  createOrden(params: {}) {
     return this.http.post(environment.baseURI + 'ordenes/createOrden', params, { headers: this.httpOptions });
   }
 

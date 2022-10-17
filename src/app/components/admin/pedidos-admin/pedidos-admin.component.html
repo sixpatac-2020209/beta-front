@@ -14,15 +14,11 @@
     <section>
       <div>
         <div class="text-center">
-          <form #monthForm="ngForm">
+          <form (ngSubmit)="getPedidosPorMes(monthForm)" #monthForm="ngForm">
             <mat-form-field>
-              <input [(ngModel)]="pedido.DATED" name="DATED" matInput [matDatepicker]="dp" placeholder="Año y Mes"
-                [formControl]="date">
-
-              <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-              <mat-datepicker #dp startView="multi-year" (yearSelected)="chosenYearHandler($event)"
-                (monthSelected)="chosenMonthHandler($event, dp , getPedidosPorMes(monthForm))">
-              </mat-datepicker>
+              <input [(ngModel)]="dateprueba" name="dateprueba" matInput [matDatepicker]="picker" />
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
           </form>
         </div>
@@ -30,7 +26,6 @@
 
         <!--TABLA PRINCIPAL-->
         <div class="row clearfix tableText">
-          <H1>TABLA PRINCIPAL</H1>
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tableText">
             <div class="card tableText">
               <div class="materialTableHeader mb-3 tableText headTab">
@@ -80,30 +75,30 @@
                     <tbody>
                       <tr *ngFor="let pedido of pedidos">
                         <td>{{ pedidos.indexOf(pedido) + 1 }}</td>
-                        <td class="text-center" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
+                        <td class="text-center"  data-bs-toggle="modal"
                           data-bs-target="#addOrder">
                           {{ pedido.CVE_DOC }}
                         </td>
-                        <td style="text-align: right" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
+                        <td style="text-align: right"  data-bs-toggle="modal"
                           data-bs-target="#addOrder">
                           <span style="text-align: right">{{ pedido.IMPORTE }}
                           </span>
                         </td>
-                        <td class="text-center" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
+                        <td class="text-center"  data-bs-toggle="modal"
                           data-bs-target="#addOrder">
                           {{ pedido.CVE_CLPV }}
                         </td>
-                        <td (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#addOrder">
+                        <td  data-bs-toggle="modal" data-bs-target="#addOrder">
                           {{ pedido.NOMBRE[0] }}
                         </td>
-                        <td class="text-center" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
+                        <td class="text-center"  data-bs-toggle="modal"
                           data-bs-target="#addOrder">
                           {{ pedido.CVE_VEND }}
                         </td>
-                        <td (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#addOrder">
+                        <td  data-bs-toggle="modal" data-bs-target="#addOrder">
                           {{ pedido.NOMBRE[1] }}
                         </td>
-                        <td (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#addOrder">
+                        <td  data-bs-toggle="modal" data-bs-target="#addOrder">
                           <a [routerLink]="['/admin/pedido/' + pedido.CVE_DOC]">
                             <i class="fa-solid fa-file-circle-plus"
                               style="color: rgb(16, 124, 16); font-size:20px;"></i>
@@ -121,99 +116,6 @@
           </div>
         </div>
       </div>
-
-
-      <!--TABLA Filtro-->
-      <!--
-        <div class="row clearfix tableText" >
-          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tableText">
-            <div class="card tableText">
-              <div class="materialTableHeader mb-3 tableText headTab">
-                <div class="row tableText">
-                  <div class="col-8 tableText">
-                    <div class="hola">
-                      <ul class="header-buttons-left ml-0 tableTitle">
-                        <li class="dropdown m-l-20">
-                          <label [(ngModel)]="searchPedido" for="search-input">
-                            <i class="material-icons search-icon">search</i>
-                          </label>
-                          <input placeholder="Buscar Pedido..." type="text" #filter class="browser-default search-field"
-                            aria-label="Search box" />
-                        </li>
-                      </ul>
-                      <div style="float: right">
-                        <button class="botonAc" (click)="exportExcel()">
-                          <i style="color: green" class="fa-solid fa-file-excel"></i>
-                          &nbsp; Excel
-                        </button>
-                        <button class="botonAc">
-                          <i style="color: red" class="fa-solid fa-file-pdf"></i>
-                          &nbsp; PDF
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="tableBody">
-                <div class="table-responsive">
-                  <table class="table table-bpedidoed table-hover">
-                    <thead style="margin: -100px">
-                      <tr>
-                        <th class="text-center">#</th>
-                        <th class="text-center">CVE_DOC</th>
-                        <th class="text-center" style="width: 160px">
-                          IMPORTE
-                        </th>
-                        <th class="text-center">CVE_CLPV</th>
-                        <th class="text-center">Cliente</th>
-                        <th class="text-center">CVE_VEND</th>
-                        <th class="text-center">Vendedor</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let pedido of pedidosPorMes | searchPedido:searchPedido">
-                        <td>{{ pedidosPorMes.indexOf(pedido) + 1 }}</td>
-                        <td class="text-center" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
-                          data-bs-target="#addOrder">
-                          {{ pedido.CVE_DOC }}
-                        </td>
-                        <td style="text-align: right" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
-                          data-bs-target="#addOrder">
-                          <span style="text-align: right">{{ pedido.IMPORTE }}
-                          </span>
-                        </td>
-                        <td class="text-center" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
-                          data-bs-target="#addOrder">
-                          {{ pedido.CVE_CLPV }}
-                        </td>
-                        <td (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#addOrder">
-                          {{ pedido.NOMBRE[0] }}
-                        </td>
-                        <td class="text-center" (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal"
-                          data-bs-target="#addOrder">
-                          {{ pedido.CVE_VEND }}
-                        </td>
-                        <td (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#addOrder">
-                          {{ pedido.NOMBRE[1] }}
-                        </td>
-                        <td (click)="getPedido(pedido.CVE_DOC)" data-bs-toggle="modal" data-bs-target="#addOrder">
-                          <i class="fa-solid fa-file-circle-plus" style="color: rgb(16, 124, 16); font-size:20px;"></i>
-                        </td>
-                      </tr>
-                      <tr rowspan="9" *ngIf="notFound === true">
-                        <td colspan="9" class="text-center">Sin Resultados</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
--->
-
-
     </section>
   </main>
 </body>

@@ -322,6 +322,8 @@ hr {
 
 
 .textData {
+  display: flex;
+  flex-wrap: wrap;
   width: 100%;
   justify-content: space-around;
   align-content: center;
@@ -369,4 +371,9 @@ font-weight: 200;
 
 .TextB{
 font-weight: 900;
+}
+
+
+textarea{
+max-height: 250px;
 }

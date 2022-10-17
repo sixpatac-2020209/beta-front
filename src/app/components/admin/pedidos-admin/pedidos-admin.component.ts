@@ -13,14 +13,6 @@ import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/mat
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDatepicker } from '@angular/material/datepicker';
 
-// Depending on whether rollup is used, moment needs to be imported differently.
-// Since Moment.js doesn't have a default export, we normally need to import using the `* as`
-// syntax. However, rollup creates a synthetic default module and we thus need to import it using
-// the `default as` syntax.
-import { Moment } from 'moment';
-import * as moment from 'moment';
-// tslint:disable-next-line:no-duplicate-imports
-
 export const MY_FORMATS = {
   parse: {
     dateInput: 'MM/YYYY',
@@ -74,6 +66,8 @@ export class PedidosAdminComponent implements OnInit {
   datepicker: any
   monthForm: any;
 
+  dateprueba: any;
+
   constructor(
     private pedidoRest: OrderRestService,
     private excelService: ExportExcelPedidoService,
@@ -81,39 +75,15 @@ export class PedidosAdminComponent implements OnInit {
     private vendedorRest: VendedorRestService
 
   ) {
-    this.pedido = new PedidoModel('', '', '', '', '', '', '', '', '','','','');
+    this.pedido = new PedidoModel('', '', '', '', '', '', '', '', '', '', '', '');
     this.vendedor = new VendedorModel('', '', '');
-    this.cliente = new ClienteModel('', '','','','','')
+    this.cliente = new ClienteModel('', '', '', '', '', '')
   }
 
   ngOnInit(): void {
     this.getPedidos();
-    this.chosenYearHandler(this.normalizedYear);
-    this.chosenMonthHandler(this.normalizedMonth, this.datepicker, this.getPedidosPorMes)
   }
 
-  date = new FormControl(moment());
-
-  chosenYearHandler(normalizedYear: Moment) {
-    const ctrlValue = this.date.value;
-    if (ctrlValue !== null) {
-      ctrlValue.year(normalizedYear.year());
-      this.date.setValue(ctrlValue);
-      this.getPedidosPorMes(this.monthForm);
-    }
-    this.getPedidosPorMes(this.monthForm);
-  }
-
-  async chosenMonthHandler(normalizedMonth: Moment, datepicker: MatDatepicker<Moment>, getPedidoPorMes: any) {
-    const ctrlValue = this.date.value;
-    if (ctrlValue !== null) {
-      ctrlValue.month(normalizedMonth.month());
-      this.date.setValue(ctrlValue);
-      this.getPedidosPorMes(this.monthForm);
-      await datepicker.close();
-
-    }
-  }
 
   //Variables - Mostrar | Ocultar DOM//
   showTableUsers: boolean = false;
@@ -198,12 +168,17 @@ export class PedidosAdminComponent implements OnInit {
   }
 
   getPedidosPorMes(monthForm: any) {
-    this.pedidoRest.getPedidoPorMes(this.pedido).subscribe({
+    const { year, month, date } = this.dateprueba._i;
+
+
+    const newDateBack = `${year}-${month}-${date}`;
+
+    let params = { DATED: newDateBack }
+console.log(params)
+    this.pedidoRest.getPedidoPorMes(params).subscribe({
       next: (res: any) => {
         this.pedidosPorMes = res.returnPedidosPorMes;
-        if (this.pedidosPorMes.length === 0) {
-          this.notFound = !this.notFound;
-        };
+        this.pedidos = this.pedidosPorMes;
         monthForm.reset()
       },
       error: (err: any) => {

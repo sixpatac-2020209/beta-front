@@ -1,0 +1,94 @@
+<body style="background-color: #f0f3fb;">
+  <mat-toolbar style="background-color: #fff;">
+    <mat-toolbar-row>
+
+      <div style="display: flex;">
+
+        <a class="logo textColor no-seleccionable"
+          style="display: flex; align-items: center; max-height: 30px; pointer-events:none;">
+          <img src="assets/img/logo.png" class="no-seleccionable" style="pointer-events:none;" />
+          <span class="d-none d-lg-block textColor no-seleccionable" style="pointer-events:none;"> VENTO app</span>
+        </a>
+        <button mat-icon-button *ngIf="sidenav.mode === 'side'" (click)="sidenav.toggle()">
+          <mat-icon *ngIf="!sidenav.opened">
+            menu
+          </mat-icon>
+          <mat-icon *ngIf="sidenav.opened">
+            close
+          </mat-icon>
+        </button>
+
+      </div>
+
+      <div>
+        <button>Login</button>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+
+  <mat-sidenav-container>
+
+    <mat-sidenav #sidenav="matSidenav" opened mode="side">
+      <label style="margin-top: 100%;">Selecciona la Orden de Producción</label>
+      <mat-form-field>
+        <mat-label># Orden</mat-label>
+        <mat-select>
+          <mat-option>Hola</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="addContainer">
+            <div class="contact-details">
+              <div class="modalHeader">
+                <div class="editRowModal">
+                  <div class="modalHeader clearfix mb-2 mt-4">
+                    <div class="modal-about contact-header">
+                      <div class="contact-details-heading">
+                        <div class="contact-details-name" style="display: flex;">
+                          Orden #
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button mat-icon-button data-bs-dismiss="modal" aria-label="Close dialog">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </div>
+            </div>
+            <hr />
+            <div class="body">
+              <form #addUserForm="ngForm" class="register-form m-4">
+
+                <hr style="margin-top: -0.5rem;">
+                <div class="spacing-buttons" style="display: flex; justify-content:center;">
+                  <button type="submit" data-bs-dismiss="modal" class="btn btn-labeled btn-success me-1">
+                    <span class="btn-label">
+                      <i class="fa fa-floppy-o"></i>
+                    </span>
+                    Agregar
+                  </button>
+                  <button type="button" data-bs-dismiss="modal" class="btn btn-labeled btn-danger ms-1 me-1">
+                    <span class="btn-label">
+                      <i class="fa fa-times-circle"></i>
+                    </span>
+                    Cancelar
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+</body>

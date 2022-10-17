@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
 import { ActivatedRoute } from '@angular/router'
 import Swal from 'sweetalert2';
+
 import { OrderRestService } from 'src/app/services/ordersRest/order-rest.service';
 import { VendedorRestService } from 'src/app/services/vendedorRest/vendedor-rest.service';
 import { ClienteRestService } from 'src/app/services/clienteRest/cliente-rest.service';
@@ -48,7 +48,7 @@ export class PedidoComponent implements OnInit {
 
     this.planta = new SedeModel('', '');
     this.detalle = new DetallePedidoModel('', '', '', '', '', '', '');
-    this.orden = new OrdenModel('', '', '', '');
+    this.orden = new OrdenModel('', '', '', '','', '', '', '','','','','','','','','','','');
   }
 
   ngOnInit(): void {
@@ -115,7 +115,6 @@ export class PedidoComponent implements OnInit {
       next: (res: any) => {
         this.planta = res.returnSede;
         this.ID_SEDE = this.planta.ID_SEDE
-        console.log(this.ID_SEDE);
       },
       error: (err) => console.log(err),
     })
@@ -125,8 +124,11 @@ export class PedidoComponent implements OnInit {
 
 
 
-  createOrden() {
-    this.OrdenProduccionRest.createOrden(this.savePedido).subscribe({
+  createOrden()
+  {
+let params = { ...this.savePedido , ID_SEDE:this.ID_SEDE}
+console.log(params)
+    this.OrdenProduccionRest.createOrden(params).subscribe({
       next: (res: any) => {
         Swal.fire({
           icon: 'success',

@@ -1,138 +1,100 @@
-<body >
-    <main id="main" class="main">
-        <div class="pagetitle">
-            <h1>Ordenes de Producción</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a routerLink="/admin/home">Inicio</a></li>
-                    <li class="breadcrumb-item active">Ordenes de Producción</li>
-                </ol>
-            </nav>
-        </div>
-        <section >
-            <div>
-                <div class="text-center mt-4">
-                    <button data-bs-toggle="modal" data-bs-target="#addOrden"
-                        class="btn icon-btn btn-success ms-2 me-2">
-                        <span style="border-radius: 50% 50%;" class="btn-glyphicon fa fa-file text-success"></span>
-                        Agregar Orden
-                    </button>
-                </div>
-                <hr>
-                <br>
-                <table class="table" style="background-color: #fff;">
-                    <thead class="table-dark">
-                        <tr>
-                            <th scope="col" style="text-align: center;" >Orden</th>
-                            <th scope="col">Cliente</th>
-                            <th scope="col">Ventanas</th>
-                            <th scope="col">Fecha de Ingreso</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Autorización</th>
-                            <th scope="col">Cumplimiento</th>
-                            <th scope="col">Facturación</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row" style="text-align: center;">71 <a routerLink="/admin/detallesOrden" ><i class="fa-solid fa-circle-info ms-2 infoOrder"></i></a></th>
-                            <td>La Mundial</td>
-                            <td>100</td>
-                            <td>22/09/2022</td>
-                            <td>en proceso</td>
-                            <td>Autorizado</td>
-                            <td>17%</td>
-                            <td>$25,000</td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row"style="text-align: center;">119 <a routerLink="/admin/detallesOrden" ><i class="fa-solid fa-circle-info ms-2 infoOrder"></i></a></th>
-                            <td>La Mundial</td>
-                            <td>19</td>
-                            <td>22/09/2022</td>
-                            <td>Ingresado</td>
-                            <td>Autorizado</td>
-                            <td>100%</td>
-                            <td>$40,000</td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row" style="text-align: center;"> 124 <a routerLink="/admin/detallesOrden" ><i class="fa-solid fa-circle-info ms-2 infoOrder"></i></a> </th>
-                            <td>Gold Dust</td>
-                            <td>53</td>
-                            <td>22/09/2022</td>
-                            <td>en proceso</td>
-                            <td>Autorizado</td>
-                            <td>100%</td>
-                            <td>$25,000</td>
-
-                        </tr>
-
-                        <tr>
-                            <th scope="row" style="text-align: center;">125 <a routerLink="/admin/detallesOrden" ><i class="fa-solid fa-circle-info ms-2 infoOrder"></i></a></th>
-                            <td>Gold Dust</td>
-                            <td>200</td>
-                            <td>22/09/2022</td>
-                            <td>Ingresado</td>
-                            <td>Autorizado</td>
-                            <td>100%</td>
-                            <td>$20,000</td>
-
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
-
-            <div>
-                <div class="modal fade" id="addOrden" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="card">
-                        <div class="card-body">
-                          <h5 class="card-title">Multi Columns Form</h5>
-                          <form class="row g-3">
-
-                            <div class="col-md-4">
-                              <label for="inputState" class="form-label">Orden</label>
-                              <select id="inputState" class="form-select">
-                                <option selected>selecciona</option>
-                                <option>...</option>
-                              </select>
-                            </div>
-
-
-                            <div class="col-md-12"> <label for="inputName5" class="form-label">Your Name</label> <input
-                                type="text" class="form-control" id="inputName5"></div>
-                            <div class="col-md-6"> <label for="inputEmail5" class="form-label">Email</label> <input type="email"
-                                class="form-control" id="inputEmail5"></div>
-                            <div class="col-md-6"> <label for="inputPassword5" class="form-label">Password</label> <input
-                                type="password" class="form-control" id="inputPassword5"></div>
-                            <div class="col-12"> <label for="inputAddress5" class="form-label">Address</label> <input type="text"
-                                class="form-control" id="inputAddres5s" placeholder="1234 Main St"></div>
-                            <div class="col-12"> <label for="inputAddress2" class="form-label">Address 2</label> <input
-                                type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                            </div>
-                            <div class="col-md-6"> <label for="inputCity" class="form-label">City</label> <input type="text"
-                                class="form-control" id="inputCity"></div>
-
-                            <div class="col-md-2"> <label for="inputZip" class="form-label">Zip</label> <input type="text"
-                                class="form-control" id="inputZip"></div>
-                            <div class="col-12">
-                              <div class="form-check"> <input class="form-check-input" type="checkbox" id="gridCheck"> <label
-                                  class="form-check-label" for="gridCheck"> Check me out </label></div>
-                            </div>
-                            <div class="text-center"> <button type="submit" class="btn btn-primary">Submit</button> <button
-                                type="reset" class="btn btn-secondary">Reset</button></div>
-                          </form>
-                        </div>
+<body>
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Ordenes de Producción</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a routerLink="/admin/home" style="text-decoration: none; margin-top:100px;">Inicio</a>
+          </li>
+          <li class="breadcrumb-item active">Ordenes de Producción</li>
+        </ol>
+      </nav>
+    </div>
+    <section>
+      <div>
+        <!--TABLA PRINCIPAL-->
+        <div class="row clearfix tableText">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tableText">
+            <div class="card tableText">
+              <div class="materialTableHeader mb-3 tableText headTab">
+                <div class="row tableText">
+                  <div class="col-8 tableText">
+                    <div class="hola">
+                      <ul class="header-buttons-left ml-0 tableTitle">
+                        <li class="dropdown m-l-20">
+                          <label for="search-input">
+                            <i class="material-icons search-icon">search</i>
+                          </label>
+                          <input placeholder="Buscar Pedido..." type="text" #filter class="browser-default search-field"
+                            aria-label="Search box" />
+                        </li>
+                      </ul>
+                      <div style="float: right">
+                        <button class="botonAc" (click)="exportExcel()">
+                          <i style="color: green" class="fa-solid fa-file-excel"></i>
+                          &nbsp; Excel
+                        </button>
+                        <button class="botonAc">
+                          <i style="color: red" class="fa-solid fa-file-pdf"></i>
+                          &nbsp; PDF
+                        </button>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-
-        </section>
-    </main>
+              <div class="tableBody">
+                <div class="table-responsive">
+                  <table class="table table-bpedidoed table-hover">
+                    <thead style="margin: -100px">
+                      <tr>
+                        <th class="text-center">#</th>
+                        <th class="text-center">Orden</th>
+                        <th class="text-center" style="width: 160px">
+                          CVE_DOC
+                        </th>
+                        <th class="text-center">Cliente</th>
+                        <th class="text-center">Fecha Ingresa</th>
+                        <th class="text-center">Fecha Termina</th>
+                        <th class="text-center">Vendedor</th>
+                        <th class="text-center">Planta</th>
+                        <th class="text-center">Serie</th>
+                        <th class="text-center"> </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let orden of ordenes">
+                        <td>{{ ordenes.indexOf(orden) + 1 }}</td>
+                        <td class="text-center"> {{ orden.CVE_ORDEN }} </td>
+                        <td style="text-align: right">
+                          <span style="text-align: right">{{ orden.CVE_PEDIDO }}
+                          </span>
+                        </td>
+                        <td> {{ orden.CLIENTE }} </td>
+                        <td> {{ orden.FECHA_INGRESO }} </td>
+                        <td> {{ orden.FECHA_TERMINA }} </td>
+                        <td> {{ orden.VENDEDOR }} </td>
+                        <td> {{ orden.ID_SEDE }} </td>
+                        <td> {{ orden.SERIE }} </td>
+                        <td>
+                          <a [routerLink]="['/admin/ordenProducción/' + orden.CVE_ORDEN]">
+                            <i class="fa-solid fa-eye"
+                              style="color: rgb(107, 107, 107); font-size:20px;"></i>
+                          </a>
+                        </td>
+                      </tr>
+                      <tr rowspan="9" *ngIf="notFound === true">
+                        <td colspan="9" class="text-center">Sin Resultados</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>

@@ -34,7 +34,7 @@ import { } from "@angular/material/snack-bar";
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from "@angular/material/tooltip";
-
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 import {
   PerfectScrollbarModule,
@@ -79,6 +79,8 @@ import { PruebaComponent } from './components/Pruebas/prueba/prueba.component';
 import { SearchPedidoPipe } from './pipes/search-pedido.pipe';
 import { CreateOrderComponent } from './components/admin/create-order/create-order.component';
 import { PedidoComponent } from './components/admin/pedido/pedido.component';
+import { OneOrdenComponent } from './components/admin/one-orden/one-orden.component';
+import { OperariosComponent } from './components/landingPage/operarios/operarios.component';
 
 
 @NgModule({
@@ -109,7 +111,9 @@ import { PedidoComponent } from './components/admin/pedido/pedido.component';
     PruebaComponent,
     SearchPedidoPipe,
     CreateOrderComponent,
-    PedidoComponent
+    PedidoComponent,
+    OneOrdenComponent,
+    OperariosComponent,
   ],
   imports: [
     SwiperModule,
@@ -154,7 +158,8 @@ import { PedidoComponent } from './components/admin/pedido/pedido.component';
     MatTabsModule,
     MatExpansionModule,
     MatTooltipModule,
-    MatOptionModule
+    MatOptionModule,
+    MatSidenavModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

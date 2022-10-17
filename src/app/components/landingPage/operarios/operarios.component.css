@@ -1,0 +1,25 @@
+.no-seleccionable {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.mat-toolbar-row {
+  display: flex;
+  justify-content: space-between !important;
+  align-items: center;
+  align-content: center;
+}
+
+mat-sidenav-container {
+    height: calc(100vh - 65px);
+}
+
+mat-sidenav {
+    width: 200px;
+    border-right: none;
+    background: #fff;
+    text-align: center;
+}
+
