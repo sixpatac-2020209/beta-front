@@ -5,7 +5,11 @@ import { OrdenProduccionRestService } from 'src/app/services/ordenProduccionRest
 import { CredentialsRestService } from 'src/app/services/credentialsRest/credentials-rest.service';
 import { AutorizationRestService } from 'src/app/services/autorizationRest/autorization-rest.service';
 import Swal from 'sweetalert2';
-
+import { EmailModel } from 'src/app/models/email.model';
+import { UsuarioModel } from 'src/app/models/usuario.model';
+import { UserRestService } from 'src/app/services/userRest/user-rest.service';
+import { Router } from '@angular/router';
+import { EmailRestService } from 'src/app/services/emailRest/email-rest.service';
 
 import { FormControl } from '@angular/forms';
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
@@ -54,17 +58,25 @@ export class AutorizationComponent implements OnInit {
   progamacion: ProgramacionModel
   detalles: any;
   detalle: any;
-  programacionForm: any;
-  datePiOne: any;
-  datePiTwo: any;
-  dateprueba: any
+
+  email: EmailModel
+  user: UsuarioModel
+  emailForm: any;
 
   constructor(
     public activatedRoute: ActivatedRoute,
     private autorizationRest: AutorizationRestService,
     private programacionRest: ProgramacionRestService,
+    public router: Router,
+    private ordenRest: OrdenProduccionRestService,
+    private emailRest: EmailRestService,
+    private userRest: UserRestService,
+    private credentialRest: CredentialsRestService,
 
   ) {
+    this.orden = new OrdenModel('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+    this.email = new EmailModel('');
+    this.user = new UsuarioModel('', '', '', '', '', '', '',)
     this.orden = new OrdenModel('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
     this.progamacion = new ProgramacionModel('', '', '', '');
   }
@@ -107,16 +119,27 @@ export class AutorizationComponent implements OnInit {
     });
   }
 
-  Programar() {
-    const { year, month, date } = this.datePiOne._i;
-    const datePiOneNew = `${year}-${month + 1}-${date}`;
-    const yearTwo = this.datePiTwo._i.year;
-    const monthTwo = this.datePiTwo._i.month;
-    const dateTwo = this.datePiTwo._i.date
-    const datePiTwoNew = `${yearTwo}-${monthTwo + 1}-${dateTwo}`;
+ autorizar() {
+    let params = { ID_USUARIO: `${this.user.name} ${this.user.surname}` }
+    console.log(params.ID_USUARIO);
+    this.autorizationRest.autorizar(this.CVE_ORDEN, params).subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          title: res.message,
+          icon: 'success',
+          position: 'center',
+          showConfirmButton: false,
+          timer: 2000
+        });
+      }, error: (err) => Swal.fire({
+        title: err.error.message,
+        icon: 'error',
+        position: 'center',
+        timer: 3000
+      })
+    });
 
-    let params = { FECHA_INGRESA: datePiOneNew, FECHA_TERMINA: datePiTwoNew, ID_SEDE: this.orden.ID_SEDE }
-    this.programacionRest.programar(this.CVE_ORDEN, params).subscribe({
+    this.emailRest.confirmarOrden(this.CVE_ORDEN, params).subscribe({
       next: (res: any) => {
         Swal.fire({
           title: res.message,
@@ -134,5 +157,72 @@ export class AutorizationComponent implements OnInit {
       })
     });
   }
+
+
+
+  corregirEmail() {
+    let params = { EMAIL: `${this.user.name} ${this.user.surname}`, razon: this.email.razon }
+    this.emailRest.corregirOrden(this.CVE_ORDEN, params).subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          title: res.message,
+          icon: 'success',
+          position: 'center',
+          showConfirmButton: false,
+          timer: 2000
+        });
+        this.emailForm.reset()
+      },
+      error: (err) => Swal.fire({
+        title: err.error.message,
+        icon: 'error',
+        position: 'center',
+        timer: 3000
+      })
+    });
+
+  }
+
+  rechazarEmail() {
+    let params = { EMAIL: `${this.user.name} ${this.user.surname}`, razon: this.email.razon }
+    this.emailRest.rechazarOrden(this.CVE_ORDEN, params).subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          title: res.message,
+          icon: 'success',
+          position: 'center',
+          showConfirmButton: false,
+          timer: 2000
+        });
+
+      },
+      error: (err) => Swal.fire({
+        title: err.error.message,
+        icon: 'error',
+        position: 'center',
+        timer: 3000
+      })
+    });
+    this.autorizationRest.rechazar(this.CVE_ORDEN).subscribe({
+      next: (res: any) => {
+
+        Swal.fire({
+          title: res.message,
+          icon: 'success',
+          position: 'center',
+          showConfirmButton: false,
+          timer: 2000
+        })
+
+      },
+      error: (err) => Swal.fire({
+        title: err.error.message,
+        icon: 'error',
+        position: 'center',
+        timer: 3000
+      })
+    });
+  }
+
 
 }

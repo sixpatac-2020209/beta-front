@@ -41,7 +41,6 @@ const routes: Routes = [
       { path: 'ordenesProduccion', component: OrderProductionsComponent },
       { path: 'ordenProducción/:id', component: OneOrdenComponent },
       { path: 'detallesOrden', component: DetailsOrderComponent },
-      { path: 'controlCalidad', component: QualityControlComponent },
       { path: 'pedidos', component: PedidosAdminComponent },
       { path: 'pedido/:id', component: PedidoComponent },
       { path: 'pruebas', component: PruebaComponent },

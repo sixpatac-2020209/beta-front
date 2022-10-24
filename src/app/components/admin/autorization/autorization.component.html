@@ -4,8 +4,7 @@
             <h1 style="margin-top: 20px;">Orden: {{orden.CVE_ORDEN}}</h1>
         </div>
         <div style="display: fex; justify-content: center;">
-            <h2 *ngIf="orden.AUTORIZACION === null"
-                style="color: red; text-align: center;">NO Autorizada</h2>
+            <h2 *ngIf="orden.AUTORIZACION === null" style="color: red; text-align: center;">NO Autorizada</h2>
             <h2 *ngIf="orden.AUTORIZACION === '1' " style="color: green; text-align: center;">Autorizada</h2>
         </div>
 
@@ -109,50 +108,165 @@
                                 </table>
                             </div>
                         </div>
-                        <form style="margin:10px;" #programacionForm="ngForm">
 
-                            <div style="display: none;" name="ID_SEDE">{{orden.ID_SEDE}}</div>
-
-                            <h3 style="margin: 0; font-weight: 800;">Programación</h3>
-                            <hr style="margin: 0;">
-                            <div style="display:flex; justify-content:center; gap:10px;">
-
-                                <div>
-                                    <mat-form-field color="accent" appearance="fill" style="margin: 10px;">
-                                        <mat-label>Fecha Inicia</mat-label>
-                                        <input [(ngModel)]="datePiOne" name="datePiOne" matInput [matDatepicker]="picker1">
-                                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                                        <mat-datepicker #picker1 color="primary"></mat-datepicker>
-                                    </mat-form-field>
-
-                                    <mat-form-field color="accent" appearance="fill" style="margin: 10px;">
-                                        <mat-label>Fecha Termina</mat-label>
-                                        <input [(ngModel)]="datePiTwo" name="datePiTwo" matInput [matDatepicker]="picker2">
-                                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                                        <mat-datepicker #picker2></mat-datepicker>
-                                    </mat-form-field>
-
-                                </div>
-                            </div>
-                            <div class="d-flex" *ngIf="orden.AUTORIZACION !== '1'" style="justify-content: center; margin-top: 15px;">
-                                <button class="btn icon-btn btn-success ms-2 me-2" disabled>
+                        <form>
+                            <div class="d-flex" style="justify-content: center;">
+                                <button (click)="autorizar();" class="btn icon-btn btn-success ms-2 me-2">
                                     <span style="border-radius: 50% 50%;"
                                         class="btn-glyphicon fa-solid fa-check text-success"></span>
-                                    Programar
-                                </button>
-                                <button (click)="Programar()" *ngIf="orden.AUTORIZACION === '1'" class="btn icon-btn btn-success ms-2 me-2" >
-                                    <span style="border-radius: 50% 50%;"
-                                        class="btn-glyphicon fa-solid fa-check text-success"></span>
-                                    Programar
+                                    Autorizar
                                 </button>
 
-                                <button routerLink="/admin/autorizaciones" class="btn icon-btn btn-danger ms-2 me-2" >
-                                    <span style="border-radius: 50% 50%; width: 30px; height: 30px;"
+                                <button class="btn icon-btn btn-warning ms-2 me-2" data-bs-toggle="modal"
+                                    data-bs-target="#Corregir">
+                                    <span style="border-radius: 50% 50%; width: 30px"
+                                        class="btn-glyphicon fa-solid fa-exclamation text-warning"></span>
+                                    Corregir
+                                </button>
+
+                                <button class="btn icon-btn btn-danger ms-2 me-2" data-bs-toggle="modal"
+                                    data-bs-target="#Rechazar">
+                                    <span style="border-radius: 50% 50%; width: 30px"
                                         class="btn-glyphicon fa-solid fa-xmark text-danger"></span>
+                                    Rechazar
+                                </button>
+
+                                <button routerLink="/admin/ordenesProduccion" routerLinkActive="router-link-active"
+                                    class="btn icon-btn btn-secondary ms-2 me-2">
+                                    <span style="border-radius: 50% 50%; width: 30px"
+                                        class="btn-glyphicon fa-solid fa-arrow-left text-secondary"></span>
                                     Cancelar
                                 </button>
+
+                                <div class="modal fade" id="Corregir" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="addContainer">
+                                                <div class="contact-details">
+                                                    <div class="modalHeader">
+                                                        <div class="editRowModal">
+                                                            <div class="modalHeader clearfix">
+                                                                <div class="modal-about contact-header">
+                                                                    <div class="contact-details-img">
+                                                                        <i
+                                                                            class="fa-solid fa-triangle-exclamation fa-2x mt-1"></i>
+                                                                    </div>
+                                                                    <div class="contact-details-heading">
+                                                                        <div class="contact-details-name mb-2">
+                                                                            Corregir Email
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button mat-icon-button data-bs-dismiss="modal"
+                                                            aria-label="Close dialog">
+                                                            <mat-icon>close</mat-icon>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <hr />
+                                                <div class="body">
+                                                    <form class="register-form m-4" #emailForm="ngForm">
+                                                        <div class="form-group">
+                                                            <label for="exampleFormControlTextarea1"
+                                                                style="font-size: 18px;">Correcciones: </label>
+                                                            <textarea [(ngModel)]="email.razon" name="razon"
+                                                                class="form-control" id="exampleFormControlTextarea1"
+                                                                rows="3"></textarea>
+                                                        </div>
+                                                        <hr style="margin-top: -0.5rem;">
+                                                        <div class="spacing-buttons">
+                                                            <button (click)="corregirEmail()" type="submit"
+                                                                data-bs-dismiss="modal"
+                                                                class="btn btn-labeled btn-success me-1">
+                                                                <span class="btn-label">
+                                                                    <i class="fa fa-floppy-o"></i>
+                                                                </span>
+                                                                Enviar
+                                                            </button>
+                                                            <button type="button" data-bs-dismiss="modal"
+                                                                class="btn btn-labeled btn-danger ms-1 me-1">
+                                                                <span class="btn-label">
+                                                                    <i class="fa fa-times-circle"></i>
+                                                                </span>
+                                                                Cancelar
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="modal fade" id="Rechazar" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="addContainer">
+                                            <div class="contact-details">
+                                                <div class="modalHeader">
+                                                    <div class="editRowModal">
+                                                        <div class="modalHeader clearfix">
+                                                            <div class="modal-about contact-header">
+                                                                <div class="contact-details-img">
+                                                                    <i
+                                                                        class="fa-regular fa-circle-xmark fa-2x mt-1"></i>
+                                                                </div>
+                                                                <div class="contact-details-heading">
+                                                                    <div class="contact-details-name mb-2">
+                                                                        Rechazar Orden
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button mat-icon-button data-bs-dismiss="modal"
+                                                        aria-label="Close dialog">
+                                                        <mat-icon>close</mat-icon>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="body">
+                                                <form class="register-form m-4" #emailForm="ngForm">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1"
+                                                            style="font-size: 18px;">Rechazado por: </label>
+                                                        <textarea [(ngModel)]="email.razon" name="razon"
+                                                            class="form-control" id="exampleFormControlTextarea1"
+                                                            rows="3"></textarea>
+                                                    </div>
+                                                    <hr style="margin-top: -0.5rem;">
+                                                    <div class="spacing-buttons">
+                                                        <button (click)="rechazarEmail()" type="submit"
+                                                            data-bs-dismiss="modal"
+                                                            class="btn btn-labeled btn-success me-1">
+                                                            <span class="btn-label">
+                                                                <i class="fa fa-floppy-o"></i>
+                                                            </span>
+                                                            Rechazar
+                                                        </button>
+                                                        <button type="button" data-bs-dismiss="modal"
+                                                            class="btn btn-labeled btn-danger ms-1 me-1">
+                                                            <span class="btn-label">
+                                                                <i class="fa fa-times-circle"></i>
+                                                            </span>
+                                                            Cancelar
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>

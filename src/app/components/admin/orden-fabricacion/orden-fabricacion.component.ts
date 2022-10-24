@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { OrdenModel } from 'src/app/models/orden.model';
 import { OrdenProduccionRestService } from 'src/app/services/ordenProduccionRest/orden-produccion-rest.service';
@@ -13,10 +13,34 @@ import { MatDatepicker } from '@angular/material/datepicker';
 import { ProgramacionModel } from 'src/app/models/programacion.model';
 import { ProgramacionRestService } from 'src/app/services/prgramacionRest/programacion-rest.service';
 
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'MM/YYYY',
+  },
+  display: {
+    dateInput: 'MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 @Component({
   selector: 'app-orden-fabricacion',
   templateUrl: './orden-fabricacion.component.html',
-  styleUrls: ['./orden-fabricacion.component.css']
+  styleUrls: ['./orden-fabricacion.component.css'],
+  encapsulation: ViewEncapsulation.None,
+  providers: [
+    // `MomentDateAdapter` can be automatically provided by importing `MomentDateModule` in your
+    // application's root module. We provide it at the component level here, due to limitations of
+    // our example generation script.
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+    },
+
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+  ],
 })
 export class OrdenFabricacionComponent implements OnInit {
 

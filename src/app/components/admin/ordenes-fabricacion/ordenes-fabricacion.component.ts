@@ -3,7 +3,7 @@ import { OrdenModel } from 'src/app/models/orden.model';
 import { ExportExcelOrdenService } from 'src/app/services/exportData/exportExcelOrden/export-excel-orden.service';
 import { OrdenProduccionRestService } from 'src/app/services/ordenProduccionRest/orden-produccion-rest.service';
 import { AutorizationRestService } from 'src/app/services/autorizationRest/autorization-rest.service';
-
+import { OrdenFabricacionRestService } from 'src/app/services/ordenFabricacionRest/orden-fabricacion-rest.service';
 
 @Component({
   selector: 'app-ordenes-fabricacion',
@@ -20,7 +20,8 @@ orden: OrdenModel;
   constructor(
     private ordenRest: OrdenProduccionRestService,
     private excelService: ExportExcelOrdenService,
-    private autorizationRest: AutorizationRestService
+    private autorizationRest: AutorizationRestService,
+    private ordenFabricacionRest: OrdenFabricacionRestService
 
   ) {
     this.orden = new OrdenModel('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
@@ -31,7 +32,7 @@ orden: OrdenModel;
   }
 
   getOrdenes() {
-    this.autorizationRest.getAutorizaciones().subscribe({
+    this.ordenFabricacionRest.getOrdenesFabricacion().subscribe({
       next: (res: any) => {
         this.ordenes = res.returnAuth;
         for (let orden of this.ordenes) {

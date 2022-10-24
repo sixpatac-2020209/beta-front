@@ -70,9 +70,9 @@
                         <td style="text-align: center;"> {{ orden.ID_SEDE }} </td>
                         <td style="text-align: center;">
                           <div
-                            *ngIf="orden.AUTORIZACION === null || orden.AUTORIZACION === '0' || orden.AUTORIZACION === undefined">
+                            *ngIf="orden.ESTATUS !== '1'">
                             NO autorizada</div>
-                          <div *ngIf="orden.AUTORIZACION === '1'"></div>
+                          <div *ngIf="orden.ESTATUS === '1'">Autorizada</div>
                         </td>
 
                         <td>

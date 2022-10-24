@@ -34,8 +34,7 @@ export class AutorizationsComponent implements OnInit {
     this.autorizationRest.getAutorizaciones().subscribe({
       next: (res: any) => {
         this.ordenes = res.returnAuth;
-                console.log(this.ordenes.STATUS);
-
+        console.log(this.ordenes);
         for (let orden of this.ordenes) {
           orden.position = this.ordenes.indexOf(orden) + 1;
         }
