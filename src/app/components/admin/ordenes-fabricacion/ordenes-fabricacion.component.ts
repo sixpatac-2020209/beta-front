@@ -4,14 +4,14 @@ import { ExportExcelOrdenService } from 'src/app/services/exportData/exportExcel
 import { OrdenProduccionRestService } from 'src/app/services/ordenProduccionRest/orden-produccion-rest.service';
 import { AutorizationRestService } from 'src/app/services/autorizationRest/autorization-rest.service';
 
-@Component({
-  selector: 'app-autorizations',
-  templateUrl: './autorizations.component.html',
-  styleUrls: ['./autorizations.component.css']
-})
-export class AutorizationsComponent implements OnInit {
 
-  orden: OrdenModel;
+@Component({
+  selector: 'app-ordenes-fabricacion',
+  templateUrl: './ordenes-fabricacion.component.html',
+  styleUrls: ['./ordenes-fabricacion.component.css']
+})
+export class OrdenesFabricacionComponent implements OnInit {
+orden: OrdenModel;
   ordenes: any;
   autorizationPipe: any
   notFound: boolean = false;
@@ -34,8 +34,6 @@ export class AutorizationsComponent implements OnInit {
     this.autorizationRest.getAutorizaciones().subscribe({
       next: (res: any) => {
         this.ordenes = res.returnAuth;
-                console.log(this.ordenes.STATUS);
-
         for (let orden of this.ordenes) {
           orden.position = this.ordenes.indexOf(orden) + 1;
         }

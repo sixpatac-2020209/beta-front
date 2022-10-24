@@ -79,8 +79,14 @@ import { PruebaComponent } from './components/Pruebas/prueba/prueba.component';
 import { SearchPedidoPipe } from './pipes/search-pedido.pipe';
 import { CreateOrderComponent } from './components/admin/create-order/create-order.component';
 import { PedidoComponent } from './components/admin/pedido/pedido.component';
-import { OneOrdenComponent } from './components/admin/one-orden/one-orden.component';
+import { OneOrdenComponent } from './components/admin/order-production/one-orden.component';
 import { OperariosComponent } from './components/landingPage/operarios/operarios.component';
+import { AutorizationComponent } from './components/admin/autorization/autorization.component';
+import { SearchOrdenPipe } from './pipes/search-orden.pipe';
+import { SearchAutorizationPipe } from './pipes/search-autorization.pipe';
+import { DetailsOrderHomeComponent } from './components/admin/details-order-home/details-order-home.component';
+import { OrdenesFabricacionComponent } from './components/admin/ordenes-fabricacion/ordenes-fabricacion.component';
+import { OrdenFabricacionComponent } from './components/admin/orden-fabricacion/orden-fabricacion.component';
 
 
 @NgModule({
@@ -114,6 +120,12 @@ import { OperariosComponent } from './components/landingPage/operarios/operarios
     PedidoComponent,
     OneOrdenComponent,
     OperariosComponent,
+    AutorizationComponent,
+    SearchOrdenPipe,
+    SearchAutorizationPipe,
+    DetailsOrderHomeComponent,
+    OrdenesFabricacionComponent,
+    OrdenFabricacionComponent,
   ],
   imports: [
     SwiperModule,

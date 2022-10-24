@@ -1,0 +1,161 @@
+<body>
+    <main id="main" class="main">
+        <div class="pagetitle">
+            <h1 style="margin-top: 20px;">Orden: {{orden.CVE_ORDEN}}</h1>
+        </div>
+        <div style="display: fex; justify-content: center;">
+            <h2 *ngIf="orden.AUTORIZACION === null"
+                style="color: red; text-align: center;">NO Autorizada</h2>
+            <h2 *ngIf="orden.AUTORIZACION === '1' " style="color: green; text-align: center;">Autorizada</h2>
+        </div>
+
+        <section>
+            <div>
+                <div style="background-color: #fff; padding: 15px; margin: 15px;">
+                    <div class="textData mb-3">
+                        <div
+                            style="display: flex; justify-content: space-between; margin-left: 20px; margin-right: 20px;">
+                            <div class="FirstTextData ">
+                                <div class="contentLabelInput">
+                                    <label>Nombre: </label>
+                                    <div>{{orden.CLIENTE}} </div>
+                                </div>
+
+                                <div class="contentLabelInput">
+                                    <label>Dirección: </label>
+                                    <div>{{orden.LOCALIDAD}}</div>
+                                    <div
+                                        *ngIf="orden.LOCALIDAD === null || orden.LOCALIDAD === undefined || orden.LOCALIDAD === ''">
+                                        Municipio no ingresado.
+
+                                    </div>
+                                </div>
+
+                                <div class="contentLabelInput">
+                                    <label>Fecha: </label>
+                                    <div>{{orden.FECHA_DOC}} </div>
+                                </div>
+
+                                <div class="contentLabelInput">
+                                    <label>Vendedor: </label>
+                                    <div>{{orden.VENDEDOR}}</div>
+                                </div>
+                            </div>
+
+                            <div class="secondTextData">
+                                <div class="contentLabelInput">
+                                    <label>NIT: </label>
+                                    <div>{{orden.CURP}}</div>
+                                    <div *ngIf="orden.CURP === null">C/F</div>
+                                </div>
+                                <div class="contentLabelInput">
+                                    <label>Código Cliente: </label>
+                                    <div> {{orden.CLAVE}}</div>
+
+                                </div>
+                                <div class="contentLabelInput">
+                                    <label>Clasificación: </label>
+                                    <div>{{orden.CLASIFIC}}</div>
+
+                                </div>
+                                <div class="contentLabelInput">
+                                    <label>Forma de Pago: </label>
+                                    <div *ngIf="orden.CON_CREDITO === 'S'"> Con Crédito</div>
+                                    <div *ngIf="orden.CON_CREDITO === 'N'">Sin Crédito</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5">
+                            <div class="table-responsive" style="margin: 10px;">
+                                <table class="table table-bpedidoed table-hover">
+                                    <thead style="margin: -100px;">
+                                        <tr>
+                                            <th class="text-center TextB"
+                                                style="background-color: #0080ffd9; color: white;">#</th>
+                                            <th class="text-center TextB"
+                                                style="width: 120px; background-color: #0080ffd9; color: white;">
+                                                Articulo</th>
+                                            <th class="text-center TextB"
+                                                style="width: 450px; background-color: #0080ffd9; color: white;">
+                                                Descripción </th>
+                                            <th class="text-center TextB"
+                                                style="background-color: #0080ffd9; color: white;">Cantidad</th>
+
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                        <tr *ngFor="let detalle of detalles">
+                                            <td style="max-width: 15px; margin: 0 auto; text-align: center;">
+                                                {{detalles.indexOf(detalle) + 1}}
+                                            </td>
+                                            <td class="text-center"
+                                                style="max-width: 15px; margin: 0 auto; text-align: center;">
+                                                {{detalle.CVE_ART}} </td>
+                                            <td>
+                                                {{detalle.DESCR}}
+                                                <br>
+                                                <hr style="margin: 0;">
+                                                {{detalle.STR_OBS}}
+                                            </td>
+
+                                            <td class="text-center"> {{detalle.CANT }}</td>
+
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                        <form style="margin:10px;" #programacionForm="ngForm">
+
+                            <div style="display: none;" name="ID_SEDE">{{orden.ID_SEDE}}</div>
+
+                            <h3 style="margin: 0; font-weight: 800;">Programación</h3>
+                            <hr style="margin: 0;">
+                            <div style="display:flex; justify-content:center; gap:10px;">
+
+                                <div>
+                                    <mat-form-field color="accent" appearance="fill" style="margin: 10px;">
+                                        <mat-label>Fecha Inicia</mat-label>
+                                        <input [(ngModel)]="datePiOne" name="datePiOne" matInput [matDatepicker]="picker1">
+                                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker1 color="primary"></mat-datepicker>
+                                    </mat-form-field>
+
+                                    <mat-form-field color="accent" appearance="fill" style="margin: 10px;">
+                                        <mat-label>Fecha Termina</mat-label>
+                                        <input [(ngModel)]="datePiTwo" name="datePiTwo" matInput [matDatepicker]="picker2">
+                                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker2></mat-datepicker>
+                                    </mat-form-field>
+
+                                </div>
+                            </div>
+                            <div class="d-flex" *ngIf="orden.AUTORIZACION !== '1'" style="justify-content: center; margin-top: 15px;">
+                                <button class="btn icon-btn btn-success ms-2 me-2" disabled>
+                                    <span style="border-radius: 50% 50%;"
+                                        class="btn-glyphicon fa-solid fa-check text-success"></span>
+                                    Programar
+                                </button>
+                                <button (click)="Programar()" *ngIf="orden.AUTORIZACION === '1'" class="btn icon-btn btn-success ms-2 me-2" >
+                                    <span style="border-radius: 50% 50%;"
+                                        class="btn-glyphicon fa-solid fa-check text-success"></span>
+                                    Programar
+                                </button>
+
+                                <button routerLink="/admin/autorizaciones" class="btn icon-btn btn-danger ms-2 me-2" >
+                                    <span style="border-radius: 50% 50%; width: 30px; height: 30px;"
+                                        class="btn-glyphicon fa-solid fa-xmark text-danger"></span>
+                                    Cancelar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>

@@ -58,6 +58,7 @@ export class PedidosAdminComponent implements OnInit {
   pedidos: any;
   position: any;
   searchPedido: any;
+  pipePedido:any;
   pedidosY: any;
   pedidosPorMes: any;
 
@@ -169,12 +170,10 @@ export class PedidosAdminComponent implements OnInit {
 
   getPedidosPorMes(monthForm: any) {
     const { year, month, date } = this.dateprueba._i;
-
-
-    const newDateBack = `${year}-${month}-${date}`;
-
+    const newDateBack = `${year}-${month + 1}-${date}`;
+    
     let params = { DATED: newDateBack }
-console.log(params)
+    
     this.pedidoRest.getPedidoPorMes(params).subscribe({
       next: (res: any) => {
         this.pedidosPorMes = res.returnPedidosPorMes;

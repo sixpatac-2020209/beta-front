@@ -22,8 +22,11 @@ import { PedidosAdminComponent } from './components/admin/pedidos-admin/pedidos-
 import { HomeAdminComponent } from './components/admin/home-admin/home-admin.component';
 import { PruebaComponent } from './components/Pruebas/prueba/prueba.component';
 import { PedidoComponent } from './components/admin/pedido/pedido.component';
-import { OneOrdenComponent } from './components/admin/one-orden/one-orden.component';
+import { OneOrdenComponent } from './components/admin/order-production/one-orden.component';
 import { OperariosComponent } from './components/landingPage/operarios/operarios.component';
+import { AutorizationComponent } from './components/admin/autorization/autorization.component';
+import { OrdenesFabricacionComponent } from './components/admin/ordenes-fabricacion/ordenes-fabricacion.component';
+import { OrdenFabricacionComponent } from './components/admin/orden-fabricacion/orden-fabricacion.component';
 
 const routes: Routes = [
   { path: '', component: OperariosComponent },
@@ -33,7 +36,8 @@ const routes: Routes = [
     path: 'admin', component: LayoutAdminComponent, children: [
       { path: 'home', component: HomeAdminComponent },
       { path: 'user', component: UserAdminComponent },
-      { path: 'autorizacion', component: AutorizationsComponent },
+      { path: 'autorizaciones', component: AutorizationsComponent },
+      { path: 'autorizarOrden/:id', component: AutorizationComponent },
       { path: 'ordenesProduccion', component: OrderProductionsComponent },
       { path: 'ordenProducción/:id', component: OneOrdenComponent },
       { path: 'detallesOrden', component: DetailsOrderComponent },
@@ -41,6 +45,9 @@ const routes: Routes = [
       { path: 'pedidos', component: PedidosAdminComponent },
       { path: 'pedido/:id', component: PedidoComponent },
       { path: 'pruebas', component: PruebaComponent },
+      { path: 'ordenesFabricacion', component: OrdenesFabricacionComponent },
+      { path: 'ordenFabricacion/:id', component: OrdenFabricacionComponent },
+
     ]
   },
 

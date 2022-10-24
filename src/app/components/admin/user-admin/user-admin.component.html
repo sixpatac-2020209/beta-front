@@ -32,8 +32,6 @@
         <div class="page-content page-container" id="page-content">
           <div class="padding">
             <div class="row d-flex justify-content-center">
-
-
               <div class="col-xl-6 col-md-12">
                 <div class="card user-card-full" *ngFor="let user of users">
                   <div class="row m-l-0 m-r-0">
@@ -67,8 +65,6 @@
                   </div>
                 </div>
               </div>
-
-
             </div>
           </div>
         </div>
@@ -136,12 +132,6 @@
                             &nbsp;
                             Excel
                           </button>
-                          <button mat-menu-item>
-                            <i style="color:red" class="fa-solid fa-file-pdf"></i>
-                            &nbsp;
-                            PDF
-                          </button>
-
                         </mat-menu>
                       </div>
                     </li>
@@ -191,128 +181,6 @@
                     </tr>
                   </tbody>
                 </table>
-
-                <!-- <div *ngIf="!nameUp && !nameDown && !surnameUp && !surnameDown && !usernameUp && !usernameDown && !ageUp && !ageDown" class="d-flex justify-content-between p-2">
-                    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-                      (pageChange)="getUserss()">
-                    </ngb-pagination>
-
-                    <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
-                      (ngModelChange)="getUserss()">
-                      <option [ngValue]="1">1 items por página</option>
-                      <option [ngValue]="2">2 items por página</option>
-                      <option [ngValue]="5">5 items por página</option>
-                      <option [ngValue]="collectionSize">Todos los items</option>
-                    </select>
-                  </div> -->
-
-                <!-- <div *ngIf="nameUp" class="d-flex justify-content-between p-2">
-                    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-                      (pageChange)="getUserssNameUp()">
-                    </ngb-pagination>
-
-                    <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
-                      (ngModelChange)="getUserssNameUp()">
-                      <option [ngValue]="1">1 items por página</option>
-                      <option [ngValue]="2">2 items por página</option>
-                      <option [ngValue]="5">5 items por página</option>
-                      <option [ngValue]="collectionSize">Todos los items</option>
-                    </select>
-                  </div>
-                  <div *ngIf="nameDown" class="d-flex justify-content-between p-2">
-                    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-                      (pageChange)="getUserssNameDown()">
-                    </ngb-pagination>
-
-                    <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
-                      (ngModelChange)="getUserssNameDown()">
-                      <option [ngValue]="1">1 items por página</option>
-                      <option [ngValue]="2">2 items por página</option>
-                      <option [ngValue]="5">5 items por página</option>
-                      <option [ngValue]="collectionSize">Todos los items</option>
-                    </select>
-                  </div>
-
-                  <div *ngIf="surnameUp" class="d-flex justify-content-between p-2">
-                    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-                      (pageChange)="getUserssSurnameUp()">
-                    </ngb-pagination>
-
-                    <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
-                      (ngModelChange)="getUserssSurnameUp()">
-                      <option [ngValue]="1">1 items por página</option>
-                      <option [ngValue]="2">2 items por página</option>
-                      <option [ngValue]="5">5 items por página</option>
-                      <option [ngValue]="collectionSize">Todos los items</option>
-                    </select>
-                  </div>
-                  <div *ngIf="surnameDown" class="d-flex justify-content-between p-2">
-                    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-                      (pageChange)="getUserssSurnameDown()">
-                    </ngb-pagination>
-
-                    <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
-                      (ngModelChange)="getUserssSurnameDown()">
-                      <option [ngValue]="1">1 items por página</option>
-                      <option [ngValue]="2">2 items por página</option>
-                      <option [ngValue]="5">5 items por página</option>
-                      <option [ngValue]="collectionSize">Todos los items</option>
-                    </select>
-                  </div>
-
-                  <div *ngIf="usernameUp" class="d-flex justify-content-between p-2">
-                    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-                      (pageChange)="getUserssUsernameUp()">
-                    </ngb-pagination>
-
-                    <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
-                      (ngModelChange)="getUserssUsernameUp()">
-                      <option [ngValue]="1">1 items por página</option>
-                      <option [ngValue]="2">2 items por página</option>
-                      <option [ngValue]="5">5 items por página</option>
-                      <option [ngValue]="collectionSize">Todos los items</option>
-                    </select>
-                  </div>
-                  <div *ngIf="usernameDown" class="d-flex justify-content-between p-2">
-                    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-                      (pageChange)="getUserssUsernameDown()">
-                    </ngb-pagination>
-
-                    <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
-                      (ngModelChange)="getUserssUsernameDown()">
-                      <option [ngValue]="1">1 items por página</option>
-                      <option [ngValue]="2">2 items por página</option>
-                      <option [ngValue]="5">5 items por página</option>
-                      <option [ngValue]="collectionSize">Todos los items</option>
-                    </select>
-                  </div>
-
-                  <div *ngIf="ageUp" class="d-flex justify-content-between p-2">
-                    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-                      (pageChange)="getUserssAgeUp()">
-                    </ngb-pagination>
-
-                    <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
-                      (ngModelChange)="getUserssAgeUp()">
-                      <option [ngValue]="1">1 items por página</option>
-                      <option [ngValue]="2">2 items por página</option>
-                      <option [ngValue]="5">5 items por página</option>
-                      <option [ngValue]="collectionSize">Todos los items</option>
-                    </select>
-                  </div>
-                  <div *ngIf="ageDown" class="d-flex justify-content-between p-2">
-                    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-                      (pageChange)="getUserssAgeDown()">
-                    </ngb-pagination>
-
-                    <select class="form-select" style="width: auto; height:2.5rem" [(ngModel)]="pageSize" name="size"
-                      (ngModelChange)="getUserssAgeDown()">
-                      <option [ngValue]="1">1 items por página</option>
-                      <option [ngValue]="2">2 items por página</option>
-                      <option [ngValue]="5">5 items por página</option>
-                      <option [ngValue]="collectionSize">Todos los items</option>
-                    </select>
-                  </div> -->
               </div>
             </div>
           </div>
@@ -346,19 +214,19 @@
               </div>
               <hr />
               <div class="body">
-                <form #addUserForm="ngForm" class="register-form m-4">
+                <form (ngSubmit)="saveUser(addUserForm)" #addUserForm="ngForm" class="register-form m-4">
                   <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
                       <mat-form-field class="example-full-width" appearance="outline">
                         <mat-label>Nombre</mat-label>
-                        <input name="name" autocomplete="off" matInput>
+                        <input [(ngModel)]="user.name" name="name" autocomplete="off" matInput>
                         <mat-icon matSuffix>face</mat-icon>
                       </mat-form-field>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
                       <mat-form-field class="example-full-width" appearance="outline">
                         <mat-label>Apellido</mat-label>
-                        <input name="surname" autocomplete="off" matInput>
+                        <input [(ngModel)]="user.surname" name="surname" autocomplete="off" matInput>
                         <mat-icon matSuffix>face</mat-icon>
                       </mat-form-field>
                     </div>
@@ -367,14 +235,14 @@
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
                       <mat-form-field class="example-full-width" appearance="outline">
                         <mat-label>Usuario</mat-label>
-                        <input name="username" autocomplete="off" matInput>
+                        <input [(ngModel)]="user.username" name="username" autocomplete="off" matInput>
                         <mat-icon matSuffix>switch_account</mat-icon>
                       </mat-form-field>
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
                       <mat-form-field class="example-full-width" appearance="outline">
                         <mat-label>Contraseña</mat-label>
-                        <input name="password" autocomplete="off" matInput type="password">
+                        <input [(ngModel)]="user.password" name="password" autocomplete="off" matInput type="password">
                         <mat-icon matSuffix>key</mat-icon>
                       </mat-form-field>
                     </div>
@@ -383,23 +251,23 @@
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
                       <mat-form-field class="example-full-width" appearance="outline">
                         <mat-label>Email</mat-label>
-                        <input name="email" autocomplete="off" matInput>
+                        <input [(ngModel)]="user.email" name="email" autocomplete="off" matInput>
                         <mat-icon matSuffix>email</mat-icon>
                       </mat-form-field>
                     </div>
                   </div>
-                  <div class="row">
 
+                  <div class="row d-flex" style="    justify-content: center;">
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
                       <mat-form-field class="example-full-width" appearance="outline">
                         <mat-label>Role</mat-label>
-                        <mat-select name="role">
-                          <mat-option value="JEFE">
-                            Jefe
-                          </mat-option>
-                          <mat-option value="OPERARIO">
-                            Operario
-                          </mat-option>
+                        <mat-select [(ngModel)]="user.role" name="role" style="z-index: 10000000;">
+                          <mat-option value="SUPERVISOR">Supervisor</mat-option>
+                          <mat-option value="JEFEPRODUCCION">Jefe de Producción</mat-option>
+                          <mat-option value="GERENTECOMERCIAL">Gerente Comercial</mat-option>
+
+                          <mat-option value="LOGISTICA">Logistica</mat-option>
+                          <mat-option value="IT">It</mat-option>
                         </mat-select>
                         <mat-icon matSuffix>switch_account</mat-icon>
                       </mat-form-field>
@@ -426,7 +294,6 @@
           </div>
         </div>
       </div>
-
     </section>
   </main>
 </body>

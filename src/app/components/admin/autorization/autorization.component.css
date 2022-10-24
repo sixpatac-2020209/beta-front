@@ -322,13 +322,11 @@ hr {
 
 
 .textData {
-  display: flex;
-  flex-wrap: wrap;
   width: 100%;
   justify-content: space-around;
   align-content: center;
   flex-direction: row;
-  margin: 10px;
+  margin-top: 10px;
 }
 
 
@@ -368,6 +366,11 @@ font-weight: 200;
   flex-wrap: nowrap;
   gap: 10px;
 }
+
+.TextB{
+font-weight: 900;
+}
+
 
 .TextB{
 font-weight: 900;

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioModel } from 'src/app/models/usuario.model';
 import { ScriptLoginService } from 'src/app/services/cargarScripts/script-login.service';
+import { CredentialsRestService } from 'src/app/services/credentialsRest/credentials-rest.service';
+import { UserRestService } from 'src/app/services/userRest/user-rest.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -11,24 +14,48 @@ import { ScriptLoginService } from 'src/app/services/cargarScripts/script-login.
 })
 export class LoginComponent implements OnInit {
 
-  userLogin:UsuarioModel
+  user: UsuarioModel
 
   constructor(
-private router : Router,
+
+    private router: Router,
+    private userRest: CredentialsRestService,
     //private _ScriptsLogin : ScriptLoginService,
-  ){
+  ) {
     //_ScriptsLogin.Carga(["app"]);
-    this.userLogin = new UsuarioModel('','','','','','','',);
+    this.user = new UsuarioModel('', '', '', '', '', '', '',);
   }
 
-  ngOnInit( ): void { }
+  ngOnInit(): void { }
 
-login(loginForm : any)
-{
-//TU FUNCION PARA EL BACKEND
-localStorage.setItem('email', JSON.stringify(this.userLogin.email));
-this.router.navigate(['/admin/home'])
 
-}
+    login() {
+    this.userRest.login(this.user).subscribe({
+      next: (res: any) => {
+        localStorage.setItem('identity', JSON.stringify(res.already));
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('email', JSON.stringify(this.user.email));
+
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          html: 'Bienvenido <b>' + res.already.name + '</b>',
+          confirmButtonColor: '#28B463'
+        })
+
+        const verificarAdmin = res.already.role;
+        //VERIFICA A DONDE LLEVARME//
+        if (verificarAdmin == 'ADMINISTRADOR') { this.router.navigate(['/admin/home']); }
+
+      },
+      error: (err: any) => {
+        Swal.fire({
+          icon: 'error',
+          title: err.error.message || err.error,
+          confirmButtonColor: '#E74C3C'
+        });
+      },
+    })
+  }
 
 }

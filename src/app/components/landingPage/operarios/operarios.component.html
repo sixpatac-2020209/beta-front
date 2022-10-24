@@ -21,7 +21,7 @@
       </div>
 
       <div>
-        <button>Login</button>
+        <button routerLink="/login" class="btnLogin">Iniciar Sesión</button>
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
@@ -33,60 +33,202 @@
       <label style="margin-top: 100%;">Selecciona la Orden de Producción</label>
       <mat-form-field>
         <mat-label># Orden</mat-label>
-        <mat-select>
-          <mat-option>Hola</mat-option>
+        <mat-select [(ngModel)]="orderSelected">
+          <mat-option (click)="getOrden(orden.CVE_ORDEN)" value="{{orden.CVE_ORDEN}}" *ngFor="let orden of orders">{{orden.CVE_PEDIDO}}</mat-option>
         </mat-select>
       </mat-form-field>
     </mat-sidenav>
 
-    <mat-sidenav-content>
+    <div style="display: flex; justify-content: center; align-items: center; align-content: center;"><h1 *ngIf="!orderSelected" > Selecciona Tú Orden </h1></div>
 
+    <mat-sidenav-content *ngIf="orderSelected">
 
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="addContainer">
-            <div class="contact-details">
-              <div class="modalHeader">
-                <div class="editRowModal">
-                  <div class="modalHeader clearfix mb-2 mt-4">
-                    <div class="modal-about contact-header">
-                      <div class="contact-details-heading">
-                        <div class="contact-details-name" style="display: flex;">
-                          Orden #
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+      <div style="margin: 20px;">
+        <div style="display:flex; justify-content:center;">
+          <mat-form-field appearance="fill">
+            <mat-label>Artículo</mat-label>
+            <mat-select [(ngModel)]="articuloSelected">
+              <mat-option (click)="getDetalleArticulo(articulo.CVE_ART)" value="{{articulo.CVE_ART}}" *ngFor="let articulo of articulosOrder">
+                {{articulo.CVE_ART}} | {{articulo.DESCR}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <mat-tab-group  *ngIf="articuloSelected">
+
+          <mat-tab label="CORTE">
+            <div style="display:flex; justify-content: center; margin-top: 6%;">
+              <div>
+                <div
+                  style="display: flex; gap: 15px; margin-top: 10px; align-items: center; justify-content: center; align-content: center;">
+                  <label style="font-size: 18px;"> <b>Proceso </b> </label>
+                  <div>Por hacer</div>
+                  
                 </div>
-                <button mat-icon-button data-bs-dismiss="modal" aria-label="Close dialog">
-                  <mat-icon>close</mat-icon>
-                </button>
+                <div
+                  style="display: flex; gap: 15px; margin-top: 10px; align-items: center; justify-content: center; align-content: center;">
+                  <label style="font-size: 18px;"> <b>{{detallesArticulos[0].DESCRIPCION}}: </b> </label>
+                  <div>{{detallesArticulos[0].REALIZAR}}</div>
+                  <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Cantidad a digitar</mat-label>
+                    <input matInput type="text" value="{{detallesArticulos[0].REALIZADO}}">
+                  </mat-form-field>
+                </div>
+
+                <div
+                  style="display: flex; gap: 15px; margin-top: 10px; align-items: center; justify-content: center; align-content: center;">
+                  <label style="font-size: 18px;"> <b>{{detallesArticulos[1].DESCRIPCION}}: </b> </label>
+                  <div>{{detallesArticulos[1].REALIZAR}}</div>
+                  <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Clearable input</mat-label>
+                    <input matInput type="text" value="{{detallesArticulos[1].REALIZADO}}">
+                  </mat-form-field>
+                </div>
+
+                <div
+                  style="display: flex; gap: 15px; margin-top: 10px; align-items: center; justify-content: center; align-content: center;">
+                  <label style="font-size: 18px;"> <b>{{detallesArticulos[2].DESCRIPCION}}: </b> </label>
+                  <div>{{detallesArticulos[2].REALIZAR}}</div>
+                  <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Clearable input</mat-label>
+                    <input matInput type="text" value="{{detallesArticulos[2].REALIZADO}}">
+                  </mat-form-field>
+                </div>
+
+                <div
+                  style="display: flex; gap: 15px; margin-top: 10px; align-items: center; justify-content: center; align-content: center;">
+                  <label style="font-size: 18px;"> <b>{{detallesArticulos[3].DESCRIPCION}}: </b> </label>
+                  <div>{{detallesArticulos[3].REALIZAR}}</div>
+                  <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Clearable input</mat-label>
+                    <input matInput type="text" value="{{detallesArticulos[3].REALIZADO}}">
+                  </mat-form-field>
+                </div>
               </div>
             </div>
-            <hr />
-            <div class="body">
-              <form #addUserForm="ngForm" class="register-form m-4">
+          </mat-tab>
 
-                <hr style="margin-top: -0.5rem;">
-                <div class="spacing-buttons" style="display: flex; justify-content:center;">
-                  <button type="submit" data-bs-dismiss="modal" class="btn btn-labeled btn-success me-1">
-                    <span class="btn-label">
-                      <i class="fa fa-floppy-o"></i>
-                    </span>
-                    Agregar
-                  </button>
-                  <button type="button" data-bs-dismiss="modal" class="btn btn-labeled btn-danger ms-1 me-1">
-                    <span class="btn-label">
-                      <i class="fa fa-times-circle"></i>
-                    </span>
-                    Cancelar
-                  </button>
+          <mat-tab label="FUSION">
+            <div style="display:flex; justify-content: center;">
+              <div>
+                <div
+                  style="display: flex; gap: 15px; margin-top: 10px; align-items: center; justify-content: center; align-content: center;">
+                  <label style="font-size: 18px;"> <b>{{detallesArticulos[4].DESCRIPCION}}: </b> </label>
+                  <div>{{detallesArticulos[4].REALIZAR}}</div>
+                  <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Cantidad a digitar</mat-label>
+                    <input matInput type="text" value="{{detallesArticulos[4].REALIZADO}}">
+                  </mat-form-field>
                 </div>
-              </form>
+
+                <div
+                  style="display: flex; gap: 15px; margin-top: 10px; align-items: center; justify-content: center; align-content: center;">
+                  <label style="font-size: 18px;"> <b>{{detallesArticulos[5].DESCRIPCION}}: </b> </label>
+                  <div>{{detallesArticulos[5].REALIZAR}}</div>
+                  <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Cantidad a digitar</mat-label>
+                    <input matInput type="text" value="{{detallesArticulos[5].REALIZADO}}">
+                  </mat-form-field>
+                </div>
+
+                <div
+                  style="display: flex; gap: 15px; margin-top: 10px; align-items: center; justify-content: center; align-content: center;">
+                  <label style="font-size: 18px;"> <b>{{detallesArticulos[6].DESCRIPCION}}: </b> </label>
+                  <div>{{detallesArticulos[6].REALIZAR}}</div>
+                  <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Cantidad a digitar</mat-label>
+                    <input matInput type="text" value="{{detallesArticulos[6].REALIZADO}}">
+                  </mat-form-field>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          </mat-tab>
+
+          <mat-tab label="LIMPIEZA">
+            <div style="display:flex; justify-content: center;">
+              <div>
+                <div
+                  style="display: flex; gap: 15px; margin-top: 10px; align-items: center; justify-content: center; align-content: center;">
+                  <label style="font-size: 18px;"> <b>{{detallesArticulos[7].DESCRIPCION}}: </b> </label>
+                  <div>{{detallesArticulos[7].REALIZAR}}</div>
+                  <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Cantidad a digitar</mat-label>
+                    <input matInput type="text" value="{{detallesArticulos[7].REALIZADO}}">
+                  </mat-form-field>
+                </div>
+
+                <div
+                  style="display: flex; gap: 15px; margin-top: 10px; align-items: center; justify-content: center; align-content: center;">
+                  <label style="font-size: 18px;"> <b>{{detallesArticulos[8].DESCRIPCION}}: </b> </label>
+                  <div>{{detallesArticulos[8].REALIZAR}}</div>
+                  <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Cantidad a digitar</mat-label>
+                    <input matInput type="text" value="{{detallesArticulos[8].REALIZADO}}">
+                  </mat-form-field>
+                </div>
+
+                <div
+                  style="display: flex; gap: 15px; margin-top: 10px; align-items: center; justify-content: center; align-content: center;">
+                  <label style="font-size: 18px;"> <b>{{detallesArticulos[9].DESCRIPCION}}: </b> </label>
+                  <div>{{detallesArticulos[9].REALIZAR}}</div>
+                  <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Cantidad a digitar</mat-label>
+                    <input matInput type="text" value="{{detallesArticulos[9].REALIZADO}}">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="ARMADO">
+            <div style="display:flex; justify-content: center;">
+              <div>
+                <div
+                  style="display: flex; gap: 15px; margin-top: 10px; align-items: center; justify-content: center; align-content: center;">
+                  <label style="font-size: 18px;"> <b>{{detallesArticulos[10].DESCRIPCION}}: </b> </label>
+                  <div>{{detallesArticulos[10].REALIZAR}}</div>
+                  <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Cantidad a digitar</mat-label>
+                    <input matInput type="text" value="{{detallesArticulos[10].REALIZADO}}">
+                  </mat-form-field>
+                </div>
+
+                <div
+                  style="display: flex; gap: 15px; margin-top: 10px; align-items: center; justify-content: center; align-content: center;">
+                  <label style="font-size: 18px;"> <b>{{detallesArticulos[11].DESCRIPCION}}: </b> </label>
+                  <div>{{detallesArticulos[11].REALIZAR}}</div>
+                  <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Cantidad a digitar</mat-label>
+                    <input matInput type="text" value="{{detallesArticulos[11].REALIZADO}}">
+                  </mat-form-field>
+                </div>
+
+                <div
+                  style="display: flex; gap: 15px; margin-top: 10px; align-items: center; justify-content: center; align-content: center;">
+                  <label style="font-size: 18px;"> <b>{{detallesArticulos[12].DESCRIPCION}}: </b> </label>
+                  <div>{{detallesArticulos[12].REALIZAR}}</div>
+                  <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Cantidad a digitar</mat-label>
+                    <input matInput type="text" value="{{detallesArticulos[12].REALIZADO}}">
+                  </mat-form-field>
+                </div>
+
+                <div
+                  style="display: flex; gap: 15px; margin-top: 10px; align-items: center; justify-content: center; align-content: center;">
+                  <label style="font-size: 18px;"> <b>{{detallesArticulos[13].DESCRIPCION}}: </b> </label>
+                  <div>{{detallesArticulos[13].REALIZAR}}</div>
+                  <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Cantidad a digitar</mat-label>
+                    <input matInput type="text" value="{{detallesArticulos[13].REALIZADO}}">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
       </div>
+
     </mat-sidenav-content>
 
   </mat-sidenav-container>

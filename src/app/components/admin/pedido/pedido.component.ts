@@ -48,7 +48,7 @@ export class PedidoComponent implements OnInit {
 
     this.planta = new SedeModel('', '');
     this.detalle = new DetallePedidoModel('', '', '', '', '', '', '');
-    this.orden = new OrdenModel('', '', '', '','', '', '', '','','','','','','','','','','');
+    this.orden = new OrdenModel('', '', '', '','', '', '', '','','','','','','','','','','','');
   }
 
   ngOnInit(): void {

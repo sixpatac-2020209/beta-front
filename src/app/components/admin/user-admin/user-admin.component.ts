@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioModel } from 'src/app/models/usuario.model';
 import { UserRestService } from 'src/app/services/userRest/user-rest.service';
 import { ExportExcelService } from '../../../services/exportData/exportExcel/export-excel.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-user-admin',
@@ -102,5 +104,47 @@ export class UserAdminComponent implements OnInit {
   //Exportar Datos a Excel//
   exportExcel() {
     this.excelService.downloadExcel(this.users)
+  }
+
+  saveUser(addUserForm: any) {
+    this.userRest.saveUser(this.user).subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          confirmButtonColor: '#28B463'
+        });
+        this.getUsers();
+        addUserForm.reset();
+      },
+      error: (err: any) => {
+        Swal.fire({
+          icon: 'error',
+          title: err.error.message || err.error,
+          confirmButtonColor: '#E74C3C'
+        });
+        addUserForm.reset();
+      },
+    });
+
+    this.userRest.saveUserSAE(this.user).subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          confirmButtonColor: '#28B463'
+        });
+        this.getUsers();
+        addUserForm.reset();
+      },
+      error: (err: any) => {
+        Swal.fire({
+          icon: 'error',
+          title: err.error.message || err.error,
+          confirmButtonColor: '#E74C3C'
+        });
+        addUserForm.reset();
+      },
+    })
   }
 }

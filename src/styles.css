@@ -1,12 +1,10 @@
+ .cdk-global-overlay-wrapper, .cdk-overlay-container {
+     z-index: 99999 !important;
+  }
+
 * {
   margin: 0;
   padding: 0;
-}
-
-@media (min-width: 1200px) {
-  .toggle-sidebar .sidebar {
-    left: -300px!important;
-  }
 }
 
 .cm-up {

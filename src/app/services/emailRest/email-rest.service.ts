@@ -15,16 +15,16 @@ export class EmailRestService {
     private http: HttpClient,
   ) { }
 
-  confirmarOrden(id: string) {
-    return this.http.get(environment.baseURI + 'email/confirmarOrden/' + id, { headers: this.httpOptions })
+  confirmarOrden(id: string, params: {}) {
+    return this.http.put(environment.baseURI + 'email/confirmarOrden/' + id, params, { headers: this.httpOptions })
   }
 
-  corregirOrden(id: string) {
-    return this.http.get(environment.baseURI + 'email/correccionOrden/' + id, { headers: this.httpOptions })
+  corregirOrden(id: string, params: {}) {
+    return this.http.put(environment.baseURI + 'email/correccionOrden/' + id, params, { headers: this.httpOptions })
   }
 
-  rechazarOrden(id: string) {
-    return this.http.get(environment.baseURI + 'email/rechazarOrden/' + id, { headers: this.httpOptions })
+  rechazarOrden(id: string, params:{}) {
+    return this.http.put(environment.baseURI + 'email/rechazarOrden/' + id, params, { headers: this.httpOptions })
   }
 
 }

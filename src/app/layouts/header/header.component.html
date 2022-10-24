@@ -1,9 +1,9 @@
-<mat-toolbar style="background: #fff; height:35px; position: fixed; margin-top: -60px; z-index: 10000000;">
+<mat-toolbar style="background: #fff; height:70px; position: fixed; margin-top: -60px; z-index: 900; width:100vw;">
   <mat-toolbar-row
     style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center; align-content: center; flex-wrap: wrap;">
 
     <div style="display: flex;">
-      <a routerLink="/admin/home" class="logo textColor"
+      <a routerLink="/admin/home" class="logo textColor no-seleccionableLogo"
         style="display: flex; align-items: center; max-height: 30px; z-index: 100000; margin-top: -10px;">
         <img src="assets/img/logo.png" alt="" />
         <span class="d-none d-lg-block textColor"> VENTO App</span>
@@ -15,44 +15,19 @@
 
       <li class="nav-item dropdown me-5">
         <a class="nav-link nav-profile pe-0" href="#" data-bs-toggle="dropdown">
-          <span class="d-none d-md-block dropdown-toggle ps-2 iconColor">Jassa</span>
+          <span class="d-none d-md-block dropdown-toggle ps-2 iconColor">{{user.name}}</span>
         </a>
         <ul class="dropdown-menu profile">
           <li class="dropdown-header">
-            <h6>Jassa</h6>
+            <h6>{{user.name}}</h6>
           </li>
           <li>
             <hr class="dropdown-divider" />
-          </li>
-          <li>
-            <a class="dropdown-item" routerLink="/user-profile"
-              style="display: flex; align-items: center; max-height: 30px">
-              <i class="bi bi-person"></i> <span>My Profile</span>
-            </a>
-          </li>
-          <li>
-            <hr class="dropdown-divider" />
-          </li>
-          <li>
-            <a class="dropdown-item" routerLink="/user-profile"
-              style="display: flex; align-items: center; max-height: 30px">
-              <i class="bi bi-gear"></i> <span>Account Settings</span>
-            </a>
-          </li>
-          <li>
-            <hr class="dropdown-divider" />
-          </li>
-          <li>
-            <a class="dropdown-item" routerLink="/pages-faq"
-              style="display: flex; align-items: center; max-height: 30px">
-              <i class="bi bi-question-circle"></i> <span>Need Help?</span>
-            </a>
-          </li>
           <li>
             <hr class="dropdown-divider" />
           </li>
           <li (click)="logout()">
-            <a class="dropdown-item" style="display: flex; align-items: center; max-height: 30px">
+            <a class="dropdown-item no-seleccionable" style="display: flex; align-items: center; max-height: 30px">
               <i class="bi bi-box-arrow-right"></i> <span>Sign Out</span>
             </a>
           </li>

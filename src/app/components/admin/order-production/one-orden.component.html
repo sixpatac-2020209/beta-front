@@ -6,52 +6,54 @@
 
     <section>
       <div>
-        <div style="background-color: #fff; padding:10px;">
+        <div style="background-color: #fff; padding: 15px; margin: 15px;">
           <div class="textData mb-3">
-            <div class="FirstTextData ">
-              <div class="contentLabelInput">
-                <label>Nombre: </label>
-                <div>{{orden.CLIENTE}} </div>
+            <div style="display: flex; justify-content: space-between; margin-left: 20px; margin-right: 20px;">
+              <div class="FirstTextData ">
+                <div class="contentLabelInput">
+                  <label>Nombre: </label>
+                  <div>{{orden.CLIENTE}} </div>
+                </div>
+
+                <div class="contentLabelInput">
+                  <label>Dirección: </label>
+                  <div>{{orden.LOCALIDAD}} </div>
+                  <div *ngIf="orden.LOCALIDAD === null"> Municipio no ingresado. </div>
+                </div>
+
+                <div class="contentLabelInput">
+                  <label>Fecha: </label>
+                  <div>{{orden.FECHA_DOC}} </div>
+                </div>
+
+                <div class="contentLabelInput">
+                  <label>Vendedor: </label>
+                  <div>{{orden.VENDEDOR}}</div>
+                </div>
               </div>
 
-              <div class="contentLabelInput">
-                <label>Dirección: </label>
-                <div>{{orden.LOCALIDAD}} </div>
-                <div *ngIf="orden.LOCALIDAD === null"> Municipio no ingresado. </div>
-              </div>
+              <div class="secondTextData">
+                <div class="contentLabelInput">
+                  <label>NIT: </label>
+                  <div>{{orden.CURP}}</div>
+                  <div *ngIf="orden.CURP === null">C/F</div>
+                </div>
+                <div class="contentLabelInput">
+                  <label>Código Cliente: </label>
+                  <div> {{orden.CLAVE}}</div>
 
-              <div class="contentLabelInput">
-                <label>Fecha: </label>
-                <div>{{orden.FECHA_DOC}} </div>
-              </div>
+                </div>
+                <div class="contentLabelInput">
+                  <label>Clasificación: </label>
+                  <div>{{orden.CLASIFIC}}</div>
 
-              <div class="contentLabelInput">
-                <label>Vendedor: </label>
-                <div>{{orden.VENDEDOR}}</div>
+                </div>
+                <div class="contentLabelInput">
+                  <label>Forma de Pago: </label>
+                  <div *ngIf="orden.CON_CREDITO === 'S'"> Con Crédito</div>
+                  <div *ngIf="orden.CON_CREDITO === 'N'">Sin Crédito</div>
+                </div>
               </div>
-            </div>
-            <div class="secondTextData">
-              <div class="contentLabelInput">
-                <label>NIT: </label>
-                <div>{{orden.CURP}}</div>
-                <div *ngIf="orden.CURP === null">C/F</div>
-              </div>
-              <div class="contentLabelInput">
-                <label>Código Cliente: </label>
-                <div> {{orden.CLAVE}}</div>
-
-              </div>
-              <div class="contentLabelInput">
-                <label>Clasificación: </label>
-                <div>{{orden.CLASIFIC}}</div>
-
-              </div>
-              <div class="contentLabelInput">
-                <label>Forma de Pago: </label>
-                <div *ngIf="orden.CON_CREDITO === 'S'"> Con Crédito</div>
-                <div *ngIf="orden.CON_CREDITO === 'N'">Sin Crédito</div>
-              </div>
-
             </div>
 
             <div class="mt-5">
@@ -60,7 +62,8 @@
                   <thead style="margin: -100px;">
                     <tr>
                       <th class="text-center TextB" style="background-color: #0080ffd9; color: white;">#</th>
-                      <th class="text-center TextB" style="width: 120px; background-color: #0080ffd9; color: white;">Articulo</th>
+                      <th class="text-center TextB" style="width: 120px; background-color: #0080ffd9; color: white;">
+                        Articulo</th>
                       <th class="text-center TextB" style="width: 450px; background-color: #0080ffd9; color: white;">
                         Descripción </th>
                       <th class="text-center TextB" style="background-color: #0080ffd9; color: white;">Cantidad</th>
@@ -110,7 +113,7 @@
                       <td class=" TextB">TOTAL</td>
                       <td style="text-align: right">
                         <span class=" TextB" style="text-align: right">
-{{detalle.IMPORTE}}
+                          {{detalle.IMPORTE}}
                         </span>
                       </td>
                     </tr>
@@ -118,11 +121,11 @@
                 </table>
               </div>
             </div>
+
+
             <form>
-
-
               <div class="d-flex" style="justify-content: center;">
-                <button (click)="autorizar()" class="btn icon-btn btn-success ms-2 me-2">
+                <button (click)="autorizar();" class="btn icon-btn btn-success ms-2 me-2">
                   <span style="border-radius: 50% 50%;" class="btn-glyphicon fa-solid fa-check text-success"></span>
                   Autorizar
                 </button>
@@ -132,8 +135,6 @@
                     class="btn-glyphicon fa-solid fa-exclamation text-warning"></span>
                   Corregir
                 </button>
-
-
 
                 <button class="btn icon-btn btn-danger ms-2 me-2" data-bs-toggle="modal" data-bs-target="#Rechazar">
                   <span style="border-radius: 50% 50%; width: 30px"
@@ -176,20 +177,20 @@
                         </div>
                         <hr />
                         <div class="body">
-                          <form class="register-form m-4">
+                          <form class="register-form m-4" #emailForm="ngForm">
                             <div class="form-group">
                               <label for="exampleFormControlTextarea1" style="font-size: 18px;">Correcciones: </label>
-                              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                              <textarea [(ngModel)]="email.razon" name="razon" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                             </div>
                             <hr style="margin-top: -0.5rem;">
                             <div class="spacing-buttons">
-                              <button type="submit" data-bs-dismiss="modal" class="btn btn-labeled btn-success me-1">
+                              <button (click)="corregirEmail()" type="submit" data-bs-dismiss="modal" class="btn btn-labeled btn-success me-1">
                                 <span class="btn-label">
                                   <i class="fa fa-floppy-o"></i>
                                 </span>
                                 Enviar
                               </button>
-                              <button type="button" data-bs-dismiss="modal"
+                              <button  type="button" data-bs-dismiss="modal"
                                 class="btn btn-labeled btn-danger ms-1 me-1">
                                 <span class="btn-label">
                                   <i class="fa fa-times-circle"></i>
@@ -234,14 +235,14 @@
                       </div>
                       <hr />
                       <div class="body">
-                        <form class="register-form m-4">
+                        <form class="register-form m-4" #emailForm="ngForm">
                           <div class="form-group">
                             <label for="exampleFormControlTextarea1" style="font-size: 18px;">Rechazado por: </label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea [(ngModel)]="email.razon" name="razon" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                           </div>
                           <hr style="margin-top: -0.5rem;">
                           <div class="spacing-buttons">
-                            <button type="submit" data-bs-dismiss="modal" class="btn btn-labeled btn-success me-1">
+                            <button (click)="rechazarEmail()" type="submit" data-bs-dismiss="modal" class="btn btn-labeled btn-success me-1">
                               <span class="btn-label">
                                 <i class="fa fa-floppy-o"></i>
                               </span>
@@ -260,8 +261,9 @@
                   </div>
                 </div>
               </div>
-
             </form>
+
+            
           </div>
         </div>
       </div>

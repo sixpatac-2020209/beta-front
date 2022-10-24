@@ -23,3 +23,29 @@ mat-sidenav {
     text-align: center;
 }
 
+.btnLogin{
+  background-color: transparent;
+  color: #459b09;
+font-weight: 700;
+font-size: 18px;
+padding: 5px 10px;
+margin: 10px;
+border: none;
+transition: all .8s;
+}
+
+.btnLogin:hover{
+  background-color: transparent;
+  color: #459b09;
+font-weight: 900;
+font-size: 20px;
+padding: 5px 10px;
+margin: 10px;
+border: none;
+transition: all .8s;
+}
+
+.mat-select-panel {
+    min-width: 112px;
+    max-width: 600px!important;
+}

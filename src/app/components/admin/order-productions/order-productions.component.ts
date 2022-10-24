@@ -11,7 +11,7 @@ import { OrdenProduccionRestService } from 'src/app/services/ordenProduccionRest
 export class OrderProductionsComponent implements OnInit {
   orden: OrdenModel;
   ordenes: any;
-
+  ordenPipe: any;
   notFound: boolean = false;
 
 
@@ -20,7 +20,7 @@ export class OrderProductionsComponent implements OnInit {
     private excelService: ExportExcelOrdenService,
 
   ) {
-    this.orden = new OrdenModel('', '', '', '','', '', '', '','','','','','','','','','','');
+    this.orden = new OrdenModel('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
   }
 
   ngOnInit(): void {

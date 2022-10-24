@@ -34,5 +34,11 @@ getImporteOrden(id: string) {
     return this.http.post(environment.baseURI + 'ordenes/createOrden', params, { headers: this.httpOptions });
   }
 
+  //////////
+  getOrders()
+  {
+    return this.http.get(environment.baseURI + 'ordenes/getOrders', { headers: this.httpOptions } )
+  }
+
 
 }
