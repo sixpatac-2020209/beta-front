@@ -20,7 +20,7 @@ export class HomeAdminComponent implements OnInit {
   constructor(
     private elementRef: ElementRef,
     private ordenRest: OrdenProduccionRestService,
-        private autorizationRest: AutorizationRestService
+    private autorizationRest: AutorizationRestService
 
   ) {
 
@@ -32,7 +32,7 @@ export class HomeAdminComponent implements OnInit {
     s.type = "text/javascript";
     s.src = "../../../../assets/js/main.js";
     this.elementRef.nativeElement.appendChild(s);
-    
+
     this.getOrdenesDeProduccion()
     this.getAutorizaciones()
   }

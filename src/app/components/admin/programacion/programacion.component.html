@@ -1,0 +1,175 @@
+<body>
+    <main id="main" class="main">
+        <div class="pagetitle">
+            <h1>Ordenes de Fabricación</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a routerLink="/admin/home" style="text-decoration: none; margin-top:100px;">Inicio</a>
+                    </li>
+                    <li class="breadcrumb-item active">Ordenes de Fabricación</li>
+                </ol>
+            </nav>
+        </div>
+        <section>
+            <div>
+                <!--TABLA PRINCIPAL-->
+                <div class="row clearfix tableText">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tableText">
+                        <div class="card tableText">
+                            <div class="materialTableHeader mb-3 tableText headTab">
+                                <div class="row tableText">
+                                    <div class="col-8 tableText">
+                                        <div class="hola">
+                                            <ul class="header-buttons-left ml-0 tableTitle">
+                                                <li class="dropdown m-l-20">
+                                                    <label for="search-input">
+                                                        <i class="material-icons search-icon">search</i>
+                                                    </label>
+                                                    <input placeholder="Buscar Orden..." type="text" #filter
+                                                        class="browser-default search-field" aria-label="Search box" />
+                                                </li>
+                                            </ul>
+                                            <div style="float: right">
+                                                <button class="botonAc" (click)="exportExcel()">
+                                                    <i style="color: green" class="fa-solid fa-file-excel"></i>
+                                                    &nbsp; Excel
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tableBody">
+                                <div class="table-responsive">
+                                    <table class="table table-bpedidoed table-hover">
+                                        <thead style="margin: -100px">
+                                            <tr>
+                                                <th class="text-center">#</th>
+                                                <th class="text-center" style="width: 20px;">Orden</th>
+                                                <th class="text-center" style="width: 100px">
+                                                    Pedido
+                                                </th>
+                                                <th class="text-center">Cliente</th>
+                                                <th class="text-center">Vendedor</th>
+                                                <th class="text-center">Planta</th>
+                                                <th class="text-center"> </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let orden of ordenes">
+                                                <td style="font-weight: 900;"><b>{{ ordenes.indexOf(orden) + 1 }}</b>
+                                                </td>
+                                                <td class="text-center"> {{ orden.CVE_ORDEN }} </td>
+                                                <td style="text-align: right">
+                                                    <span style="text-align: right">{{ orden.CVE_PEDIDO }}
+                                                    </span>
+                                                </td>
+                                                <td> {{ orden.CLIENTE }} </td>
+                                                <td> {{ orden.VENDEDOR }} </td>
+                                                <td style="text-align: center;"> {{ orden.ID_SEDE }} </td>
+
+                                                <td>
+                                                    <i (click)="getOrden(orden.CVE_ORDEN)" class="fa-solid fa-clock"
+                                                        style="color: #0d48b4; font-size:20px;" data-bs-toggle="modal"
+                                                        data-bs-target="#programingForm"></i>
+
+                                                </td>
+                                            </tr>
+                                            <tr rowspan="9" *ngIf="notFound === true">
+                                                <td colspan="9" class="text-center">Sin Resultados</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade" id="programingForm" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="addContainer">
+                            <div class="contact-details">
+                                <div class="modalHeader">
+                                    <div class="editRowModal">
+                                        <div class="modalHeader clearfix">
+                                            <div class="modal-about contact-header">
+                                                <div class="contact-details-img">
+                                                    <i class="fa-solid fa-clock fa-2x mt-1"></i>
+                                                </div>
+                                                <div class="contact-details-heading">
+                                                    <div class="contact-details-name mb-2">
+                                                        ORDEN #
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button mat-icon-button data-bs-dismiss="modal" aria-label="Close dialog">
+                                        <mat-icon>close</mat-icon>
+                                    </button>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="body">
+                                <form #programingForm="ngForm" class="register-form m-4">
+
+                                    <div style="display: none;" name="ID_SEDE">{{orden.ID_SEDE}}</div>
+                                    <h3 style="margin: 0; font-weight: 800;">Programación: </h3>
+                                    <hr style="margin: 0;">
+                                    <div style="display:flex; justify-content:center; gap:10px;">
+
+                                        <div style="display: flex;">
+                                            <mat-form-field color="accent" appearance="fill" style="margin: 10px;">
+                                                <mat-label>Fecha Inicia</mat-label>
+                                                <input [(ngModel)]="datePiOne" name="datePiOne" matInput
+                                                    [matDatepicker]="picker1">
+                                                <mat-datepicker-toggle matSuffix [for]="picker1">
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #picker1 color="primary"></mat-datepicker>
+                                            </mat-form-field>
+
+                                            <mat-form-field color="accent" appearance="fill" style="margin: 10px;">
+                                                <mat-label>Fecha Termina</mat-label>
+                                                <input [(ngModel)]="datePiTwo" name="datePiTwo" matInput
+                                                    [matDatepicker]="picker2">
+                                                <mat-datepicker-toggle matSuffix [for]="picker2">
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #picker2></mat-datepicker>
+                                            </mat-form-field>
+
+                                        </div>
+                                    </div>
+
+                                    <hr style="margin-top: -0.5rem;">
+                                    <div class="spacing-buttons">
+                                        <button type="submit" data-bs-dismiss="modal"
+                                            class="btn btn-labeled btn-success me-1">
+                                            <span class="btn-label">
+                                                <i class="fa fa-floppy-o"></i>
+                                            </span>
+                                            Programar
+                                        </button>
+                                        <button type="button" data-bs-dismiss="modal"
+                                            class="btn btn-labeled btn-danger ms-1 me-1">
+                                            <span class="btn-label">
+                                                <i class="fa fa-times-circle"></i>
+                                            </span>
+                                            Cancelar
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+</body>

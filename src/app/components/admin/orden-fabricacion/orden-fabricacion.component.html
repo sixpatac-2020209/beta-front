@@ -109,50 +109,6 @@
                                 </table>
                             </div>
                         </div>
-                        <form style="margin:10px;" #programacionForm="ngForm">
-
-                            <div style="display: none;" name="ID_SEDE">{{orden.ID_SEDE}}</div>
-
-                            <h3 style="margin: 0; font-weight: 800;">Programación</h3>
-                            <hr style="margin: 0;">
-                            <div style="display:flex; justify-content:center; gap:10px;">
-
-                                <div>
-                                    <mat-form-field color="accent" appearance="fill" style="margin: 10px;">
-                                        <mat-label>Fecha Inicia</mat-label>
-                                        <input [(ngModel)]="datePiOne" name="datePiOne" matInput [matDatepicker]="picker1">
-                                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                                        <mat-datepicker #picker1 color="primary"></mat-datepicker>
-                                    </mat-form-field>
-
-                                    <mat-form-field color="accent" appearance="fill" style="margin: 10px;">
-                                        <mat-label>Fecha Termina</mat-label>
-                                        <input [(ngModel)]="datePiTwo" name="datePiTwo" matInput [matDatepicker]="picker2">
-                                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                                        <mat-datepicker #picker2></mat-datepicker>
-                                    </mat-form-field>
-
-                                </div>
-                            </div>
-                            <div class="d-flex" *ngIf="orden.AUTORIZACION !== '1'" style="justify-content: center; margin-top: 15px;">
-                                <button class="btn icon-btn btn-success ms-2 me-2" disabled>
-                                    <span style="border-radius: 50% 50%;"
-                                        class="btn-glyphicon fa-solid fa-check text-success"></span>
-                                    Programar
-                                </button>
-                                <button (click)="Programar()" *ngIf="orden.AUTORIZACION === '1'" class="btn icon-btn btn-success ms-2 me-2" >
-                                    <span style="border-radius: 50% 50%;"
-                                        class="btn-glyphicon fa-solid fa-check text-success"></span>
-                                    Programar
-                                </button>
-
-                                <button routerLink="/admin/autorizaciones" class="btn icon-btn btn-danger ms-2 me-2" >
-                                    <span style="border-radius: 50% 50%; width: 30px; height: 30px;"
-                                        class="btn-glyphicon fa-solid fa-xmark text-danger"></span>
-                                    Cancelar
-                                </button>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>

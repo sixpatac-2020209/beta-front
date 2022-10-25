@@ -1,10 +1,8 @@
-import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
+import { Component, OnInit, } from '@angular/core';
 import { DetalleOrdenRestService } from 'src/app/services/detalleOrdenRest/detalle-orden-rest.service';
 import { OrdenProduccionRestService } from 'src/app/services/ordenProduccionRest/orden-produccion-rest.service';
 
-@ViewChild(MatSidenav)
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -13,31 +11,17 @@ import { OrdenProduccionRestService } from 'src/app/services/ordenProduccionRest
   styleUrls: ['./operarios.component.css']
 })
 export class OperariosComponent implements OnInit {
-  opened = false
-  sidenav!: MatSidenav;
+
+  userUpdate: any;
   constructor(
     private detalleRest: DetalleOrdenRestService,
     private orderRest: OrdenProduccionRestService,
-    private observer: BreakpointObserver
   ) { }
-
-  ngAfterViewInit() {
-
-    this.observer.observe(['(max-width: 768px)']).subscribe((res) => {
-      if (res.matches) {
-        this.sidenav.mode = 'over';
-        this.sidenav.close();
-      } else {
-        this.sidenav.mode = 'over';
-        this.sidenav.open();
-      }
-    });
-  }
 
   ngOnInit(): void {
     this.getOrders();
   }
-
+  datoUpdate: any
   orders: any;
   articulosOrder: any;
   orderSelected: any;
@@ -57,6 +41,7 @@ export class OperariosComponent implements OnInit {
     this.orderRest.getDetalleOrden(id).subscribe({
       next: (res: any) => {
         this.articulosOrder = res.returnDetalle;
+        console.log(this.articulosOrder);
       },
       error: (err) => {
         console.log(err);
@@ -68,79 +53,316 @@ export class OperariosComponent implements OnInit {
     this.detalleRest.getDetalleArticulo(id).subscribe({
       next: (res: any) => {
         this.detallesArticulos = res.returnDetalleProceso;
-        console.log(this.detallesArticulos);
-        console.log(this.detallesArticulos[0].DESCRIPCION);
-        console.log(this.detallesArticulos[0].REALIZAR);
-        console.log(this.detallesArticulos[0].REALIZADO);
-
-        console.log(this.detallesArticulos[1].DESCRIPCION);
-        console.log(this.detallesArticulos[1].REALIZAR);
-        console.log(this.detallesArticulos[1].REALIZADO);
-
-        console.log(this.detallesArticulos[2].DESCRIPCION);
-        console.log(this.detallesArticulos[2].REALIZAR);
-        console.log(this.detallesArticulos[2].REALIZADO);
-
-        console.log(this.detallesArticulos[3].DESCRIPCION);
-        console.log(this.detallesArticulos[3].REALIZAR);
-        console.log(this.detallesArticulos[3].REALIZADO);
-
-        console.log(this.detallesArticulos[4].DESCRIPCION);
-        console.log(this.detallesArticulos[4].REALIZAR);
-        console.log(this.detallesArticulos[4].REALIZADO);
-
-        console.log(this.detallesArticulos[5].DESCRIPCION);
-        console.log(this.detallesArticulos[5].REALIZAR);
-        console.log(this.detallesArticulos[5].REALIZADO);
-
-        console.log(this.detallesArticulos[6].DESCRIPCION);
-        console.log(this.detallesArticulos[6].REALIZAR);
-        console.log(this.detallesArticulos[6].REALIZADO);
-
-        console.log(this.detallesArticulos[7].DESCRIPCION);
-        console.log(this.detallesArticulos[7].REALIZAR);
-        console.log(this.detallesArticulos[7].REALIZADO);
-
-        console.log(this.detallesArticulos[8].DESCRIPCION);
-        console.log(this.detallesArticulos[8].REALIZAR);
-        console.log(this.detallesArticulos[8].REALIZADO);
-
-        console.log(this.detallesArticulos[9].DESCRIPCION);
-        console.log(this.detallesArticulos[9].REALIZAR);
-        console.log(this.detallesArticulos[9].REALIZADO);
-
-        console.log(this.detallesArticulos[10].DESCRIPCION);
-        console.log(this.detallesArticulos[10].REALIZAR);
-        console.log(this.detallesArticulos[10].REALIZADO);
-
-        console.log(this.detallesArticulos[11].DESCRIPCION);
-        console.log(this.detallesArticulos[11].REALIZAR);
-        console.log(this.detallesArticulos[11].REALIZADO);
-
-        console.log(this.detallesArticulos[12].DESCRIPCION);
-        console.log(this.detallesArticulos[12].REALIZAR);
-        console.log(this.detallesArticulos[12].REALIZADO);
-
-        console.log(this.detallesArticulos[13].DESCRIPCION);
-        console.log(this.detallesArticulos[13].REALIZAR);
-        console.log(this.detallesArticulos[13].REALIZADO);
-
-        console.log(this.detallesArticulos[14].DESCRIPCION);
-        console.log(this.detallesArticulos[14].REALIZAR);
-        console.log(this.detallesArticulos[14].REALIZADO);
-
-        console.log(this.detallesArticulos[15].DESCRIPCION);
-        console.log(this.detallesArticulos[15].REALIZAR);
-        console.log(this.detallesArticulos[15].REALIZADO);
-
-
-
-
       },
       error: (err) => {
         console.log(err);
       },
     });
   }
+/* 
+  //corte
+  corteVidrio() {
+    this.detalleRest.corteVidrio().subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          confirmButtonColor: '#28B463'
+        });
+        this.getOrders();
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: err.error.message || err.error,
+          confirmButtonColor: '#E74C3C'
+        });
+      },
+    })
+  }
 
+  corteHoja() {
+    this.detalleRest.corteHoja().subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          confirmButtonColor: '#28B463'
+        });
+        this.getOrders();
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: err.error.message || err.error,
+          confirmButtonColor: '#E74C3C'
+        });
+      },
+    })
+  }
+
+  corteMarco() {
+    this.detalleRest.corteMarco().subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          confirmButtonColor: '#28B463'
+        });
+        this.getOrders();
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: err.error.message || err.error,
+          confirmButtonColor: '#E74C3C'
+        });
+      },
+    })
+  }
+
+  corteCedazo() {
+    this.detalleRest.corteCedazo().subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          confirmButtonColor: '#28B463'
+        });
+        this.getOrders();
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: err.error.message || err.error,
+          confirmButtonColor: '#E74C3C'
+        });
+      },
+    })
+  }
+
+  //fusion
+  fusionHoja() {
+    this.detalleRest.fusionHoja().subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          confirmButtonColor: '#28B463'
+        });
+        this.getOrders();
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: err.error.message || err.error,
+          confirmButtonColor: '#E74C3C'
+        });
+      },
+    })
+  }
+
+  fusionCedazo() {
+    this.detalleRest.fusionCedazo().subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          confirmButtonColor: '#28B463'
+        });
+        this.getOrders();
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: err.error.message || err.error,
+          confirmButtonColor: '#E74C3C'
+        });
+      },
+    })
+  }
+
+  fusionMarco() {
+    this.detalleRest.fusionMarco().subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          confirmButtonColor: '#28B463'
+        });
+        this.getOrders();
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: err.error.message || err.error,
+          confirmButtonColor: '#E74C3C'
+        });
+      },
+    })
+  }
+
+  //limpieza
+  limpiezaHoja() {
+    this.detalleRest.limpiezaHoja().subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          confirmButtonColor: '#28B463'
+        });
+        this.getOrders();
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: err.error.message || err.error,
+          confirmButtonColor: '#E74C3C'
+        });
+      },
+    })
+  }
+
+  limpiezaMarco() {
+    this.detalleRest.limpiezaMarco().subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          confirmButtonColor: '#28B463'
+        });
+        this.getOrders();
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: err.error.message || err.error,
+          confirmButtonColor: '#E74C3C'
+        });
+      },
+    })
+  }
+
+  colocacionTela() {
+    this.detalleRest.colocacionTela().subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          confirmButtonColor: '#28B463'
+        });
+        this.getOrders();
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: err.error.message || err.error,
+          confirmButtonColor: '#E74C3C'
+        });
+      },
+    })
+  }
+
+  //Accesorios
+  corteBatiente() {
+    this.detalleRest.corteBatiente().subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          confirmButtonColor: '#28B463'
+        });
+        this.getOrders();
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: err.error.message || err.error,
+          confirmButtonColor: '#E74C3C'
+        });
+      },
+    })
+  }
+
+  colocacionBatiente() {
+    this.detalleRest.colocacionBatiente().subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          confirmButtonColor: '#28B463'
+        });
+        this.getOrders();
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: err.error.message || err.error,
+          confirmButtonColor: '#E74C3C'
+        });
+      },
+    })
+  }
+
+  tapajambas() {
+    this.detalleRest.tapajambas().subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          confirmButtonColor: '#28B463'
+        });
+        this.getOrders();
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: err.error.message || err.error,
+          confirmButtonColor: '#E74C3C'
+        });
+      },
+    })
+  }
+
+  reticula() {
+    this.detalleRest.reticula().subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          confirmButtonColor: '#28B463'
+        });
+        this.getOrders();
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: err.error.message || err.error,
+          confirmButtonColor: '#E74C3C'
+        });
+      },
+    })
+  }
+
+  //armado
+  armado() {
+    this.detalleRest.armado().subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          confirmButtonColor: '#28B463'
+        });
+        this.getOrders();
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: err.error.message || err.error,
+          confirmButtonColor: '#E74C3C'
+        });
+      },
+    })
+  }
+ */
 }

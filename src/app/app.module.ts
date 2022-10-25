@@ -87,6 +87,7 @@ import { SearchAutorizationPipe } from './pipes/search-autorization.pipe';
 import { DetailsOrderHomeComponent } from './components/admin/details-order-home/details-order-home.component';
 import { OrdenesFabricacionComponent } from './components/admin/ordenes-fabricacion/ordenes-fabricacion.component';
 import { OrdenFabricacionComponent } from './components/admin/orden-fabricacion/orden-fabricacion.component';
+import { ProgramacionComponent } from './components/admin/programacion/programacion.component';
 
 
 @NgModule({
@@ -126,6 +127,7 @@ import { OrdenFabricacionComponent } from './components/admin/orden-fabricacion/
     DetailsOrderHomeComponent,
     OrdenesFabricacionComponent,
     OrdenFabricacionComponent,
+    ProgramacionComponent,
   ],
   imports: [
     SwiperModule,

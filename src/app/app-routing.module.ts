@@ -27,6 +27,7 @@ import { OperariosComponent } from './components/landingPage/operarios/operarios
 import { AutorizationComponent } from './components/admin/autorization/autorization.component';
 import { OrdenesFabricacionComponent } from './components/admin/ordenes-fabricacion/ordenes-fabricacion.component';
 import { OrdenFabricacionComponent } from './components/admin/orden-fabricacion/orden-fabricacion.component';
+import { ProgramacionComponent } from './components/admin/programacion/programacion.component';
 
 const routes: Routes = [
   { path: '', component: OperariosComponent },
@@ -46,6 +47,7 @@ const routes: Routes = [
       { path: 'pruebas', component: PruebaComponent },
       { path: 'ordenesFabricacion', component: OrdenesFabricacionComponent },
       { path: 'ordenFabricacion/:id', component: OrdenFabricacionComponent },
+      { path: 'programacion', component: ProgramacionComponent }
 
     ]
   },

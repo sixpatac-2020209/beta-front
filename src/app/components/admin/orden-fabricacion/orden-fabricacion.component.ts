@@ -44,7 +44,7 @@ export const MY_FORMATS = {
 })
 export class OrdenFabricacionComponent implements OnInit {
 
-   CVE_ORDEN: any;
+  CVE_ORDEN: any;
   orden: OrdenModel;
   progamacion: ProgramacionModel
   detalles: any;
@@ -99,34 +99,6 @@ export class OrdenFabricacionComponent implements OnInit {
       error: (err) => {
         console.log(err);
       },
-    });
-  }
-
-  Programar() {
-    const { year, month, date } = this.datePiOne._i;
-    const datePiOneNew = `${year}-${month + 1}-${date}`;
-    const yearTwo = this.datePiTwo._i.year;
-    const monthTwo = this.datePiTwo._i.month;
-    const dateTwo = this.datePiTwo._i.date
-    const datePiTwoNew = `${yearTwo}-${monthTwo + 1}-${dateTwo}`;
-
-    let params = { FECHA_INGRESA: datePiOneNew, FECHA_TERMINA: datePiTwoNew, ID_SEDE: this.orden.ID_SEDE }
-    this.programacionRest.programar(this.CVE_ORDEN, params).subscribe({
-      next: (res: any) => {
-        Swal.fire({
-          title: res.message,
-          icon: 'success',
-          position: 'center',
-          showConfirmButton: false,
-          timer: 2000
-        });
-      },
-      error: (err) => Swal.fire({
-        title: err.error.message,
-        icon: 'error',
-        position: 'center',
-        timer: 3000
-      })
     });
   }
 

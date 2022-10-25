@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
       next: (res: any) => {
         localStorage.setItem('identity', JSON.stringify(res.already));
         localStorage.setItem('token', res.token);
-        localStorage.setItem('email', JSON.stringify(this.user.email));
 
         Swal.fire({
           icon: 'success',

@@ -40,17 +40,10 @@ export class UserAdminComponent implements OnInit {
     this.userRest.getUsers().subscribe({
       next: (res: any) => {
         this.users = res.users;
-        console.log(this.users.length);
+        console.log(this.users);
         this.collectionSize = this.users.length;
         for (let user of this.users) {
           user.position = this.users.indexOf(user) + 1
-        }
-        if (this.showTableUsers === true) {
-          for (let user of this.users) {
-            user.checked = true
-          }
-          this.users = this.users.map((user: any, i: number) => ({ id: i + 1, ...user }))
-            .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
         }
       },
       error: (err) => console.log(err)
@@ -107,8 +100,9 @@ export class UserAdminComponent implements OnInit {
   }
 
   saveUser(addUserForm: any) {
-    this.userRest.saveUser(this.user).subscribe({
+    /* this.userRest.saveUser(this.user).subscribe({
       next: (res: any) => {
+        console.log(this.user),
         Swal.fire({
           icon: 'success',
           title: res.message,
@@ -125,7 +119,7 @@ export class UserAdminComponent implements OnInit {
         });
         addUserForm.reset();
       },
-    });
+    }); */
 
     this.userRest.saveUserSAE(this.user).subscribe({
       next: (res: any) => {

@@ -1,43 +1,43 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-
+import { CredentialsRestService } from '../credentialsRest/credentials-rest.service';
 @Injectable({
   providedIn: 'root'
 })
 export class OrdenProduccionRestService {
   httpOptions = new HttpHeaders({
     'Content-Type': 'application/json',
-    //'Authorization': this.credentialReset.getToken(),
+    'Authorization': this.credentialReset.getToken(),
   });
   constructor(
-    //private credentialReset: CredentialsRestService,
+    private credentialReset: CredentialsRestService,
     private http: HttpClient,
   ) { }
 
   getOrdenes() {
-    return this.http.get(environment.baseURI + 'ordenes/getOrdenes', { headers: this.httpOptions });
+    return this.http.get(environment.baseURI + 'ordenes/getOrdenes', { headers: this.httpOptions.set('Authorization', this.credentialReset.getToken()) });
   }
 
   getOrden(id: string) {
-    return this.http.get(environment.baseURI + 'ordenes/getOrden/' + id, { headers: this.httpOptions })
+    return this.http.get(environment.baseURI + 'ordenes/getOrden/' + id, { headers: this.httpOptions.set('Authorization', this.credentialReset.getToken()) })
   }
 
 getDetalleOrden(id: string) {
-    return this.http.get(environment.baseURI + 'ordenes/getDetalleOrden/' + id, { headers: this.httpOptions })
+    return this.http.get(environment.baseURI + 'ordenes/getDetalleOrden/' + id, { headers: this.httpOptions.set('Authorization', this.credentialReset.getToken()) })
   }
 getImporteOrden(id: string) {
-    return this.http.get(environment.baseURI + 'ordenes/getImporteOrden/' + id, { headers: this.httpOptions })
+    return this.http.get(environment.baseURI + 'ordenes/getImporteOrden/' + id, { headers: this.httpOptions.set('Authorization', this.credentialReset.getToken()) })
   }
 
   createOrden(params: {}) {
-    return this.http.post(environment.baseURI + 'ordenes/createOrden', params, { headers: this.httpOptions });
+    return this.http.post(environment.baseURI + 'ordenes/createOrden', params, { headers: this.httpOptions.set('Authorization', this.credentialReset.getToken()) });
   }
 
   //////////
   getOrders()
   {
-    return this.http.get(environment.baseURI + 'ordenes/getOrders', { headers: this.httpOptions } )
+    return this.http.get(environment.baseURI + 'ordenes/getOrders', { headers: this.httpOptions.set('Authorization', this.credentialReset.getToken()) } )
   }
 
 

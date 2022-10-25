@@ -53,7 +53,6 @@
                         <th class="text-center">Cliente</th>
                         <th class="text-center">Vendedor</th>
                         <th class="text-center">Planta</th>
-                        <th class="text-center">Autorización</th>
                         <th class="text-center"> </th>
                       </tr>
                     </thead>
@@ -68,13 +67,7 @@
                         <td> {{ orden.CLIENTE }} </td>
                         <td> {{ orden.VENDEDOR }} </td>
                         <td style="text-align: center;"> {{ orden.ID_SEDE }} </td>
-                        <td style="text-align: center;">
-                          <div
-                            *ngIf="orden.AUTORIZACION === null || orden.AUTORIZACION === '0' || orden.AUTORIZACION === undefined">
-                            NO autorizada</div>
-                          <div *ngIf="orden.AUTORIZACION === '1'"></div>
-                        </td>
-
+                        
                         <td>
                           <a [routerLink]="['/admin/ordenFabricacion/' + orden.CVE_ORDEN]">
                             <i class="fa-solid fa-people-carry-box" style="color: #FFCC00; font-size:20px;"></i>

@@ -4,6 +4,7 @@ import { ExportExcelOrdenService } from 'src/app/services/exportData/exportExcel
 import { OrdenProduccionRestService } from 'src/app/services/ordenProduccionRest/orden-produccion-rest.service';
 import { AutorizationRestService } from 'src/app/services/autorizationRest/autorization-rest.service';
 import { OrdenFabricacionRestService } from 'src/app/services/ordenFabricacionRest/orden-fabricacion-rest.service';
+import { ExportExcelOrdenesFabricacionService } from './../../../services/exportData/exportExcelOrdenesFabricacion/export-excel-ordenes-fabricacion.service';
 
 @Component({
   selector: 'app-ordenes-fabricacion',
@@ -19,7 +20,7 @@ orden: OrdenModel;
 
   constructor(
     private ordenRest: OrdenProduccionRestService,
-    private excelService: ExportExcelOrdenService,
+    private excelService: ExportExcelOrdenesFabricacionService,
     private autorizationRest: AutorizationRestService,
     private ordenFabricacionRest: OrdenFabricacionRestService
 

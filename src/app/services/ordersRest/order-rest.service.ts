@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-//import { CredentialsRestService } from '../credentialsRest/credentials-rest.service';
+import { CredentialsRestService } from '../credentialsRest/credentials-rest.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,27 +10,27 @@ export class OrderRestService {
 
   httpOptions = new HttpHeaders({
     'Content-Type': 'application/json',
-    //'Authorization': this.credentialReset.getToken(),
+    'Authorization': this.credentialReset.getToken(),
   });
 
   constructor(
-    //private credentialReset: CredentialsRestService,
+    private credentialReset: CredentialsRestService,
     private http: HttpClient,
   ) { }
 
   getPedidos() {
-    return this.http.get(environment.baseURI + 'pedidos/getPedidos', { headers: this.httpOptions });
+    return this.http.get(environment.baseURI + 'pedidos/getPedidos', { headers: this.httpOptions.set('Authorization', this.credentialReset.getToken()) });
   }
 
   getPedido(id: string){
-    return this.http.get(environment.baseURI + 'pedidos/getPedido/' + id , { headers: this.httpOptions })
+    return this.http.get(environment.baseURI + 'pedidos/getPedido/' + id , { headers: this.httpOptions.set('Authorization', this.credentialReset.getToken()) })
   }
 
   getDetallePedido(id: string){
-    return this.http.get(environment.baseURI + 'pedidos/getDetallePedido/' + id , { headers: this.httpOptions })
+    return this.http.get(environment.baseURI + 'pedidos/getDetallePedido/' + id , { headers: this.httpOptions.set('Authorization', this.credentialReset.getToken()) })
   }
 
   getPedidoPorMes(params : {}){
-    return this.http.post(environment.baseURI + 'pedidos/getPedidosPorMes', params,{headers: this.httpOptions});
+    return this.http.post(environment.baseURI + 'pedidos/getPedidosPorMes', params, { headers: this.httpOptions.set('Authorization', this.credentialReset.getToken()) });
   }
 }
