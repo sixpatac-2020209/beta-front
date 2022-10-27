@@ -6,13 +6,12 @@ import { AutorizationRestService } from 'src/app/services/autorizationRest/autor
 import { OrdenFabricacionRestService } from 'src/app/services/ordenFabricacionRest/orden-fabricacion-rest.service';
 import { ExportExcelOrdenesFabricacionService } from './../../../services/exportData/exportExcelOrdenesFabricacion/export-excel-ordenes-fabricacion.service';
 
-
 @Component({
-  selector: 'app-ordenes-fabricacion',
-  templateUrl: './ordenes-fabricacion.component.html',
-  styleUrls: ['./ordenes-fabricacion.component.css']
+  selector: 'app-ordenes-fabricacion-gerente',
+  templateUrl: './ordenes-fabricacion-gerente.component.html',
+  styleUrls: ['./ordenes-fabricacion-gerente.component.css']
 })
-export class OrdenesFabricacionComponent implements OnInit {
+export class OrdenesFabricacionGerenteComponent implements OnInit {
 
   orden: OrdenModel;
   ordenes: any;

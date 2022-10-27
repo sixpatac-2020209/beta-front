@@ -97,6 +97,10 @@ import { OrdenesProduccionComponent } from './components/gerenteComercial/ordene
 import { OrdenProduccionComponent } from './components/gerenteComercial/orden-produccion/orden-produccion.component';
 import { AutorizacionesComponent } from './components/gerenteComercial/autorizaciones/autorizaciones.component';
 import { AutorizacionComponent } from './components/gerenteComercial/autorizacion/autorizacion.component';
+import { OrdenesFabricacionGerenteComponent } from './components/gerenteComercial/ordenes-fabricacion-gerente/ordenes-fabricacion-gerente.component';
+import { OrdenFabricacionGerenteComponent } from './components/gerenteComercial/orden-fabricacion-gerente/orden-fabricacion-gerente.component';
+import { PedidoGerenteComponent } from './components/gerenteComercial/pedido-gerente/pedido-gerente.component';
+import { ProgramacionGerenteComponent } from './components/gerenteComercial/programacion-gerente/programacion-gerente.component';
 
 
 
@@ -147,6 +151,10 @@ import { AutorizacionComponent } from './components/gerenteComercial/autorizacio
     OrdenProduccionComponent,
     AutorizacionesComponent,
     AutorizacionComponent,
+    OrdenesFabricacionGerenteComponent,
+    OrdenFabricacionGerenteComponent,
+    PedidoGerenteComponent,
+    ProgramacionGerenteComponent,
   ],
   imports: [
     SwiperModule,

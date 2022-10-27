@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutAdminComponent } from './components/admin/layout-admin/layout-admin.component';
 import { LoginComponent } from './components/landingPage/login/login.component';
+
 import { AutorizationsComponent } from './components/admin/autorizations/autorizations.component';
 import { OrderProductionsComponent } from './components/admin/order-productions/order-productions.component';
 import { PedidosAdminComponent } from './components/admin/pedidos-admin/pedidos-admin.component';
@@ -19,6 +20,15 @@ import { LayoutDisenioComponent } from './components/diseño/layout-disenio/layo
 import { LayoutLogisticaComponent } from './components/logistica/layout-logistica/layout-logistica.component';
 import { LayoutGerenteComercialComponent } from './components/gerenteComercial/layout-gerente-comercial/layout-gerente-comercial.component';
 import { LayoutProduccionComponent } from './components/produccion/layout-produccion/layout-produccion.component';
+import { AutorizacionesComponent } from './components/gerenteComercial/autorizaciones/autorizaciones.component';
+import { AutorizacionComponent } from './components/gerenteComercial/autorizacion/autorizacion.component';
+import { OrdenesProduccionComponent } from './components/gerenteComercial/ordenes-produccion/ordenes-produccion.component';
+import { OrdenProduccionComponent } from './components/gerenteComercial/orden-produccion/orden-produccion.component';
+import { PedidosComponent } from './components/gerenteComercial/pedidos/pedidos.component';
+import { OrdenesFabricacionGerenteComponent } from './components/gerenteComercial/ordenes-fabricacion-gerente/ordenes-fabricacion-gerente.component';
+import { OrdenFabricacionGerenteComponent } from './components/gerenteComercial/orden-fabricacion-gerente/orden-fabricacion-gerente.component';
+import { PedidoGerenteComponent } from './components/gerenteComercial/pedido-gerente/pedido-gerente.component';
+import { ProgramacionGerenteComponent } from './components/gerenteComercial/programacion-gerente/programacion-gerente.component';
 
 const routes: Routes = [
   { path: '', component: OperariosComponent },
@@ -40,10 +50,24 @@ const routes: Routes = [
       { path: 'resultados', component: ResultadosComponent },
     ]
   },
+  {
+    path: 'gerenteComercial', component: LayoutGerenteComercialComponent, children: [
+      { path: 'autorizaciones', component: AutorizacionesComponent },
+      { path: 'autorizarOrden/:id', component: AutorizacionComponent },
+      { path: 'ordenesProduccion', component: OrdenesProduccionComponent },
+      { path: 'ordenProducción/:id', component: OrdenProduccionComponent },
+      { path: 'pedidos', component: PedidosComponent },
+      { path: 'pedido/:id', component: PedidoGerenteComponent },
+      { path: 'ordenesFabricacion', component: OrdenesFabricacionGerenteComponent },
+      { path: 'ordenFabricacion/:id', component: OrdenFabricacionGerenteComponent },
+      { path: 'programacion', component: ProgramacionGerenteComponent },
+    ]
+  },
+  { path: 'produccion', component: LayoutProduccionComponent },
+
   { path: 'disenio', component: LayoutDisenioComponent },
   { path: 'logistica', component: LayoutLogisticaComponent },
-  { path: 'gerenteComercial', component: LayoutGerenteComercialComponent },
-  { path: 'produccion', component: LayoutProduccionComponent },
+
 
 
 

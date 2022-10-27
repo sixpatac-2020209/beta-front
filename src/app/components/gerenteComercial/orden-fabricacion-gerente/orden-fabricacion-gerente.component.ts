@@ -26,9 +26,9 @@ export const MY_FORMATS = {
 };
 
 @Component({
-  selector: 'app-orden-fabricacion',
-  templateUrl: './orden-fabricacion.component.html',
-  styleUrls: ['./orden-fabricacion.component.css'],
+  selector: 'app-orden-fabricacion-gerente',
+  templateUrl: './orden-fabricacion-gerente.component.html',
+  styleUrls: ['./orden-fabricacion-gerente.component.css'],
   encapsulation: ViewEncapsulation.None,
   providers: [
     // `MomentDateAdapter` can be automatically provided by importing `MomentDateModule` in your
@@ -43,7 +43,7 @@ export const MY_FORMATS = {
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
 })
-export class OrdenFabricacionComponent implements OnInit {
+export class OrdenFabricacionGerenteComponent implements OnInit {
 
   CVE_ORDEN: any;
   orden: OrdenModel;
@@ -102,4 +102,5 @@ export class OrdenFabricacionComponent implements OnInit {
       },
     });
   }
+
 }
