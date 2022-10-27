@@ -1,0 +1,110 @@
+<body>
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Pedidos</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a routerLink="/admin/home" style="text-decoration: none; margin-top:100px;">Inicio</a>
+          </li>
+          <li class="breadcrumb-item active">Pedidos</li>
+        </ol>
+      </nav>
+    </div>
+    <section>
+      <div>
+        <div class="text-center">
+          <form (ngSubmit)="getPedidosPorMes(monthForm)" #monthForm="ngForm">
+            <mat-form-field>
+              <mat-label>Busca por Fecha</mat-label>
+              <input [(ngModel)]="dateprueba" name="dateprueba" matInput [matDatepicker]="picker" />
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </form>
+        </div>
+
+
+        <!--TABLA PRINCIPAL-->
+        <div class="row clearfix tableText">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tableText">
+            <div class="card tableText">
+              <div class="materialTableHeader mb-3 tableText headTab">
+                <div class="row tableText">
+                  <div class="col-8 tableText">
+                    <div class="hola">
+                      <ul class="header-buttons-left ml-0 tableTitle">
+                        <li class="dropdown m-l-20">
+                          <label for="search-input">
+                            <i class="material-icons search-icon">search</i>
+                          </label>
+                          <input placeholder="Buscar Pedido..." type="text" name="pipe" #filter class="browser-default search-field"
+                            aria-label="Search box" [(ngModel)]="pipePedido" />
+                        </li>
+                      </ul>
+                      <div class="me-5" style="float: right">
+                        <button class="botonAc" (click)="exportExcel()">
+                          <i style="color: green" class="fa-solid fa-file-excel"></i>
+                          &nbsp; Excel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tableBody">
+                <div class="table-responsive">
+                  <table class="table table-bpedidoed table-hover">
+                    <thead style="margin: -100px">
+                      <tr>
+                        <th class="text-center">#</th>
+                        <th class="text-center">Pedido</th>
+                        <th class="text-center" style="width: 160px">
+                          IMPORTE
+                        </th>
+                        <th class="text-center">Cliente</th>
+                        <th class="text-center">Vendedor</th>
+                        <th class="text-center"> </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let pedido of pedidos | searchPedido: pipePedido">
+                        <td>{{ pedidos.indexOf(pedido) + 1 }}</td>
+                        <td class="text-center"  data-bs-toggle="modal"
+                          data-bs-target="#addOrder">
+                          {{ pedido.CVE_DOC }}
+                        </td>
+                        <td style="text-align: right"  data-bs-toggle="modal"
+                          data-bs-target="#addOrder">
+                          <span style="text-align: right">{{ pedido.IMPORTE }}
+                          </span>
+                        </td>
+
+                        <td style="width: 300px;">
+                          {{ pedido.NOMBRE[0] }}
+                        </td>
+
+                        <td style="width: 150px;">
+                          {{ pedido.NOMBRE[1] }}
+                        </td>
+                        <td>
+                          <a [routerLink]="['/disenio/pedido/' + pedido.CVE_DOC]">
+                            <i class="fa-solid fa-file-circle-plus"
+                              style="color: rgb(16, 124, 16); font-size:20px;"></i>
+                          </a>
+                        </td>
+                      </tr>
+                      <tr rowspan="9" *ngIf="notFound === true">
+                        <td colspan="9" class="text-center">Sin Resultados</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>

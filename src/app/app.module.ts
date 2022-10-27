@@ -108,6 +108,10 @@ import { AutorizacionesProduccionComponent } from './components/produccion/autor
 import { AutorizacionProduccionComponent } from './components/produccion/autorizacion-produccion/autorizacion-produccion.component';
 import { OrdenesProduccionProduccionComponent } from './components/produccion/ordenes-produccion-produccion/ordenes-produccion-produccion.component';
 import { OrdenProduccionProduccionComponent } from './components/produccion/orden-produccion-produccion/orden-produccion-produccion.component';
+import { PedidosDisenioComponent } from './components/diseño/pedidos-disenio/pedidos-disenio.component';
+import { PedidoDisenioComponent } from './components/diseño/pedido-disenio/pedido-disenio.component';
+import { OrdenesFabricacionDisenioComponent } from './components/diseño/ordenes-fabricacion-disenio/ordenes-fabricacion-disenio.component';
+import { OrdenFabricacionDisenioComponent } from './components/diseño/orden-fabricacion-disenio/orden-fabricacion-disenio.component';
 
 
 
@@ -169,6 +173,10 @@ import { OrdenProduccionProduccionComponent } from './components/produccion/orde
     AutorizacionProduccionComponent,
     OrdenesProduccionProduccionComponent,
     OrdenProduccionProduccionComponent,
+    PedidosDisenioComponent,
+    PedidoDisenioComponent,
+    OrdenesFabricacionDisenioComponent,
+    OrdenFabricacionDisenioComponent,
   ],
   imports: [
     SwiperModule,

@@ -1,0 +1,160 @@
+<body>
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Pedido: {{pedido.CVE_DOC}}</h1>
+    </div>
+
+    <section>
+      <div>
+        <div>
+          <div style="background-color: #fff; padding: 15px; margin: 15px;">
+            <div class="textData mb-3">
+              <div style="display: flex; justify-content: space-between; margin-left: 20px; margin-right: 20px;">
+                <div class="FirstTextData ">
+                  <div class="contentLabelInput">
+                    <label>Nombre: </label>
+                    <div>{{cliente.NOMBRE}}</div>
+                  </div>
+
+                  <div class="contentLabelInput">
+                    <label>Dirección: </label>
+                    <div class="inputF" *ngIf="cliente.MUNICIPIO !== null"> {{cliente.MUNICIPIO}} </div>
+                    <div class="inputF" *ngIf="cliente.MUNICIPIO === null"> Municipio no ingresado. </div>
+                  </div>
+
+                  <div class="contentLabelInput">
+                    <label>Fecha: </label>
+                    <div class="inputF"> {{pedido.FECHAELAB}} </div>
+                  </div>
+
+                  <div class="contentLabelInput">
+                    <label>Vendedor: </label>
+                    <div>{{vendedor.NOMBRE}}</div>
+                  </div>
+                </div>
+                <div class="secondTextData">
+                  <div class="contentLabelInput">
+                    <label>NIT: </label>
+                    <div *ngIf="cliente.CURP !== null">{{cliente.CURP}}</div>
+                    <div *ngIf="cliente.CURP === null"> C/F </div>
+                  </div>
+
+                  <div class="contentLabelInput">
+                    <label>Código Cliente: </label>
+                    <div> {{cliente.CLAVE}} </div>
+                  </div>
+
+                  <div class="contentLabelInput">
+                    <label>Clasificación: </label>
+                    <div>{{cliente.CLASIFIC}}</div>
+                  </div>
+
+                  <div class="contentLabelInput">
+                    <label>Forma de Pago: </label>
+                    <div *ngIf="cliente.CON_CREDITO === 'S'"> Con Crédito</div>
+                    <div *ngIf="cliente.CON_CREDITO === 'N'">Sin Crédito</div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div>
+                <div class="mt-5">
+                  <div class="table-responsive" style="margin: 10px;">
+                    <table class="table table-bpedidoed table-hover">
+                      <thead style="margin: -100px;">
+                        <tr>
+                          <th class="text-center TextB" style="background-color: #4eb106d9; color: white;">#</th>
+                          <th class="text-center TextB" style="background-color: #4eb106d9; color: white;">Articulo</th>
+                          <th class="text-center TextB"
+                            style="width: 450px; background-color: #4eb106d9; color: white;">
+                            Descripción </th>
+                          <th class="text-center TextB" style="background-color: #4eb106d9; color: white;">Cantidad</th>
+                          <th class="text-center TextB"
+                            style="width: 120px; background-color: #4eb106d9; color: white;">
+                            Precio</th>
+                          <th class="text-center TextB"
+                            style="width: 120px; background-color: #4eb106d9; color: white;">
+                            Importe</th>
+
+                        </tr>
+                      </thead>
+
+                      <tbody>
+
+                        <tr *ngFor="let detalle of detalles">
+                          <td style="max-width: 15px; margin: 0 auto; text-align: center;">
+                            {{ detalles.indexOf(detalle) + 1 }}
+                          </td>
+                          <td class="text-center" style="max-width: 15px; margin: 0 auto; text-align: center;">
+                            {{detalle.CVE_ART}} </td>
+                          <td>
+                            {{detalle.DESCR}}}
+                            <br>
+                            <hr style="margin: 0;">
+                            {{detalle.STR_OBS}}
+                          </td>
+
+                          <td class="text-center"> {{detalle.CANT}} </td>
+                          <td style="text-align: right">
+                            <span style="text-align: right">
+                              {{ detalle.COSTO_PROM }}
+                            </span>
+                          </td>
+                          <td style="text-align: right">
+                            <span style="text-align: right">
+                              {{ detalle.IMPORTE }}
+                            </span>
+                          </td>
+                        </tr>
+                      </tbody>
+
+                      <tfoot>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td class=" TextB">TOTAL</td>
+                          <td style="text-align: right">
+                            <span class=" TextB" style="text-align: right">
+                              {{ pedido.IMPORTE }}
+                            </span>
+                          </td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+                <form>
+
+                  <mat-form-field style="display:flex; justify-content:center;" appearance="outline">
+                    <mat-label>Planta</mat-label>
+                    <mat-select>
+                      <mat-option [(ngModel)]="planta.ID_SEDE" name="ID_SEDE" (click)="getPlanta(planta.ID_SEDE)"
+                        *ngFor="let planta of plantas" value="{{planta.ID_SEDE}}">
+                        {{planta.DESCRIPCION}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+
+
+                  <div class="d-flex" style="justify-content: center;">
+                    <button routerLink="/disenio/pedidos" class="btn icon-btn btn-danger ms-2 me-2">
+                      <span style="border-radius: 50% 50%;"
+                        class="btn-glyphicon fas fa-address-card text-danger"></span>
+                      Cancelar
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>

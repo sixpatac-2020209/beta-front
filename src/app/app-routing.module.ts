@@ -36,6 +36,10 @@ import { OrdenesProduccionProduccionComponent } from './components/produccion/or
 import { OrdenProduccionProduccionComponent } from './components/produccion/orden-produccion-produccion/orden-produccion-produccion.component';
 import { OrdenesFabricacionProduccionComponent } from './components/produccion/ordenes-fabricacion-produccion/ordenes-fabricacion-produccion.component';
 import { OrdenFabricacionProduccionComponent } from './components/produccion/orden-fabricacion-produccion/orden-fabricacion-produccion.component';
+import { PedidosDisenioComponent } from './components/diseño/pedidos-disenio/pedidos-disenio.component';
+import { PedidoDisenioComponent } from './components/diseño/pedido-disenio/pedido-disenio.component';
+import { OrdenesFabricacionDisenioComponent } from './components/diseño/ordenes-fabricacion-disenio/ordenes-fabricacion-disenio.component';
+import { OrdenFabricacionDisenioComponent } from './components/diseño/orden-fabricacion-disenio/orden-fabricacion-disenio.component';
 
 const routes: Routes = [
   { path: '', component: OperariosComponent },
@@ -82,7 +86,14 @@ const routes: Routes = [
     ]
   },
 
-  { path: 'disenio', component: LayoutDisenioComponent },
+  {
+    path: 'disenio', component: LayoutDisenioComponent, children: [
+      { path: 'pedidos', component: PedidosDisenioComponent },
+      { path: 'pedido/:id', component: PedidoDisenioComponent },
+      { path: 'ordenesFabricacion', component: OrdenesFabricacionDisenioComponent },
+      { path: 'ordenFabricacion/:id', component: OrdenFabricacionDisenioComponent },
+    ]
+  },
   { path: 'logistica', component: LayoutLogisticaComponent },
 
 ];
