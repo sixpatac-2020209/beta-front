@@ -5,7 +5,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a routerLink="/admin/home" style="text-decoration: none; margin-top:100px;">Inicio</a>
+            <a routerLink="/gerenteComercial/home" style="text-decoration: none; margin-top:100px;">Inicio</a>
           </li>
           <li class="breadcrumb-item active">Ordenes de Fabricación</li>
         </ol>
@@ -69,7 +69,7 @@
                         <td style="text-align: center;"> {{ orden.ID_SEDE }} </td>
                         
                         <td>
-                          <a [routerLink]="['/admin/ordenFabricacion/' + orden.CVE_ORDEN]">
+                          <a [routerLink]="['/gerenteComercial/ordenFabricacion/' + orden.CVE_ORDEN]">
                             <i class="fa-solid fa-people-carry-box" style="color: #FFCC00; font-size:20px;"></i>
                           </a>
                         </td>

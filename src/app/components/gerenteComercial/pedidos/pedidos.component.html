@@ -5,7 +5,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a routerLink="/admin/home" style="text-decoration: none; margin-top:100px;">Inicio</a>
+            <a routerLink="/gerenteComercial/home" style="text-decoration: none; margin-top:100px;">Inicio</a>
           </li>
           <li class="breadcrumb-item active">Pedidos</li>
         </ol>
@@ -88,7 +88,7 @@
                           {{ pedido.NOMBRE[1] }}
                         </td>
                         <td>
-                          <a [routerLink]="['/admin/pedido/' + pedido.CVE_DOC]">
+                          <a [routerLink]="['/gerenteComercial/pedido/' + pedido.CVE_DOC]">
                             <i class="fa-solid fa-file-circle-plus"
                               style="color: rgb(16, 124, 16); font-size:20px;"></i>
                           </a>
