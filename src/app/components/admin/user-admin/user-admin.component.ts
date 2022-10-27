@@ -100,7 +100,7 @@ export class UserAdminComponent implements OnInit {
   }
 
   saveUser(addUserForm: any) {
-    /* this.userRest.saveUser(this.user).subscribe({
+    this.userRest.saveUser(this.user).subscribe({
       next: (res: any) => {
         console.log(this.user),
         Swal.fire({
@@ -119,7 +119,7 @@ export class UserAdminComponent implements OnInit {
         });
         addUserForm.reset();
       },
-    }); */
+    });
 
     this.userRest.saveUserSAE(this.user).subscribe({
       next: (res: any) => {

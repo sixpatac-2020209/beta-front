@@ -20,14 +20,14 @@ export class OrdenProduccionRestService {
   }
 
   getOrden(id: string) {
-    return this.http.get(environment.baseURI + 'ordenes/getOrden/' + id, { headers: this.httpOptions.set('Authorization', this.credentialReset.getToken()) })
+    return this.http.get(environment.baseURI + 'ordenes/getOrden/' + id, { headers: this.httpOptions })
   }
 
-getDetalleOrden(id: string) {
-    return this.http.get(environment.baseURI + 'ordenes/getDetalleOrden/' + id, { headers: this.httpOptions.set('Authorization', this.credentialReset.getToken()) })
+  getDetalleOrden(id: string) {
+    return this.http.get(environment.baseURI + 'ordenes/getDetalleOrden/' + id, { headers: this.httpOptions })
   }
-getImporteOrden(id: string) {
-    return this.http.get(environment.baseURI + 'ordenes/getImporteOrden/' + id, { headers: this.httpOptions.set('Authorization', this.credentialReset.getToken()) })
+  getImporteOrden(id: string) {
+    return this.http.get(environment.baseURI + 'ordenes/getImporteOrden/' + id, { headers: this.httpOptions })
   }
 
   createOrden(params: {}) {
@@ -35,9 +35,8 @@ getImporteOrden(id: string) {
   }
 
   //////////
-  getOrders()
-  {
-    return this.http.get(environment.baseURI + 'ordenes/getOrders', { headers: this.httpOptions.set('Authorization', this.credentialReset.getToken()) } )
+  getOrders() {
+    return this.http.get(environment.baseURI + 'ordenes/getOrders', { headers: this.httpOptions })
   }
 
 

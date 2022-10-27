@@ -69,25 +69,35 @@ import { LoginComponent } from './components/landingPage/login/login.component';
 import { SidebarAdminComponent } from './components/admin/sidebar-admin/sidebar-admin.component';
 import { UserAdminComponent } from './components/admin/user-admin/user-admin.component';
 import { MatOptionModule } from '@angular/material/core';
-import { DetailsOrderComponent } from './components/admin/details-order/details-order.component';
 import { AutorizationsComponent } from './components/admin/autorizations/autorizations.component';
-import { QualityControlComponent } from './components/admin/quality-control/quality-control.component';
 import { OrderProductionsComponent } from './components/admin/order-productions/order-productions.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PedidosAdminComponent } from './components/admin/pedidos-admin/pedidos-admin.component';
-import { PruebaComponent } from './components/Pruebas/prueba/prueba.component';
 import { SearchPedidoPipe } from './pipes/search-pedido.pipe';
-import { CreateOrderComponent } from './components/admin/create-order/create-order.component';
 import { PedidoComponent } from './components/admin/pedido/pedido.component';
 import { OneOrdenComponent } from './components/admin/order-production/one-orden.component';
 import { OperariosComponent } from './components/landingPage/operarios/operarios.component';
 import { AutorizationComponent } from './components/admin/autorization/autorization.component';
 import { SearchOrdenPipe } from './pipes/search-orden.pipe';
 import { SearchAutorizationPipe } from './pipes/search-autorization.pipe';
-import { DetailsOrderHomeComponent } from './components/admin/details-order-home/details-order-home.component';
 import { OrdenesFabricacionComponent } from './components/admin/ordenes-fabricacion/ordenes-fabricacion.component';
 import { OrdenFabricacionComponent } from './components/admin/orden-fabricacion/orden-fabricacion.component';
 import { ProgramacionComponent } from './components/admin/programacion/programacion.component';
+import { ResultadosComponent } from './components/admin/resultados/resultados.component';
+import { LayoutGerenteComercialComponent } from './components/gerenteComercial/layout-gerente-comercial/layout-gerente-comercial.component';
+import { LayoutLogisticaComponent } from './components/logistica/layout-logistica/layout-logistica.component';
+import { LayoutDisenioComponent } from './components/diseño/layout-disenio/layout-disenio.component';
+import { LayoutProduccionComponent } from './components/produccion/layout-produccion/layout-produccion.component';
+import { SidebarProduccionComponent } from './components/produccion/sidebar-produccion/sidebar-produccion.component';
+import { SidebarDisenioComponent } from './components/diseño/sidebar-disenio/sidebar-disenio.component';
+import { SidebarGerenteComercialComponent } from './components/gerenteComercial/sidebar-gerente-comercial/sidebar-gerente-comercial.component';
+import { SidebarLogisticaComponent } from './components/logistica/sidebar-logistica/sidebar-logistica.component';
+import { PedidosComponent } from './components/gerenteComercial/pedidos/pedidos.component';
+import { OrdenesProduccionComponent } from './components/gerenteComercial/ordenes-produccion/ordenes-produccion.component';
+import { OrdenProduccionComponent } from './components/gerenteComercial/orden-produccion/orden-produccion.component';
+import { AutorizacionesComponent } from './components/gerenteComercial/autorizaciones/autorizaciones.component';
+import { AutorizacionComponent } from './components/gerenteComercial/autorizacion/autorizacion.component';
+
 
 
 @NgModule({
@@ -108,26 +118,35 @@ import { ProgramacionComponent } from './components/admin/programacion/programac
     LoginComponent,
     SidebarAdminComponent,
     UserAdminComponent,
-    DetailsOrderComponent,
     AutorizationsComponent,
-    QualityControlComponent,
     OrderProductionsComponent,
     NotFoundComponent,
     PedidosAdminComponent,
     HomeAdminComponent,
-    PruebaComponent,
     SearchPedidoPipe,
-    CreateOrderComponent,
     PedidoComponent,
     OneOrdenComponent,
     OperariosComponent,
     AutorizationComponent,
     SearchOrdenPipe,
     SearchAutorizationPipe,
-    DetailsOrderHomeComponent,
     OrdenesFabricacionComponent,
     OrdenFabricacionComponent,
     ProgramacionComponent,
+    ResultadosComponent,
+    LayoutGerenteComercialComponent,
+    LayoutLogisticaComponent,
+    LayoutDisenioComponent,
+    LayoutProduccionComponent,
+    SidebarProduccionComponent,
+    SidebarDisenioComponent,
+    SidebarGerenteComercialComponent,
+    SidebarLogisticaComponent,
+    PedidosComponent,
+    OrdenesProduccionComponent,
+    OrdenProduccionComponent,
+    AutorizacionesComponent,
+    AutorizacionComponent,
   ],
   imports: [
     SwiperModule,

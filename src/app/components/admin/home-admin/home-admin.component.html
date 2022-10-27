@@ -12,7 +12,8 @@
               <i class="fa-solid fa-boxes-stacked"></i>
             </div>
             <div class="ps-3">
-              <h6 >{{cantidadOrdenes}}</h6>
+              <h6 *ngIf="cantidadOrdenes === 0 || cantidadOrdenes === undefined || cantidadOrdenes === null">0</h6>
+              <h6 *ngIf="cantidadOrdenes !== 0 || cantidadOrdenes !== undefined || cantidadOrdenes !== null">{{cantidadOrdenes}}</h6>
             </div>
           </div>
         </div>
@@ -26,7 +27,8 @@
               <i class="fa-solid fa-parachute-box"></i>
             </div>
             <div class="ps-3">
-              <h6>{{cantidadPorAutorizar}}</h6>
+              <h6 *ngIf="cantidadPorAutorizar === 0 || cantidadPorAutorizar === undefined || cantidadPorAutorizar === null">0</h6>
+              <h6 *ngIf="cantidadPorAutorizar !== 0 || cantidadPorAutorizar !== undefined || cantidadPorAutorizar !== null">{{cantidadPorAutorizar}}</h6>
             </div>
           </div>
         </div>
@@ -94,7 +96,7 @@
                     <td class="text-center">100% </td>
                     <td>
                       <a>
-                        <i class="fa-solid fa-circle-info"></i> </a>
+                        <i routerLink="/admin/resultados" routerLinkActive="router-link-active"  class="fa-solid fa-circle-info"></i> </a>
                     </td>
                   </tr>
                 </tbody>

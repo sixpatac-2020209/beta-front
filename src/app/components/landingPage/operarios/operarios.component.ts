@@ -1,6 +1,7 @@
 import { Component, OnInit, } from '@angular/core';
 import { DetalleOrdenRestService } from 'src/app/services/detalleOrdenRest/detalle-orden-rest.service';
 import { OrdenProduccionRestService } from 'src/app/services/ordenProduccionRest/orden-produccion-rest.service';
+import { ResultadosRestService } from 'src/app/services/resultadosRest/resultados-rest.service';
 
 import Swal from 'sweetalert2';
 
@@ -16,6 +17,7 @@ export class OperariosComponent implements OnInit {
   constructor(
     private detalleRest: DetalleOrdenRestService,
     private orderRest: OrdenProduccionRestService,
+    private resultadosRest: ResultadosRestService,
   ) { }
 
   ngOnInit(): void {
@@ -41,7 +43,6 @@ export class OperariosComponent implements OnInit {
     this.orderRest.getDetalleOrden(id).subscribe({
       next: (res: any) => {
         this.articulosOrder = res.returnDetalle;
-        console.log(this.articulosOrder);
       },
       error: (err) => {
         console.log(err);

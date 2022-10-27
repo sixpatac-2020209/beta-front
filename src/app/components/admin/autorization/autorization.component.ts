@@ -17,6 +17,7 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 import { MatDatepicker } from '@angular/material/datepicker';
 import { ProgramacionModel } from 'src/app/models/programacion.model';
 import { ProgramacionRestService } from 'src/app/services/prgramacionRest/programacion-rest.service';
+import { ResultadosRestService } from 'src/app/services/resultadosRest/resultados-rest.service';
 
 export const MY_FORMATS = {
   parse: {
@@ -50,8 +51,6 @@ export const MY_FORMATS = {
 })
 
 
-
-
 export class AutorizationComponent implements OnInit {
   CVE_ORDEN: any;
   orden: OrdenModel;
@@ -72,6 +71,7 @@ export class AutorizationComponent implements OnInit {
     private emailRest: EmailRestService,
     private userRest: UserRestService,
     private credentialRest: CredentialsRestService,
+    private resultadosRest: ResultadosRestService
 
   ) {
     this.orden = new OrdenModel('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
@@ -119,7 +119,7 @@ export class AutorizationComponent implements OnInit {
     });
   }
 
- autorizar() {
+  autorizar() {
     let params = { ID_USUARIO: `${this.user.name} ${this.user.surname}` }
     console.log(params.ID_USUARIO);
     this.autorizationRest.autorizar(this.CVE_ORDEN, params).subscribe({
@@ -141,13 +141,6 @@ export class AutorizationComponent implements OnInit {
 
     this.emailRest.confirmarOrden(this.CVE_ORDEN, params).subscribe({
       next: (res: any) => {
-        Swal.fire({
-          title: res.message,
-          icon: 'success',
-          position: 'center',
-          showConfirmButton: false,
-          timer: 2000
-        });
       },
       error: (err) => Swal.fire({
         title: err.error.message,
@@ -205,7 +198,6 @@ export class AutorizationComponent implements OnInit {
     });
     this.autorizationRest.rechazar(this.CVE_ORDEN).subscribe({
       next: (res: any) => {
-
         Swal.fire({
           title: res.message,
           icon: 'success',
@@ -224,5 +216,24 @@ export class AutorizationComponent implements OnInit {
     });
   }
 
+  createResultados() {
+    this.resultadosRest.createResultados(this.CVE_ORDEN).subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          title: res.message,
+          icon: 'success',
+          position: 'center',
+          showConfirmButton: false,
+          timer: 2000
+        })
+      },
+      error: (err) => Swal.fire({
+        title: err.error.message,
+        icon: 'error',
+        position: 'center',
+        timer: 3000
+      })
+    })
+  }
 
 }

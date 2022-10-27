@@ -12,7 +12,7 @@ import { ExportExcelOrdenesFabricacionService } from './../../../services/export
   styleUrls: ['./ordenes-fabricacion.component.css']
 })
 export class OrdenesFabricacionComponent implements OnInit {
-orden: OrdenModel;
+  orden: OrdenModel;
   ordenes: any;
   autorizationPipe: any
   notFound: boolean = false;

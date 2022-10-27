@@ -24,6 +24,7 @@ export const MY_FORMATS = {
     monthYearA11yLabel: 'MMMM YYYY',
   },
 };
+
 @Component({
   selector: 'app-orden-fabricacion',
   templateUrl: './orden-fabricacion.component.html',

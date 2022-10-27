@@ -54,9 +54,7 @@
                           <tr>
                             <th class="text-center">#</th>
                             <th class="text-center">Proceso</th>
-                            <th class="text-center">
-                              Cantidad
-                            </th>
+                            <th class="text-center"> Cantidad </th>
                             <th class="text-center">Por Hacer</th>
                           </tr>
                         </thead>
@@ -67,12 +65,17 @@
                             <td class="text-center"> {{detallesArticulos[0].DESCRIPCION}}: </td>
                             <td class="text-center"> {{detallesArticulos[0].REALIZAR}} </td>
                             <td class="text-center">
-                              <form  #corteVidrio="ngForm">
-                                <mat-form-field class="example-form-field" appearance="fill">
-                                  <mat-label>Cantidad</mat-label>
-                                  <input [(ngModel)]="detallesArticulos[0].REALIZADO" name="corte" matInput type="text">
-                                </mat-form-field>
-                              </form>
+                              <mat-form-field class="example-form-field" appearance="fill">
+                                <mat-label>Cantidad</mat-label>
+                                <input [(ngModel)]="detallesArticulos[0].REALIZADO" name="corte" matInput type="text">
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <button type="button" class="btn btn-labeled btn-success">
+                                <span class="btn-label">
+                                  <i class="fa-solid fa-floppy-disk me-2"></i>
+                                </span>Guardar
+                              </button>
                             </td>
                           </tr>
 
@@ -81,12 +84,17 @@
                             <td class="text-center"> {{detallesArticulos[1].DESCRIPCION}}: </td>
                             <td class="text-center"> {{detallesArticulos[1].REALIZAR}} </td>
                             <td class="text-center">
-                              <form >
-                                <mat-form-field class="example-form-field" appearance="fill">
-                                  <mat-label>Cantidad</mat-label>
-                                  <input name="corte" matInput type="text" value="{{detallesArticulos[1].REALIZADO}}">
-                                </mat-form-field>
-                              </form>
+                              <mat-form-field class="example-form-field" appearance="fill">
+                                <mat-label>Cantidad</mat-label>
+                                <input name="corte" matInput type="text" value="{{detallesArticulos[1].REALIZADO}}">
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <button type="button" class="btn btn-labeled btn-success">
+                                <span class="btn-label">
+                                  <i class="fa-solid fa-floppy-disk me-2"></i>
+                                </span>Guardar
+                              </button>
                             </td>
                           </tr>
 
@@ -95,12 +103,17 @@
                             <td class="text-center"> {{detallesArticulos[2].DESCRIPCION}}: </td>
                             <td class="text-center"> {{detallesArticulos[2].REALIZAR}} </td>
                             <td class="text-center">
-                              <form>
-                                <mat-form-field class="example-form-field" appearance="fill">
-                                  <mat-label>Cantidad</mat-label>
-                                  <input matInput type="text" value="{{detallesArticulos[2].REALIZADO}}">
-                                </mat-form-field>
-                              </form>
+                              <mat-form-field class="example-form-field" appearance="fill">
+                                <mat-label>Cantidad</mat-label>
+                                <input matInput type="text" value="{{detallesArticulos[2].REALIZADO}}">
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <button type="button" class="btn btn-labeled btn-success">
+                                <span class="btn-label">
+                                  <i class="fa-solid fa-floppy-disk me-2"></i>
+                                </span>Guardar
+                              </button>
                             </td>
                           </tr>
 
@@ -109,12 +122,17 @@
                             <td class="text-center"> {{detallesArticulos[3].DESCRIPCION}}: </td>
                             <td class="text-center"> {{detallesArticulos[3].REALIZAR}} </td>
                             <td class="text-center">
-                              <form>
-                                <mat-form-field class="example-form-field" appearance="fill">
-                                  <mat-label>Cantidad</mat-label>
-                                  <input matInput type="text" value="{{detallesArticulos[3].REALIZADO}}">
-                                </mat-form-field>
-                              </form>
+                              <mat-form-field class="example-form-field" appearance="fill">
+                                <mat-label>Cantidad</mat-label>
+                                <input matInput type="text" value="{{detallesArticulos[3].REALIZADO}}">
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <button type="button" class="btn btn-labeled btn-success">
+                                <span class="btn-label">
+                                  <i class="fa-solid fa-floppy-disk me-2"></i>
+                                </span>Guardar
+                              </button>
                             </td>
                           </tr>
 
@@ -153,12 +171,17 @@
                             <td class="text-center"> {{detallesArticulos[4].DESCRIPCION}}: </td>
                             <td class="text-center"> {{detallesArticulos[4].REALIZAR}} </td>
                             <td class="text-center">
-                              <form>
-                                <mat-form-field class="example-form-field" appearance="fill">
-                                  <mat-label>Cantidad</mat-label>
-                                  <input matInput type="text" value="{{detallesArticulos[4].REALIZADO}}">
-                                </mat-form-field>
-                              </form>
+                              <mat-form-field class="example-form-field" appearance="fill">
+                                <mat-label>Cantidad</mat-label>
+                                <input matInput type="text" value="{{detallesArticulos[4].REALIZADO}}">
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <button type="button" class="btn btn-labeled btn-success">
+                                <span class="btn-label">
+                                  <i class="fa-solid fa-floppy-disk me-2"></i>
+                                </span>Guardar
+                              </button>
                             </td>
                           </tr>
 
@@ -167,12 +190,17 @@
                             <td class="text-center"> {{detallesArticulos[5].DESCRIPCION}}: </td>
                             <td class="text-center"> {{detallesArticulos[5].REALIZAR}} </td>
                             <td class="text-center">
-                              <form>
-                                <mat-form-field class="example-form-field" appearance="fill">
-                                  <mat-label>Cantidad</mat-label>
-                                  <input matInput type="text" value="{{detallesArticulos[5].REALIZADO}}">
-                                </mat-form-field>
-                              </form>
+                              <mat-form-field class="example-form-field" appearance="fill">
+                                <mat-label>Cantidad</mat-label>
+                                <input matInput type="text" value="{{detallesArticulos[5].REALIZADO}}">
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <button type="button" class="btn btn-labeled btn-success">
+                                <span class="btn-label">
+                                  <i class="fa-solid fa-floppy-disk me-2"></i>
+                                </span>Guardar
+                              </button>
                             </td>
                           </tr>
 
@@ -181,12 +209,17 @@
                             <td class="text-center"> {{detallesArticulos[6].DESCRIPCION}}: </td>
                             <td class="text-center"> {{detallesArticulos[6].REALIZAR}} </td>
                             <td class="text-center">
-                              <form>
-                                <mat-form-field class="example-form-field" appearance="fill">
-                                  <mat-label>Cantidad</mat-label>
-                                  <input matInput type="text" value="{{detallesArticulos[6].REALIZADO}}">
-                                </mat-form-field>
-                              </form>
+                              <mat-form-field class="example-form-field" appearance="fill">
+                                <mat-label>Cantidad</mat-label>
+                                <input matInput type="text" value="{{detallesArticulos[6].REALIZADO}}">
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <button type="button" class="btn btn-labeled btn-success">
+                                <span class="btn-label">
+                                  <i class="fa-solid fa-floppy-disk me-2"></i>
+                                </span>Guardar
+                              </button>
                             </td>
                           </tr>
 
@@ -223,12 +256,17 @@
                             <td class="text-center"> {{detallesArticulos[7].DESCRIPCION}}: </td>
                             <td class="text-center"> {{detallesArticulos[7].REALIZAR}} </td>
                             <td class="text-center">
-                              <form>
-                                <mat-form-field class="example-form-field" appearance="fill">
-                                  <mat-label>Cantidad</mat-label>
-                                  <input matInput type="text" value="{{detallesArticulos[7].REALIZADO}}">
-                                </mat-form-field>
-                              </form>
+                              <mat-form-field class="example-form-field" appearance="fill">
+                                <mat-label>Cantidad</mat-label>
+                                <input matInput type="text" value="{{detallesArticulos[7].REALIZADO}}">
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <button type="button" class="btn btn-labeled btn-success">
+                                <span class="btn-label">
+                                  <i class="fa-solid fa-floppy-disk me-2"></i>
+                                </span>Guardar
+                              </button>
                             </td>
                           </tr>
 
@@ -237,12 +275,17 @@
                             <td class="text-center"> {{detallesArticulos[8].DESCRIPCION}}: </td>
                             <td class="text-center"> {{detallesArticulos[8].REALIZAR}} </td>
                             <td class="text-center">
-                              <form>
-                                <mat-form-field class="example-form-field" appearance="fill">
-                                  <mat-label>Cantidad</mat-label>
-                                  <input matInput type="text" value="{{detallesArticulos[8].REALIZADO}}">
-                                </mat-form-field>
-                              </form>
+                              <mat-form-field class="example-form-field" appearance="fill">
+                                <mat-label>Cantidad</mat-label>
+                                <input matInput type="text" value="{{detallesArticulos[8].REALIZADO}}">
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <button type="button" class="btn btn-labeled btn-success">
+                                <span class="btn-label">
+                                  <i class="fa-solid fa-floppy-disk me-2"></i>
+                                </span>Guardar
+                              </button>
                             </td>
                           </tr>
 
@@ -251,12 +294,17 @@
                             <td class="text-center"> {{detallesArticulos[9].DESCRIPCION}}: </td>
                             <td class="text-center"> {{detallesArticulos[9].REALIZAR}} </td>
                             <td class="text-center">
-                              <form>
-                                <mat-form-field class="example-form-field" appearance="fill">
-                                  <mat-label>Cantidad</mat-label>
-                                  <input matInput type="text" value="{{detallesArticulos[9].REALIZADO}}">
-                                </mat-form-field>
-                              </form>
+                              <mat-form-field class="example-form-field" appearance="fill">
+                                <mat-label>Cantidad</mat-label>
+                                <input matInput type="text" value="{{detallesArticulos[9].REALIZADO}}">
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <button type="button" class="btn btn-labeled btn-success">
+                                <span class="btn-label">
+                                  <i class="fa-solid fa-floppy-disk me-2"></i>
+                                </span>Guardar
+                              </button>
                             </td>
                           </tr>
 
@@ -295,12 +343,17 @@
                             <td class="text-center"> {{detallesArticulos[10].DESCRIPCION}}: </td>
                             <td class="text-center"> {{detallesArticulos[10].REALIZAR}} </td>
                             <td class="text-center">
-                              <form>
-                                <mat-form-field class="example-form-field" appearance="fill">
-                                  <mat-label>Cantidad</mat-label>
-                                  <input matInput type="text" value="{{detallesArticulos[10].REALIZADO}}">
-                                </mat-form-field>
-                              </form>
+                              <mat-form-field class="example-form-field" appearance="fill">
+                                <mat-label>Cantidad</mat-label>
+                                <input matInput type="text" value="{{detallesArticulos[10].REALIZADO}}">
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <button type="button" class="btn btn-labeled btn-success">
+                                <span class="btn-label">
+                                  <i class="fa-solid fa-floppy-disk me-2"></i>
+                                </span>Guardar
+                              </button>
                             </td>
                           </tr>
 
@@ -309,12 +362,17 @@
                             <td class="text-center"> {{detallesArticulos[11].DESCRIPCION}}: </td>
                             <td class="text-center"> {{detallesArticulos[11].REALIZAR}} </td>
                             <td class="text-center">
-                              <form>
-                                <mat-form-field class="example-form-field" appearance="fill">
-                                  <mat-label>Cantidad</mat-label>
-                                  <input matInput type="text" value="{{detallesArticulos[11].REALIZADO}}">
-                                </mat-form-field>
-                              </form>
+                              <mat-form-field class="example-form-field" appearance="fill">
+                                <mat-label>Cantidad</mat-label>
+                                <input matInput type="text" value="{{detallesArticulos[11].REALIZADO}}">
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <button type="button" class="btn btn-labeled btn-success">
+                                <span class="btn-label">
+                                  <i class="fa-solid fa-floppy-disk me-2"></i>
+                                </span>Guardar
+                              </button>
                             </td>
                           </tr>
 
@@ -323,12 +381,17 @@
                             <td class="text-center"> {{detallesArticulos[12].DESCRIPCION}}: </td>
                             <td class="text-center"> {{detallesArticulos[12].REALIZAR}} </td>
                             <td class="text-center">
-                              <form>
-                                <mat-form-field class="example-form-field" appearance="fill">
-                                  <mat-label>Cantidad</mat-label>
-                                  <input matInput type="text" value="{{detallesArticulos[12].REALIZADO}}">
-                                </mat-form-field>
-                              </form>
+                              <mat-form-field class="example-form-field" appearance="fill">
+                                <mat-label>Cantidad</mat-label>
+                                <input matInput type="text" value="{{detallesArticulos[12].REALIZADO}}">
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <button type="button" class="btn btn-labeled btn-success">
+                                <span class="btn-label">
+                                  <i class="fa-solid fa-floppy-disk me-2"></i>
+                                </span>Guardar
+                              </button>
                             </td>
                           </tr>
 
@@ -337,12 +400,17 @@
                             <td class="text-center"> {{detallesArticulos[13].DESCRIPCION}}: </td>
                             <td class="text-center"> {{detallesArticulos[13].REALIZAR}} </td>
                             <td class="text-center">
-                              <form>
-                                <mat-form-field class="example-form-field" appearance="fill">
-                                  <mat-label>Cantidad</mat-label>
-                                  <input matInput type="text" value="{{detallesArticulos[13].REALIZADO}}">
-                                </mat-form-field>
-                              </form>
+                              <mat-form-field class="example-form-field" appearance="fill">
+                                <mat-label>Cantidad</mat-label>
+                                <input matInput type="text" value="{{detallesArticulos[13].REALIZADO}}">
+                              </mat-form-field>
+                            </td>
+                            <td>
+                              <button type="button" class="btn btn-labeled btn-success">
+                                <span class="btn-label">
+                                  <i class="fa-solid fa-floppy-disk me-2"></i>
+                                </span>Guardar
+                              </button>
                             </td>
                           </tr>
 

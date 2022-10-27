@@ -44,7 +44,16 @@ export class LoginComponent implements OnInit {
 
         const verificarAdmin = res.already.role;
         //VERIFICA A DONDE LLEVARME//
-        if (verificarAdmin == 'ADMINISTRADOR') { this.router.navigate(['/admin/home']); }
+        if (verificarAdmin == 'ADMINISTRADOR' || verificarAdmin == 'IT') { this.router.navigate(['/admin/home']); }
+
+        if (verificarAdmin == 'JEFEPRODUCCION') { this.router.navigate(['/produccion/home']); }
+
+        if (verificarAdmin == 'LOGISTICA') { this.router.navigate(['/logistica/home']); }
+
+        if (verificarAdmin == 'GERENTECOMERCIAL') { this.router.navigate(['/gerenteComercial/pedidos']); }
+
+        if (verificarAdmin == 'DISEÑO') { this.router.navigate(['/disenio/home']); }
+
 
       },
       error: (err: any) => {
