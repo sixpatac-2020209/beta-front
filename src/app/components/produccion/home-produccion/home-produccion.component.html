@@ -1,0 +1,110 @@
+<body>
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Dashboard</h1>
+    </div>
+    <section class="section dashboard">
+      <div class="card info-card sales-card widthCard">
+        <div class="card-body">
+          <h5 class="card-title">No. <span>| Ordenes</span></h5>
+          <div class="d-flex align-items-center">
+            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+              <i class="fa-solid fa-boxes-stacked"></i>
+            </div>
+            <div class="ps-3">
+              <h6 *ngIf="cantidadOrdenes === 0 || cantidadOrdenes === undefined || cantidadOrdenes === null">0</h6>
+              <h6 *ngIf="cantidadOrdenes !== 0 || cantidadOrdenes !== undefined || cantidadOrdenes !== null">{{cantidadOrdenes}}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card info-card revenue-card widthCard">
+        <div class="card-body">
+          <h5 class="card-title">Ordenes <span>| Nuevas</span></h5>
+          <div class="d-flex align-items-center">
+            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+              <i class="fa-solid fa-parachute-box"></i>
+            </div>
+            <div class="ps-3">
+              <h6 *ngIf="cantidadPorAutorizar === 0 || cantidadPorAutorizar === undefined || cantidadPorAutorizar === null">0</h6>
+              <h6 *ngIf="cantidadPorAutorizar !== 0 || cantidadPorAutorizar !== undefined || cantidadPorAutorizar !== null">{{cantidadPorAutorizar}}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card info-card revenue-card widthCard">
+        <div class="card-body">
+          <h5 class="card-title">Ordenes <span>| Producción</span></h5>
+          <div class="d-flex align-items-center">
+            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+              <i class="fa-solid fa-people-carry-box"></i>
+            </div>
+            <div class="ps-3">
+              <h6>20</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="card info-card revenue-card widthCard">
+        <div class="card-body">
+          <h5 class="card-title">Ordenes <span>| Terminadas</span></h5>
+          <div class="d-flex align-items-center">
+            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+              <i class="fa-solid fa-truck-ramp-box"></i>
+            </div>
+            <div class="ps-3">
+              <h6>20</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="row clearfix tableText" style="margin-top: 25px;">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 tableText">
+        <div class="card tableText">
+
+          <div class="tableBody">
+            <div class="table-responsive">
+              <table class="table table-bpedidoed table-hover">
+                <thead style="margin: -100px">
+                  <tr>
+                    <th class="text-center">#</th>
+                    <th class="text-center">Orden</th>
+                    <th class="text-center">Corte</th>
+                    <th class="text-center">Fusiòn</th>
+                    <th class="text-center">Limpieza</th>
+                    <th class="text-center">Armado</th>
+                    <th class="text-center">Accesorios</th>
+                    <th class="text-center"> </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <!-- {{ pedidos.indexOf(pedido) + 1 }} -->
+                    </td>
+                    <td class="text-left"> Nombre Pedido </td>
+                    <td class="text-center">100% </td>
+                    <td class="text-center">100% </td>
+                    <td class="text-center">100% </td>
+                    <td class="text-center">100% </td>
+                    <td class="text-center">100% </td>
+                    <td>
+                      <a>
+                        <i routerLink="/admin/resultados" routerLinkActive="router-link-active"  class="fa-solid fa-circle-info"></i> </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>

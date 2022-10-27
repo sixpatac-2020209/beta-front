@@ -1,0 +1,117 @@
+<body>
+    <main id="main" class="main">
+        <div class="pagetitle">
+            <h1 style="margin-top: 20px;">Orden: {{orden.CVE_ORDEN}}</h1>
+        </div>
+        <div style="display: fex; justify-content: center;">
+            <h2 *ngIf="orden.AUTORIZACION === null"
+                style="color: red; text-align: center;">NO Autorizada</h2>
+            <h2 *ngIf="orden.AUTORIZACION === '1' " style="color: green; text-align: center;">Autorizada</h2>
+        </div>
+
+        <section>
+            <div>
+                <div style="background-color: #fff; padding: 15px; margin: 15px;">
+                    <div class="textData mb-3">
+                        <div
+                            style="display: flex; justify-content: space-between; margin-left: 20px; margin-right: 20px;">
+                            <div class="FirstTextData ">
+                                <div class="contentLabelInput">
+                                    <label>Nombre: </label>
+                                    <div>{{orden.CLIENTE}} </div>
+                                </div>
+
+                                <div class="contentLabelInput">
+                                    <label>Dirección: </label>
+                                    <div>{{orden.LOCALIDAD}}</div>
+                                    <div
+                                        *ngIf="orden.LOCALIDAD === null || orden.LOCALIDAD === undefined || orden.LOCALIDAD === ''">
+                                        Municipio no ingresado.
+
+                                    </div>
+                                </div>
+
+                                <div class="contentLabelInput">
+                                    <label>Fecha: </label>
+                                    <div>{{orden.FECHA_DOC}} </div>
+                                </div>
+
+                                <div class="contentLabelInput">
+                                    <label>Vendedor: </label>
+                                    <div>{{orden.VENDEDOR}}</div>
+                                </div>
+                            </div>
+
+                            <div class="secondTextData">
+                                <div class="contentLabelInput">
+                                    <label>NIT: </label>
+                                    <div>{{orden.CURP}}</div>
+                                    <div *ngIf="orden.CURP === null">C/F</div>
+                                </div>
+                                <div class="contentLabelInput">
+                                    <label>Código Cliente: </label>
+                                    <div> {{orden.CLAVE}}</div>
+
+                                </div>
+                                <div class="contentLabelInput">
+                                    <label>Clasificación: </label>
+                                    <div>{{orden.CLASIFIC}}</div>
+
+                                </div>
+                                <div class="contentLabelInput">
+                                    <label>Forma de Pago: </label>
+                                    <div *ngIf="orden.CON_CREDITO === 'S'"> Con Crédito</div>
+                                    <div *ngIf="orden.CON_CREDITO === 'N'">Sin Crédito</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5">
+                            <div class="table-responsive" style="margin: 10px;">
+                                <table class="table table-bpedidoed table-hover">
+                                    <thead style="margin: -100px;">
+                                        <tr>
+                                            <th class="text-center TextB"
+                                                style="background-color: #FFCC00; color: black;">#</th>
+                                            <th class="text-center TextB"
+                                                style="width: 120px; background-color: #FFCC00; color: black;">
+                                                Articulo</th>
+                                            <th class="text-center TextB"
+                                                style="width: 450px; background-color: #FFCC00; color: black;">
+                                                Descripción </th>
+                                            <th class="text-center TextB"
+                                                style="background-color: #FFCC00; color: black;">Cantidad</th>
+
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                        <tr *ngFor="let detalle of detalles">
+                                            <td style="max-width: 15px; margin: 0 auto; text-align: center;">
+                                                {{detalles.indexOf(detalle) + 1}}
+                                            </td>
+                                            <td class="text-center"
+                                                style="max-width: 15px; margin: 0 auto; text-align: center;">
+                                                {{detalle.CVE_ART}} </td>
+                                            <td>
+                                                {{detalle.DESCR}}
+                                                <br>
+                                                <hr style="margin: 0;">
+                                                {{detalle.STR_OBS}}
+                                            </td>
+
+                                            <td class="text-center"> {{detalle.CANT }}</td>
+
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>

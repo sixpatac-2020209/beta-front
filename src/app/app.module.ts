@@ -101,6 +101,13 @@ import { OrdenesFabricacionGerenteComponent } from './components/gerenteComercia
 import { OrdenFabricacionGerenteComponent } from './components/gerenteComercial/orden-fabricacion-gerente/orden-fabricacion-gerente.component';
 import { PedidoGerenteComponent } from './components/gerenteComercial/pedido-gerente/pedido-gerente.component';
 import { ProgramacionGerenteComponent } from './components/gerenteComercial/programacion-gerente/programacion-gerente.component';
+import { HomeProduccionComponent } from './components/produccion/home-produccion/home-produccion.component';
+import { OrdenesFabricacionProduccionComponent } from './components/produccion/ordenes-fabricacion-produccion/ordenes-fabricacion-produccion.component';
+import { OrdenFabricacionProduccionComponent } from './components/produccion/orden-fabricacion-produccion/orden-fabricacion-produccion.component';
+import { AutorizacionesProduccionComponent } from './components/produccion/autorizaciones-produccion/autorizaciones-produccion.component';
+import { AutorizacionProduccionComponent } from './components/produccion/autorizacion-produccion/autorizacion-produccion.component';
+import { OrdenesProduccionProduccionComponent } from './components/produccion/ordenes-produccion-produccion/ordenes-produccion-produccion.component';
+import { OrdenProduccionProduccionComponent } from './components/produccion/orden-produccion-produccion/orden-produccion-produccion.component';
 
 
 
@@ -155,6 +162,13 @@ import { ProgramacionGerenteComponent } from './components/gerenteComercial/prog
     OrdenFabricacionGerenteComponent,
     PedidoGerenteComponent,
     ProgramacionGerenteComponent,
+    HomeProduccionComponent,
+    OrdenesFabricacionProduccionComponent,
+    OrdenFabricacionProduccionComponent,
+    AutorizacionesProduccionComponent,
+    AutorizacionProduccionComponent,
+    OrdenesProduccionProduccionComponent,
+    OrdenProduccionProduccionComponent,
   ],
   imports: [
     SwiperModule,

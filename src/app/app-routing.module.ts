@@ -29,6 +29,13 @@ import { OrdenesFabricacionGerenteComponent } from './components/gerenteComercia
 import { OrdenFabricacionGerenteComponent } from './components/gerenteComercial/orden-fabricacion-gerente/orden-fabricacion-gerente.component';
 import { PedidoGerenteComponent } from './components/gerenteComercial/pedido-gerente/pedido-gerente.component';
 import { ProgramacionGerenteComponent } from './components/gerenteComercial/programacion-gerente/programacion-gerente.component';
+import { HomeProduccionComponent } from './components/produccion/home-produccion/home-produccion.component';
+import { AutorizacionesProduccionComponent } from './components/produccion/autorizaciones-produccion/autorizaciones-produccion.component';
+import { AutorizacionProduccionComponent } from './components/produccion/autorizacion-produccion/autorizacion-produccion.component';
+import { OrdenesProduccionProduccionComponent } from './components/produccion/ordenes-produccion-produccion/ordenes-produccion-produccion.component';
+import { OrdenProduccionProduccionComponent } from './components/produccion/orden-produccion-produccion/orden-produccion-produccion.component';
+import { OrdenesFabricacionProduccionComponent } from './components/produccion/ordenes-fabricacion-produccion/ordenes-fabricacion-produccion.component';
+import { OrdenFabricacionProduccionComponent } from './components/produccion/orden-fabricacion-produccion/orden-fabricacion-produccion.component';
 
 const routes: Routes = [
   { path: '', component: OperariosComponent },
@@ -63,13 +70,20 @@ const routes: Routes = [
       { path: 'programacion', component: ProgramacionGerenteComponent },
     ]
   },
-  { path: 'produccion', component: LayoutProduccionComponent },
+  {
+    path: 'produccion', component: LayoutProduccionComponent, children: [
+      { path: 'home', component: HomeProduccionComponent },
+      { path: 'autorizaciones', component: AutorizacionesProduccionComponent },
+      { path: 'autorizarOrden/:id', component: AutorizacionProduccionComponent },
+      { path: 'ordenesProduccion', component: OrdenesProduccionProduccionComponent },
+      { path: 'ordenProducción/:id', component: OrdenProduccionProduccionComponent },
+      { path: 'ordenesFabricacion', component: OrdenesFabricacionProduccionComponent },
+      { path: 'ordenFabricacion/:id', component: OrdenFabricacionProduccionComponent },
+    ]
+  },
 
   { path: 'disenio', component: LayoutDisenioComponent },
   { path: 'logistica', component: LayoutLogisticaComponent },
-
-
-
 
 ];
 
