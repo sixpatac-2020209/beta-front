@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { OrdenProduccionRestService } from 'src/app/services/ordenProduccionRest/orden-produccion-rest.service';
 import { AutorizationRestService } from 'src/app/services/autorizationRest/autorization-rest.service';
+import { ResultadosRestService } from 'src/app/services/resultadosRest/resultados-rest.service';
 
 @Component({
   selector: 'app-home-admin',
@@ -16,11 +17,12 @@ export class HomeAdminComponent implements OnInit {
   cantidadPorAutorizar: any;
   cantidadEnProduccion: any;
   cantidadTerminadas: any;
-
+fases:any;
   constructor(
     private elementRef: ElementRef,
     private ordenRest: OrdenProduccionRestService,
-    private autorizationRest: AutorizationRestService
+    private autorizationRest: AutorizationRestService,
+    private resultadosRest: ResultadosRestService,
 
   ) {
 
@@ -33,8 +35,9 @@ export class HomeAdminComponent implements OnInit {
     s.src = "../../../../assets/js/main.js";
     this.elementRef.nativeElement.appendChild(s);
 
-    this.getOrdenesDeProduccion()
-    this.getAutorizaciones()
+    this.getOrdenesDeProduccion();
+    this.getAutorizaciones();
+    this.getFases()
   }
 
   getOrdenesDeProduccion() {
@@ -56,6 +59,15 @@ export class HomeAdminComponent implements OnInit {
       },
       error: (err) => console.log(err),
     });
+  }
+
+  getFases(){
+    this.resultadosRest.getFasesHome().subscribe({
+      next: (res: any) => {
+        this.fases = res.returnFases;
+      },
+      error: (err) => console.log(err),
+    })
   }
 
   /* getOrdenesDeFabricacion() {

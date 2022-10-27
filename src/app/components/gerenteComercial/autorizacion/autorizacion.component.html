@@ -4,8 +4,8 @@
             <h1 style="margin-top: 20px;">Orden: {{orden.CVE_ORDEN}}</h1>
         </div>
         <div style="display: fex; justify-content: center;">
-            <h2 *ngIf="orden.AUTORIZACION === null" style="color: red; text-align: center;">NO Autorizada</h2>
-            <h2 *ngIf="orden.AUTORIZACION === '1' " style="color: green; text-align: center;">Autorizada</h2>
+            <h2 *ngIf="orden.ESTATUS === null" style="color: red; text-align: center;">NO Autorizada</h2>
+            <h2 *ngIf="orden.ESTATUS === '1' " style="color: green; text-align: center;">Autorizada</h2>
         </div>
 
         <section>

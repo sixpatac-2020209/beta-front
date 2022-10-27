@@ -24,4 +24,13 @@ export class ResultadosRestService {
   updateDetalle(id: string) {
     return this.http.put(environment.baseURI + 'resultados/updateDetalle/' + id, { headers: this.httpOptions });
   }
+
+  getFasesHome() {
+    return this.http.get(environment.baseURI + 'resultados/getFasesHome', { headers: this.httpOptions });
+  }
+
+  getDetalleResultados(id: string) {
+    return this.http.get(environment.baseURI + 'resultados/getDetalleResultados/' + id, { headers: this.httpOptions });
+  }
+
 }

@@ -1,7 +1,7 @@
 <body>
     <main id="main" class="main">
         <div class="pagetitle">
-            <h1>Detalles de la orden: </h1>
+            <h1>Detalles de la orden: {{detallesOrden[0].CVE_ORDEN}}</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
@@ -41,56 +41,266 @@
                                     <table class="table table-bpedidoed table-hover">
                                         <thead style="margin: -100px">
                                             <tr>
+                                                <th class="text-center" colspan="4" style="border: 1px solid #222;">
+                                                    <b>Totales</b>
+                                                </th>
+
+                                                <th class="text-center" colspan="4" style="border: 1px solid #222;">
+                                                    <b>Corte</b>
+                                                </th>
+                                                <th class="text-center" colspan="3" style="border: 1px solid #222;">
+                                                    <b>Fusión</b>
+                                                </th>
+                                                <th class="text-center" colspan="3" style="border: 1px solid #222;">
+                                                    <b>Limpieza</b>
+                                                </th>
+                                                <th class="text-center" colspan="4" style="border: 1px solid #222;">
+                                                    <b>Accesorios</b>
+                                                </th>
+                                                <th class="text-center" style="border: 1px solid #222;"> </th>
+
+                                            </tr>
+                                            <tr>
+                                                <th class="text-center" style="border: 1px solid #222;"> Orden</th>
                                                 <th class="text-center"
-                                                    >
-                                                    Orden</th>
-                                                <th class="text-center"
-                                                    >
-                                                    Ventanas <br> Terminadas </th>
+                                                    style="border: 1px solid #222; min-width: 120px; "> Articulo</th>
+                                                <th class="text-center" style="border: 1px solid #222;">Cantidad </th>
+                                                <th class="text-center" style="border: 1px solid #222;">Ventanas <br>
+                                                    Terminadas </th>
 
-                                                <th class="text-center"> Corte <br> Vidrio</th>
-                                                <th class="text-center"> Corte <br> Hoja</th>
-                                                <th class="text-center"> Corte <br> Marco</th>
-                                                <th class="text-center"> Corte <br> Cedazo</th>
+                                                <th class="text-center" style="border: 1px solid #222;"> Vidrio </th>
+                                                <th class="text-center" style="border: 1px solid #222;"> Hoja </th>
+                                                <th class="text-center" style="border: 1px solid #222;"> Marco </th>
+                                                <th class="text-center" style="border: 1px solid #222;"> Cedazo </th>
 
-                                                <th class="text-center"> Fusión <br> Hoja</th>
-                                                <th class="text-center"> Fusión <br> Marco</th>
-                                                <th class="text-center"> Fusión <br> Cedazo</th>
+                                                <th class="text-center" style="border: 1px solid #222;"> Hoja</th>
+                                                <th class="text-center" style="border: 1px solid #222;"> Marco</th>
+                                                <th class="text-center" style="border: 1px solid #222;"> Cedazo</th>
 
-                                                <th class="text-center"> Limpieza <br> Hoja</th>
-                                                <th class="text-center"> Limpieza <br> Marco</th>
-                                                <th class="text-center"> Colocación <br> Tela </th>
+                                                <th class="text-center" style="border: 1px solid #222;"> Hoja</th>
+                                                <th class="text-center" style="border: 1px solid #222;"> Marco</th>
+                                                <th class="text-center" style="border: 1px solid #222;"> Tela </th>
 
-                                                <th class="text-center"> Corte <br> Batiente </th>
-                                                <th class="text-center"> Colocación <br> Batiente </th>
-                                                <th class="text-center"> Tapajambas </th>
-                                                <th class="text-center"> Reticula </th>
+                                                <th class="text-center" style="border: 1px solid #222;"> Batiente </th>
+                                                <th class="text-center" style="border: 1px solid #222;"> Batiente </th>
+                                                <th class="text-center" style="border: 1px solid #222;"> Tapajambas
+                                                </th>
+                                                <th class="text-center" style="border: 1px solid #222;"> Reticula </th>
 
-                                                <th class="text-center"> Armado </th>
+                                                <th class="text-center" style="border: 1px solid #222;"> Armado </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td class="text-center" > 6
-                                                </td>
-                                                <td class="text-center" > 1
+                                            <tr *ngFor="let detalle of detallesOrden">
+                                                <td class="text-center"> {{detalle.CVE_ORDEN}} </td>
+                                                <td class="text-center"> {{detalle.CVE_ART}} </td>
+                                                <td class="text-center"> {{detalle.CANTIDAD}}</td>
+                                                <td class="text-center"> {{detalle.VT}} </td>
+
+                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
+                                                    style="background-color: green; color:white;">
+                                                    {{detalle.P1}}%
                                                 </td>
 
-                                                <td class="text-center"> 1% </td>
-                                                <td class="text-center"> 1% </td>
-                                                <td class="text-center"> 1% </td>
-                                                <td class="text-center"> 1% </td>
-                                                <td class="text-center"> 1% </td>
-                                                <td class="text-center"> 1% </td>
-                                                <td class="text-center"> 1% </td>
-                                                <td class="text-center"> 1% </td>
-                                                <td class="text-center"> 1% </td>
-                                                <td class="text-center"> 1% </td>
-                                                <td class="text-center"> 1% </td>
-                                                <td class="text-center"> 1% </td>
-                                                <td class="text-center"> 1% </td>
-                                                <td class="text-center"> 1% </td>
-                                                <td class="text-center"> 1% </td>
+                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
+                                                    style="background-color: green; color:white;"> {{detalle.P2}}% </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
+                                                    style="background-color: yellow; color:black;"> {{detalle.P2}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
+                                                    style="background-color: orange; color:white;"> {{detalle.P2}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
+                                                    style="background-color: red; color:white;"> {{detalle.P2}}% </td>
+
+                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
+                                                    style="background-color: green; color:white;"> {{detalle.P3}}% </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
+                                                    style="background-color: yellow; color:black;"> {{detalle.P3}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
+                                                    style="background-color: orange; color:white;"> {{detalle.P3}}%
+                                                </td>
+                                                <td class="text-center" *ngIf="detalle.P1 <= 29"
+                                                    style="background-color: red; color:white;"> {{detalle.P3}}% </td>
+
+                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
+                                                    style="background-color: green; color:white;"> {{detalle.P4}}% </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
+                                                    style="background-color: yellow; color:black;"> {{detalle.P4}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
+                                                    style="background-color: orange; color:white;"> {{detalle.P4}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
+                                                    style="background-color: red; color:white;"> {{detalle.P4}}% </td>
+
+                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
+                                                    style="background-color: green; color:white;"> {{detalle.P5}}% </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
+                                                    style="background-color: yellow; color:black;"> {{detalle.P5}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
+                                                    style="background-color: orange; color:white;"> {{detalle.P5}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
+                                                    style="background-color: red; color:white;"> {{detalle.P5}}% </td>
+
+                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
+                                                    style="background-color: green; color:white;"> {{detalle.P6}}% </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
+                                                    style="background-color: yellow; color:black;"> {{detalle.P6}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
+                                                    style="background-color: orange; color:white;"> {{detalle.P6}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
+                                                    style="background-color: red; color:white;"> {{detalle.P6}}% </td>
+
+                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
+                                                    style="background-color: green; color:white;"> {{detalle.P7}}% </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
+                                                    style="background-color: yellow; color:black;"> {{detalle.P7}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
+                                                    style="background-color: orange; color:white;"> {{detalle.P7}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
+                                                    style="background-color: red; color:white;"> {{detalle.P7}}% </td>
+
+                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
+                                                    style="background-color: green; color:white;"> {{detalle.P8}}% </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
+                                                    style="background-color: yellow; color:black;"> {{detalle.P8}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
+                                                    style="background-color: orange; color:white;"> {{detalle.P8}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
+                                                    style="background-color: red; color:white;"> {{detalle.P8}}% </td>
+
+                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
+                                                    style="background-color: green; color:white;"> {{detalle.P9}}% </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
+                                                    style="background-color: yellow; color:black;"> {{detalle.P9}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
+                                                    style="background-color: orange; color:white;"> {{detalle.P9}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
+                                                    style="background-color: red; color:white;"> {{detalle.P9}}% </td>
+
+                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
+                                                    style="background-color: green; color:white;"> {{detalle.P1}}% </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
+                                                    style="background-color: yellow; color:black;"> {{detalle.P10}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
+                                                    style="background-color: orange; color:white;"> {{detalle.P10}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
+                                                    style="background-color: red; color:white;"> {{detalle.P10}}% </td>
+
+                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
+                                                    style="background-color: green; color:white;"> {{detalle.P11}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
+                                                    style="background-color: yellow; color:black;"> {{detalle.P11}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
+                                                    style="background-color: orange; color:white;"> {{detalle.P11}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
+                                                    style="background-color: red; color:white;"> {{detalle.P11}}% </td>
+
+                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
+                                                    style="background-color: green; color:white;"> {{detalle.P2}}% </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
+                                                    style="background-color: yellow; color:black;"> {{detalle.P12}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
+                                                    style="background-color: orange; color:white;"> {{detalle.P12}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
+                                                    style="background-color: red; color:white;"> {{detalle.P12}}% </td>
+
+                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
+                                                    style="background-color: green; color:white;"> {{detalle.P13}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
+                                                    style="background-color: yellow; color:black;"> {{detalle.P13}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
+                                                    style="background-color: orange; color:white;"> {{detalle.P13}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
+                                                    style="background-color: red; color:white;"> {{detalle.P13}}% </td>
+
+                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
+                                                    style="background-color: green; color:white;"> {{detalle.P14}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
+                                                    style="background-color: yellow; color:black;"> {{detalle.P14}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
+                                                    style="background-color: orange; color:white;"> {{detalle.P14}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
+                                                    style="background-color: red; color:white;"> {{detalle.P14}}% </td>
+
+                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
+                                                    style="background-color: green; color:white;"> {{detalle.P15}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
+                                                    style="background-color: yellow; color:black;"> {{detalle.P15}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
+                                                    style="background-color: orange; color:white;"> {{detalle.P15}}%
+                                                </td>
+                                                <td class="text-center"
+                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
+                                                    style="background-color: red; color:white;"> {{detalle.P15}}% </td>
+
                                             </tr>
 
                                         </tbody>

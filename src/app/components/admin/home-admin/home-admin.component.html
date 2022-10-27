@@ -84,19 +84,17 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>
-                      <!-- {{ pedidos.indexOf(pedido) + 1 }} -->
-                    </td>
-                    <td class="text-left"> Nombre Pedido </td>
-                    <td class="text-center">100% </td>
-                    <td class="text-center">100% </td>
-                    <td class="text-center">100% </td>
-                    <td class="text-center">100% </td>
-                    <td class="text-center">100% </td>
+                  <tr *ngFor="let fase of fases">
+                    <td> {{ fases.indexOf(fase) + 1 }} </td>
+                    <td class="text-center"> {{fase.CVE_ORDEN}}</td>
+                    <td class="text-center">{{fase.FASEI}}% </td>
+                    <td class="text-center">{{fase.FASEII}}% </td>
+                    <td class="text-center">{{fase.FASEIII}}% </td>
+                    <td class="text-center">{{fase.FASEIV}}% </td>
+                    <td class="text-center">{{fase.FASEV}}% </td>
                     <td>
                       <a>
-                        <i routerLink="/admin/resultados" routerLinkActive="router-link-active"  class="fa-solid fa-circle-info"></i> </a>
+                        <i [routerLink]="['/admin/resultados/' + fase.CVE_ORDEN]" routerLinkActive="router-link-active"  class="fa-solid fa-circle-info"></i> </a>
                     </td>
                   </tr>
                 </tbody>

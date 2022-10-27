@@ -64,14 +64,15 @@
                             <td class="text-center" style="font-weight: 900;">{{detallesArticulos[0].ID_PROCESO}}</td>
                             <td class="text-center"> {{detallesArticulos[0].DESCRIPCION}}: </td>
                             <td class="text-center"> {{detallesArticulos[0].REALIZAR}} </td>
+
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input [(ngModel)]="detallesArticulos[0].REALIZADO" name="corte" matInput type="text">
+                                <input [(ngModel)]="detallesArticulos[0].REALIZADO" name="corteV" matInput type="text">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button type="button" class="btn btn-labeled btn-success">
+                              <button (click)="corteVidrio()"  type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar

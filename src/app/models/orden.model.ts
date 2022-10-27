@@ -18,7 +18,7 @@ export class OrdenModel {
     public SUBTOTAL: string,
     public IMPORTE: string,
     public FECHA_DOC: string,
-    public AUTORIZACION: string,
+    public ESTATUS: string,
     
   ) { }
 }

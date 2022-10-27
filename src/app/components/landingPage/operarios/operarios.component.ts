@@ -23,12 +23,14 @@ export class OperariosComponent implements OnInit {
   ngOnInit(): void {
     this.getOrders();
   }
-  datoUpdate: any
+
   orders: any;
   articulosOrder: any;
   orderSelected: any;
   articuloSelected: any;
   detallesArticulos: any;
+
+  datoUpdated:any;
 
   getOrders() {
     this.orderRest.getOrders().subscribe({
@@ -43,6 +45,7 @@ export class OperariosComponent implements OnInit {
     this.orderRest.getDetalleOrden(id).subscribe({
       next: (res: any) => {
         this.articulosOrder = res.returnDetalle;
+        this.datoUpdated = res.returnDetalle
       },
       error: (err) => {
         console.log(err);
@@ -54,16 +57,19 @@ export class OperariosComponent implements OnInit {
     this.detalleRest.getDetalleArticulo(id).subscribe({
       next: (res: any) => {
         this.detallesArticulos = res.returnDetalleProceso;
+        this.datoUpdated = res.returnDetalleProceso[0]
+        console.log(this.datoUpdated);
       },
       error: (err) => {
         console.log(err);
       },
     });
   }
-/* 
+
   //corte
   corteVidrio() {
-    this.detalleRest.corteVidrio().subscribe({
+    
+    this.detalleRest.corteVidrio(this.datoUpdated.CVE_ART, this.datoUpdated).subscribe({
       next: (res: any) => {
         Swal.fire({
           icon: 'success',
@@ -79,9 +85,10 @@ export class OperariosComponent implements OnInit {
           confirmButtonColor: '#E74C3C'
         });
       },
-    })
+    }) 
   }
 
+/* 
   corteHoja() {
     this.detalleRest.corteHoja().subscribe({
       next: (res: any) => {

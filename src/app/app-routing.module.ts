@@ -58,7 +58,7 @@ const routes: Routes = [
       { path: 'ordenesFabricacion', component: OrdenesFabricacionComponent },
       { path: 'ordenFabricacion/:id', component: OrdenFabricacionComponent },
       { path: 'programacion', component: ProgramacionComponent },
-      { path: 'resultados', component: ResultadosComponent },
+      { path: 'resultados/:id', component: ResultadosComponent },
     ]
   },
   {
