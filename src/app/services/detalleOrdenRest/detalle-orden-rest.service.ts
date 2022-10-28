@@ -41,12 +41,13 @@ export class DetalleOrdenRestService {
   fusionHoja(id: string, params: {}) {
     return this.http.put(environment.baseURI + 'detalleProcesos/fusionHoja/' + id, params, { headers: this.httpOptions });
   }
-  fusionCedazo(id: string, params: {}) {
-    return this.http.put(environment.baseURI + 'detalleProcesos/fusionCedazo/' + id, params, { headers: this.httpOptions });
-  }
   fusionMarco(id: string, params: {}) {
     return this.http.put(environment.baseURI + 'detalleProcesos/fusionMarco/' + id, params, { headers: this.httpOptions });
   }
+  fusionCedazo(id: string, params: {}) {
+    return this.http.put(environment.baseURI + 'detalleProcesos/fusionCedazo/' + id, params, { headers: this.httpOptions });
+  }
+
 
   //Limpieza
   limpiezaHoja(id: string, params: {}) {

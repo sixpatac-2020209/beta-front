@@ -75,7 +75,7 @@
                               </form>
                             </td>
                             <td>
-                              <button (click)="corteVidrio();" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="corteVidrio(); updateDetalle(); sp1();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -97,7 +97,7 @@
                               </form>
                             </td>
                             <td>
-                              <button (click)="corteHoja();" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="corteHoja(); updateDetalle(); sp2();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -121,7 +121,7 @@
 
                             </td>
                             <td>
-                              <button (click)="corteMarco();" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="corteMarco(); updateDetalle(); sp3();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -140,7 +140,7 @@
                               </mat-form-field>
                             </td>
                             <td>
-                              <button (click)="corteCedazo();" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="corteCedazo(); updateDetalle(); sp4();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -189,7 +189,7 @@
                               </mat-form-field>
                             </td>
                             <td>
-                              <button (click)="fusionHoja();" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="fusionHoja(); updateDetalle(); sp5();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -204,11 +204,11 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input [(ngModel)]="detallesArticulos[5].REALIZADO" name="fusionC" matInput type="text">
+                                <input [(ngModel)]="detallesArticulos[5].REALIZADO" name="fusionM" matInput type="text">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button (click)="fusionCedazo();" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="fusionMarco(); updateDetalle(); sp6();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -223,11 +223,11 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input [(ngModel)]="detallesArticulos[6].REALIZADO" name="fusionM" matInput type="text">
+                                <input [(ngModel)]="detallesArticulos[6].REALIZADO" name="fusionC" matInput type="text">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button (click)="fusionMarco();" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="fusionCedazo(); updateDetalle(); sp7();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -275,7 +275,7 @@
                               </mat-form-field>
                             </td>
                             <td>
-                              <button (click)="limpiezaHoja();" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="limpiezaHoja(); updateDetalle(); sp8();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -295,7 +295,7 @@
                               </mat-form-field>
                             </td>
                             <td>
-                              <button (click)="limpiezaMarco();" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="limpiezaMarco(); updateDetalle(); sp9();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -315,7 +315,7 @@
                               </mat-form-field>
                             </td>
                             <td>
-                              <button (click)="colocacionTela();" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="colocacionTela(); updateDetalle(); sp10();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -365,7 +365,7 @@
                               </mat-form-field>
                             </td>
                             <td>
-                              <button (click)="corteBatiente();" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="corteBatiente(); updateDetalle(); sp11();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -385,7 +385,7 @@
                               </mat-form-field>
                             </td>
                             <td>
-                              <button (click)="colocacionBatiente();" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="colocacionBatiente(); updateDetalle(); sp12();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -405,7 +405,7 @@
                               </mat-form-field>
                             </td>
                             <td>
-                              <button (click)="tapajambas();" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="tapajambas(); updateDetalle(); sp13();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -425,7 +425,7 @@
                               </mat-form-field>
                             </td>
                             <td>
-                              <button (click)="reticula();" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="reticula(); updateDetalle(); sp14();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
