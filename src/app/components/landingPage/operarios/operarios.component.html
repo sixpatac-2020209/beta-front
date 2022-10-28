@@ -66,13 +66,13 @@
                             <td class="text-center"> {{detallesArticulos[0].REALIZAR}} </td>
 
                             <td class="text-center">
-                              <mat-form-field class="example-form-field" appearance="fill">
+                              <form id="corteFidrioForm" #corteVidrioForm="ngForm"><mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
                                 <input [(ngModel)]="detallesArticulos[0].REALIZADO" name="corteV" matInput type="text">
-                              </mat-form-field>
+                              </mat-form-field></form>
                             </td>
                             <td>
-                              <button (click)="corteVidrio()"  type="button" class="btn btn-labeled btn-success">
+                              <button (click)="corteVidrio(); updateDetalle(detallesArticulos[0].CVE_ORDEN);"  type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -87,11 +87,11 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input name="corte" matInput type="text" value="{{detallesArticulos[1].REALIZADO}}">
+                                <input name="corteH" matInput type="text" value="{{detallesArticulos[1].REALIZADO}}">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button type="button" class="btn btn-labeled btn-success">
+                              <button (click)="corteHoja(); updateDetalle(detallesArticulos[1].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -106,11 +106,11 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input matInput type="text" value="{{detallesArticulos[2].REALIZADO}}">
+                                <input name="corteM" matInput type="text" value="{{detallesArticulos[2].REALIZADO}}">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button type="button" class="btn btn-labeled btn-success">
+                              <button (click)="corteMarco(); updateDetalle(detallesArticulos[2].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -125,11 +125,11 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input matInput type="text" value="{{detallesArticulos[3].REALIZADO}}">
+                                <input name="corteC" matInput type="text" value="{{detallesArticulos[3].REALIZADO}}">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button type="button" class="btn btn-labeled btn-success">
+                              <button (click)="corteCedazo(); updateDetalle(detallesArticulos[3].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -174,11 +174,11 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input matInput type="text" value="{{detallesArticulos[4].REALIZADO}}">
+                                <input name="fusionH" matInput type="text" value="{{detallesArticulos[4].REALIZADO}}">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button type="button" class="btn btn-labeled btn-success">
+                              <button (click)="fusionHoja(); updateDetalle(detallesArticulos[4].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -193,11 +193,11 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input matInput type="text" value="{{detallesArticulos[5].REALIZADO}}">
+                                <input name="fusionC" matInput type="text" value="{{detallesArticulos[5].REALIZADO}}">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button type="button" class="btn btn-labeled btn-success">
+                              <button (click)="fusionCedazo(); updateDetalle(detallesArticulos[5].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -212,11 +212,11 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input matInput type="text" value="{{detallesArticulos[6].REALIZADO}}">
+                                <input name="fusionM" matInput type="text" value="{{detallesArticulos[6].REALIZADO}}">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button type="button" class="btn btn-labeled btn-success">
+                              <button (click)="fusionMarco(); updateDetalle(detallesArticulos[6].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -259,11 +259,11 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input matInput type="text" value="{{detallesArticulos[7].REALIZADO}}">
+                                <input name="limpiezaH" matInput type="text" value="{{detallesArticulos[7].REALIZADO}}">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button type="button" class="btn btn-labeled btn-success">
+                              <button (click)="limpiezaHoja(); updateDetalle(detallesArticulos[7].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -278,11 +278,11 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input matInput type="text" value="{{detallesArticulos[8].REALIZADO}}">
+                                <input name="limpiezaM" matInput type="text" value="{{detallesArticulos[8].REALIZADO}}">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button type="button" class="btn btn-labeled btn-success">
+                              <button (click)="limpiezaMarco(); updateDetalle(detallesArticulos[8].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -297,11 +297,11 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input matInput type="text" value="{{detallesArticulos[9].REALIZADO}}">
+                                <input name="colocacionTela" matInput type="text" value="{{detallesArticulos[9].REALIZADO}}">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button type="button" class="btn btn-labeled btn-success">
+                              <button (click)="colocacionTela(); updateDetalle(detallesArticulos[9].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -346,11 +346,11 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input matInput type="text" value="{{detallesArticulos[10].REALIZADO}}">
+                                <input name="corteBatiente" matInput type="text" value="{{detallesArticulos[10].REALIZADO}}">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button type="button" class="btn btn-labeled btn-success">
+                              <button (click)="corteBatiente(); updateDetalle(detallesArticulos[10].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -365,11 +365,11 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input matInput type="text" value="{{detallesArticulos[11].REALIZADO}}">
+                                <input name="colocacionBatiente" matInput type="text" value="{{detallesArticulos[11].REALIZADO}}">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button type="button" class="btn btn-labeled btn-success">
+                              <button (click)="colocacionBatiente(); updateDetalle(detallesArticulos[11].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -384,11 +384,11 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input matInput type="text" value="{{detallesArticulos[12].REALIZADO}}">
+                                <input name="tapajambas" matInput type="text" value="{{detallesArticulos[12].REALIZADO}}">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button type="button" class="btn btn-labeled btn-success">
+                              <button (click)="tapajambas(); updateDetalle(detallesArticulos[12].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -403,11 +403,11 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input matInput type="text" value="{{detallesArticulos[13].REALIZADO}}">
+                                <input name="reticula" matInput type="text" value="{{detallesArticulos[13].REALIZADO}}">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button type="button" class="btn btn-labeled btn-success">
+                              <button (click)="reticula(); updateDetalle(detallesArticulos[13].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar

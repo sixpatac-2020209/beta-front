@@ -112,6 +112,13 @@ import { PedidosDisenioComponent } from './components/diseño/pedidos-disenio/pe
 import { PedidoDisenioComponent } from './components/diseño/pedido-disenio/pedido-disenio.component';
 import { OrdenesFabricacionDisenioComponent } from './components/diseño/ordenes-fabricacion-disenio/ordenes-fabricacion-disenio.component';
 import { OrdenFabricacionDisenioComponent } from './components/diseño/orden-fabricacion-disenio/orden-fabricacion-disenio.component';
+import { OrdenOperariosComponent } from './components/landingPage/operarios/orden-operarios/orden-operarios.component';
+import { DetalleOrdenOperariosComponent } from './components/landingPage/operarios/detalle-orden-operarios/detalle-orden-operarios.component';
+import { ArticulosOrdenOperariosComponent } from './components/landingPage/operarios/articulos-orden-operarios/articulos-orden-operarios.component';
+import { CorteComponent } from './components/landingPage/operarios/detallesOrden/corte/corte.component';
+import { LimpiezaComponent } from './components/landingPage/operarios/detallesOrden/limpieza/limpieza.component';
+import { FusionComponent } from './components/landingPage/operarios/detallesOrden/fusion/fusion.component';
+import { AccesoriosComponent } from './components/landingPage/operarios/detallesOrden/accesorios/accesorios.component';
 
 
 
@@ -177,6 +184,13 @@ import { OrdenFabricacionDisenioComponent } from './components/diseño/orden-fab
     PedidoDisenioComponent,
     OrdenesFabricacionDisenioComponent,
     OrdenFabricacionDisenioComponent,
+    OrdenOperariosComponent,
+    DetalleOrdenOperariosComponent,
+    ArticulosOrdenOperariosComponent,
+    CorteComponent,
+    LimpiezaComponent,
+    FusionComponent,
+    AccesoriosComponent,
   ],
   imports: [
     SwiperModule,

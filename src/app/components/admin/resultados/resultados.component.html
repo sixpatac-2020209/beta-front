@@ -97,209 +97,65 @@
                                                 <td class="text-center"> {{detalle.CANTIDAD}}</td>
                                                 <td class="text-center"> {{detalle.VT}} </td>
 
-                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
-                                                    style="background-color: green; color:white;">
+                                                <td class="text-center" >
                                                     {{detalle.P1}}%
                                                 </td>
 
-                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
-                                                    style="background-color: green; color:white;"> {{detalle.P2}}% </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
-                                                    style="background-color: yellow; color:black;"> {{detalle.P2}}%
+                                                <td class="text-center">
+                                                    {{detalle.P2}}%
                                                 </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
-                                                    style="background-color: orange; color:white;"> {{detalle.P2}}%
-                                                </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
-                                                    style="background-color: red; color:white;"> {{detalle.P2}}% </td>
 
-                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
-                                                    style="background-color: green; color:white;"> {{detalle.P3}}% </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
-                                                    style="background-color: yellow; color:black;"> {{detalle.P3}}%
+                                                <td class="text-center" >
+                                                    {{detalle.P3}}%
                                                 </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
-                                                    style="background-color: orange; color:white;"> {{detalle.P3}}%
-                                                </td>
-                                                <td class="text-center" *ngIf="detalle.P1 <= 29"
-                                                    style="background-color: red; color:white;"> {{detalle.P3}}% </td>
 
-                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
-                                                    style="background-color: green; color:white;"> {{detalle.P4}}% </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
-                                                    style="background-color: yellow; color:black;"> {{detalle.P4}}%
+                                                <td class="text-center" >
+                                                    {{detalle.P4}}%
                                                 </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
-                                                    style="background-color: orange; color:white;"> {{detalle.P4}}%
-                                                </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
-                                                    style="background-color: red; color:white;"> {{detalle.P4}}% </td>
 
-                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
-                                                    style="background-color: green; color:white;"> {{detalle.P5}}% </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
-                                                    style="background-color: yellow; color:black;"> {{detalle.P5}}%
+                                                <td class="text-center" >
+                                                    {{detalle.P5}}%
                                                 </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
-                                                    style="background-color: orange; color:white;"> {{detalle.P5}}%
-                                                </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
-                                                    style="background-color: red; color:white;"> {{detalle.P5}}% </td>
 
-                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
-                                                    style="background-color: green; color:white;"> {{detalle.P6}}% </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
-                                                    style="background-color: yellow; color:black;"> {{detalle.P6}}%
+                                                <td class="text-center" >
+                                                    {{detalle.P6}}%
                                                 </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
-                                                    style="background-color: orange; color:white;"> {{detalle.P6}}%
-                                                </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
-                                                    style="background-color: red; color:white;"> {{detalle.P6}}% </td>
 
-                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
-                                                    style="background-color: green; color:white;"> {{detalle.P7}}% </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
-                                                    style="background-color: yellow; color:black;"> {{detalle.P7}}%
+                                                <td class="text-center" >
+                                                    {{detalle.P7}}%
                                                 </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
-                                                    style="background-color: orange; color:white;"> {{detalle.P7}}%
-                                                </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
-                                                    style="background-color: red; color:white;"> {{detalle.P7}}% </td>
 
-                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
-                                                    style="background-color: green; color:white;"> {{detalle.P8}}% </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
-                                                    style="background-color: yellow; color:black;"> {{detalle.P8}}%
+                                                <td class="text-center" >
+                                                    {{detalle.P8}}%
                                                 </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
-                                                    style="background-color: orange; color:white;"> {{detalle.P8}}%
-                                                </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
-                                                    style="background-color: red; color:white;"> {{detalle.P8}}% </td>
 
-                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
-                                                    style="background-color: green; color:white;"> {{detalle.P9}}% </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
-                                                    style="background-color: yellow; color:black;"> {{detalle.P9}}%
+                                                <td class="text-center" >
+                                                    {{detalle.P9}}%
                                                 </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
-                                                    style="background-color: orange; color:white;"> {{detalle.P9}}%
-                                                </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
-                                                    style="background-color: red; color:white;"> {{detalle.P9}}% </td>
 
-                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
-                                                    style="background-color: green; color:white;"> {{detalle.P1}}% </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
-                                                    style="background-color: yellow; color:black;"> {{detalle.P10}}%
+                                                <td class="text-center" >
+                                                    {{detalle.P1}}%
                                                 </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
-                                                    style="background-color: orange; color:white;"> {{detalle.P10}}%
-                                                </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
-                                                    style="background-color: red; color:white;"> {{detalle.P10}}% </td>
 
-                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
-                                                    style="background-color: green; color:white;"> {{detalle.P11}}%
+                                                <td class="text-center" >
+                                                    {{detalle.P11}}%
                                                 </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
-                                                    style="background-color: yellow; color:black;"> {{detalle.P11}}%
-                                                </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
-                                                    style="background-color: orange; color:white;"> {{detalle.P11}}%
-                                                </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
-                                                    style="background-color: red; color:white;"> {{detalle.P11}}% </td>
 
-                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
-                                                    style="background-color: green; color:white;"> {{detalle.P2}}% </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
-                                                    style="background-color: yellow; color:black;"> {{detalle.P12}}%
+                                                <td class="text-center" >
+                                                    {{detalle.P2}}%
                                                 </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
-                                                    style="background-color: orange; color:white;"> {{detalle.P12}}%
-                                                </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
-                                                    style="background-color: red; color:white;"> {{detalle.P12}}% </td>
 
-                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
-                                                    style="background-color: green; color:white;"> {{detalle.P13}}%
+                                                <td class="text-center" >
+                                                    {{detalle.P13}}%
                                                 </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
-                                                    style="background-color: yellow; color:black;"> {{detalle.P13}}%
-                                                </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
-                                                    style="background-color: orange; color:white;"> {{detalle.P13}}%
-                                                </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
-                                                    style="background-color: red; color:white;"> {{detalle.P13}}% </td>
 
-                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
-                                                    style="background-color: green; color:white;"> {{detalle.P14}}%
+                                                <td class="text-center" >
+                                                    {{detalle.P14}}%
                                                 </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
-                                                    style="background-color: yellow; color:black;"> {{detalle.P14}}%
-                                                </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
-                                                    style="background-color: orange; color:white;"> {{detalle.P14}}%
-                                                </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
-                                                    style="background-color: red; color:white;"> {{detalle.P14}}% </td>
 
-                                                <td class="text-center" *ngIf="detalle.P1 >= 80"
-                                                    style="background-color: green; color:white;"> {{detalle.P15}}%
+                                                <td class="text-center" >
+                                                    {{detalle.P15}}%
                                                 </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 79 || detallesOrden.P1 >= 50"
-                                                    style="background-color: yellow; color:black;"> {{detalle.P15}}%
-                                                </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 49 || detallesOrden.P1 >= 30"
-                                                    style="background-color: orange; color:white;"> {{detalle.P15}}%
-                                                </td>
-                                                <td class="text-center"
-                                                    *ngIf="detalle.P1 <= 29 || detallesOrden.P1 >= 0"
-                                                    style="background-color: red; color:white;"> {{detalle.P15}}% </td>
 
                                             </tr>
 

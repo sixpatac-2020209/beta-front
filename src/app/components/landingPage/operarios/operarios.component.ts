@@ -30,8 +30,13 @@ export class OperariosComponent implements OnInit {
   articuloSelected: any;
   detallesArticulos: any;
 
-  datoUpdated:any;
+  datoUpdated: any;
+  CVE_ORDEN: any
 
+  //---------- FORMS ------------//
+  corteVidrioForm: any
+
+  //-----------------------------//
   getOrders() {
     this.orderRest.getOrders().subscribe({
       next: (res: any) => {
@@ -45,7 +50,7 @@ export class OperariosComponent implements OnInit {
     this.orderRest.getDetalleOrden(id).subscribe({
       next: (res: any) => {
         this.articulosOrder = res.returnDetalle;
-        this.datoUpdated = res.returnDetalle
+
       },
       error: (err) => {
         console.log(err);
@@ -57,8 +62,6 @@ export class OperariosComponent implements OnInit {
     this.detalleRest.getDetalleArticulo(id).subscribe({
       next: (res: any) => {
         this.detallesArticulos = res.returnDetalleProceso;
-        this.datoUpdated = res.returnDetalleProceso[0]
-        console.log(this.datoUpdated);
       },
       error: (err) => {
         console.log(err);
@@ -68,15 +71,17 @@ export class OperariosComponent implements OnInit {
 
   //corte
   corteVidrio() {
-    
-    this.detalleRest.corteVidrio(this.datoUpdated.CVE_ART, this.datoUpdated).subscribe({
+    let params = { corteV: this.detallesArticulos[0].REALIZADO }
+    this.detalleRest.corteVidrio(this.articulosOrder[0].CVE_ART, params).subscribe({
       next: (res: any) => {
         Swal.fire({
           icon: 'success',
           title: res.message,
           confirmButtonColor: '#28B463'
         });
+        this.corteVidrioForm.reset();
         this.getOrders();
+
       },
       error: (err) => {
         Swal.fire({
@@ -84,13 +89,16 @@ export class OperariosComponent implements OnInit {
           title: err.error.message || err.error,
           confirmButtonColor: '#E74C3C'
         });
+        this.corteVidrioForm.reset();
+        this.getOrders();
       },
-    }) 
+    })
   }
 
-/* 
+
   corteHoja() {
-    this.detalleRest.corteHoja().subscribe({
+    let params = { corteH: this.detallesArticulos[1].REALIZADO }
+    this.detalleRest.corteHoja(this.articulosOrder[0].CVE_ART, params).subscribe({
       next: (res: any) => {
         Swal.fire({
           icon: 'success',
@@ -110,7 +118,8 @@ export class OperariosComponent implements OnInit {
   }
 
   corteMarco() {
-    this.detalleRest.corteMarco().subscribe({
+    let params = { corteM: this.detallesArticulos[2].REALIZADO }
+    this.detalleRest.corteMarco(this.articulosOrder[2].CVE_ART, params).subscribe({
       next: (res: any) => {
         Swal.fire({
           icon: 'success',
@@ -130,7 +139,8 @@ export class OperariosComponent implements OnInit {
   }
 
   corteCedazo() {
-    this.detalleRest.corteCedazo().subscribe({
+    let params = { corteC: this.detallesArticulos[3].REALIZADO }
+    this.detalleRest.corteCedazo(this.articulosOrder[3].CVE_ART, params).subscribe({
       next: (res: any) => {
         Swal.fire({
           icon: 'success',
@@ -151,7 +161,8 @@ export class OperariosComponent implements OnInit {
 
   //fusion
   fusionHoja() {
-    this.detalleRest.fusionHoja().subscribe({
+    let params = { fusionH: this.detallesArticulos[4].REALIZADO }
+    this.detalleRest.fusionHoja(this.articulosOrder[4].CVE_ART, params).subscribe({
       next: (res: any) => {
         Swal.fire({
           icon: 'success',
@@ -171,7 +182,8 @@ export class OperariosComponent implements OnInit {
   }
 
   fusionCedazo() {
-    this.detalleRest.fusionCedazo().subscribe({
+    let params = { fusionC: this.detallesArticulos[5].REALIZADO }
+    this.detalleRest.fusionCedazo(this.articulosOrder[5].CVE_ART, params).subscribe({
       next: (res: any) => {
         Swal.fire({
           icon: 'success',
@@ -191,7 +203,8 @@ export class OperariosComponent implements OnInit {
   }
 
   fusionMarco() {
-    this.detalleRest.fusionMarco().subscribe({
+    let params = { fusionM: this.detallesArticulos[6].REALIZADO }
+    this.detalleRest.fusionMarco(this.articulosOrder[6].CVE_ART, params).subscribe({
       next: (res: any) => {
         Swal.fire({
           icon: 'success',
@@ -212,7 +225,8 @@ export class OperariosComponent implements OnInit {
 
   //limpieza
   limpiezaHoja() {
-    this.detalleRest.limpiezaHoja().subscribe({
+    let params = { limpiezaH: this.detallesArticulos[7].REALIZADO }
+    this.detalleRest.limpiezaHoja(this.articulosOrder[7].CVE_ART, params).subscribe({
       next: (res: any) => {
         Swal.fire({
           icon: 'success',
@@ -232,7 +246,8 @@ export class OperariosComponent implements OnInit {
   }
 
   limpiezaMarco() {
-    this.detalleRest.limpiezaMarco().subscribe({
+    let params = { limpiezaM: this.detallesArticulos[8].REALIZADO }
+    this.detalleRest.limpiezaMarco(this.articulosOrder[8].CVE_ART, params).subscribe({
       next: (res: any) => {
         Swal.fire({
           icon: 'success',
@@ -252,7 +267,8 @@ export class OperariosComponent implements OnInit {
   }
 
   colocacionTela() {
-    this.detalleRest.colocacionTela().subscribe({
+    let params = { colocacionTela: this.detallesArticulos[9].REALIZADO }
+    this.detalleRest.colocacionTela(this.articulosOrder[9].CVE_ART, params).subscribe({
       next: (res: any) => {
         Swal.fire({
           icon: 'success',
@@ -273,7 +289,8 @@ export class OperariosComponent implements OnInit {
 
   //Accesorios
   corteBatiente() {
-    this.detalleRest.corteBatiente().subscribe({
+    let params = { corteBatiente: this.detallesArticulos[10].REALIZADO }
+    this.detalleRest.corteBatiente(this.articulosOrder[10].CVE_ART, params).subscribe({
       next: (res: any) => {
         Swal.fire({
           icon: 'success',
@@ -293,7 +310,8 @@ export class OperariosComponent implements OnInit {
   }
 
   colocacionBatiente() {
-    this.detalleRest.colocacionBatiente().subscribe({
+    let params = { colocacionBatiente: this.detallesArticulos[11].REALIZADO }
+    this.detalleRest.colocacionBatiente(this.articulosOrder[11].CVE_ART, params).subscribe({
       next: (res: any) => {
         Swal.fire({
           icon: 'success',
@@ -313,7 +331,8 @@ export class OperariosComponent implements OnInit {
   }
 
   tapajambas() {
-    this.detalleRest.tapajambas().subscribe({
+    let params = { tapajambas: this.detallesArticulos[12].REALIZADO }
+    this.detalleRest.tapajambas(this.articulosOrder[12].CVE_ART, params).subscribe({
       next: (res: any) => {
         Swal.fire({
           icon: 'success',
@@ -333,7 +352,8 @@ export class OperariosComponent implements OnInit {
   }
 
   reticula() {
-    this.detalleRest.reticula().subscribe({
+    let params = { reticula: this.detallesArticulos[13].REALIZADO }
+    this.detalleRest.reticula(this.articulosOrder[13].CVE_ART, params).subscribe({
       next: (res: any) => {
         Swal.fire({
           icon: 'success',
@@ -352,16 +372,14 @@ export class OperariosComponent implements OnInit {
     })
   }
 
-  //armado
-  armado() {
-    this.detalleRest.armado().subscribe({
+  updateDetalle(id: string) {
+    this.resultadosRest.updateDetalle(id).subscribe({
       next: (res: any) => {
         Swal.fire({
           icon: 'success',
           title: res.message,
           confirmButtonColor: '#28B463'
         });
-        this.getOrders();
       },
       error: (err) => {
         Swal.fire({
@@ -372,5 +390,5 @@ export class OperariosComponent implements OnInit {
       },
     })
   }
- */
+
 }

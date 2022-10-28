@@ -120,8 +120,9 @@ export class AutorizationComponent implements OnInit {
   }
 
   autorizar() {
-    let params = { ID_USUARIO: `${this.user.name} ${this.user.surname}` }
-    console.log(params.ID_USUARIO);
+
+    let params = { ID_USUARIO: `${this.credentialRest.getIdentity().name} ${this.credentialRest.getIdentity().surname}` }
+console.log(params);
     this.autorizationRest.autorizar(this.CVE_ORDEN, params).subscribe({
       next: (res: any) => {
         Swal.fire({

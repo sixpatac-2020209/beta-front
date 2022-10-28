@@ -76,7 +76,7 @@ const routes: Routes = [
   },
   {
     path: 'produccion', component: LayoutProduccionComponent, children: [
-      { path: 'home', component: HomeProduccionComponent },
+      { path: 'home', component: HomeAdminComponent },
       { path: 'autorizaciones', component: AutorizacionesProduccionComponent },
       { path: 'autorizarOrden/:id', component: AutorizacionProduccionComponent },
       { path: 'ordenesProduccion', component: OrdenesProduccionProduccionComponent },
