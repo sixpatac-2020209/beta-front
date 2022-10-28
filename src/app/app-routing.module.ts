@@ -40,9 +40,19 @@ import { PedidosDisenioComponent } from './components/diseño/pedidos-disenio/pe
 import { PedidoDisenioComponent } from './components/diseño/pedido-disenio/pedido-disenio.component';
 import { OrdenesFabricacionDisenioComponent } from './components/diseño/ordenes-fabricacion-disenio/ordenes-fabricacion-disenio.component';
 import { OrdenFabricacionDisenioComponent } from './components/diseño/orden-fabricacion-disenio/orden-fabricacion-disenio.component';
+import { OrdenOperariosComponent } from './components/landingPage/operarios/orden-operarios/orden-operarios.component';
+import { ArticulosOrdenOperariosComponent } from './components/landingPage/operarios/articulos-orden-operarios/articulos-orden-operarios.component';
+import { DetalleOrdenOperariosComponent } from './components/landingPage/operarios/detalle-orden-operarios/detalle-orden-operarios.component';
 
 const routes: Routes = [
-  { path: '', component: OperariosComponent },
+  {
+    path: '', component: OperariosComponent, children: [
+      { path: 'orden', component: OrdenOperariosComponent },
+      { path: 'articulo/id', component: ArticulosOrdenOperariosComponent },
+      { path: 'detalles/id', component: DetalleOrdenOperariosComponent }
+    ]
+  },
+
   { path: 'login', component: LoginComponent },
 
   {
@@ -61,6 +71,7 @@ const routes: Routes = [
       { path: 'resultados/:id', component: ResultadosComponent },
     ]
   },
+
   {
     path: 'gerenteComercial', component: LayoutGerenteComercialComponent, children: [
       { path: 'autorizaciones', component: AutorizacionesComponent },
@@ -74,6 +85,7 @@ const routes: Routes = [
       { path: 'programacion', component: ProgramacionGerenteComponent },
     ]
   },
+
   {
     path: 'produccion', component: LayoutProduccionComponent, children: [
       { path: 'home', component: HomeAdminComponent },
@@ -94,6 +106,7 @@ const routes: Routes = [
       { path: 'ordenFabricacion/:id', component: OrdenFabricacionDisenioComponent },
     ]
   },
+
   { path: 'logistica', component: LayoutLogisticaComponent },
 
 ];

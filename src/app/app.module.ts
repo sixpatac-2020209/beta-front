@@ -119,6 +119,7 @@ import { CorteComponent } from './components/landingPage/operarios/detallesOrden
 import { LimpiezaComponent } from './components/landingPage/operarios/detallesOrden/limpieza/limpieza.component';
 import { FusionComponent } from './components/landingPage/operarios/detallesOrden/fusion/fusion.component';
 import { AccesoriosComponent } from './components/landingPage/operarios/detallesOrden/accesorios/accesorios.component';
+import { LayoutOperariosComponent } from './components/landingPage/operarios/layout-operarios/layout-operarios.component';
 
 
 
@@ -191,6 +192,7 @@ import { AccesoriosComponent } from './components/landingPage/operarios/detalles
     LimpiezaComponent,
     FusionComponent,
     AccesoriosComponent,
+    LayoutOperariosComponent,
   ],
   imports: [
     SwiperModule,
