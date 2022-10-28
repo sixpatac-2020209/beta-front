@@ -371,315 +371,76 @@ export class OperariosComponent implements OnInit {
   }
 
   updateDetalle() {
-    this.resultadosRest.updateDetalle(this.detallesArticulos[0].CVE_ORDEN).subscribe({
-      next: (res: any) => {
-        Swal.fire({
-          icon: 'success',
-          title: res.message,
-          confirmButtonColor: '#28B463'
-        });
-      },
-      error: (err) => {
-        Swal.fire({
-          icon: 'error',
-          title: err.error.message || err.error,
-          confirmButtonColor: '#E74C3C'
-        });
-      },
-    })
+    this.resultadosRest.updateDetalle(this.detallesArticulos[0].CVE_ORDEN).subscribe({ })
   }
 
   sp1() {
     let params = { articulo: this.detallesArticulos[0].CVE_ART }
-    console.log(params)
-    this.spRest.SP1(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({
-      next: (res: any) => {
-        Swal.fire({
-          icon: 'success',
-          title: res.message,
-          confirmButtonColor: '#28B463'
-        });
-      },
-      error: (err) => {
-        Swal.fire({
-          icon: 'error',
-          title: err.error.message || err.error,
-          confirmButtonColor: '#E74C3C'
-        });
-      },
-    })
+    this.spRest.SP1(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({ })
   }
 
   sp2() {
     let params = { articulo: this.detallesArticulos[0].CVE_ART }
-    console.log(params)
-    this.spRest.SP2(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({
-      next: (res: any) => {
-        Swal.fire({
-          icon: 'success',
-          title: res.message,
-          confirmButtonColor: '#28B463'
-        });
-      },
-      error: (err) => {
-        Swal.fire({
-          icon: 'error',
-          title: err.error.message || err.error,
-          confirmButtonColor: '#E74C3C'
-        });
-      },
-    })
+    this.spRest.SP2(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({ })
   }
 
   sp3() {
     let params = { articulo: this.detallesArticulos[0].CVE_ART }
-    console.log(params)
-    this.spRest.SP3(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({
-      next: (res: any) => {
-        Swal.fire({
-          icon: 'success',
-          title: res.message,
-          confirmButtonColor: '#28B463'
-        });
-      },
-      error: (err) => {
-        Swal.fire({
-          icon: 'error',
-          title: err.error.message || err.error,
-          confirmButtonColor: '#E74C3C'
-        });
-      },
-    })
+    this.spRest.SP3(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({ })
   }
 
   sp4() {
     let params = { articulo: this.detallesArticulos[0].CVE_ART }
-    console.log(params)
-    this.spRest.SP4(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({
-      next: (res: any) => {
-        Swal.fire({
-          icon: 'success',
-          title: res.message,
-          confirmButtonColor: '#28B463'
-        });
-      },
-      error: (err) => {
-        Swal.fire({
-          icon: 'error',
-          title: err.error.message || err.error,
-          confirmButtonColor: '#E74C3C'
-        });
-      },
-    })
+    this.spRest.SP4(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({ })
   }
 
   sp5() {
     let params = { articulo: this.detallesArticulos[0].CVE_ART }
-    console.log(params)
-    this.spRest.SP5(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({
-      next: (res: any) => {
-        Swal.fire({
-          icon: 'success',
-          title: res.message,
-          confirmButtonColor: '#28B463'
-        });
-      },
-      error: (err) => {
-        Swal.fire({
-          icon: 'error',
-          title: err.error.message || err.error,
-          confirmButtonColor: '#E74C3C'
-        });
-      },
-    })
+    this.spRest.SP5(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({ })
   }
 
   sp6() {
     let params = { articulo: this.detallesArticulos[0].CVE_ART }
-    console.log(params)
-    this.spRest.SP6(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({
-      next: (res: any) => {
-        Swal.fire({
-          icon: 'success',
-          title: res.message,
-          confirmButtonColor: '#28B463'
-        });
-      },
-      error: (err) => {
-        Swal.fire({
-          icon: 'error',
-          title: err.error.message || err.error,
-          confirmButtonColor: '#E74C3C'
-        });
-      },
-    })
+    this.spRest.SP6(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({ })
   }
 
   sp7() {
     let params = { articulo: this.detallesArticulos[0].CVE_ART }
-    console.log(params)
-    this.spRest.SP7(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({
-      next: (res: any) => {
-        Swal.fire({
-          icon: 'success',
-          title: res.message,
-          confirmButtonColor: '#28B463'
-        });
-      },
-      error: (err) => {
-        Swal.fire({
-          icon: 'error',
-          title: err.error.message || err.error,
-          confirmButtonColor: '#E74C3C'
-        });
-      },
-    })
+    this.spRest.SP7(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({ })
   }
 
   sp8() {
     let params = { articulo: this.detallesArticulos[0].CVE_ART }
-    console.log(params)
-    this.spRest.SP8(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({
-      next: (res: any) => {
-        Swal.fire({
-          icon: 'success',
-          title: res.message,
-          confirmButtonColor: '#28B463'
-        });
-      },
-      error: (err) => {
-        Swal.fire({
-          icon: 'error',
-          title: err.error.message || err.error,
-          confirmButtonColor: '#E74C3C'
-        });
-      },
-    })
+    this.spRest.SP8(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({ })
   }
 
   sp9() {
     let params = { articulo: this.detallesArticulos[0].CVE_ART }
-    console.log(params)
-    this.spRest.SP9(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({
-      next: (res: any) => {
-        Swal.fire({
-          icon: 'success',
-          title: res.message,
-          confirmButtonColor: '#28B463'
-        });
-      },
-      error: (err) => {
-        Swal.fire({
-          icon: 'error',
-          title: err.error.message || err.error,
-          confirmButtonColor: '#E74C3C'
-        });
-      },
-    })
+    this.spRest.SP9(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({ })
   }
 
   sp10() {
     let params = { articulo: this.detallesArticulos[0].CVE_ART }
-    console.log(params)
-    this.spRest.SP10(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({
-      next: (res: any) => {
-        Swal.fire({
-          icon: 'success',
-          title: res.message,
-          confirmButtonColor: '#28B463'
-        });
-      },
-      error: (err) => {
-        Swal.fire({
-          icon: 'error',
-          title: err.error.message || err.error,
-          confirmButtonColor: '#E74C3C'
-        });
-      },
-    })
+    this.spRest.SP10(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({ })
   }
 
   sp11() {
     let params = { articulo: this.detallesArticulos[0].CVE_ART }
-    console.log(params)
-    this.spRest.SP11(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({
-      next: (res: any) => {
-        Swal.fire({
-          icon: 'success',
-          title: res.message,
-          confirmButtonColor: '#28B463'
-        });
-      },
-      error: (err) => {
-        Swal.fire({
-          icon: 'error',
-          title: err.error.message || err.error,
-          confirmButtonColor: '#E74C3C'
-        });
-      },
-    })
+    this.spRest.SP11(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({ })
   }
 
   sp12() {
     let params = { articulo: this.detallesArticulos[0].CVE_ART }
-    console.log(params)
-    this.spRest.SP12(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({
-      next: (res: any) => {
-        Swal.fire({
-          icon: 'success',
-          title: res.message,
-          confirmButtonColor: '#28B463'
-        });
-      },
-      error: (err) => {
-        Swal.fire({
-          icon: 'error',
-          title: err.error.message || err.error,
-          confirmButtonColor: '#E74C3C'
-        });
-      },
-    })
+    this.spRest.SP12(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({ })
   }
 
   sp13() {
     let params = { articulo: this.detallesArticulos[0].CVE_ART }
-    console.log(params)
-    this.spRest.SP13(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({
-      next: (res: any) => {
-        Swal.fire({
-          icon: 'success',
-          title: res.message,
-          confirmButtonColor: '#28B463'
-        });
-      },
-      error: (err) => {
-        Swal.fire({
-          icon: 'error',
-          title: err.error.message || err.error,
-          confirmButtonColor: '#E74C3C'
-        });
-      },
-    })
+    this.spRest.SP13(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({ })
   }
 
   sp14() {
     let params = { articulo: this.detallesArticulos[0].CVE_ART }
-    console.log(params)
-    this.spRest.SP14(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({
-      next: (res: any) => {
-        Swal.fire({
-          icon: 'success',
-          title: res.message,
-          confirmButtonColor: '#28B463'
-        });
-      },
-      error: (err) => {
-        Swal.fire({
-          icon: 'error',
-          title: err.error.message || err.error,
-          confirmButtonColor: '#E74C3C'
-        });
-      },
-    })
+    this.spRest.SP14(this.detallesArticulos[0].CVE_ORDEN, params).subscribe({ })
   }
 }
