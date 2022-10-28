@@ -66,13 +66,16 @@
                             <td class="text-center"> {{detallesArticulos[0].REALIZAR}} </td>
 
                             <td class="text-center">
-                              <form id="corteFidrioForm" #corteVidrioForm="ngForm"><mat-form-field class="example-form-field" appearance="fill">
-                                <mat-label>Cantidad</mat-label>
-                                <input [(ngModel)]="detallesArticulos[0].REALIZADO" name="corteV" matInput type="text">
-                              </mat-form-field></form>
+                              <form id="corteVidrioForm" #corteVidrioForm="ngForm">
+                                <mat-form-field class="example-form-field" appearance="fill">
+                                  <mat-label>Cantidad</mat-label>
+                                  <input [(ngModel)]="detallesArticulos[0].REALIZADO" name="corteV" matInput
+                                    type="text">
+                                </mat-form-field>
+                              </form>
                             </td>
                             <td>
-                              <button (click)="corteVidrio(); updateDetalle(detallesArticulos[0].CVE_ORDEN);"  type="button" class="btn btn-labeled btn-success">
+                              <button (click)="corteVidrio();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -85,13 +88,16 @@
                             <td class="text-center"> {{detallesArticulos[1].DESCRIPCION}}: </td>
                             <td class="text-center"> {{detallesArticulos[1].REALIZAR}} </td>
                             <td class="text-center">
-                              <mat-form-field class="example-form-field" appearance="fill">
-                                <mat-label>Cantidad</mat-label>
-                                <input name="corteH" matInput type="text" value="{{detallesArticulos[1].REALIZADO}}">
-                              </mat-form-field>
+                              <form id="corteHojaForm" #corteHojaForm="ngForm">
+                                <mat-form-field class="example-form-field" appearance="fill">
+                                  <mat-label>Cantidad</mat-label>
+                                  <input [(ngModel)]="detallesArticulos[1].REALIZADO" name="corteH" matInput
+                                    type="text">
+                                </mat-form-field>
+                              </form>
                             </td>
                             <td>
-                              <button (click)="corteHoja(); updateDetalle(detallesArticulos[1].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="corteHoja();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -104,13 +110,18 @@
                             <td class="text-center"> {{detallesArticulos[2].DESCRIPCION}}: </td>
                             <td class="text-center"> {{detallesArticulos[2].REALIZAR}} </td>
                             <td class="text-center">
-                              <mat-form-field class="example-form-field" appearance="fill">
-                                <mat-label>Cantidad</mat-label>
-                                <input name="corteM" matInput type="text" value="{{detallesArticulos[2].REALIZADO}}">
-                              </mat-form-field>
+
+                              <form id="corteMarcoForm" #corteMarcoForm="ngForm">
+                                <mat-form-field class="example-form-field" appearance="fill">
+                                  <mat-label>Cantidad</mat-label>
+                                  <input [(ngModel)]="detallesArticulos[2].REALIZADO" name="corteM" matInput
+                                    type="text">
+                                </mat-form-field>
+                              </form>
+
                             </td>
                             <td>
-                              <button (click)="corteMarco(); updateDetalle(detallesArticulos[2].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="corteMarco();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -125,11 +136,11 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input name="corteC" matInput type="text" value="{{detallesArticulos[3].REALIZADO}}">
+                                <input [(ngModel)]="detallesArticulos[3].REALIZADO" name="corteC" matInput type="text">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button (click)="corteCedazo(); updateDetalle(detallesArticulos[3].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="corteCedazo();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -174,11 +185,11 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input name="fusionH" matInput type="text" value="{{detallesArticulos[4].REALIZADO}}">
+                                <input [(ngModel)]="detallesArticulos[4].REALIZADO" name="fusionH" matInput type="text">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button (click)="fusionHoja(); updateDetalle(detallesArticulos[4].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="fusionHoja();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -193,11 +204,11 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input name="fusionC" matInput type="text" value="{{detallesArticulos[5].REALIZADO}}">
+                                <input [(ngModel)]="detallesArticulos[5].REALIZADO" name="fusionC" matInput type="text">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button (click)="fusionCedazo(); updateDetalle(detallesArticulos[5].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="fusionCedazo();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -212,11 +223,11 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input name="fusionM" matInput type="text" value="{{detallesArticulos[6].REALIZADO}}">
+                                <input [(ngModel)]="detallesArticulos[6].REALIZADO" name="fusionM" matInput type="text">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button (click)="fusionMarco(); updateDetalle(detallesArticulos[6].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="fusionMarco();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -259,11 +270,12 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input name="limpiezaH" matInput type="text" value="{{detallesArticulos[7].REALIZADO}}">
+                                <input [(ngModel)]="detallesArticulos[7].REALIZADO" name="limpiezaH" matInput
+                                  type="text">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button (click)="limpiezaHoja(); updateDetalle(detallesArticulos[7].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="limpiezaHoja();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -278,11 +290,12 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input name="limpiezaM" matInput type="text" value="{{detallesArticulos[8].REALIZADO}}">
+                                <input [(ngModel)]="detallesArticulos[8].REALIZADO" name="limpiezaM" matInput
+                                  type="text">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button (click)="limpiezaMarco(); updateDetalle(detallesArticulos[8].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="limpiezaMarco();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -297,11 +310,12 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input name="colocacionTela" matInput type="text" value="{{detallesArticulos[9].REALIZADO}}">
+                                <input [(ngModel)]="detallesArticulos[9].REALIZADO" name="colocacionTela" matInput
+                                  type="text">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button (click)="colocacionTela(); updateDetalle(detallesArticulos[9].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="colocacionTela();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -346,11 +360,12 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input name="corteBatiente" matInput type="text" value="{{detallesArticulos[10].REALIZADO}}">
+                                <input [(ngModel)]="detallesArticulos[10].REALIZADO" name="corteBatiente" matInput
+                                  type="text">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button (click)="corteBatiente(); updateDetalle(detallesArticulos[10].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="corteBatiente();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -365,11 +380,12 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input name="colocacionBatiente" matInput type="text" value="{{detallesArticulos[11].REALIZADO}}">
+                                <input [(ngModel)]="detallesArticulos[11].REALIZADO" name="colocacionBatiente" matInput
+                                  type="text">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button (click)="colocacionBatiente(); updateDetalle(detallesArticulos[11].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="colocacionBatiente();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -384,11 +400,12 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input name="tapajambas" matInput type="text" value="{{detallesArticulos[12].REALIZADO}}">
+                                <input [(ngModel)]="detallesArticulos[12].REALIZADO" name="tapajambas" matInput
+                                  type="text">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button (click)="tapajambas(); updateDetalle(detallesArticulos[12].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="tapajambas();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar
@@ -403,11 +420,12 @@
                             <td class="text-center">
                               <mat-form-field class="example-form-field" appearance="fill">
                                 <mat-label>Cantidad</mat-label>
-                                <input name="reticula" matInput type="text" value="{{detallesArticulos[13].REALIZADO}}">
+                                <input [(ngModel)]="detallesArticulos[13].REALIZADO" name="reticula" matInput
+                                  type="text">
                               </mat-form-field>
                             </td>
                             <td>
-                              <button (click)="reticula(); updateDetalle(detallesArticulos[13].CVE_ORDEN);" type="button" class="btn btn-labeled btn-success">
+                              <button (click)="reticula();" type="button" class="btn btn-labeled btn-success">
                                 <span class="btn-label">
                                   <i class="fa-solid fa-floppy-disk me-2"></i>
                                 </span>Guardar

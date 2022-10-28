@@ -17,7 +17,7 @@ export class DetalleOrdenRestService {
   ) { }
 
   getDetalleArticulo(id: string) {
-    return this.http.get(environment.baseURI + 'detalleProcesos/getDetalleProceso/' + id, { headers: this.httpOptions.set('Authorization', this.credentialReset.getToken()) })
+    return this.http.get(environment.baseURI + 'detalleProcesos/getDetalleProceso/' + id, { headers: this.httpOptions })
   }
 
   /** ------------------------------- PROCESOS ------------------------------- **/
@@ -25,6 +25,7 @@ export class DetalleOrdenRestService {
   corteVidrio(id: string, params: {}) {
     return this.http.put(environment.baseURI + 'detalleProcesos/corteVidrio/' + id, params, { headers: this.httpOptions });
   }
+  
   corteHoja(id: string, params: {}) {
     return this.http.put(environment.baseURI + 'detalleProcesos/corteHoja/' + id, params, { headers: this.httpOptions });
   }
@@ -46,6 +47,7 @@ export class DetalleOrdenRestService {
   fusionMarco(id: string, params: {}) {
     return this.http.put(environment.baseURI + 'detalleProcesos/fusionMarco/' + id, params, { headers: this.httpOptions });
   }
+
   //Limpieza
   limpiezaHoja(id: string, params: {}) {
     return this.http.put(environment.baseURI + 'detalleProcesos/limpiezaHoja/' + id, params, { headers: this.httpOptions });
@@ -56,7 +58,6 @@ export class DetalleOrdenRestService {
   colocacionTela(id: string, params: {}) {
     return this.http.put(environment.baseURI + 'detalleProcesos/colocacionTela/' + id, params, { headers: this.httpOptions });
   }
-
 
   //Accesorios
   corteBatiente(id: string, params: {}) {
