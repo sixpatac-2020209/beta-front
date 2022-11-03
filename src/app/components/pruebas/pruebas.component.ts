@@ -7,11 +7,11 @@ import { UsuarioModel } from 'src/app/models/usuario.model';
 import { CredentialsRestService } from 'src/app/services/credentialsRest/credentials-rest.service';
 
 @Component({
-  selector: 'app-layout-gerente-comercial',
-  templateUrl: './layout-gerente-comercial.component.html',
-  styleUrls: ['./layout-gerente-comercial.component.css']
+  selector: 'app-pruebas',
+  templateUrl: './pruebas.component.html',
+  styleUrls: ['./pruebas.component.css']
 })
-export class LayoutGerenteComercialComponent implements OnInit, OnDestroy {
+export class PruebasComponent implements OnInit, OnDestroy {
 
   user: UsuarioModel
 

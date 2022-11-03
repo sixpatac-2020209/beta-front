@@ -43,8 +43,10 @@ import { OrdenFabricacionDisenioComponent } from './components/diseño/orden-fab
 import { OrdenOperariosComponent } from './components/landingPage/operarios/orden-operarios/orden-operarios.component';
 import { ArticulosOrdenOperariosComponent } from './components/landingPage/operarios/articulos-orden-operarios/articulos-orden-operarios.component';
 import { DetalleOrdenOperariosComponent } from './components/landingPage/operarios/detalle-orden-operarios/detalle-orden-operarios.component';
+import { PruebasComponent } from './components/pruebas/pruebas.component';
 
 const routes: Routes = [
+  { path: 'prueba', component: PruebasComponent },
   {
     path: '', component: OperariosComponent, children: [
       { path: 'orden', component: OrdenOperariosComponent },

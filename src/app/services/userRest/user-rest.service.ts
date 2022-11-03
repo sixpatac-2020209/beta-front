@@ -25,7 +25,7 @@ export class UserRestService {
   }
 
   getUser(id: string) {
-    return this.http.get(environment.baseURI + 'user/getUser/' + id, { headers: this.httpOptions.set('Authorization', this.credentialReset.getToken()) });
+    return this.http.get(environment.baseURI + 'user/getUser/' + id, { headers: this.httpOptions });
   }
 
   saveUser(params: {}) {

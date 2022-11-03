@@ -1,3 +1,73 @@
-<app-header></app-header>
-<app-sidebar-disenio></app-sidebar-disenio>
-<router-outlet></router-outlet>
+<div [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar class="navBarNew" style="background: #fff; height:70px; position: fixed; z-index: 900; width:100vw;">
+        <mat-toolbar-row
+            style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center; align-content: center; flex-wrap: wrap;">
+
+            <div style="display: flex;">
+                <a routerLink="/admin/home" class="logo textColor no-seleccionableLogo"
+                    style="display: flex; align-items: center; max-height: 30px; z-index: 100000;">
+                    <img src="assets/img/logo.png" alt="" />
+                    <span class="d-none d-lg-block textColor"> VENTO App</span>
+                </a>
+                <button mat-icon-button (click)="snav.toggle()">
+                    <mat-icon>menu</mat-icon>
+                </button>
+            </div>
+
+            <ul style="display: flex; align-items: center; max-height: 30px">
+
+                <li class="nav-item dropdown me-5">
+                    <a class="nav-link nav-profile pe-0" href="#" data-bs-toggle="dropdown">
+                        <span class="d-none d-md-block dropdown-toggle ps-2 iconColor">{{user.name}}</span>
+                    </a>
+                    <ul class="dropdown-menu profile">
+                        <li class="dropdown-header">
+                            <h6>{{user.name}}</h6>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li>
+                            <a class="dropdown-item no-seleccionable"
+                                style="display: flex; align-items: center; max-height: 30px">
+                                <i class="bi bi-box-arrow-right"></i> <span>Sign Out</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+            fixedTopGap="56">
+            
+            <ul class="sidebar-nav" id="sidebar-nav">
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" routerLink="/disenio/pedidos">
+                        <i class="bi bi-check-all"></i>
+                        <span>Pedidos</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" routerLink="/disenio/ordenesFabricacion">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                        <span>Ordenes de fabricación</span>
+                    </a>
+                </li>
+
+            </ul>
+
+        </mat-sidenav>
+
+        <mat-sidenav-content style="min-height: 100vh;">
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

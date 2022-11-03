@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ElementRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common'
 import { Router } from '@angular/router';
 import { UserRestService } from 'src/app/services/userRest/user-rest.service';
@@ -10,18 +10,24 @@ import { CredentialsRestService } from 'src/app/services/credentialsRest/credent
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-user: UsuarioModel
+  user: UsuarioModel
   constructor
     (
       @Inject(DOCUMENT) private document: Document,
       private router: Router,
       private userRest: UserRestService,
       private credentialRest: CredentialsRestService,
-    ) { 
-      this.user = new UsuarioModel('','','','','','','');
-    }
+      private elementRef: ElementRef,
+    ) {
+    this.user = new UsuarioModel('', '', '', '', '', '', '');
+  }
 
   ngOnInit(): void {
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "../../../../assets/js/main.js";
+    this.elementRef.nativeElement.appendChild(s);
+    
     this.userLogin();
   }
   sidebarToggle() {
@@ -29,13 +35,13 @@ user: UsuarioModel
     this.document.body.classList.toggle('toggle-sidebar');
   }
 
- userLogin() {
+  userLogin() {
     this.userRest.getUser(this.credentialRest.getIdentity()._id).subscribe({
       next: (res: any) => {
         this.user = res.user;
         console.log(this.user);
       },
-      error: (err) => {alert(err.error.message)}
+      error: (err) => { alert(err.error.message) }
     })
   }
 

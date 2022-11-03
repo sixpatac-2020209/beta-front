@@ -36,6 +36,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from "@angular/material/tooltip";
 import {MatSidenavModule} from '@angular/material/sidenav';
 
+import {MatListModule} from '@angular/material/list'
+
 import {
   PerfectScrollbarModule,
   PERFECT_SCROLLBAR_CONFIG,
@@ -120,6 +122,7 @@ import { LimpiezaComponent } from './components/landingPage/operarios/detallesOr
 import { FusionComponent } from './components/landingPage/operarios/detallesOrden/fusion/fusion.component';
 import { AccesoriosComponent } from './components/landingPage/operarios/detallesOrden/accesorios/accesorios.component';
 import { LayoutOperariosComponent } from './components/landingPage/operarios/layout-operarios/layout-operarios.component';
+import { PruebasComponent } from './components/pruebas/pruebas.component';
 
 
 
@@ -193,6 +196,7 @@ import { LayoutOperariosComponent } from './components/landingPage/operarios/lay
     FusionComponent,
     AccesoriosComponent,
     LayoutOperariosComponent,
+    PruebasComponent,
   ],
   imports: [
     SwiperModule,
@@ -239,6 +243,7 @@ import { LayoutOperariosComponent } from './components/landingPage/operarios/lay
     MatTooltipModule,
     MatOptionModule,
     MatSidenavModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
