@@ -1,0 +1,23 @@
+.logo img{
+    max-height: 40px;
+    margin-right: 6px;
+}
+
+
+
+@media (max-width: 600px) {
+    .mat-toolbar {
+        margin-top: -60px;
+    }
+
+    .mat-sidenav {
+        margin-top: 10px;
+    }
+}
+
+@media (min-width: 601px) {
+    .mat-sidenav {
+        margin-top: 67px;
+    }
+}
+
